@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_purchase_order_tree_fal_cny" model="ir.ui.view">
+            <field name="name">purchase.order.tree.fal.cny</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="amount_total" sum="Total Tax Included" position="before">
+                        <field name="amount_total_cny" sum="Total in CNY"/>                        
+                    </field>
+                    <field name="amount_total" sum="Total Tax Included" position="after">
+                        <field name="currency_id" string="Order Currency" />
+                        <field name="total_uninvoice_cny" sum="Total uninvoice in CNY"/>
+                        <field name="total_uninvoice" sum="Total uninvoice"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_order_graph_fal_cny">
+            <field name="name">purchase.order.graph.fal.cny</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_graph"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="amount_total" operator="+" position="replace">
+                        <field name="amount_total_cny" operator="+" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

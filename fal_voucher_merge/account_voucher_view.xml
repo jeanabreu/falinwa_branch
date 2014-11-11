@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <!--
+        <record model="ir.ui.view" id="view_vendor_receipt_form_fal_proc_ext">
+            <field name="name">account.voucher.receipt.form.fal.proc.ext</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Payment Information']/label[@for='line_cr_ids']" position="after">
+                    <button name="onclick_reconcile_all_credit" string="Reconcile/Unreconcile All Credits" type="object" states="draft" />
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/field[@name='line_cr_ids']/tree[@string='Invoices and outstanding transactions']/field[@name='move_line_id']" position="after">
+                    <field name="fal_invoice_order_number" readonly="1" />
+                    <field name="currency_id" string="Origin's Currency" readonly="1"/>
+                    <field name="fal_origin_origininal_amount" readonly="1"/>
+                    <field name="fal_origin_open_balance" readonly="1"/>
+                    <field name="fal_origin_amount" readonly="1"/>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/label[@for='line_dr_ids']" position="after">
+                    <button name="onclick_reconcile_all_debit" string="Reconcile/Unreconcile All Debits" type="object" attrs="{'invisible': ['|', ('pre_line','=',False), ('state','!=','draft')]}"/>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/field[@name='line_dr_ids']/tree[@string='Credits']/field[@name='move_line_id']" position="after">
+                    <field name="fal_invoice_order_number" readonly="1" />
+                    <field name="currency_id" string="Origin's Currency" readonly="1"/>
+                    <field name="fal_origin_origininal_amount" readonly="1"/>
+                    <field name="fal_origin_open_balance" readonly="1"/>
+                    <field name="fal_origin_amount" readonly="1"/>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/group/group/field[@name='payment_option']" position="attributes">
+                    <attribute name="attrs">{'invisible':0}</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/group/group/field[@name='writeoff_acc_id']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('payment_option','!=','with_writeoff')], 'required':[('payment_option','=','with_writeoff')]}</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/group/group/field[@name='comment']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('payment_option','!=','with_writeoff')]}</attribute>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/group/group/field[@name='analytic_id']" position="attributes">
+                    <attribute name="attrs">{'invisible':[('payment_option','!=','with_writeoff')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_vendor_payment_form_fal_proc_ext">
+            <field name="name">account.voucher.payment.form.fal.proc.ext</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Journal Items']/group/field[@name='number']" position="replace">
+                
+                </xpath>
+                <xpath expr="//sheet/field[@name='account_id']" position="after">
+                    <h1 attrs="{'invisible': [('number','=',False)]}"><field name="number"/></h1>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/label[@for='line_dr_ids']" position="after">
+                    <button name="onclick_reconcile_all_debit" string="Reconcile/Unreconcile All Debits" type="object" states="draft"/>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/field[@name='line_dr_ids']/tree[@string='Supplier Invoices and Outstanding transactions']/field[@name='move_line_id']" position="after">
+                    <field name="fal_invoice_order_number" readonly="1" />
+                    <field name="currency_id" string="Origin's Currency" readonly="1"/>
+                    <field name="fal_origin_origininal_amount" readonly="1"/>
+                    <field name="fal_origin_open_balance" readonly="1"/>
+                    <field name="fal_origin_amount" readonly="1"/>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/label[@for='line_cr_ids']" position="after">
+                    <button name="onclick_reconcile_all_credit" string="Reconcile/Unreconcile All Credits" type="object" attrs="{'invisible': ['|',('pre_line','=',False), ('state','!=','draft')]}"/>
+                </xpath>
+                <xpath expr="//page[@string='Payment Information']/field[@name='line_cr_ids']/tree[@string='Credits']/field[@name='move_line_id']" position="after">
+                    <field name="fal_invoice_order_number" readonly="1" />
+                    <field name="currency_id" string="Origin's Currency" readonly="1"/>
+                    <field name="fal_origin_origininal_amount" readonly="1"/>
+                    <field name="fal_origin_open_balance" readonly="1"/>
+                    <field name="fal_origin_amount" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    -->
+    </data>
+</openerp>

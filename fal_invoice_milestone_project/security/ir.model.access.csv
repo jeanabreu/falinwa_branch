@@ -1,8 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_serie_name_user,serie.name.user,model_fal_serie_name,base.group_user,1,1,1,1
-access_bore_diameter_user,bore.diameter.user,model_fal_bore_diameter,base.group_user,1,1,1,1
-access_main_option_user,main.option.user,model_fal_main_option,base.group_user,1,1,1,1
-access_road_end_user,road.end.user,model_fal_road_end,base.group_user,1,1,1,1
-access_seal_kit_user,seal.kit.user,model_fal_seal_kit,base.group_user,1,1,1,1
-access_mounting_user,mounting.user,model_fal_mounting,base.group_user,1,1,1,1
-access_magnet_position_user,magnet.position.user,model_fal_magnet_position,base.group_user,1,1,1,1

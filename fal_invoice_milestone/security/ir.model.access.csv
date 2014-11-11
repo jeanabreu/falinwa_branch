@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_fal_invoice_milestone,fal.invoice.milestone.user,model_fal_invoice_milestone,base.group_user,1,1,1,1
-access_fal_rule_lines,fal.rule.lines.user,model_fal_rule_lines,base.group_user,1,1,1,1
-access_fal_account_move_reconcile_salesman,account_move_reconcile salesman,account.model_account_move_reconcile,base.group_sale_salesman,1,1,1,0
-access_fal_account_period_salesman,account_period salesman,account.model_account_period,base.group_sale_salesman,1,1,1,0

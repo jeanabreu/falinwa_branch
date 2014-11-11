@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>                
+        <report auto="False" id="report_fapiao" model="fapiao" name="fapiao"
+                rml="l10n_cn_fapiao/report/fapiao.rml" string="Fapiao"
+                usage="default"/>
+
+    </data>
+</openerp>

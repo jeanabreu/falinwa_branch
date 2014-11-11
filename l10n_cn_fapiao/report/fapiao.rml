@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<document filename="fapiao.pdf">
+  <template pageSize="(595.0,842.0)" title="Test" author="Martin Simon" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="23.0" y1="43.0" width="530" height="799"/>
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Tableau2">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Product_Header_Title">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table5">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="6,-1" stop="6,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table_Product_Line">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Standard"/>
+    <paraStyle name="terp_header" fontSize="12.0" leading="15" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_8" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_Details_Centre" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_9" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_9" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_9" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_9" fontSize="9.0" leading="11" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Space bet user and signature" fontSize="4.0" leading="5" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  </stylesheet>
+  <story>
+    <para style="terp_default_9">[[repeatIn(objects,'o')]]</para>
+    <para style="terp_default_9">[[ setLang(o.partner_id.lang) ]]</para>
+    <para style="terp_default_9">
+      <font color="white"> </font>
+    </para>
+    <para style="Standard">
+      <font color="white"> </font>
+    </para>
+    <para style="terp_header"><b>Fapiao [[o.name]]</b></para>
+    <blockTable colWidths="120,150,120,150" style="Tableau2">
+      <tr>
+        <td>
+            <para style="terp_default_Bold_9"><b>Fapiao Number:</b></para>
+        </td>
+        <td>
+            <para style="terp_default_9">[[ o.fapiao_number or '']]</para>
+        </td>
+        <td>
+            <para style="terp_default_Bold_9"><b>Fapiao Date:</b></para>
+        </td>
+        <td>
+            <para style="terp_default_9">[[ o.fapiao_date or '']]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <para style="terp_default_Bold_9"><b>Partner:</b></para>
+        </td>
+        <td>
+            <para style="terp_default_9">[[ o.partner_id.name or '']]</para>
+        </td>
+        <td>
+            <para style="terp_default_Bold_9"><b>Tax:</b></para>
+        </td>
+        <td>
+            <para style="terp_default_9">[[ o.tax_id.name or '']]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="terp_default_Bold_9">
+            <font color="white"></font>
+          </para>
+        </td>
+        <td>
+          <para style="terp_default_9">
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+            <para style="terp_default_Bold_9"><b>Total Tax Amount:</b></para>
+        </td>
+        <td>
+            <para style="terp_default_9">[[ formatLang(o.total_tax_amount, digits=get_digits(dp='Product Price')) ]]</para>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <para style="terp_default_Bold_9">
+            <font color="white"> </font>
+          </para>      
+        </td>
+        <td>
+          <para style="terp_default_9">
+            <font color="white"> </font>
+          </para>        
+        </td>
+        <td>
+            <para style="terp_default_Bold_9"><b>Total Fapiao Amount:</b></para>
+        </td>
+        <td>
+            <para style="terp_default_9">[[ formatLang(o.amount_with_taxes, digits=get_digits(dp='Product Price')) ]]</para>
+        </td>
+      </tr>
+    </blockTable>
+    <para style="terp_default_9">
+      <font color="white"> </font>
+    </para>
+    <para style="terp_default_9">[[ format(o.notes or '') ]]</para>
+    <para style="terp_default_9">
+      <font color="white"> </font>
+    </para>
+  </story>
+</document>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_employee_form_fal_hr_ext" model="ir.ui.view">
+            <field name="name">hr.employee.form.fal.hr.ext</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="category_ids" position="after">
+                        <label for="fal_reference" class="oe_edit_only" />
+                        <field name="fal_reference" placeholder="Put employee reference in here.." />
+                    </field>
+                    <field name="otherid" position="after">
+                        <field name="driving_license_number"/>
+                    </field>
+                    <field name="marital" position="after">
+                        <field name="fal_child_ids">
+                            <tree string="Children" editable="top">
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </field>
+                    <field name="address_home_id" position="after">
+                        <field name="parents_address"/>
+                        <field name="parents_phone"/>
+                        <field name="contact"/>
+                        <field name="relation_contact"/>
+                        <field name="phone_contact"/>
+                    </field>
+                    <field name="birthday" position="after">
+                        <field name="hukou_place"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

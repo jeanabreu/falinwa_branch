@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_bank_balance_computation_wizard" model="ir.ui.view">
+            <field name="name">Bank Balance</field>
+            <field name="model">bank.balance.computation.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Bank Balance" version="7.0">
+                    <group state='draft'>
+                        <!--
+                        <label for="date_start" string="Date"/>
+                        <div>
+                            <field name="date_start" class="oe_inline" attrs="{'required':[('date_stop', '!=',False)]}" /> - 
+                            <field name="date_stop" class="oe_inline" attrs="{'required':[('date_start', '!=',False)]}" /> (keep empty to include all)
+                        </div>
+                        -->
+                    </group>
+                    <group state='draft'>
+                        <!--
+                        <label for="target_moves" />
+                        <div>
+                            <field name="target_moves" class="oe_inline" />
+                        </div>
+                        -->
+                    </group>
+                    <group>
+                        <field name="temp" nolabel="1">
+                            <tree string="Bank Balance">
+                                <field name="bank_name_id" />
+                                <field name="balance_in_company_currency" />
+                                <field name="company_currency_id" />
+                                <field name="balance_in_bank_currency" />
+                                <field name="bank_currency_id" />
+                            </tree>
+                        </field>
+                    </group>
+                    <!--
+                    <footer state='draft'>
+                        <button name="filter_bank_balance" string="Filter" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                    -->
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_bank_balance" model="ir.actions.act_window">
+            <field name="name">Bank Balance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bank.balance.computation.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+    </data>
+</openerp>

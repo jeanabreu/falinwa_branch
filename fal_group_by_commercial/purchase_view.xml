@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_purchase_order_tree_gc" model="ir.ui.view">
+            <field name="name">purchase.order.tree.gc</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="amount_total" sum="Total Tax Included" position="before">
+                        <field name="commercial_partner_id" invisible="1"/>
+                        <field name="fal_parent_company" invisible="1"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_filter_fal_gc" model="ir.ui.view">
+            <field name="name">purchase.order.list.select.fal.gc</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <group string="Group By" position="inside">
+                        <filter string="Commercial Partner" domain="[]" context="{'group_by':'commercial_partner_id'}" />
+                        <filter string="Parent Company" domain="[]" context="{'group_by' : 'fal_parent_company'}" />
+                    </group>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_invoice_form_fal_project_partner" model="ir.ui.view">
+            <field name="name">account.invoice.form.fal.project.product</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="invoice_line" position="attributes">
+                        <attribute name="context">{'partner': partner_id}</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_invoice_supplier_form_fal_project_partner" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.fal.project.partner</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="invoice_line" position="attributes">
+                        <attribute name="context">{'partner': partner_id}</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

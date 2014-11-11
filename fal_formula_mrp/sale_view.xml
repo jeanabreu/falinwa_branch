@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_fal_fmrp" model="ir.ui.view">
+            <field name="name">view.order.form.fal.fmrp</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form/group/group/field [@name='price_unit']" position="before">
+                        <field name="fal_stroke"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="product_form_view_fal_formulamrp" model="ir.ui.view">
+            <field name="name">product.form.view.fal.fomulamrp</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                     <field name="cost_method" position="after">
+                        <field name="fal_formula_parameter0"/>
+                        <field name="fal_formula_parameter1"/>
+                        <field name="fal_formula_parameter2"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+ 
+        <record id="product_category_form_view_fal_formulamrp" model="ir.ui.view">
+            <field name="name">product.category.property.form.fal.formulamrp</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="parent_id" position="after">
+                        <field name="isfal_formula" />
+                    </field>
+                    <field name="type" position="after">
+                        <field name="fal_formula_parameter_categ1" />
+                        <field name="fal_formula_parameter_categ2" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

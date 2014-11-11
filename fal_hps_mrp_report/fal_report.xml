@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="report_v_form" model="mrp.production"
+                name="v_form" rml="fal_hps_mrp_report/report/v_form.rml"
+                usage="default" string="HPS MO FORM" header="False"/>
+
+    </data>
+</openerp>

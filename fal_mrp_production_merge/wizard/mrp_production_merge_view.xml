@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_bom_reader_wizard" model="ir.ui.view">
+            <field name="name">mrp.production.merge.wizard</field>
+            <field name="model">mrp.production.merge.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Merge Wizard" version="7.0">                
+                    <label string="This process will merge all selected production orders into one." colspan="2"/>
+                    <label string="" colspan="2"/>
+                    <label string="Note that merging is only possible between orders that produce the same product using the same production process." colspan="2"/>
+                    <footer>
+                        <button name="merge" string="Merge" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

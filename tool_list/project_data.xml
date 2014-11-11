@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- override Task Stages -->
+
+        <record id="project.project_tt_specification" model="project.task.type">
+            <field name="sequence">2</field>
+            <field name="name">Kick-off</field>
+            <field name="state">open</field>
+            <field name="case_default" eval="True"/>
+        </record>
+        <record id="project.project_tt_design" model="project.task.type">
+            <field name="sequence">3</field>
+            <field name="name">Ok to start</field>
+            <field name="state">open</field>
+            <field name="case_default" eval="True"/>
+        </record>
+        <record id="project.project_tt_development" model="project.task.type">
+            <field name="sequence">4</field>
+            <field name="name">T1/Part Validation</field>
+            <field name="state">open</field>
+            <field name="case_default" eval="True"/>
+        </record>
+        <record id="project.project_tt_testing" model="project.task.type">
+            <field name="sequence">5</field>
+            <field name="name">Shipment</field>
+            <field name="state">open</field>
+            <field name="case_default" eval="True"/>
+        </record>
+        <record id="project.project_tt_merge" model="project.task.type">
+            <field name="sequence">6</field>
+            <field name="name">At Arrival</field>
+            <field name="state">open</field>
+            <field name="case_default" eval="False"/>
+            <field name="fold" eval="True"/>
+        </record>
+        
+        <!-- Override Task-related subtypes for messaging / Chatter -->
+        <record id="project.mt_task_new" model="mail.message.subtype">
+            <field name="name">Tool Created</field>
+            <field name="res_model">project.task</field>
+            <field name="default" eval="False"/>
+            <field name="description">Tool created</field>
+        </record>
+        <record id="project.mt_task_started" model="mail.message.subtype">
+            <field name="name">Tool Started</field>
+            <field name="res_model">project.task</field>
+            <field name="default" eval="False"/>
+            <field name="description">Tool started</field>
+        </record>
+        <record id="project.mt_task_blocked" model="mail.message.subtype">
+            <field name="name">Tool Blocked</field>
+            <field name="res_model">project.task</field>
+            <field name="default" eval="False"/>
+            <field name="description">Tool blocked</field>
+        </record>
+        <record id="project.mt_task_closed" model="mail.message.subtype">
+            <field name="name">Tool Done</field>
+            <field name="res_model">project.task</field>
+            <field name="default" eval="False"/>
+            <field name="description">Tool closed</field>
+        </record>
+        
+        <!-- override Project-related subtypes for messaging / Chatter -->
+        <record id="project.mt_project_task_new" model="mail.message.subtype">
+            <field name="name">Tool Created</field>
+            <field name="res_model">project.project</field>
+            <field name="default" eval="False"/>
+            <field name="parent_id" eval="ref('project.mt_task_new')"/>
+            <field name="relation_field">project_id</field>
+        </record>
+        <record id="project.mt_project_task_started" model="mail.message.subtype">
+            <field name="name">Tool Started</field>
+            <field name="res_model">project.project</field>
+            <field name="default" eval="False"/>
+            <field name="parent_id" eval="ref('project.mt_task_started')"/>
+            <field name="relation_field">project_id</field>
+        </record>
+        <record id="project.mt_project_task_blocked" model="mail.message.subtype">
+            <field name="name">Tool Blocked</field>
+            <field name="res_model">project.project</field>
+            <field name="parent_id" eval="ref('project.mt_task_blocked')"/>
+            <field name="relation_field">project_id</field>
+        </record>
+        <record id="project.mt_project_task_closed" model="mail.message.subtype">
+            <field name="name">Tool Done</field>
+            <field name="res_model">project.project</field>
+            <field name="parent_id" eval="ref('project.mt_task_closed')"/>
+            <field name="relation_field">project_id</field>
+        </record>
+        <record id="project.mt_project_task_stage" model="mail.message.subtype">
+            <field name="name">Tool Stage Changed</field>
+            <field name="res_model">project.project</field>
+            <field name="parent_id" eval="ref('project.mt_task_stage')"/>
+            <field name="relation_field">project_id</field>
+        </record>
+        
+        <!-- tool list destination -->
+        <record id="tool_list_destination_china_tool" model="tool.list.destination">
+            <field name="name">China Tool</field>
+        </record>
+        <record id="tool_list_destination_export_tool" model="tool.list.destination">
+            <field name="name">Export Tool</field>
+        </record>
+        <record id="tool_list_destination_on_tool" model="tool.list.destination">
+            <field name="name">ON Tool</field>
+        </record>
+    </data>
+</openerp>

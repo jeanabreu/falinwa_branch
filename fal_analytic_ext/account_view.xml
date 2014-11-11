@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="view_account_analytic_line_form_analext" model="ir.ui.view">
+            <field name="name">account.analytic.line.form.analext</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="user_id" position="after">
+                        <field name="fal_invoice_partner_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_account_analytic_line_tree_analext" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.analext</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="user_id" position="after">
+                        <field name="fal_invoice_partner_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_account_analytic_line_filter_analext" model="ir.ui.view">
+            <field name="name">account.analytic.line.select.analext</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_filter" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="user_id" position="after">
+                        <field name="fal_invoice_partner_id" />
+                    </field>
+                    <filter string="User" context="{'group_by':'user_id'}" position="after">
+                        <filter string="Partner" context="{'group_by':'fal_invoice_partner_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="mrp_production_tree_view_hpsext" model="ir.ui.view">
+            <field name="name">mrp.production.tree.hpsext</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="colors">green:state in ('draft',);blue:state in ('ready',);orange:state in ('picking_except',);red:state in ('confirmed',);black:state in ('done','in_production');gray:state in ('cancel',)</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="mrp_production_action_finished_product" model="ir.actions.act_window">
+            <field name="name">MO Finished Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph,gantt</field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="context">{}</field>
+            <field name="domain">[('product_id.categ_id.isfal_finished_product','=',True)]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a manufacturing order. 
+              </p><p>
+                A manufacuring order, based on a bill of materials, will
+                consume raw materials and produce finished products.
+              </p><p>
+                Manufacturing orders are usually proposed automatically based
+                on customer requirements or automated rules like the minimum
+                stock rule.
+              </p>
+            </field>
+        </record>
+        
+        <record id="mrp_production_action_vknk" model="ir.actions.act_window">
+            <field name="name">MO VK and NK</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph,gantt</field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="context">{}</field>
+            <field name="domain">['|',('product_id.name','ilike','-vk-'),('product_id.name','ilike','-nk-')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a manufacturing order. 
+              </p><p>
+                A manufacuring order, based on a bill of materials, will
+                consume raw materials and produce finished products.
+              </p><p>
+                Manufacturing orders are usually proposed automatically based
+                on customer requirements or automated rules like the minimum
+                stock rule.
+              </p>
+            </field>
+        </record>
+        
+        <record id="mrp_production_action_sealkit" model="ir.actions.act_window">
+            <field name="name">MO Sealkit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.production</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,graph,gantt</field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="mrp.view_mrp_production_filter"/>
+            <field name="context">{}</field>
+            <field name="domain">['|','|','|','|',('product_id.name','ilike','-vk-'),('product_id.name','ilike','-nk-'),('product_id.name','ilike','-mk-'),('product_id.name','ilike','-vb-'),('product_id.name','ilike','-nb-')]</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a manufacturing order. 
+              </p><p>
+                A manufacuring order, based on a bill of materials, will
+                consume raw materials and produce finished products.
+              </p><p>
+                Manufacturing orders are usually proposed automatically based
+                on customer requirements or automated rules like the minimum
+                stock rule.
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="mrp_production_action_finished_product" id="menu_mrp_production_action_finished_product"
+            parent="mrp.menu_mrp_manufacturing" sequence="2"/>
+        <menuitem action="mrp_production_action_sealkit" id="menu_mrp_production_action_sealkit"
+            parent="mrp.menu_mrp_manufacturing" sequence="3"/>
+        <menuitem action="mrp_production_action_vknk" id="menu_mrp_production_action_vknk"
+            parent="mrp.menu_mrp_manufacturing" sequence="4"/>
+    </data>
+</openerp>

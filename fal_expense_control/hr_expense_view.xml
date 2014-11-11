@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_expenses_form_fal_expense_control" model="ir.ui.view">
+            <field name="name">hr.expense.form.fal.expense.control</field>
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_expenses_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='currency_id']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='line_ids']" position="attributes">
+                        <attribute name="context">{'currency_id': currency_id, 'default_fal_document_currency_id': currency_id, 'default_analytic_account': context.get('analytic_account', '')}</attribute>
+                    </xpath>
+                    <xpath expr="//button[@name='confirm']" position="attributes">
+                        <attribute name="confirm">By submit it, you certified this document by honest and conform.</attribute>
+                    </xpath>
+                    <xpath expr="//button[@name='confirm']" position="after">
+                        <button name="confirm_all_refund" states="confirm" type="object" string="Confirm/UnConfirm All Refund" groups="base.group_hr_manager" />
+                    </xpath>
+                    <xpath expr="///field[@name='line_ids']/form/group" position="before">
+                        <p class="oe_red_bold">
+                            Reminder: Budget is not a compensation. By confirm it, you ensure that you really spent this amount during your mission.
+                        </p>
+                    </xpath>
+                    <xpath expr="//field[@name='line_ids']/tree" position="attributes">
+                        <attribute name="editable"/>
+                        <attribute name="colors">red:fal_expense_control == 'Out Budget';orange: fal_expense_control == 'Max Budget'</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form[@string='Expense Lines']/group/group[2]/field [@name='date_value']" position="replace">
+                        
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form[@string='Expense Lines']/group/group[2]/field [@name='unit_amount']" position="replace">
+                        <field name="date_value" on_change="onchange_date_amount_cur(product_id, date_value, fal_real_amount, fal_real_currency, context)" string="Expense Date"/>
+                        <label for="fal_real_amount"/>
+                        <div>
+                            <field name="fal_real_amount" on_change="onchange_date_amount_cur(product_id, date_value, fal_real_amount, fal_real_currency, context)"/>
+                            <field name="fal_real_currency" on_change="onchange_date_amount_cur(product_id, date_value, fal_real_amount, fal_real_currency, context)"/>
+                        </div>
+                        <field name="unit_amount" on_change="onchange_unit_price(unit_amount, fal_budget, context)" widget="monetary" options="{'currency_field': 'fal_document_currency_id'}"/>
+                        <field name="fal_budget" on_change="onchange_unit_price(unit_amount, fal_budget, context)" widget="monetary" options="{'currency_field': 'fal_document_currency_id'}"/>
+                        <field name="fal_expense_control" />
+                        <field name="fal_accepted_amount" invisible="1" />
+                        <field name="fal_document_currency_id" invisible="1" />
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form[@string='Expense Lines']/group/group[2]/label [@for='unit_quantity']" position="replace">
+                        <label for="fal_quantity"/>
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form[@string='Expense Lines']/group/group[2]/div/field [@name='unit_quantity']" position="replace">
+                        <field name="fal_quantity" on_change="onchange_quantity(product_id, fal_quantity, fal_budget)" />
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form[@string='Expense Lines']/group/group[1]/field[@name='analytic_account']" position="after">
+                        <field name="fal_reason_why" attrs="{'required': [('fal_expense_control','=','Out Budget')]}" />
+                        <field name="fal_reason" attrs="{'invisible': [('fal_reason_why','not in',['director','employee'])], 'required': [('fal_reason_why','in',['director','employee'])]}" />
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/tree[@string='Expense Lines']/field [@name='unit_amount']" position="replace">
+                        <field name="fal_real_amount" sum="Total Real Amount"/>
+                        <field name="fal_real_currency" />
+                        <field name="unit_amount" sum="Total Amount"/>
+                        <field name="fal_budget" />
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/tree[@string='Expense Lines']/field [@name='unit_quantity']" position="replace">
+                        <field name="fal_quantity"/>
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/tree[@string='Expense Lines']/field [@name='total_amount']" position="after">
+                        <field name="fal_expense_control" />
+                        <field name="fal_accepted_amount" sum="Total Accepted Amount" />
+                        <field name="fal_reason_why" attrs="{'required': [('fal_expense_control','=','Out Budget')]}" />
+                        <field name="fal_reason" attrs="{'invisible': [('fal_reason_why','not in',['director','employee'])], 'required': [('fal_reason_why','in',['director','employee'])]}" />
+                        <field name="fal_state" invisible="1" />
+                        <button name="confirm_refund" icon="star-on" type="object" string="Confirm/UnConfirm Refund" groups="base.group_hr_manager" attrs="{'invisible': ['|', ('fal_reason_why','not in',('director','employee')), ('fal_state', '!=', 'confirm')]}" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="product_normal_form_view_fal_expense_control" model="ir.ui.view">
+            <field name="name">product.normal.form.fal.expense.control</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="account.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='taxes_id']" position="after">
+                        <field name='expense_budget' attrs="{'invisible': [('hr_expense_ok','=',False)]}"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <template id="fal_conditional_choice" inherit_id="website_sale.search">
+        <xpath expr="//form" position="before">
+            <div class="input-group">
+                  <div t-attf-class="form-group #{error.get('fal_serie_name_id') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_serie_name_id">Serie Name</label>
+                      <select name="fal_serie_name_id" class="form-control" >
+                          <option value=""></option>
+                          <t t-foreach="serie_names or []" t-as="serie_name">
+                              <option t-att-value="serie_name.id" t-att-selected="serie_name.id == conditional_choice.get('fal_serie_name_id')"><t t-esc="serie_name.name"/></option>
+                          </t>
+                      </select>
+                  </div>
+                  
+                  <div t-attf-class="form-group #{error.get('fal_bore_diameter_id') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_bore_diameter_id">Bore Diameter (mm)</label>
+                      <select name="fal_bore_diameter_id" class="form-control" >
+                          <option value=""></option>
+                          <t t-foreach="bore_diameters or []" t-as="bore_diameter">
+                              <option t-att-value="bore_diameter.id" t-att-selected="bore_diameter.id == conditional_choice.get('fal_bore_diameter_id')"><t t-esc="bore_diameter.name"/></option>
+                          </t>
+                      </select>
+                  </div>
+                  
+                  <div t-attf-class="form-group #{error.get('fal_stroke') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_stroke">Stroke (mm)</label>
+                      <input type="number" name="fal_stroke" class="form-control" t-att-value="conditional_choice.get('fal_stroke',0)"/>
+                  </div>
+                  
+                  <div t-attf-class="form-group #{error.get('fal_main_option_id') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_main_option_id">Main Option</label>
+                      <select name="fal_main_option_id" class="form-control" >
+                          <option value=""></option>
+                          <t t-foreach="main_options or []" t-as="main_option">
+                              <option t-att-value="main_option.id" t-att-selected="main_option.id == conditional_choice.get('fal_main_option_id')"><t t-esc="main_option.name"/></option>
+                          </t>
+                      </select>
+                  </div>
+                  
+                  <div t-attf-class="form-group #{error.get('fal_road_end_id') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_road_end_id">Road End</label>
+                      <select name="fal_road_end_id" class="form-control" >
+                          <option value=""></option>
+                          <t t-foreach="road_ends or []" t-as="road_end">
+                              <option t-att-value="road_end.id" t-att-selected="road_end.id == conditional_choice.get('fal_road_end_id')"><t t-esc="road_end.name"/></option>
+                          </t>
+                      </select>
+                  </div>
+                  
+                  <div t-attf-class="form-group #{error.get('fal_seal_kit_id') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_seal_kit_id">Seal Kit</label>
+                      <select name="fal_seal_kit_id" class="form-control" >
+                          <option value=""></option>
+                          <t t-foreach="seal_kits or []" t-as="seal_kit">
+                              <option t-att-value="seal_kit.id" t-att-selected="seal_kit.id == conditional_choice.get('fal_seal_kit_id')"><t t-esc="seal_kit.name"/></option>
+                          </t>
+                      </select>
+                  </div>
+                  
+                  <div t-attf-class="form-group #{error.get('fal_mounting_id') and 'has-error' or ''} col-lg-6">
+                      <label class="control-label" for="fal_mounting_id">Mounting</label>
+                      <select name="fal_mounting_id" class="form-control" >
+                          <option value=""></option>
+                          <t t-foreach="mountings or []" t-as="mounting">
+                              <option t-att-value="mounting.id" t-att-selected="mounting.id == conditional_choice.get('fal_mounting_id')"><t t-esc="mounting.name"/></option>
+                          </t>
+                      </select>
+                  </div>
+            </div>
+        </xpath>
+    </template>
+</data>
+</openerp>

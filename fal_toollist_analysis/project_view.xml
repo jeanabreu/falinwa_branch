@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Project -->
+        <record id="fal_edit_project_toolan" model="ir.ui.view">
+            <field name="name">fal.project.project.form.toolan</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Project Stages']" position="after">
+                        <page string="Analysis">
+                            <group>
+                                <group string="Tool List" colspan="4">
+                                    <field name="tasks" nolabel="1"/>
+                                </group>
+                                <group string="Sale Order" colspan="4">
+                                    <field name="fal_sale_order_ids" nolabel="1"/>
+                                </group>
+                                <group string="Purchase Order Line" colspan="4">
+                                    <field name="fal_purchase_order_line_ids" nolabel="1"/>
+                                </group>
+                                <group string="Invoice Line" colspan="4">
+                                    <field name="fal_invoice_line_ids" nolabel="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </xpath>
+                </data>
+            </field>           
+        </record>
+
+    </data>
+</openerp>

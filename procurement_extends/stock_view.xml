@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_stock_picking_fal_form" model="ir.ui.view">
+            <field name="name">view.stock.picking.fal.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+              <data>
+                  <field name="company_id" position="after">
+                        <field name="fal_project_id_in"/>
+                        <field name="fal_project_number"/>
+                        <field name="sale_id"/>
+                        <field name="fal_project_id_out"/>
+                   </field>
+               </data>
+            </field>
+        </record>
+        
+        <record id="view_move_picking_tree_proext_fal" model="ir.ui.view">
+            <field name="name">stock.move.tree.proext.fal</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">                
+                <data>
+                    <field name="product_id" position="after">
+                        <field name="name" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_picking_tree_fal_procex" model="ir.ui.view">
+            <field name="name">stock.picking.tree_fal_procex</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="origin" position="after">
+                        <field name="fal_project_number"/>
+                        <field name="fal_project_id_in"/>
+                        <field name="fal_project_id_out"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_picking_search_fal_procex" model="ir.ui.view">
+            <field name="name">stock.picking.search.falprocex</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="group_id" position="after">
+                        <field name="partner_id" />
+                        <field name="fal_project_number" />
+                        <field name="fal_project_id_in" />
+                        <field name="fal_project_id_out" />
+                    </field>
+                    <group expand="0" string="Group By" position="inside">
+                        <filter string="Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Project Number from Purchase Order" domain="[]" context="{'group_by':'fal_project_number'}"/>
+                    </group>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

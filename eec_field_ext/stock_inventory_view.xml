@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_move_tree_reception_picking_eec_ext" model="ir.ui.view">
+            <field name="name">stock.move.tree2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
+            <field name="arch" type="xml">
+                <data>
+                    <tree position="attributes">
+                        <attribute name="editable">bottom</attribute>
+                    </tree>
+                    <field name="date" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="date_expected" invisible="1" position="replace">
+                    </field>
+                    <field name="date" position="after">
+                        <field name="date_expected" on_change="onchange_date(date,date_expected)" />
+                    </field>
+                    <field name="date_expected" position="after">
+                        <button name="open_move" type="object" string="View in Form View" icon="gtk-justify-fill"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+            
+    </data>
+</openerp>

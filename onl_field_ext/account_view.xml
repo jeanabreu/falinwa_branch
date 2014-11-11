@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--
+        <record id="fal_view_cash_statement_form_voucher" model="ir.ui.view">
+            <field name="name">fal.account.cash.statement.voucher.form.inherit</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account.view_bank_statement_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Closing Balance']" position="after">
+                    <field name="fal_description" nolabel="1" colspan="4" placeholder="Add a description in here..."/>
+                </xpath>
+            </field>
+        </record>
+        -->
+        
+        <record id="view_fwa_ext_invoice_tree" model="ir.ui.view">
+            <field name="name">fwa.ext.account.invoice.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_due" position="after">
+                        <field name="fal_risk_level" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_fwa_ext_invoice_form" model="ir.ui.view">
+            <field name="name">fwa.ext.account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_invoice" position="before">
+                        <group colspan="4">
+                            <label for="fal_risk_level"/>
+                            <div name="risk_level">
+                                <field name="fal_risk_level" class="oe_inline" /> - <field name="fal_risk_level_name" class="oe_inline" />
+                            </div>
+                        </group>
+                    </field>
+                    <field name="user_id" position="after">
+                        <field name="authorized_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_fwa_ext_invoice_supplier_form" model="ir.ui.view">
+            <field name="name">fwa.account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_invoice" position="before">
+                        <group colspan="4">
+                            <label for="fal_risk_level"/>
+                            <div name="risk_level">
+                                <field name="fal_risk_level" class="oe_inline" /> - <field name="fal_risk_level_name" class="oe_inline" />
+                            </div>
+                        </group>
+                    </field>
+                    <field name="user_id" position="after">
+                        <field name="authorized_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_fwa_ext_invoice_form_1" model="ir.ui.view">
+            <field name="name">fwa.ext.account.invoice.form1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_onl_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Invoice Lines']/field[@name='invoice_line']/tree[@string='Invoice Lines']/field[@name='account_analytic_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_fwa_ext_invoice_supplier_form_1" model="ir.ui.view">
+            <field name="name">fwa.account.invoice.supplier.form1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_onl_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Invoice']/field[@name='invoice_line']/tree[@string='Invoice lines']/field[@name='account_analytic_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_account_analytic_account_form_onlext" model="ir.ui.view">
+            <field name="name">analytic.analytic.account.form.fal.onlext</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="description" position="replace">
+                    </field>
+                    <group name="main" position="inside">
+                        <field name="description" nolabel="1" placeholder="Put description in here.."/>
+                    </group>
+                </data>
+            </field>
+        </record>
+        
+        <record id="edit_project_fal_onlext" model="ir.ui.view">
+            <field name="name">project.project.form.fal.onlext</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="after">
+                        <field name="description" nolabel="1" placeholder="Put description in here.." colspan="4"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

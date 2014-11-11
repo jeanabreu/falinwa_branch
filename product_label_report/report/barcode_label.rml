@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<document filename="barcode_label">
+    <template pageSize="(8.9cm,6.3cm)" title="Barcode Label" allowSplitting="1">
+        <pageTemplate id="main">
+            <frame id="first" x1="0cm" y1="0cm" width="8.9cm" height="6.3cm" />
+        </pageTemplate>
+    </template>
+    <stylesheet>
+        <blockTableStyle id="table_center">
+            <blockAlignment value="CENTER"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1" /> 
+        </blockTableStyle>
+        <blockTableStyle id="table_center_no_border">
+            <blockAlignment value="CENTER"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <initialize>
+            <paraStyle name="all" alignment="justify"/>
+        </initialize>
+        <paraStyle name="terp_header" fontName="Helvetica-BoldOblique" fontSize="14.0" alignment="LEFT" spaceAfter="0.2cm"/>
+        <paraStyle name="normal" fontName="Helvetica" fontSize="12" leading="10" alignment="CENTER" spaceAfter="0.2cm"/>
+        <paraStyle name="small" fontName="Helvetica" fontSize="9" alignment="CENTER"/>
+        <paraStyle name="normal_ean" fontName="Helvetica" fontSize="14" leading="10" alignment="CENTER" spaceAfter="0.2cm"/>
+        <paraStyle name="small_ean" fontName="Helvetica" fontSize="9" alignment="CENTER"/>
+        <paraStyle name="normal_18" fontName="Helvetica" fontSize="16" leading="20" alignment="LEFT"/>
+        <paraStyle name="normal_bold" fontName="Helvetica-Bold" fontSize="8" leading="10" alignment="LEFT"/>
+        <paraStyle name="rnormal" fontName="Helvetica" fontSize="6" leading="8" alignment="LEFT"/>
+        <paraStyle name="rnormal_bold" fontName="Helvetica-Bold" fontSize="6" leading="9" alignment="LEFT"/>
+    </stylesheet>
+    <story>
+        <para>[[ repeatIn(objects,'product') ]]</para>
+        <section>
+        <blockTable colWidths="4.4cm,4.4cm" style="table_center" rowHeights="2.9cm">
+            <tr>
+                <td>
+                    <para style="normal"> </para>
+                    <para style="normal"> </para>
+                    <para style="normal"><b>[[ product.default_code or '' ]]</b></para>
+                    <para style="normal"> </para>
+                    <para style="small">[[ product.name or '' ]]</para>
+                </td>
+                <td>
+                    <para style="normal"> </para>
+                    <para style="normal"> </para>
+                    <para style="normal"><b>[[ product.categ_id.name or '' ]]</b></para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="4.8cm,4cm" style="table_center_no_border" rowHeights="2.9cm">
+            <tr>
+                <td>
+                    <para style="normal"> </para>
+                    <barCode style="normal_ean" quiet="0" barWidth="1" barHeight="54" >[[ product.ean13 ]]</barCode>
+                    <para style="small_ean">[[ product.ean13 or '' ]]</para>
+                </td>
+                <td>
+                    <para style="small">Position on the shelf</para>
+                    <para style="normal"> </para>
+                    <para style="small" alignment="LEFT">Shelf : [[ product.loc_rack ]]</para>
+                    <para style="normal"> </para>
+                    <para style="small" alignment="LEFT">Layer : [[ product.loc_row ]]</para>
+                    <para style="normal"> </para>
+                    <para style="small" alignment="LEFT">Box : [[ product.loc_case ]]</para>
+                </td>
+            </tr>
+        </blockTable>
+        </section>
+    </story>
+</document>

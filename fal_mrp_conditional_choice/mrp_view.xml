@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="mrp_production_form_view_fal_mrpconco" model="ir.ui.view">
+            <field name="name">mrp.production.form.fal.mrpconco</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="/form/sheet/group" position="before">
+                        <group name="Conditional Choice">
+                            <group>
+                                <field name="fal_serie_name_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv, True)"/>
+                                <field name="fal_serie_name_id_name" invisible="1" />
+                                <field name="fal_serie_name_id_type" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
+                                <field name="fal_ordering_code_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72'])]}" />
+                                <field name="fal_bore_diameter_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_rod_diameter_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_standard_stroke_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_stroke" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_main_option_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_main_option_code" invisible="1" />
+                                <field name="fal_rod_end_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B','V72'])]}"/>
+                                <field name="fal_rod_end_option_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_seal_kit_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_mounting_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V','H','B','V72']),('fal_serie_name_id_name','in',['VCR'])]}"/>
+                                <field name="fal_mounting_id_code" invisible="1" />
+                                <field name="fal_piston_seal" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1" />
+                                <field name="fal_rod_seal" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1" />
+                                <field name="fal_ports" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1" />                                
+                                <field name="fal_magnet_sensor_position_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_main_option_code','not in',['DM'])]}"/>
+                            </group>
+                            <group>
+                                <field name="fal_brace_ring" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['H']),('fal_stroke','&lt;',500)]}"/>
+                                <field name="fal_position_ports_head" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_position_ports_bottom" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_value_xv" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['H']),('fal_mounting_id_code','not in',['MT4','DT4'])]}"/>
+                                <field name="fal_xcma" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['B'])]}"/>
+                                <field name="fal_purge" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','in',['VBL','VBM'])]}"/>
+                                <field name="fal_counter_bores" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','in',['VBL','VBM'])]}"/>
+                                <field name="fal_for_handling" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','in',['VBL','VBM'])]}"/>
+                                <field name="fal_microrupteur" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_magnet_sensor" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_cote_x" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','not in',['VCN','VBG','VCR'])]}"/>
+                                <field name="fal_seal_location" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_special" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
+                                <field name="fal_y" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V'])]}" />
+                                <field name="fal_w" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['H'])]}" />
+                                <field name="fal_comment_for_vh" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V','H'])]}" />
+                            </group>
+                        </group>
+                        <separator string="References Information" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
+                        <group attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}">
+                            <group attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}">
+                                <field name="fal_single_or_double_rod" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_sale_reference" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72','V','B','H'])]}"/>
+                                <field name="fal_ref_for_stroke_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','V72'])]}"/>
+                                <field name="fal_by_stroke_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V'])]}"/>
+                            </group>
+                            <group>
+                                <field name="fal_bom_reference" on_change="onchange_bomref(fal_bom_reference)"/>
+                                <field name="fal_ref_priced_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72','V','H'])]}" />
+                                <field name="fal_ref_free_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72','V','H'])]}" />                                
+                            </group>
+                        </group>
+                        <label for="fal_full_reference" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}"/>
+                        <field name="fal_full_reference" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}"/>
+                        <separator string="Manufacture Order Information" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

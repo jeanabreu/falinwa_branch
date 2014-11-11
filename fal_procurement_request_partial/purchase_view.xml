@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+ 
+        <record id="fal_procurement_request_tree_falpartial" model="ir.ui.view">
+            <field name="name">fal.procurement.request.tree.falpartial</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="procurement_request.fal_procurement_request_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <button name="action_mark_rfq" position="replace">
+                        <button name="%(action_procurement_request_partial_wizard)d" type="action" states="procurement_request" string="Approve Procurement Request" icon="gtk-apply" groups="purchase.group_purchase_manager"/>
+                    </button>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

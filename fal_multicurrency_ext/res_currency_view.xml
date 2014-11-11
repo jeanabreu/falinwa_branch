@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record model="ir.ui.view" id="view_company_form_fal_mc">
+            <field name="name">view.company.form.fal.mc</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="company_registry" position="after">
+                        <field name="code" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

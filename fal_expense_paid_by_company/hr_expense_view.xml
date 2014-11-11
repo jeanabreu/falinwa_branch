@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_expenses_form_fal_expense_company" model="ir.ui.view">
+            <field name="name">hr.expense.form.fal.expense.company</field>
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="fal_expense_control.view_expenses_form_fal_expense_control" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form[@string='Expense Lines']/group/group[1]/field[@name='fal_reason']" position="after">
+                        <field name="paid_by_company" />
+                        <field name="supplier_invoice_line_id" attrs="{'invisible': [('paid_by_company', '=', False)], 'required': [('paid_by_company', '=', True)]}" domain="[('is_expense', '=', True), ('product_id', '=', product_id), ('account_analytic_id', '=', analytic_account), ('expense_line_ids', '=', False)]" on_change="onchange_supplier_invoice_line_id(supplier_invoice_line_id)" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

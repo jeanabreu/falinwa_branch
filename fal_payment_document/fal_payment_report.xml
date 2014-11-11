@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <report
+            auto="False"
+            id="payment_print"
+            model="account.voucher"
+            name="payment_print"
+            rml="fal_payment_document/report/account_payment_print.rml"
+            string="Payment" 
+            header="True"
+            />
+            
+    </data>
+</openerp>

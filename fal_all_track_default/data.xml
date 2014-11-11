@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="account.mt_invoice_validated" model="mail.message.subtype">
+            <field name="default" eval="True"/>
+        </record>
+        <record id="account.mt_invoice_paid" model="mail.message.subtype">
+            <field name="default" eval="True"/>
+        </record>
+
+        <record id="account_voucher.mt_voucher_state_change" model="mail.message.subtype">
+            <field name="default" eval="True"/>
+        </record>
+
+    </data>
+</openerp>

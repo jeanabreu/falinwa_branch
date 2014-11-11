@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="res.groups" id="group_account_cancel_user">
+            <field name="name">Can cancel journal</field>
+        </record>
+
+    </data>
+</openerp>
+

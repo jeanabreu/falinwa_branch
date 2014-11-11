@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record model="ir.rule" id="project.project_public_members_rule">
+        <field name="name">Project: employees: public, employees or followers</field>
+        <field name="model_id" ref="model_project_project"/>
+        <field name="domain_force">['|',
+                                        ('members', 'in', [user.id]),
+                                        ('message_follower_ids', 'in', [user.partner_id.id])
+                                    ]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+</data>
+</openerp>

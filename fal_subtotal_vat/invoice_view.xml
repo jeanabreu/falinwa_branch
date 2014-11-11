@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="invoice_form_fal_sv" model="ir.ui.view">
+            <field name="name">account.invoice.form.fal.sv</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='price_subtotal']" position="after">
+                        <field name="price_subtotal_vat" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="invoice_supplier_form_fal_sv" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.fal.sv</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='price_subtotal']" position="after">
+                        <field name="price_subtotal_vat" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

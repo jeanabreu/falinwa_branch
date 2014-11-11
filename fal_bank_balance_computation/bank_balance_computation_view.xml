@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem parent="account.menu_finance_bank_and_cash" name="Bank Balance" id="menu_bank_balance_wizard" 
+            action="action_view_bank_balance"
+            groups="account.group_account_manager" sequence="99" />
+        
+    </data>
+</openerp>

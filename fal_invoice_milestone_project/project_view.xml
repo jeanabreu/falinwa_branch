@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_fal_milestone_project" model="ir.ui.view">
+            <field name="name">view.order.form.milestone.project</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="fal_invoice_milestone.view_order_form_fal_imilage1"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" position="attributes">
+                        <attribute name="states"></attribute>
+                        <attribute name="attrs">{'invisible': [('state','!=','manual'), '|',('order_policy','!=','manual'),('state','!=','progress'),('order_policy','!=','project')]}</attribute>
+                    </button>
+                </data>
+            </field>
+        </record>
+        
+        <record id="product_category_form_view_fal_imp" model="ir.ui.view">
+            <field name="name">product.category.property.form.fal.imp</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="parent_id" position="after">
+                        <field name="isfal_tools" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="task_type_tree_fal_imp" model="ir.ui.view">
+            <field name="name">project.task.type.tree.fal.imp</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="name" position="after">
+                        <field name="percentage" sum="Total Percentage" />
+                        <field name="payment_term" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="task_type_edit_fal_imp" model="ir.ui.view">
+            <field name="name">project.task.type.form.fal.imp</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="case_default" position="after">
+                        <field name="percentage" />
+                        <field name="payment_term" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_task_form_fal_imp" model="ir.ui.view">
+            <field name="name">project.task.form.fal.imp</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Extra Info']" position="after">
+                        <page string="History">
+                            <group>
+                                <separator string="History Invoice Milestones" />
+                                <br/>
+                                <field name="fal_history_milestone_invoice_ids" nolabel="1" />
+                                <br/>
+                                <separator string="Invoices" />
+                                <br/>
+                                <field name="fal_invoice_ids" nolabel="1" />
+                            </group>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

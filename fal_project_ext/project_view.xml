@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="edit_project_ori_inherit_falpext" model="ir.ui.view">
+            <field name="name">project.project.form.inherit.fal.pext</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[@class='oe_title']/div[@name='options_active']/label[@for='use_tasks']" position="after">
+                        <field name="project_opportunities" class="oe_inline"/>
+                        <label for="project_opportunities" string="Opportunities"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_task_search_form_falpext" model="ir.ui.view">
+            <field name="name">project.task.search.form.falpext</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="" />
+            <field name="arch" type="xml">
+               <search string="Tasks">
+                    <field name="name" string="Tasks"/>
+                    <field name="categ_ids"/>
+                    <separator/>
+                    <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
+                    <separator/>
+                    <filter name="My project" string="Project" domain="[('project_id.user_id','=',uid)]" help="My Projects" icon="terp-check"/>
+                    <separator/>
+                    <filter string="My Tasks" domain="[('user_id','=',uid)]"  help="My Tasks" icon="terp-personal"/>
+                    <filter string="Unassigned Tasks" domain="[('user_id','=',False)]"  help="Unassigned Tasks" icon="terp-personal-"/>
+                    <separator/>
+                    <filter string="Deadlines" context="{'deadline_visible': False}" domain="[('date_deadline','&lt;&gt;',False)]"
+                        help="Show only tasks having a deadline" icon="terp-gnome-cpu-frequency-applet+"/>
+                    <field name="project_id"/>
+                    <field name="user_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Users" name="group_user_id" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}"/>
+                        <filter string="Project" name="group_project_id" icon="terp-folder-violet" domain="[]" context="{'group_by':'project_id'}"/>
+                        <filter string="Stage" name="group_stage_id" icon="terp-stage" domain="[]" context="{'group_by':'stage_id'}"/>
+                        <filter string="Deadline" icon="terp-gnome-cpu-frequency-applet+" domain="[]" context="{'group_by':'date_deadline'}"/>
+                        <filter string="Start Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_start'}" groups="base.group_no_one"/>
+                        <filter string="End Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_end'}" groups="base.group_no_one"/>
+                        <filter string="Final Customer" domain="[]"  context="{'group_by':'project_id_partner_id'}" />
+                        <filter string="Customer" domain="[]"  context="{'group_by':'partner_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+
+        <record id="view_project_project_filter_falpext" model="ir.ui.view">
+            <field name="name">project.project.select.fal.pext</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="" />
+            <field name="arch" type="xml">
+                <search string="Search Project">
+                    <field name="name" string="Project Name"/>
+                    <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
+                    <separator/>
+                    <filter icon="terp-check" string="Open" name="Current" domain="[('state', '=','open')]" help="Open Projects"/>
+                    <filter icon="terp-check" string="Close" name="Close" domain="[('state', '=','close')]" help="Closed Projects"/>
+                    <filter icon="gtk-media-pause" string="Pending" name="Pending" domain="[('state', '=','pending')]" help="Pending Projects"/>
+                    <filter icon="gtk-media-pause" string="Template" name="Template" domain="[('state', '=','template')]" help="Templates of Projects"/>
+                    <separator/>
+                    <filter icon="terp-personal+" string="Member" domain="['|',('user_id', '=', uid),('members', '=', uid)]" help="Projects in which I am a member."/>
+                    <separator/>
+                    <filter string="Project(s) Manager" domain="[('user_id','=',uid)]" help="Projects in which I am a manager" icon="terp-personal"/>
+                    <field name="user_id" string="Project Manager"/>
+                    <field name="partner_id" string="Contact" filter_domain="[('partner_id', 'child_of', self)]"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Manager" name="Manager" icon="terp-personal" domain="[]" context="{'group_by':'user_id'}"/>
+                        <filter string="Final Customer" name="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Parent" name="Parent" help="Parent" icon="terp-folder-blue" domain = "[]" context="{'group_by':'parent_id'}"/>
+                        <filter string="Project Name" name="Name" help="Project Name" icon="terp-folder-blue" domain = "[]" context="{'group_by':'name'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="act_project_project_2_project_task_all_fal_pext" model="ir.actions.act_window">
+            <field name="name">Tools</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{'search_default_project_id': [active_id], 'default_project_id': active_id, 'active_test': False}</field>
+            <field name="search_view_id" ref="view_task_search_form_falpext"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new tools.
+              </p><p>
+                OpenERP's Project Follower management allows you to manage the pipeline
+                of tools in order to get things done efficiently. You can
+                track progress, discuss on tools, attach documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_project_kanban_fal_pext">
+            <field name="name">project.project.kanban.fal.pext</field>
+            <field name="model">project.project</field>
+            <field name="arch" type="xml">
+                <kanban version="7.0" class="oe_background_grey">
+                    <field name="effective_hours"/>
+                    <field name="planned_hours"/>
+                    <field name="name"/>
+                    <field name="members"/>
+                    <field name="use_tasks"/>
+                    <field name="user_id"/>
+                    <field name="date"/>
+                    <field name="color"/>
+                    <field name="task_count"/>
+                    <field name="alias_id"/>
+                    <field name="alias_domain"/>
+                    <field name="doc_count"/>
+                    <field name="partner_id" />
+                    <field name="program_name" />
+                    <field name="mold_serial_number" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_project oe_kanban_global_click oe_fal_not_in ">
+                                <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                    <span class="oe_e">í</span>
+                                    <ul class="oe_dropdown_menu">
+                                        <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Project Settings</a></li></t>
+                                        <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                        <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                    </ul>
+                                </div>
+                                <div class="oe_kanban_content">
+
+                                    <h4><field name="name"/></h4>
+                                    <h4>Final Customer: <field name="partner_id"/></h4>
+                                    <h4>Program Name: <field name="program_name"/></h4>
+                                    <h4>Total Mold Qty: <field name="mold_serial_number"/></h4>
+                                    <div class="oe_kanban_project_list">
+                                        <a t-if="record.use_tasks.raw_value" name="%(act_project_project_2_project_task_all_fal_pext)d" type="action" style="margin-right: 10px"> 
+                                            <span t-if="record.task_count.raw_value gt 1"><field name="task_count"/> Tools</span>
+                                            <span t-if="record.task_count.raw_value lt 2"><field name="task_count"/> Tools</span>
+                                        </a>
+                                    </div>
+                                    <div class="oe_kanban_project_list">
+                                        <a t-if="record.doc_count.raw_value" name="attachment_tree_view" type="object" style="margin-right: 10px"> <field name="doc_count"/> Documents</a>
+                                    </div>
+                                    <div class="oe_kanban_footer_left">
+                                        <span groups="project.group_time_work_estimation_tasks">
+                                            <span class="oe_e">R</span>
+                                            <t t-esc="Math.round(record.effective_hours.raw_value)"/>/<t t-esc="Math.round(record.planned_hours.raw_value)"/> <field name="company_uom_id"/>
+                                        </span>
+                                        <span t-if="record.date.raw_value">
+                                            <span class="oe_e">N</span>
+                                            <field name="date"/>
+                                        </span>
+                                    </div>
+                                    <div class="oe_kanban_project_avatars">
+                                        <t t-foreach="record.members.raw_value.slice(0,11)" t-as="member">
+                                            <img t-att-src="kanban_image('res.users', 'image_small', member)" t-att-data-member_id="member"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+         
+        <record id="edit_project_fal_pext" model="ir.ui.view">
+            <field name="name">project.project.form.fal.pext</field>
+            <field name="model">project.project</field>
+            <field name="arch" type="xml">
+                <form string="Project" version="7.0">
+                <header>
+                    <button name="set_open" string="Re-open project" type="object" states="pending" class="oe_highlight" groups="base.group_user"/>
+                    <button name="set_done" string="Close Project" type="object" states="open,pending" groups="base.group_user"/>
+                    <button name="set_open" string="Re-open project" type="object" states="cancelled,close" groups="base.group_user"/>
+                    <button name="set_pending" string="Pending" type="object" states="open" groups="base.group_user"/>
+                    <button name="set_template" string="Set as Template" type="object" states="open" groups="base.group_user"/>
+                    <button string="New Project Based on Template" name="duplicate_template"  type="object" states="template" context="{'parent_id':parent_id}" class="oe_highlight" groups="base.group_user"/>
+                    <button name="reset_project" string="Reset as Project" type="object" states="template" class="oe_highlight" groups="base.group_user"/>
+                    <button name="set_cancel" string="Cancel Project" type="object" states="open,pending" groups="base.group_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Opportunities">
+                    <field name="analytic_account_id" invisible="1" required="0"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Opportunities Name"/>
+                        <h1>
+                            <field name="name" string="Project Name"/>
+                        </h1>
+                        <div name="options_active">
+                            <field name="use_tasks" class="oe_inline"/>
+                            <label for="use_tasks" string="Tools"/>
+                            <field name="project_opportunities" class="oe_inline"/>
+                            <label for="project_opportunities" string="Project Follower"/>
+                            <field name="classic_project" class="oe_inline"/>
+                            <label for="classic_project" string="Classic Project"/>
+                        </div>
+                    </div>
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                        <button name="%(act_project_project_2_project_task_all_fal_pext)d" string="Tools"
+                            type="action" attrs="{'invisible':[('use_tasks','=', 0)]}"/>
+                        <button name="attachment_tree_view" string="Documents" type="object"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="parent_id" string="Parent" help="Append this project to another one using analytic accounts hierarchy" domain="[('id','!=',analytic_account_id)]" context="{'current_model': 'project.project'}" />
+                            <field name="privacy_visibility" invisible="1" />
+                            <field name="user_id" string="Project Follower Manager" attrs="{'readonly':[('state','in',['close', 'cancelled'])]}"/>
+                            <field name="program_name" />
+                            <field name="mold_serial_number" />
+                        </group>
+                        <group>
+                            <field name="partner_id" on_change="onchange_partner_id(partner_id)" domain="[('is_final_customer','=',1)]" string="Final Customer"/>
+                            <p colspan="2" attrs="{'invisible': [('analytic_account_id','=',False)]}">
+                                To invoice or setup invoicing and renewal options, go to the related contract: <field name="analytic_account_id" readonly="1" required="0" class="oe_inline"/>.
+                            </p>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Team" name="team">
+                            <field colspan="4" name="members" widget="many2many_kanban">
+                                <kanban quick_create="false" create="true" delete="true">
+                                    <field name="name"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div style="position: relative">
+                                                <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                                <div class="oe_module_vignette">
+                                                    <div class="oe_module_desc">
+                                                        <field name="name"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page string="Other Info">
+                            <group>
+                                <group string="Email Interface" attrs="{'invisible': [('alias_domain', '=', False)]}">
+                                    <div>
+                                        <field name="alias_id" invisible="1" required="0"/>
+                                        <label for="alias_name" class="oe_edit_only "/>
+                                        <field name="alias_name" class="oe_inline" attrs="{'required': [('alias_id', '!=', False)]}"/>@<field name="alias_domain" class="oe_inline"/>
+                                    </div>
+                                </group>
+                                <group string="Administration" groups="project.group_time_work_estimation_tasks">
+                                    <field name="planned_hours" widget="float_time"/>
+                                    <field name="effective_hours" widget="float_time"/>
+                                    <field name="resource_calendar_id"/>
+                                </group>
+                                <group string="Miscellaneous" name="misc">
+                                    <field name="date_start"/>
+                                    <field name="date" string="End Date"/>
+                                    <field name="priority" groups="base.group_no_one"/>
+                                    <field name="active" attrs="{'invisible':[('state','in',['open', 'pending', 'template'])]}"/>
+                                    <field name="currency_id" groups="base.group_multi_currency" required="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Project Stages" attrs="{'invisible': [('use_tasks', '=', False)]}" name="project_stages" groups="base.group_system">
+                             <field name="type_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" help="Follow this project to automatically track the events associated to tasks and issues of this project." groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_project_fal_pext" model="ir.ui.view">
+            <field name="name">project.project.tree.fal.pext</field>
+            <field name="model">project.project</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree fonts="bold:message_unread==True" colors="red:date and (date&lt;current_date) and (state == 'open');blue:state in ('draft','pending');grey: state in ('close','cancelled')" string="Projects">
+                    <field name="sequence" widget="handle"/>
+                    <field name="message_unread" invisible="1"/>
+                    <field name="date" invisible="1"/>
+                    <field name="name" string="Project Follower Name"/>
+                    <field name="user_id" string="Project Follower Manager"/>
+                    <field name="partner_id" string="Final Customer"/>
+                    <field name="program_name" />
+                    <field name="mold_serial_number" />
+                    <field name="parent_id" string="Parent" invisible="1"/>
+                    <field name="planned_hours" widget="float_time"/>
+                    <field name="total_hours" widget="float_time"/>
+                    <field name="effective_hours" widget="float_time"/>
+                    <field name="progress_rate" widget="progressbar"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>        
+        
+        <record id="view_task_form2_fal_pext" model="ir.ui.view">
+            <field name="name">project.task.form.fal.pext</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="" />
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="Opportunities" version="7.0">
+                    <header>
+                        <!--
+                        <button name="do_open" string="Start Task" type="object"
+                                states="draft,pending" class="oe_highlight"/>
+                        <button name="do_draft" string="Draft" type="object"
+                                states="cancel,done"/>
+                        -->
+                        <field name="stage_id" widget="statusbar" clickable="True"/>
+                    </header>
+                    <sheet string="Tools">
+                    <h1>
+                        <field name="name" placeholder="Tools summary..."/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="project_id" string="Opportunities"  on_change="onchange_project(project_id)" context="{'default_use_tasks':1}"/>
+                            <field name="partner_id" required="1" domain="[('customer','=',1)]" />
+                            <field name="user_id" options='{"no_open": True}'/>
+                            <field name="planned_hours" widget="float_time"
+                                    groups="project.group_time_work_estimation_tasks"
+                                    on_change="onchange_planned(planned_hours, effective_hours)"/>
+                        </group>
+                        <group>
+                            <field name="date_deadline" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+                            <field name="categ_ids" widget="many2many_tags"/>
+                            <field name="progress" widget="progressbar"
+                                groups="project.group_time_work_estimation_tasks" attrs="{'invisible':[('state','=','cancelled')]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" attrs="{'readonly':[('state','=','done')]}" placeholder="Add a Description..."/>
+                            <field name="work_ids" groups="project.group_tasks_work_on_tasks">
+                                <tree string="Task Work" editable="top">
+                                    <field name="name"/>
+                                    <field name="hours" widget="float_time" sum="Spent Hours"/>
+                                    <field name="date"/>
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                            <group>
+                             <group class="oe_subtotal_footer oe_right" name="project_hours" groups="project.group_time_work_estimation_tasks">
+                                <field name="effective_hours" widget="float_time"/>
+                                <label for="remaining_hours" string="Remaining" groups="project.group_time_work_estimation_tasks"/>
+                                <div>
+                                    <field name="remaining_hours" widget="float_time" attrs="{'readonly':[('state','in',('done','cancelled'))]}" groups="project.group_time_work_estimation_tasks"/>
+                                </div>
+                                <field name="total_hours" widget="float_time" class="oe_subtotal_footer_separator"/>
+                             </group>
+                            </group>
+                            <div class="oe_clear"/>
+                        </page>
+                        <page string="Delegation" groups="project.group_delegate_task">
+                            <button name="%(project.action_project_task_delegate)d" string="Delegate" type="action"
+                                    states="pending,open,draft" groups="project.group_delegate_task"/>
+                            <separator string="Parent Tools"/>
+                            <field name="parent_ids">
+                                <tree fonts="bold:message_unread==True" colors="grey:state in ('cancelled','done');blue:state == 'pending';red:date_deadline and (date_deadline&lt;current_date) and (state in ('draft','pending','open'))" string="Tasks">
+                                    <field name="message_unread" invisible="1"/>
+                                    <field name="sequence" invisible="not context.get('seq_visible', False)"/>
+                                    <field name="name" string="Tools Summary"/>
+                                    <field name="project_id" string="Opportunities" icon="gtk-indent" invisible="context.get('user_invisible', False)"/>
+                                    <field name="user_id" invisible="context.get('user_invisible', False)"/>
+                                    <field name="delegated_user_id" invisible="context.get('show_delegated', True)"/>
+                                    <field name="total_hours" invisible="1"/>
+                                    <field name="planned_hours" invisible="context.get('set_visible',False)" groups="project.group_time_work_estimation_tasks"/>
+                                    <field name="effective_hours" widget="float_time" sum="Spent Hours" invisible="1"/>
+                                    <field name="remaining_hours" widget="float_time" sum="Remaining Hours" on_change="onchange_remaining(remaining_hours,planned_hours)" invisible="context.get('set_visible',False)" groups="project.group_time_work_estimation_tasks"/>
+                                    <field name="date_deadline" invisible="context.get('deadline_visible',True)"/>
+                                    <field name="stage_id" invisible="context.get('set_visible',False)"/>
+                                    <field name="date_start" groups="base.group_no_one"/>
+                                    <field name="date_end" groups="base.group_no_one"/>
+                                    <field name="progress" widget="progressbar" invisible="context.get('set_visible',False)"/>
+                                </tree>
+                            </field>
+                            <separator string="Delegated tools"/>
+                            <field name="child_ids">
+                                <tree string="Delegated tools">
+                                    <field name="name" string="Tools Summary"/>
+                                    <field name="user_id"/>
+                                    <field name="stage_id"/>
+                                    <field name="effective_hours" widget="float_time"/>
+                                    <field name="progress" widget="progressbar"/>
+                                    <field name="remaining_hours" widget="float_time"/>
+                                    <field name="date_deadline"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Extra Info" attrs="{'readonly':[('state','=','done')]}">
+                            <group col="4">
+                                <field name="priority" groups="base.group_user"/>
+                                <field name="sequence"/>
+                                <field name="state" invisible="1"/>
+                                <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            </group>
+                            <group>
+                                <group string="Gantt View">
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Project -->
+        <record id="view_task_tree2_fal_pext" model="ir.ui.view">
+            <field name="name">project.task.tree.fal.pext</field>
+            <field name="model">project.task</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <tree fonts="bold:message_unread==True" colors="grey:state in ('cancelled','done');blue:state == 'pending';red:date_deadline and (date_deadline&lt;current_date) and (state in ('draft','pending','open'))" string="Tasks">
+                    <field name="message_unread" invisible="1"/>
+                    <field name="sequence" invisible="not context.get('seq_visible', False)"/>
+                    <field name="name" string="Tools Summary"/>
+                    <field name="project_id" string="Project Follower" icon="gtk-indent" invisible="context.get('user_invisible', False)"/>
+                    <field name="project_id_partner_id" />
+                    <field name="partner_id" />
+                    <field name="user_id" invisible="context.get('user_invisible', False)"/>
+                    <field name="delegated_user_id" invisible="context.get('show_delegated', True)"/>
+                    <field name="total_hours" invisible="1"/>
+                    <field name="planned_hours" invisible="context.get('set_visible',False)" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="effective_hours" widget="float_time" sum="Spent Hours" invisible="1"/>
+                    <field name="remaining_hours" widget="float_time" sum="Remaining Hours" on_change="onchange_remaining(remaining_hours,planned_hours)" invisible="context.get('set_visible',False)" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline" invisible="context.get('deadline_visible',True)"/>
+                    <field name="stage_id" invisible="context.get('set_visible',False)"/>
+                    <field name="date_start" groups="base.group_no_one"/>
+                    <field name="date_end" groups="base.group_no_one"/>
+                    <field name="progress" widget="progressbar" invisible="context.get('set_visible',False)"/>
+                </tree>
+            </field>
+        </record>
+        
+         <!-- Project Task Kanban View -->
+        <record model="ir.ui.view" id="view_task_kanban_fal_pext">
+            <field name="name">project.task.kanban.fal.pext</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" >
+                    <field name="color"/>
+                    <field name="priority"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="user_email"/>
+                    <field name="description"/>
+                    <field name="sequence"/>
+                    <field name="kanban_state"/>
+                    <field name="remaining_hours" sum="Remaining Time" groups="project.group_time_work_estimation_tasks"/>
+                    <field name="date_deadline"/>
+                    <field name="message_summary"/>
+                    <field name="categ_ids"/>
+                    <field name="partner_id" />
+                    <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_dropdown_toggle oe_dropdown_kanban" groups="base.group_user">
+                                <span class="oe_e">í</span>
+                                <ul class="oe_dropdown_menu">
+                                    <t t-if="widget.view.is_action_enabled('edit')"><li><a type="edit">Edit...</a></li></t>
+                                    <t t-if="widget.view.is_action_enabled('delete')"><li><a type="delete">Delete</a></li></t>
+                                    <li>
+                                      <ul class="oe_kanban_project_times" groups="project.group_time_work_estimation_tasks">
+                                        <li><a name="set_remaining_time_1" type="object" class="oe_kanban_button">1</a></li>
+                                        <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
+                                        <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
+                                        <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
+                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                      </ul>
+                                    </li>
+                                    <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                </ul>
+                            </div>
+
+                            <div class="oe_kanban_content">
+                                <div><b><field name="name"/></b></div>
+                                <div><b>Customer: <field name="partner_id"/></b></div>
+                                <div>
+                                    <field name="project_id"/><br/>
+                                    <t t-if="record.date_deadline.raw_value and record.date_deadline.raw_value lt (new Date())" t-set="red">oe_kanban_text_red</t>
+                                    <span t-attf-class="#{red || ''}"><i><field name="date_deadline"/></i></span>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <t groups="base.group_user">
+                                        <a t-if="record.kanban_state.raw_value === 'normal'" type="object" string="undefined" name="set_kanban_state_done" class="oe_kanban_status"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'done'" type="object" string="HPS Cylinder" name="set_kanban_state_blocked" class="oe_kanban_status oe_kanban_status_green"> </a>
+                                        <a t-if="record.kanban_state.raw_value === 'blocked'" type="object" string="Competitor" name="set_kanban_state_normal" class="oe_kanban_status oe_kanban_status_red"> </a>
+                                        <a t-if="record.priority.raw_value > 0" type="object" string="Normal" name="set_high_priority" class="oe_e oe_star_off">7</a>
+                                        <a t-if="record.priority.raw_value == 0" type="object" string="Very Important" name="set_normal_priority" class="oe_e oe_star_on">7</a>
+                                    </t>
+                                    <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+                                </div>
+                                <div class="oe_kanban_footer_left">
+                                    <span groups="project.group_time_work_estimation_tasks" title="Remaining hours">
+                                        <span class="oe_e">N</span>
+                                        <t t-esc="Math.round(record.remaining_hours.raw_value)"/>
+                                    </span>
+                                </div>
+                                <div class="oe_kanban_footer_left" style="margin-top:5px;">
+                                    <t t-raw="record.message_summary.raw_value"/>
+                                    <field name="categ_ids"/>
+                                </div>
+                            </div>
+                            <div class="oe_clear"></div>
+                        </div>
+                    </t>
+                    </templates>
+                </kanban>
+            </field>
+         </record>
+
+        <record id="task_type_edit_fal_pext" model="ir.ui.view">
+            <field name="name">project.task.type.form.fal.pext</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="case_default" position="after">
+                        <field name="project_opportunities_default" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="fal_pext_open_view_project_all" model="ir.actions.act_window">
+            <field name="name">Project Follower</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('project_opportunities','=',1)]</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="project.view_project_kanban"/>
+            <field name="search_view_id" ref="view_project_project_filter_falpext"/>
+            <field name="context">{'search_default_Current': 1, 'default_project_opportunities':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to start a new opportunities.
+                </p><p>
+                  Project Follower are used to organize your activities; plan
+                  tools, track issues, invoice timesheets. You can define
+                  internal project follower ,
+                  You will be able collaborate with internal users on
+                  projects or invite customers to share your activities.
+                </p>
+            </field>
+        </record>
+
+        <record id="fal_pext_action_view_task6" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_task_kanban_fal_pext"/>
+            <field name="act_window_id" ref="act_project_project_2_project_task_all_fal_pext"/>
+        </record>
+        
+        <record id="fal_pext_action_view_task7" model="ir.actions.act_window.view">
+            <field eval="5" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_task_tree2_fal_pext"/>
+            <field name="act_window_id" ref="act_project_project_2_project_task_all_fal_pext"/>
+        </record>
+        
+        <record id="fal_pext_action_view_task8" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_task_form2_fal_pext"/>
+            <field name="act_window_id" ref="act_project_project_2_project_task_all_fal_pext"/>
+        </record>
+        
+        <record id="fal_pext_open_view_project_all0" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_project_kanban_fal_pext"/>
+            <field name="act_window_id" ref="fal_pext_open_view_project_all"/>
+        </record>
+        
+        <record id="fal_pext_open_view_project_all1" model="ir.actions.act_window.view">
+            <field eval="5" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_project_fal_pext"/>
+            <field name="act_window_id" ref="fal_pext_open_view_project_all"/>
+        </record>
+        
+        <record id="fal_pext_open_view_project_all2" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="edit_project_fal_pext"/>
+            <field name="act_window_id" ref="fal_pext_open_view_project_all"/>
+        </record>
+        
+        <!-- override -->
+        <record id="project.open_view_project_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('classic_project','=',1)]</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="project.view_project_kanban"/>
+            <field name="search_view_id" ref="view_project_project_filter_falpext"/>
+            <field name="context">{'search_default_Current': 1, 'default_classic_project':1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to start a new project.
+                </p><p>
+                  Projects are used to organize your activities; plan
+                  tasks, track issues, invoice timesheets. You can define
+                  internal projects (R&amp;D, Improve Sales Process),
+                  private projects (My Todos) or customer ones.
+                </p><p>
+                  You will be able collaborate with internal users on
+                  projects or invite customers to share your activities.
+                </p>
+            </field>
+        </record>
+        
+        <record id="fal_pext_action_view_task" model="ir.actions.act_window">
+            <field name="name">Tools</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="domain">[('project_id.project_opportunities','=',1)]</field>
+            <field name="search_view_id" ref="view_task_search_form_falpext"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new tools.
+              </p><p>
+                OpenERP's opportunities management allows you to manage the pipeline
+                of tools in order to get things done efficiently. You can
+                track progress, discuss on tools, attach documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <record id="fal_pext_action_view_task0" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_task_kanban_fal_pext"/>
+            <field name="act_window_id" ref="fal_pext_action_view_task"/>
+        </record>
+        
+        <record id="fal_pext_action_view_task1" model="ir.actions.act_window.view">
+            <field eval="5" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_task_tree2_fal_pext"/>
+            <field name="act_window_id" ref="fal_pext_action_view_task"/>
+        </record>
+        
+        <record id="fal_pext_action_view_task2" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_task_form2_fal_pext"/>
+            <field name="act_window_id" ref="fal_pext_action_view_task"/>
+        </record>
+        
+        <!-- override -->
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="domain">[('project_id.classic_project','=',1)]</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="view_task_search_form_falpext"/>
+            <field name="help" type="html">
+               <p class="oe_view_nocontent_create">
+                 Click to create a new task.
+               </p><p>
+                 OpenERP's project management allows you to manage the pipeline
+                 of tasks in order to get things done efficiently. You can
+                 track progress, discuss on tasks, attach documents, etc.
+               </p>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="open_gtd_task_fal_pext">
+            <field name="name">My Tools</field>
+            <field name="res_model">project.task</field>
+            <field name="search_view_id" ref="project_gtd.view_task_gtd_search"/>
+            <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field>
+            <field name="domain">[('user_id','=',uid),('project_id.project_opportunities','=',1)]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+        </record>
+        
+        <record id="fal_pext_action_view_task3" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="view_id" ref="view_task_kanban_fal_pext"/>
+            <field name="act_window_id" ref="open_gtd_task_fal_pext"/>
+        </record>
+        
+        <record id="fal_tdl_action_view_task4" model="ir.actions.act_window.view">
+            <field eval="5" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_task_tree2_fal_pext"/>
+            <field name="act_window_id" ref="open_gtd_task_fal_pext"/>
+        </record>
+        
+        <record id="fal_pext_action_view_task5" model="ir.actions.act_window.view">
+            <field eval="10" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_task_form2_fal_pext"/>
+            <field name="act_window_id" ref="open_gtd_task_fal_pext"/>
+        </record>
+        
+        <!-- override -->
+        <record model="ir.actions.act_window" id="project_gtd.open_gtd_task">
+            <field name="name">My Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="search_view_id" ref="project_gtd.view_task_gtd_search"/>
+            <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field>
+            <field name="domain">[('user_id','=',uid),('project_id.classic_project','=',1)]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+        </record>
+        
+        <menuitem name="Project Follower" id="menu_project_opportunities_fal_pext" parent="base.menu_sales" action="fal_pext_open_view_project_all" sequence="2" groups="project.group_project_user"/>
+        <menuitem action="fal_pext_action_view_task" name="Tools" id="menu_action_view_falpexttools" parent="base.menu_sales" sequence="2" groups="project.group_project_user"/>
+        <menuitem action="open_gtd_task_fal_pext" name="My Tools" id="menu_action_view_falpexttoollist" parent="base.menu_sales" sequence="2" groups="project.group_project_user"/>
+   </data>
+</openerp>

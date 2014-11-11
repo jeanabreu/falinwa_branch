@@ -269,9 +269,6 @@
                     <field name="name" string="Project Phases"/>
                     <field name="date_start"/>
                     <field name="date_end"/>
-                    <filter string="New" domain="[('state','=','draft')]"  name="current" help="New Phases" icon="terp-check"/>
-                    <filter string="In Progress" name="Progress" domain="[('state','=','open')]" help="In Progress Phases" icon="terp-camera_test"/>
-                    <filter string="Pending" domain="[('state','=','pending')]" help="Pending Phases" icon="terp-gtk-media-pause"/>
                     <separator/>
                     <filter string="My Projects" domain="[('project_id.user_id','=',uid)]" help="My Projects" icon="terp-folder-violet"/>
                     <field name="project_id"/>

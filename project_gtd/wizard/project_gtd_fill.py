@@ -19,9 +19,9 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, osv
+from openerp.osv import fields, orm
 
-class project_timebox_fill(osv.osv_memory):
+class project_timebox_fill(orm.TransientModel):
 
     _name = 'project.timebox.fill.plan'
     _description = 'Project Timebox Fill'
@@ -56,6 +56,6 @@ class project_timebox_fill(osv.osv_memory):
         self.pool.get('project.task').write(cr, uid, data[0]['task_ids'], {'timebox_id':data[0]['timebox_to_id'][0]})
         return {'type': 'ir.actions.act_window_close'}
 
-project_timebox_fill()
+#end of project_timebox_fill()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

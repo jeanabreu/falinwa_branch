@@ -140,7 +140,7 @@ class account_voucher(orm.Model):
             recs = []
             for line in voucher.move_ids:
                 if line.statement_id and line.statement_id.state == 'confirm':
-                    raise osv.except_osv(_("Warning"), _('Can\'t be unreconciled because the bank statement: "%s" is already closed, Please open the bank statement first!') % line.statement_id.name)
+                    raise orm.except_orm(_("Warning"), _('Can\'t be unreconciled because the bank statement: "%s" is already closed, Please open the bank statement first!') % line.statement_id.name)
 
         return super(account_voucher, self).cancel_voucher(cr, uid, ids, context)
     

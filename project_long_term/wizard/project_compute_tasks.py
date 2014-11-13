@@ -19,9 +19,9 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, osv
+from openerp.osv import fields, orm
 
-class project_compute_tasks(osv.osv_memory):
+class project_compute_tasks(orm.TransientModel):
     _name = 'project.compute.tasks'
     _description = 'Project Compute Tasks'
     _columns = {
@@ -59,6 +59,6 @@ class project_compute_tasks(osv.osv_memory):
         result['target'] = 'current'
         return result
 
-project_compute_tasks()
+#end of project_compute_tasks()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

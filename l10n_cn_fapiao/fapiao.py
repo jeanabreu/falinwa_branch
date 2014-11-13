@@ -127,7 +127,7 @@ class fapiao(orm.Model):
             for line in fapiao.fapiao_line_ids:
                 for lines in line.invoice_id.fapiao_line_ids:
                     if lines.fapiao_id.state =='Posted' and lines.full_reconcile:
-                        raise osv.except_osv(_('Error!'), _("Line for invoice:'%s' has been reconciled!") % (line.invoice_id.number))
+                        raise orm.except_orm(_('Error!'), _("Line for invoice:'%s' has been reconciled!") % (line.invoice_id.number))
         fapiao_number = self.pool.get('ir.sequence').get(cr, uid, 'fapiao.fwa1') or '/'        
         return self.write(cr, uid, ids, {'state':'Posted', 'name': fapiao_number})
         

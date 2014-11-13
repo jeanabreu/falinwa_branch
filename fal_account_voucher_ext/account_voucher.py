@@ -83,9 +83,16 @@ class account_voucher(orm.Model):
 
         #drop existing lines
         line_ids = ids and line_pool.search(cr, uid, [('voucher_id', '=', ids[0])]) or False
-        if line_ids:
-            line_pool.unlink(cr, uid, line_ids)
+        #comment on v7,will revised again if there's a bug in here (Hans)
+        #if line_ids:
+        #    line_pool.unlink(cr, uid, line_ids)
 
+        for line in line_pool.browse(cr, uid, line_ids, context=context):
+            if line.type == 'cr':
+                default['value']['line_cr_ids'].append((2, line.id))
+            else:
+                default['value']['line_dr_ids'].append((2, line.id))
+                
         if not partner_id or not journal_id:
             return default
 
@@ -95,14 +102,26 @@ class account_voucher(orm.Model):
 
         total_credit = 0.0
         total_debit = 0.0
-        account_type = 'receivable'
+        #comment on v7,will revised again if there'a a bug in here (Hans)
+        #account_type = 'receivable'
+        #if ttype == 'payment':
+        #    account_type = 'payable'
+        #    total_debit = price or 0.0
+        #else:
+        #    total_credit = price or 0.0
+        #    account_type = 'receivable'
+        account_type = None
+        if context.get('account_id'):
+            account_type = self.pool['account.account'].browse(cr, uid, context['account_id'], context=context).type
         if ttype == 'payment':
-            account_type = 'payable'
+            if not account_type:
+                account_type = 'payable'
             total_debit = price or 0.0
         else:
             total_credit = price or 0.0
-            account_type = 'receivable'
-
+            if not account_type:
+                account_type = 'receivable'
+                
         if not context.get('move_line_ids', False):
             ids = move_line_pool.search(cr, uid, [('state','=','valid'), ('account_id.type', 'in', ['payable','receivable']), ('reconcile_id', '=', False), ('partner_id', '=', partner_id)], context=context)
         else:
@@ -125,7 +144,8 @@ class account_voucher(orm.Model):
                     #if the invoice linked to the voucher line is equal to the invoice_id in context
                     #then we assign the amount on that line, whatever the other voucher lines
                     move_line_found = line.id
-                    break
+                    #commented on v7, will revised again if there's a bug
+                    #break
             elif currency_id == company_currency:
                 #otherwise treatments is the same but with other field names
                 if line.amount_residual == price:
@@ -142,7 +162,9 @@ class account_voucher(orm.Model):
                     break
                 total_credit += line.credit and line.amount_currency or 0.0
                 total_debit += line.debit and line.amount_currency or 0.0
-
+        
+        #this is new code from v8, neet to fix if there's a bug
+        remaining_amount = price
         #voucher line creation
         for line in account_move_lines:
 
@@ -158,7 +180,7 @@ class account_voucher(orm.Model):
                 amount_unreconciled = currency_pool.compute(cr, uid, company_currency, currency_id, abs(line.amount_residual), context=context_multi_currency)
             line_currency_id = line.currency_id and line.currency_id.id or company_currency
             
-            #modify start in here
+            #modify start in here, the reason of full ovveride
             if line.amount_currency or line.currency_id and currency_id == line.currency_id.id:
                 origin_amount_original = abs(line.amount_currency)
                 origin_amount_unreconciled = abs(line.amount_residual_currency)

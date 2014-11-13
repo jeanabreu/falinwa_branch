@@ -7,9 +7,9 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <field name="customer" position="before">
+                <xpath expr="//page[@name='sales_purchases']/group/group[2]/field[@name='customer']" position="before">
                     <field name="fal_is_salary_tax_partner" />
-                </field>
+                </xpath>
             </field>
         </record>   
         
@@ -20,8 +20,8 @@
             <field name="inherit_id" ref="account.view_partner_property_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='property_account_payable']" position="after">
-                    <field name="property_employee_payable" groups="account.group_account_invoice" attrs="{'required': [('fal_is_salary_tax_partner','=',True)]}" />
-                    <field name="property_employeer_payable" groups="account.group_account_invoice" attrs="{'required': [('fal_is_salary_tax_partner','=',True)]}" />
+                    <field name="property_employee_payable" groups="account.group_account_invoice" attrs="{'required': [('fal_is_salary_tax_partner','=',True)]}"/>
+                    <field name="property_employeer_payable" groups="account.group_account_invoice" attrs="{'required': [('fal_is_salary_tax_partner','=',True)]}"/>
                 </xpath>
             </field>
         </record>   

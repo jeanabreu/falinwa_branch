@@ -19,9 +19,9 @@
 #
 ##############################################################################
 from openerp.tools.translate import _
-from openerp.osv import fields, osv
+from openerp.osv import fields, orm
 
-class project_compute_phases(osv.osv_memory):
+class project_compute_phases(orm.TransientModel):
     _name = 'project.compute.phases'
     _description = 'Project Compute Phases'
     _columns = {
@@ -45,7 +45,7 @@ class project_compute_phases(osv.osv_memory):
         project_pool = self.pool.get('project.project')
         data = self.read(cr, uid, ids, [], context=context)[0]
         if not data['project_id'] and data['target_project'] == 'one':
-            raise osv.except_osv(_('Error!'), _('Please specify a project to schedule.'))
+            raise orm.except_orm(_('Error!'), _('Please specify a project to schedule.'))
 
         if data['target_project'] == 'one':
             project_ids = [data['project_id'][0]]
@@ -72,6 +72,6 @@ class project_compute_phases(osv.osv_memory):
         result['context'] = {"search_default_project_id":project_id, "default_project_id":project_id, "search_default_current": 1}
         return result
 
-project_compute_phases()
+#end of project_compute_phases()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

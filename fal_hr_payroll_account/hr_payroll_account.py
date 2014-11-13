@@ -85,7 +85,7 @@ class hr_payslip(orm.Model):
             if float_compare(credit_sum, debit_sum, precision_digits=precision) == -1:
                 acc_id = slip.journal_id.default_credit_account_id.id
                 if not acc_id:
-                    raise osv.except_osv(_('Configuration Error!'),_('The Expense Journal "%s" has not properly configured the Credit Account!')%(slip.journal_id.name))
+                    raise orm.except_orm(_('Configuration Error!'),_('The Expense Journal "%s" has not properly configured the Credit Account!')%(slip.journal_id.name))
                 adjust_credit = (0, 0, {
                     'name': _('Adjustment Entry'),
                     'date': timenow,
@@ -101,7 +101,7 @@ class hr_payslip(orm.Model):
             elif float_compare(debit_sum, credit_sum, precision_digits=precision) == -1:
                 acc_id = slip.journal_id.default_debit_account_id.id
                 if not acc_id:
-                    raise osv.except_osv(_('Configuration Error!'),_('The Expense Journal "%s" has not properly configured the Debit Account!')%(slip.journal_id.name))
+                    raise orm.except_orm(_('Configuration Error!'),_('The Expense Journal "%s" has not properly configured the Debit Account!')%(slip.journal_id.name))
                 adjust_debit = (0, 0, {
                     'name': _('Adjustment Entry'),
                     'date': timenow,

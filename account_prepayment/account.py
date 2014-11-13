@@ -65,11 +65,11 @@ class account_voucher(orm.Model):
                     account_id = voucher_brw.writeoff_acc_id.id
                 elif voucher_brw.type in ('sale', 'receipt'):
                     if not voucher_brw.partner_id.property_account_prereceivable:
-                        raise osv.except_osv(_('Unable to validate payment !'), _('Please configure the partner Prereceivable Account at first!'))
+                        raise orm.except_orm(_('Unable to validate payment !'), _('Please configure the partner Prereceivable Account at first!'))
                     account_id = voucher_brw.partner_id.property_account_prereceivable.id
                 else:
                     if not voucher_brw.partner_id.property_account_prepayable:
-                        raise osv.except_osv(_('Unable to validate payment !'), _('Please configure the partner Prepayable Account at first!'))
+                        raise orm.except_orm(_('Unable to validate payment !'), _('Please configure the partner Prepayable Account at first!'))
                     account_id = voucher_brw.partner_id.property_account_prepayable.id
                 if account_id:                    
                     line_vals['account_id'] = account_id

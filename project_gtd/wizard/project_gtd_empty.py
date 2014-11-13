@@ -19,10 +19,10 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, osv
+from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
-class project_timebox_empty(osv.osv_memory):
+class project_timebox_empty(orm.TransientModel):
 
     _name = 'project.timebox.empty'
     _description = 'Project Timebox Empty'
@@ -49,7 +49,7 @@ class project_timebox_empty(osv.osv_memory):
 
         ids = obj_tb.search(cr, uid, [], context=context)
         if not len(ids):
-            raise osv.except_osv(_('Error!'), _('No timebox child of this one!'))
+            raise orm.except_orm(_('Error!'), _('No timebox child of this one!'))
         tids = obj_task.search(cr, uid, [('timebox_id', '=', context['active_id'])])
         for task in obj_task.browse(cr, uid, tids, context):
             if (task.state in ('cancel','done')) or (task.user_id.id <> uid):
@@ -62,6 +62,6 @@ class project_timebox_empty(osv.osv_memory):
             obj_task.write(cr, uid, close, {'timebox_id':False})
         return {}
 
-project_timebox_empty()
+#end of project_timebox_empty()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

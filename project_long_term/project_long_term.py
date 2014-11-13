@@ -21,10 +21,10 @@
 
 from datetime import datetime
 from openerp.tools.translate import _
-from openerp.osv import fields, osv
+from openerp.osv import fields, orm
 from openerp.addons.resource.faces import task as Task
 
-class project_phase(osv.osv):
+class project_phase(orm.Model):
     _name = "project.phase"
     _description = "Project Phase"
 
@@ -198,9 +198,9 @@ class project_phase(osv.osv):
             result += "\n"
 
         return result
-project_phase()
+#end of project_phase()
 
-class project_user_allocation(osv.osv):
+class project_user_allocation(orm.Model):
     _name = 'project.user.allocation'
     _description = 'Phase User Allocation'
     _rec_name = 'user_id'
@@ -211,9 +211,9 @@ class project_user_allocation(osv.osv):
         'date_start': fields.datetime('Start Date', help="Starting Date"),
         'date_end': fields.datetime('End Date', help="Ending Date"),
     }
-project_user_allocation()
+#end of project_user_allocation()
 
-class project(osv.osv):
+class project(orm.Model):
     _inherit = "project.project"
 
     def _phase_count(self, cr, uid, ids, field_name, arg, context=None):
@@ -267,9 +267,9 @@ class project(osv.osv):
                     'date_end': p.end.strftime('%Y-%m-%d %H:%M:%S')
                 }, context=context)
         return True
-project()
+#end of project()
 
-class account_analytic_account(osv.osv):
+class account_analytic_account(orm.Model):
     _inherit = 'account.analytic.account'
     _description = 'Analytic Account'
     _columns = {
@@ -289,13 +289,13 @@ class account_analytic_account(osv.osv):
         res = super(account_analytic_account, self)._trigger_project_creation(cr, uid, vals, context=context)
         return res or (vals.get('use_phases') and not 'project_creation_in_progress' in context)
 
-account_analytic_account()
+#end of account_analytic_account()
 
-class project_task(osv.osv):
+class project_task(orm.Model):
     _inherit = "project.task"
     _columns = {
         'phase_id': fields.many2one('project.phase', 'Project Phase', domain="[('project_id', '=', project_id)]"),
     }
-project_task()
+#end of project_task()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

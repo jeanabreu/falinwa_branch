@@ -21,11 +21,11 @@
 
 import sys
 
-from openerp.osv import fields, osv
+from openerp.osv import fields, orm
 from openerp import tools
 from openerp.tools.translate import _
 
-class project_gtd_context(osv.osv):
+class project_gtd_context(orm.Model):
     _name = "project.gtd.context"
     _description = "Context"
     _columns = {
@@ -37,10 +37,10 @@ class project_gtd_context(osv.osv):
     }
     _order = "sequence, name"
 
-project_gtd_context()
+#end of project_gtd_context()
 
 
-class project_gtd_timebox(osv.osv):
+class project_gtd_timebox(orm.Model):
     _name = "project.gtd.timebox"
     _order = "sequence"
     _columns = {
@@ -49,9 +49,9 @@ class project_gtd_timebox(osv.osv):
         'icon': fields.selection(tools.icons, 'Icon', size=64),
     }
 
-project_gtd_timebox()
+#end of project_gtd_timebox()
 
-class project_task(osv.osv):
+class project_task(orm.Model):
     _inherit = "project.task"
     _columns = {
         'timebox_id': fields.many2one('project.gtd.timebox', "Timebox",help="Time-laps during which task has to be treated"),
@@ -120,6 +120,6 @@ class project_task(osv.osv):
 
         return res
 
-project_task()
+#end of project_task()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

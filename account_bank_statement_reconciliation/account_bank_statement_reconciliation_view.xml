@@ -168,6 +168,9 @@
                     <xpath expr="//notebook/page[@string='Transactions']/field[@name='line_ids']/tree[@string='Statement lines']/field[@name='amount']" position="attributes">
                         <attribute name="sum">SubTotal</attribute>
                     </xpath>
+                    <button name="button_cancel" position="before">
+                        <button name="button_dummy" states="draft" string="Compute" type="object" icon="terp-stock_format-scientific"/>
+                    </button>
                 </data>
             </field>
         </record>

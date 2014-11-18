@@ -95,9 +95,10 @@ class fapiao(orm.Model):
             temp_line = []
             for fapiao_line_id in fapiao.fapiao_line_ids:
                 temp_line.append((2,fapiao_line_id.id))
-            self.write(cr, uid, fapiao.id, {
-                'fapiao_line_ids' : temp_line
-            })
+            if temp_line:
+                self.write(cr, uid, fapiao.id, {
+                    'fapiao_line_ids' : temp_line
+                })
         for invoice_id in invoice_obj.browse(cr, uid, invoice_ids, context=context) :
             allocated_amount_posted = 0.00
             fapiao_line_posted_ids = fapiao_line_obj.search(cr , uid, [('invoice_id','=',invoice_id.id),('fapiao_id.state','=','Posted')], context=context)
@@ -120,6 +121,8 @@ class fapiao(orm.Model):
         res['value'] = {
             'fapiao_line_ids' :  temp,
         }
+        if not temp:
+            del(res['value']['fapiao_line_ids'])
         return res
 
     def action_validated(self, cr, uid, ids, context=None): 

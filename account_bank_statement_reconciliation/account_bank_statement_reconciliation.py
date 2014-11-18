@@ -56,7 +56,7 @@ class account_bank_statement(orm.Model):
                                 statement.journal_id.default_credit_account_id.id:
                         res[statement.id] += move_line.amount_currency
                 else:
-                    context['date'] = move_line.date
+                    context.update({'date': move_line.date})
                     if move_line.debit > 0:
                         if move_line.account_id.id == \
                                 statement.journal_id.default_debit_account_id.id:

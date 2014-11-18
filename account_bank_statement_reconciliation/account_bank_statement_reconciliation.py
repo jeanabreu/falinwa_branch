@@ -56,19 +56,20 @@ class account_bank_statement(orm.Model):
                                 statement.journal_id.default_credit_account_id.id:
                         res[statement.id] += move_line.amount_currency
                 else:
-                    context.update({'date': move_line.date})
+                    ctx = context.copy()
+                    ctx.update({'date': move_line.date})
                     if move_line.debit > 0:
                         if move_line.account_id.id == \
                                 statement.journal_id.default_debit_account_id.id:
                             res[statement.id] += res_currency_obj.compute(cursor,
                                     user, company_currency_id, stmt_currency_id,
-                                    move_line.debit, context=context)
+                                    move_line.debit, context=ctx)
                     else:
                         if move_line.account_id.id == \
                                 statement.journal_id.default_credit_account_id.id:
                             res[statement.id] -= res_currency_obj.compute(cursor,
                                     user, company_currency_id, stmt_currency_id,
-                                    move_line.credit, context=context)
+                                    move_line.credit, context=ctx)
         return res
         
     def _margin_compute(self, cursor, user, ids, name, attr, context=None):

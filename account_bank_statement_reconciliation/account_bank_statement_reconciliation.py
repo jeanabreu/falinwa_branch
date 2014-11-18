@@ -35,6 +35,8 @@ class account_bank_statement(orm.Model):
         return res
     
     def _end_balance(self, cursor, user, ids, name, attr, context=None):
+        if context is None:
+            context = {}
         res = {}
         res_currency_obj = self.pool.get('res.currency')
         res_users_obj = self.pool.get('res.users')

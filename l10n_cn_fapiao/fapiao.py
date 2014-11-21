@@ -128,9 +128,10 @@ class fapiao(orm.Model):
     def action_validated(self, cr, uid, ids, context=None): 
         for fapiao in self.browse(cr, uid, ids, context):
             for line in fapiao.fapiao_line_ids:
-                for lines in line.invoice_id.fapiao_line_ids:
-                    if lines.fapiao_id.state =='Posted' and lines.full_reconcile:
-                        raise orm.except_orm(_('Error!'), _("Line for invoice:'%s' has been reconciled!") % (line.invoice_id.number))
+                if line.allocated_ammount:
+                    for lines in line.invoice_id.fapiao_line_ids:
+                        if lines.fapiao_id.state =='Posted' and lines.full_reconcile:
+                            raise orm.except_orm(_('Error!'), _("Line for invoice:'%s' has been reconciled!") % (line.invoice_id.number))
         fapiao_number = self.pool.get('ir.sequence').get(cr, uid, 'fapiao.fwa1') or '/'        
         return self.write(cr, uid, ids, {'state':'Posted', 'name': fapiao_number})
         

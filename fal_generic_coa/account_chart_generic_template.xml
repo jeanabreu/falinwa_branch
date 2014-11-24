@@ -1,0 +1,2934 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+
+        <!-- Generic Account Template -->
+        <record id="fal_gen_root" model="account.account.template">
+            <field name="name">Root</field>
+            <field name="code">00000000</field>
+            <field name="type">view</field>
+            <field name="user_type" ref="user_type_fal_all"/>
+        </record>
+        <record id="fal_gen_chart10000000" model="account.account.template">
+            <field name="code">10000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_root" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Balance Sheet</field>
+            <field name="user_type" ref="user_type_fal_balance_sheetview"/>
+        </record>
+        <record id="fal_gen_chart11000000" model="account.account.template">
+            <field name="code">11000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart10000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">ASSET</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11100000" model="account.account.template">
+            <field name="code">11100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">FIXED ASSET</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11110000" model="account.account.template">
+            <field name="code">11110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Intangible Assets (IA)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11111000" model="account.account.template">
+            <field name="code">11111000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11110000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IA - Start-up costs</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11112000" model="account.account.template">
+            <field name="code">11112000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11110000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IA - Franchises / patents / similar rights</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11120000" model="account.account.template">
+            <field name="code">11120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Tangible assets (TA)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11121000" model="account.account.template">
+            <field name="code">11121000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11120000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TA - Machinery and equipment</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11121100" model="account.account.template">
+            <field name="code">11121100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11121000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Industrial machinery</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record> 
+        <record id="fal_gen_chart11121200" model="account.account.template">
+            <field name="code">11121200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11121000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Industrial equipment</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record> 
+        <record id="fal_gen_chart11121300" model="account.account.template">
+            <field name="code">11121300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11121000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Industrial machinery and equipment fitting out</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record> 
+        <record id="fal_gen_chart11122000" model="account.account.template">
+            <field name="code">11122000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - General Installation / Fitting out</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11123000" model="account.account.template">
+            <field name="code">11123000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11120000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TA - Transportation Material</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11123100" model="account.account.template">
+            <field name="code">11123100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11123000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Car</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11124000" model="account.account.template">
+            <field name="code">11124000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11120000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TA - Office &amp; IT Material</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11124100" model="account.account.template">
+            <field name="code">11124100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11124000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Office Material</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11124200" model="account.account.template">
+            <field name="code">11124200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11124000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - IT Material</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11128000" model="account.account.template">
+            <field name="code">11128000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11120000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TA - Under construction Tangible Assets</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11128100" model="account.account.template">
+            <field name="code">11128100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11128000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Prepayments on tangible assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11129000" model="account.account.template">
+            <field name="code">11129000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TA - Other tangible assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11180000" model="account.account.template">
+            <field name="code">11180000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">ASSETS DEPRECIATION</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11181000" model="account.account.template">
+            <field name="code">11181000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11180000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">INTANGIBLE ASSETS DEPRECIATION (IAD)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record> 
+        <record id="fal_gen_chart11181100" model="account.account.template">
+            <field name="code">11181100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11181000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IAD - R&amp;D</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record> 
+        <record id="fal_gen_chart11181200" model="account.account.template">
+            <field name="code">11181200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11181000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IAD - Depreciation on Franchises / patents / similar rights</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182000" model="account.account.template">
+            <field name="code">11182000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11180000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TANGIBLE ASSETS DEPRECIATION (TAD)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record> 
+        <record id="fal_gen_chart11182100" model="account.account.template">
+            <field name="code">11182100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TAD - Machinery and equipment</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record> 
+        <record id="fal_gen_chart11182110" model="account.account.template">
+            <field name="code">11182110</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182100" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - Industrial machinery</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182120" model="account.account.template">
+            <field name="code">11182120</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182100" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - Industrial equipment</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182130" model="account.account.template">
+            <field name="code">11182130</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182100" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - Industrial machinery and equipment fitting out</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182200" model="account.account.template">
+            <field name="code">11182200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - General Installation / Fitting out</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182300" model="account.account.template">
+            <field name="code">11182300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TAD - Transportation Material</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11182310" model="account.account.template">
+            <field name="code">11182310</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182300" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - Car</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182400" model="account.account.template">
+            <field name="code">11182400</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">TAD - Office &amp; IT Material</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11182410" model="account.account.template">
+            <field name="code">11182410</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182400" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - Office Material</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182420" model="account.account.template">
+            <field name="code">11182420</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182400" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - IT Material</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11182900" model="account.account.template">
+            <field name="code">11182900</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11182000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">TAD - Other tangible assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11190000" model="account.account.template">
+            <field name="code">11190000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Other fixed assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11200000" model="account.account.template">
+            <field name="code">11200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Stock (SK)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11210000" model="account.account.template">
+            <field name="code">11210000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">SK - Inventory of raw materials and supply</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11211000" model="account.account.template">
+            <field name="code">11211000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Raw material (SKR)</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11212000" model="account.account.template">
+            <field name="code">11212000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Supply (SKS)</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11213000" model="account.account.template">
+            <field name="code">11213000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Packaging (SKK)</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11214000" model="account.account.template">
+            <field name="code">11214000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Goods in production (SKI)</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11220000" model="account.account.template">
+            <field name="code">11220000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">SK - Products in production</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11221000" model="account.account.template">
+            <field name="code">11221000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Products in production - Intermediary products</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11222000" model="account.account.template">
+            <field name="code">11222000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Products in production - Finished products</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11230000" model="account.account.template">
+            <field name="code">11230000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">SK - Products (SKP)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11231000" model="account.account.template">
+            <field name="code">11231000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11230000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Products - Intermediary products</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11232000" model="account.account.template">
+            <field name="code">11232000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11230000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Products - Finished products</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11233000" model="account.account.template">
+            <field name="code">11233000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11230000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Residual product or recyclable material</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11240000" model="account.account.template">
+            <field name="code">11240000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">SK - Goods</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11300000" model="account.account.template">
+            <field name="code">11300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Bank &amp; Cash</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11311000" model="account.account.template">
+            <field name="code">11311000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">BK - HK Bank Account</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11311100" model="account.account.template">
+            <field name="code">11311100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11311000" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">ASK - HSBC HONG-KONG - HKD CURRENT</field>
+            <field name="user_type" ref="user_type_fal_bank"/>
+        </record>
+        <record id="fal_gen_chart11311200" model="account.account.template">
+            <field name="code">11311200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11311000" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">ASH - HSBC HONG-KONG - HKD SAVINGS</field>
+            <field name="user_type" ref="user_type_fal_bank"/>
+        </record>
+        <record id="fal_gen_chart11312000" model="account.account.template">
+            <field name="code">11312000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11311000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">BK - SHZ Bank Account</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11312100" model="account.account.template">
+            <field name="code">11312100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11312000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">BK - CHN CNY Account</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11312110" model="account.account.template">
+            <field name="code">11312110</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11312100" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">AIR - XXX - CNY CURRENT</field>
+            <field name="user_type" ref="user_type_fal_bank"/>
+        </record>
+        <record id="fal_gen_chart11312120" model="account.account.template">
+            <field name="code">11312120</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11312100" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">AIY - XXX - CNY CAPITAL</field>
+            <field name="user_type" ref="user_type_fal_bank"/>
+        </record>
+        <record id="fal_gen_chart11312200" model="account.account.template">
+            <field name="code">11312200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11312000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">BK - CHN Foreign CUR Account</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11312210" model="account.account.template">
+            <field name="code">11312210</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11312200" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">AIS - XXX - USD CAPITAL</field>
+            <field name="user_type" ref="user_type_fal_bank"/>
+        </record>
+        <record id="fal_gen_chart11312220" model="account.account.template">
+            <field name="code">11312220</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11312200" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">AIU - XXX - USD CURRENT</field>
+            <field name="user_type" ref="user_type_fal_bank"/>
+        </record>
+        <record id="fal_gen_chart11320000" model="account.account.template">
+            <field name="code">11320000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">CASH BOX (CB)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11321000" model="account.account.template">
+            <field name="code">11321000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11320000" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">CB - HK Cash Box</field>
+            <field name="user_type" ref="user_type_fal_cash"/>
+        </record>
+        <record id="fal_gen_chart11322000" model="account.account.template">
+            <field name="code">11322000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11320000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">CB - SHZ Cash Box</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11322100" model="account.account.template">
+            <field name="code">11322100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11322000" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">ACR - CASH BOX - CNY CURRENT</field>
+            <field name="user_type" ref="user_type_fal_cash"/>
+        </record>
+        <record id="fal_gen_chart11380000" model="account.account.template">
+            <field name="code">11380000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11300000" name="parent_id"/>
+            <field name="type">liquidity</field>
+            <field name="name">Interco Transfer (Temporary account)</field>
+            <field name="user_type" ref="user_type_fal_cash"/>
+        </record>
+        <record id="fal_gen_chart11400000" model="account.account.template">
+            <field name="code">11400000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Accounts Receivable (AR)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11410000" model="account.account.template">
+            <field name="code">11410000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11400000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">AR - Group</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11420000" model="account.account.template">
+            <field name="code">11420000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11400000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">AR - Non group</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11430000" model="account.account.template">
+            <field name="code">11430000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11400000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">Accounts Receivable (AR) - deposit</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11440000" model="account.account.template">
+            <field name="code">11440000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11400000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">Supplier Prepayment</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11480000" model="account.account.template">
+            <field name="code">11480000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11400000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">AR - Non issued invoices</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11481000" model="account.account.template">
+            <field name="code">11481000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11480000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">AR - Non issued invoices - Group</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11482000" model="account.account.template">
+            <field name="code">11482000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11480000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">AR - Non issued invoices - Non Group</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11500000" model="account.account.template">
+            <field name="code">11500000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Subsidiary and Shares related to subsidiary companies</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11510000" model="account.account.template">
+            <field name="code">11510000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11500000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">Shares in subsidiary companies</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11520000" model="account.account.template">
+            <field name="code">11520000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart11500000" name="parent_id"/>
+            <field name="type">receivable</field>
+            <field name="name">Receivables on subsidiary companies' loans</field>
+            <field name="user_type" ref="user_type_fal_accountreceivable"/>
+        </record>
+        <record id="fal_gen_chart11600000" model="account.account.template">
+            <field name="code">11600000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Loans</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart11610000" model="account.account.template">
+            <field name="code">11610000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11600000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Employees' loan / Cash advance</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11620000" model="account.account.template">
+            <field name="code">11620000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11600000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Employees' loan / Cash advance</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11690000" model="account.account.template">
+            <field name="code">11690000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11600000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Other loans</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart11700000" model="account.account.template">
+            <field name="code">11700000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart11000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Savings / Financial investment</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart12000000" model="account.account.template">
+            <field name="code">12000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart10000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">LIABILITIES</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12100000" model="account.account.template">
+            <field name="code">12100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Regulated Provision (GP)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12110000" model="account.account.template">
+            <field name="code">12110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Fixed assets</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12120000" model="account.account.template">
+            <field name="code">12120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Employee participation</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12130000" model="account.account.template">
+            <field name="code">12130000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">GP - Stock</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12131000" model="account.account.template">
+            <field name="code">12131000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12130000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Price Increase</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12132000" model="account.account.template">
+            <field name="code">12132000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12130000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Price Moves</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12140000" model="account.account.template">
+            <field name="code">12140000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Asset</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12150000" model="account.account.template">
+            <field name="code">12150000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Depreciation</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12160000" model="account.account.template">
+            <field name="code">12160000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Revaluation</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12170000" model="account.account.template">
+            <field name="code">12170000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Invested profit</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12190000" model="account.account.template">
+            <field name="code">12190000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GP - Other</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12200000" model="account.account.template">
+            <field name="code">12200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Risk Provision (RP)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12210000" model="account.account.template">
+            <field name="code">12210000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">RP - Customer Claim</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12211000" model="account.account.template">
+            <field name="code">12211000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RP - RMA</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12220000" model="account.account.template">
+            <field name="code">12220000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RP - ExRate Loss</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12230000" model="account.account.template">
+            <field name="code">12230000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RP - Tax</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12240000" model="account.account.template">
+            <field name="code">12240000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RP - Expenses on several years</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12300000" model="account.account.template">
+            <field name="code">12300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Loan &amp; Debt (LD)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12310000" model="account.account.template">
+            <field name="code">12310000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12300000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">LD - Intra-group Loan</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12320000" model="account.account.template">
+            <field name="code">12320000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12300000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">LD - Non intra-group Loan</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12390000" model="account.account.template">
+            <field name="code">12390000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">LD - Due interest</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12391000" model="account.account.template">
+            <field name="code">12391000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12390000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Due interest - On intra-group loan</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12392000" model="account.account.template">
+            <field name="code">12392000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12390000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Due interest - Non intra-group loan</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12400000" model="account.account.template">
+            <field name="code">12400000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Account payables (AP)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12410000" model="account.account.template">
+            <field name="code">12410000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12400000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">AP - Group</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12420000" model="account.account.template">
+            <field name="code">12420000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12400000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">AP - Non group</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12440000" model="account.account.template">
+            <field name="code">12440000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12400000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">Customer Prepayment</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12480000" model="account.account.template">
+            <field name="code">12480000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12400000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">AP - on non received invoices</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12481000" model="account.account.template">
+            <field name="code">12481000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12480000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">AP - on non received invoices - Group</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12482000" model="account.account.template">
+            <field name="code">12482000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12480000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">AP - on non received invoices - Non group</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12500000" model="account.account.template">
+            <field name="code">12500000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Staff payables (SP)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12510000" model="account.account.template">
+            <field name="code">12510000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">SP - due wages</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12520000" model="account.account.template">
+            <field name="code">12520000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">SP - cash advances</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12530000" model="account.account.template">
+            <field name="code">12530000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">SP - Net salary</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12540000" model="account.account.template">
+            <field name="code">12540000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">SP - Social insurance</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12550000" model="account.account.template">
+            <field name="code">12550000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">SP - Housing fund</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12560000" model="account.account.template">
+            <field name="code">12560000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">ST - Social insurance</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12570000" model="account.account.template">
+            <field name="code">12570000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12500000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">ST - Housing fund</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12600000" model="account.account.template">
+            <field name="code">12600000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">State payables (SP)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12610000" model="account.account.template">
+            <field name="code">12610000</field>
+            <field eval="True" name="reconcile"/>
+            <field ref="fal_gen_chart12600000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">EP - Income tax payable</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>        
+        <record id="fal_gen_chart12620000" model="account.account.template">
+            <field name="code">12620000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12600000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EP - VAT Account</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12621000" model="account.account.template">
+            <field name="code">12621000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EP - Input VAT</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12621100" model="account.account.template">
+            <field name="code">12621100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12621000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - Input VAT on goods and raw material</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record> 
+        <record id="fal_gen_chart12621200" model="account.account.template">
+            <field name="code">12621200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12621000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - VAT in tangibles assets</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record> 
+        <record id="fal_gen_chart12622000" model="account.account.template">
+            <field name="code">12622000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EP - Output VAT</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12622100" model="account.account.template">
+            <field name="code">12622100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12622000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - OUTPUT VAT ON GOODS (17%)</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record> 
+        <record id="fal_gen_chart12622200" model="account.account.template">
+            <field name="code">12622200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12622000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - OUTPUT VAT On service (3%)</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record> 
+        <record id="fal_gen_chart12623000" model="account.account.template">
+            <field name="code">12623000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - Abroad VAT</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12624000" model="account.account.template">
+            <field name="code">12624000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - VAT Balance Payment to State</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record> 
+        <record id="fal_gen_chart12629000" model="account.account.template">
+            <field name="code">12629000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EP - VAT Refund from State</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record> 
+        <record id="fal_gen_chart12630000" model="account.account.template">
+            <field name="code">12630000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">EP - Personal tax payable</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record> 
+        <record id="fal_gen_chart12690000" model="account.account.template">
+            <field name="code">12690000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12620000" name="parent_id"/>
+            <field name="type">payable</field>
+            <field name="name">EP - Other general tax payable</field>
+            <field name="user_type" ref="user_type_fal_accountpayable"/>
+        </record>
+        <record id="fal_gen_chart12700000" model="account.account.template">
+            <field name="code">12700000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Shareholders account / Director Account (DR)</field>
+            <field name="user_type" ref="user_type_fal_liability_view"/>
+        </record>
+        <record id="fal_gen_chart12710000" model="account.account.template">
+            <field name="code">12710000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12700000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DR - Current account</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart12720000" model="account.account.template">
+            <field name="code">12720000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart12700000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DR - Dividend to be paid</field>
+            <field name="user_type" ref="user_type_fal_debt"/>
+        </record>
+        <record id="fal_gen_chart13000000" model="account.account.template">
+            <field name="code">13000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart10000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EQUITY</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart13100000" model="account.account.template">
+            <field name="code">13100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Share Capital &amp; Reserves (CP)</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart13110000" model="account.account.template">
+            <field name="code">13110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">CP - Share capital</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart13111000" model="account.account.template">
+            <field name="code">13111000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13110000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">CP - Called, Issued &amp; Paid Share Capital</field>
+            <field name="user_type" ref="user_type_fal_equity"/>
+        </record>
+        <record id="fal_gen_chart13120000" model="account.account.template">
+            <field name="code">13120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">CP - Profit/loss brought forward</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart13121000" model="account.account.template">
+            <field name="code">13121000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">CP - Profit brought forward</field>
+            <field name="user_type" ref="user_type_fal_equity"/>
+        </record>
+        <record id="fal_gen_chart13122000" model="account.account.template">
+            <field name="code">13122000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">CP - Loss brought forward</field>
+            <field name="user_type" ref="user_type_fal_equity"/>
+        </record>
+        <record id="fal_gen_chart13200000" model="account.account.template">
+            <field name="code">13200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Yearly Net Income (Profit or Loss) (PL)</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart13210000" model="account.account.template">
+            <field name="code">13210000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PL - Yearly Profit</field>
+            <field name="user_type" ref="user_type_fal_equity"/>
+        </record>
+        <record id="fal_gen_chart13220000" model="account.account.template">
+            <field name="code">13220000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart13200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PL - Yearly Loss</field>
+            <field name="user_type" ref="user_type_fal_equity"/>
+        </record>
+        <record id="fal_gen_chart20000000" model="account.account.template">
+            <field name="code">20000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_root" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">PROFIT &amp; LOSS</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart21000000" model="account.account.template">
+            <field name="code">21000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart20000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">INCOME</field>
+            <field name="user_type" ref="user_type_fal_equity_view"/>
+        </record>
+        <record id="fal_gen_chart21100000" model="account.account.template">
+            <field name="code">21100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Income on sales (IOS)</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>
+        <record id="fal_gen_chart21110000" model="account.account.template">
+            <field name="code">21110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOS - of products (Manufacture)</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21120000" model="account.account.template">
+            <field name="code">21120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOS - of goods (Trading)</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21130000" model="account.account.template">
+            <field name="code">21130000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOS - of intermediary products</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21140000" model="account.account.template">
+            <field name="code">21140000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOS - of residual product or recyclable material</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21180000" model="account.account.template">
+            <field name="code">21180000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOS - Deposit</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21200000" model="account.account.template">
+            <field name="code">21200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Income on stock (IOK)</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>
+        <record id="fal_gen_chart21210000" model="account.account.template">
+            <field name="code">21210000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOK - Finished products</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21220000" model="account.account.template">
+            <field name="code">21220000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOK - Intermediary products</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21300000" model="account.account.template">
+            <field name="code">21300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Income on delivery (IOD)</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>
+        <record id="fal_gen_chart21310000" model="account.account.template">
+            <field name="code">21310000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">IOD - Local Delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>
+        <record id="fal_gen_chart21311000" model="account.account.template">
+            <field name="code">21311000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21310000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOD - Local Express</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21312000" model="account.account.template">
+            <field name="code">21312000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21310000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOD - Local Normal</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21320000" model="account.account.template">
+            <field name="code">21320000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">IOD - Abroad Delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>
+        <record id="fal_gen_chart21321000" model="account.account.template">
+            <field name="code">21321000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOD - Abroad Sea</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21322000" model="account.account.template">
+            <field name="code">21322000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOD - Abroad Flight Express</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21400000" model="account.account.template">
+            <field name="code">21400000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Income on services prestation (IOV)</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>
+        <record id="fal_gen_chart21410000" model="account.account.template">
+            <field name="code">21410000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOV - Supply Chain Management</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21420000" model="account.account.template">
+            <field name="code">21420000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOV - QUALITY Control</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>  
+        <record id="fal_gen_chart21430000" model="account.account.template">
+            <field name="code">21430000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOV - Design &amp; Study</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart21440000" model="account.account.template">
+            <field name="code">21440000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOV - Factory Rework</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>  
+        <record id="fal_gen_chart21450000" model="account.account.template">
+            <field name="code">21450000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IOV - Office Support</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>  
+        <record id="fal_gen_chart21500000" model="account.account.template">
+            <field name="code">21500000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">PROVISION RECOVERY (PR)</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record> 
+        <record id="fal_gen_chart21510000" model="account.account.template">
+            <field name="code">21510000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PR - Regulated Provision (OP)</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>  
+        <record id="fal_gen_chart21520000" model="account.account.template">
+            <field name="code">21520000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart21500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PR - Risk Provision (RP)</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>
+        <record id="fal_gen_chart22000000" model="account.account.template">
+            <field name="code">22000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart20000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">DIRECTS COSTS</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22100000" model="account.account.template">
+            <field name="code">22100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Cost of purchases (COP)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22110000" model="account.account.template">
+            <field name="code">22110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - on raw material</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22120000" model="account.account.template">
+            <field name="code">22120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - on intermediary products</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22130000" model="account.account.template">
+            <field name="code">22130000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - on goods (Trading)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22140000" model="account.account.template">
+            <field name="code">22140000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">COP - on intermediary products</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22141000" model="account.account.template">
+            <field name="code">22141000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22140000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - Consomable supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22142000" model="account.account.template">
+            <field name="code">22142000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22140000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - Workshop and factory supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22143000" model="account.account.template">
+            <field name="code">22143000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22140000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - Warehouse supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22150000" model="account.account.template">
+            <field name="code">22150000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - Packaging</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22200000" model="account.account.template">
+            <field name="code">22200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Cost on Stock (COK)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22210000" model="account.account.template">
+            <field name="code">22210000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - on raw material</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22220000" model="account.account.template">
+            <field name="code">22220000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - on intermediary products</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22230000" model="account.account.template">
+            <field name="code">22230000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - on goods</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22240000" model="account.account.template">
+            <field name="code">22240000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">COK - Supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22241000" model="account.account.template">
+            <field name="code">22241000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22240000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - on Consomable supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22242000" model="account.account.template">
+            <field name="code">22242000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22240000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - Workshop and factory supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22243000" model="account.account.template">
+            <field name="code">22243000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22240000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - Warehouse supply</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22250000" model="account.account.template">
+            <field name="code">22250000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - Packaging</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22260000" model="account.account.template">
+            <field name="code">22260000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COK - Returned products</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22300000" model="account.account.template">
+            <field name="code">22300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Cost on Delivery (COD)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22310000" model="account.account.template">
+            <field name="code">22310000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">COD - Selling delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22311000" model="account.account.template">
+            <field name="code">22311000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22310000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COD - Local Delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22312000" model="account.account.template">
+            <field name="code">22312000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22310000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COD - Abroad Delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22320000" model="account.account.template">
+            <field name="code">22320000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">COP - Buying delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22321000" model="account.account.template">
+            <field name="code">22321000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - Local Delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22322000" model="account.account.template">
+            <field name="code">22322000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COP - Abroad Delivery</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22400000" model="account.account.template">
+            <field name="code">22400000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Cost of direct cost services (COR)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart22410000" model="account.account.template">
+            <field name="code">22410000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COR - R&amp;D / Production / Quality Services</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22420000" model="account.account.template">
+            <field name="code">22420000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COR - R&amp;D / Production / Quality Services</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22430000" model="account.account.template">
+            <field name="code">22430000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COR - General Installation / Fitting out</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22440000" model="account.account.template">
+            <field name="code">22440000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COR - Maintenance on Transportation</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart22450000" model="account.account.template">
+            <field name="code">22450000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart22400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">COR - Production Management</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23000000" model="account.account.template">
+            <field name="code">23000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart20000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EXPENSES</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23100000" model="account.account.template">
+            <field name="code">23100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Office Expenses (OFE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record> 
+        <record id="fal_gen_chart23110000" model="account.account.template">
+            <field name="code">23110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OFE - Water</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23111000" model="account.account.template">
+            <field name="code">23111000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23110000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Plant Water</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23120000" model="account.account.template">
+            <field name="code">23120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OFE - Electronic</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23121000" model="account.account.template">
+            <field name="code">23121000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Plant Electricity</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23130000" model="account.account.template">
+            <field name="code">23130000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Maintenance stuff</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23140000" model="account.account.template">
+            <field name="code">23140000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OFE - Administrative stuff</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23141000" model="account.account.template">
+            <field name="code">23141000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23140000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Cartons / Packing</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23142000" model="account.account.template">
+            <field name="code">23142000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23140000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Office stationary</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23143000" model="account.account.template">
+            <field name="code">23143000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23140000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OFE - IT stuff</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23143100" model="account.account.template">
+            <field name="code">23143100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23143000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Office IT stationary</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23143900" model="account.account.template">
+            <field name="code">23143900</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23143000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name"> OFE - Others materials and stuff</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23150000" model="account.account.template">
+            <field name="code">23150000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Food and beverage</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23160000" model="account.account.template">
+            <field name="code">23160000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OFE - Phone, Internet</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record> 
+        <record id="fal_gen_chart23161000" model="account.account.template">
+            <field name="code">23161000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23160000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Internet</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23162000" model="account.account.template">
+            <field name="code">23162000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23160000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Fixe</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23163000" model="account.account.template">
+            <field name="code">23163000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23160000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Mobile</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23164000" model="account.account.template">
+            <field name="code">23164000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23160000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Mailing</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23170000" model="account.account.template">
+            <field name="code">23170000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Renting Expenses (RTE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record> 
+        <record id="fal_gen_chart23171000" model="account.account.template">
+            <field name="code">23171000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23170000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">RTE - Building / Office renting</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record> 
+        <record id="fal_gen_chart23171100" model="account.account.template">
+            <field name="code">23171100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23171000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RTE - Building / Office renting</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23171200" model="account.account.template">
+            <field name="code">23171200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23171000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RTE - Plant</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23171300" model="account.account.template">
+            <field name="code">23171300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23171000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RTE - Workers' Appartments</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23172000" model="account.account.template">
+            <field name="code">23172000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23170000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RTE - Leasing</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23173000" model="account.account.template">
+            <field name="code">23173000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23170000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">RTE - Renting and management fees</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>         
+        <record id="fal_gen_chart23173100" model="account.account.template">
+            <field name="code">23173100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23173000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RTE - Plant management fees</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23173200" model="account.account.template">
+            <field name="code">23173200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23173000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">RTE - Director's Appartment management fees</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23173300" model="account.account.template">
+            <field name="code">23173300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23173000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name"> RTE - Workers' Appartments management fees</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23180000" model="account.account.template">
+            <field name="code">23180000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OFE - Bank Charges</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23181000" model="account.account.template">
+            <field name="code">23181000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23180000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Company Bank Charges</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23182000" model="account.account.template">
+            <field name="code">23182000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23180000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OFE - Customer Bank Charges</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23200000" model="account.account.template">
+            <field name="code">23200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OSE - Office services Expenses</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23210000" model="account.account.template">
+            <field name="code">23210000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name"> OSE - Audit /Lawyer/Finance/..</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23211000" model="account.account.template">
+            <field name="code">23211000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Audit</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23212000" model="account.account.template">
+            <field name="code">23212000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Accountant</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23213000" model="account.account.template">
+            <field name="code">23213000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Lawyer</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23214000" model="account.account.template">
+            <field name="code">23214000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Finance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23215000" model="account.account.template">
+            <field name="code">23215000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23210000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - HR / Recruitment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23220000" model="account.account.template">
+            <field name="code">23220000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OSE - Informatic</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23221000" model="account.account.template">
+            <field name="code">23221000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Hardware maintenance (computer, printer,...)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23222000" model="account.account.template">
+            <field name="code">23222000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Software maintenance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23223000" model="account.account.template">
+            <field name="code">23223000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - ERP</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23224000" model="account.account.template">
+            <field name="code">23224000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Infomatic others</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23225000" model="account.account.template">
+            <field name="code">23225000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23220000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Management</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23230000" model="account.account.template">
+            <field name="code">23230000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OSE - Commercial / Marketing / Sales</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23231000" model="account.account.template">
+            <field name="code">23231000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23230000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Design (trade fair,..)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23232000" model="account.account.template">
+            <field name="code">23232000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23230000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Partnership/Membership Fee</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23233000" model="account.account.template">
+            <field name="code">23233000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23230000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Other commercial-marketing-sales services</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23240000" model="account.account.template">
+            <field name="code">23240000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OSE - Insurance fees expenses (IFE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23241000" model="account.account.template">
+            <field name="code">23241000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23240000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IFE - Multirisk</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23242000" model="account.account.template">
+            <field name="code">23242000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23240000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">IFE - Transportation insurance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23242100" model="account.account.template">
+            <field name="code">23242100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23242000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IFE - on purchases</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23242200" model="account.account.template">
+            <field name="code">23242200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23242000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IFE - on sales</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23242900" model="account.account.template">
+            <field name="code">23242900</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23242000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IFE - Other transportation insurance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23250000" model="account.account.template">
+            <field name="code">23250000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Cleaning service fee</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23260000" model="account.account.template">
+            <field name="code">23260000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">OSE - Maintainance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23261000" model="account.account.template">
+            <field name="code">23261000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23260000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Plant Maintainance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23262000" model="account.account.template">
+            <field name="code">23262000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23260000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Director's Appartment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23270000" model="account.account.template">
+            <field name="code">23270000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23200000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">OSE - Supplier Chain</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23300000" model="account.account.template">
+            <field name="code">23300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Travelling, mission and public relation expenses</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23310000" model="account.account.template">
+            <field name="code">23310000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Travelling Expenses</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23311000" model="account.account.template">
+            <field name="code">23311000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23310000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Mission Local Travelling (MLT)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23311100" model="account.account.template">
+            <field name="code">23311100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Taxi</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23311200" model="account.account.template">
+            <field name="code">23311200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Train</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+         <record id="fal_gen_chart23311300" model="account.account.template">
+            <field name="code">23311300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Flight</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23311400" model="account.account.template">
+            <field name="code">23311400</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Bus</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>       
+        <record id="fal_gen_chart23311500" model="account.account.template">
+            <field name="code">23311500</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Private Car</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23311600" model="account.account.template">
+            <field name="code">23311600</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Private Car</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+         <record id="fal_gen_chart23311700" model="account.account.template">
+            <field name="code">23311700</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Gazoline</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23311800" model="account.account.template">
+            <field name="code">23311800</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Toll gate</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23311900" model="account.account.template">
+            <field name="code">23311900</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Other mission local travelling</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23312000" model="account.account.template">
+            <field name="code">23312000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23310000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name"> Mission Abroad Travelling (MAT)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23312100" model="account.account.template">
+            <field name="code">23312100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Taxi</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23321200" model="account.account.template">
+            <field name="code">23321200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23311000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Train</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+         <record id="fal_gen_chart23321300" model="account.account.template">
+            <field name="code">23321300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Flight</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23321400" model="account.account.template">
+            <field name="code">23321400</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Bus</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>       
+        <record id="fal_gen_chart23321500" model="account.account.template">
+            <field name="code">23321500</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Private Car</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23321600" model="account.account.template">
+            <field name="code">23321600</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Private Car</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+         <record id="fal_gen_chart23321700" model="account.account.template">
+            <field name="code">23321700</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Gazoline</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23321800" model="account.account.template">
+            <field name="code">23321800</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Toll gate</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23321900" model="account.account.template">
+            <field name="code">23321900</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23312000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MLT - Other mission local travelling</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23320000" model="account.account.template">
+            <field name="code">23320000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name"> Mission expenses (MSE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>
+        <record id="fal_gen_chart23321000" model="account.account.template">
+            <field name="code">23321000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MSE - Restaurant / Food</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>          
+        <record id="fal_gen_chart23322000" model="account.account.template">
+            <field name="code">23322000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MSE - Water / Drink</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>          
+        <record id="fal_gen_chart23323000" model="account.account.template">
+            <field name="code">23323000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23320000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">MSE - Night / Hotel</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>          
+        <record id="fal_gen_chart23330000" model="account.account.template">
+            <field name="code">23330000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23300000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Public relation expenses (PRE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23331000" model="account.account.template">
+            <field name="code">23331000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23330000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PRE - Customer's gifts</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23332000" model="account.account.template">
+            <field name="code">23332000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23330000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PRE - Trade fair</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart23333000" model="account.account.template">
+            <field name="code">23333000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23330000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name"> PRE - Reception fees</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record> 
+        <record id="fal_gen_chart23334000" model="account.account.template">
+            <field name="code">23334000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23330000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PRE - Networking</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart23335000" model="account.account.template">
+            <field name="code">23335000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23330000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">PRE - Entertainment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23335100" model="account.account.template">
+            <field name="code">23335100</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23335000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PRE - Customer's entertainment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>
+        <record id="fal_gen_chart23335200" model="account.account.template">
+            <field name="code">23335200</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23335000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PRE - Supplier's entertainment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23335300" model="account.account.template">
+            <field name="code">23335300</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23335000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">PRE - Company entertainment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23400000" model="account.account.template">
+            <field name="code">23400000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EMPLOYEE EXPENSES</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23410000" model="account.account.template">
+            <field name="code">23410000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">WSE - Salary</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23420000" model="account.account.template">
+            <field name="code">23420000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">WSE - Paid leave</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23430000" model="account.account.template">
+            <field name="code">23430000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">WSE - Commission</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart23440000" model="account.account.template">
+            <field name="code">23440000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">WSE - Bonus </field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23450000" model="account.account.template">
+            <field name="code">23450000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">WSE - Advantage in Nature (ADN)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23460000" model="account.account.template">
+            <field name="code">23460000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">WSE - Overtime</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart23470000" model="account.account.template">
+            <field name="code">23470000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23400000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">WSE - Overtime</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>         
+        <record id="fal_gen_chart23471000" model="account.account.template">
+            <field name="code">23471000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23470000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IBE - Employee Insurance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart23472000" model="account.account.template">
+            <field name="code">23472000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23470000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">IBE - Housing allowance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23500000" model="account.account.template">
+            <field name="code">23500000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">General Taxes (GTE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>         
+        <record id="fal_gen_chart23510000" model="account.account.template">
+            <field name="code">23510000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">GTE - Property tax</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23511000" model="account.account.template">
+            <field name="code">23511000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23510000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Factory</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23512000" model="account.account.template">
+            <field name="code">23512000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23510000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Workers' Appartments</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart23513000" model="account.account.template">
+            <field name="code">23513000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23510000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Director's Appartment</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>                 
+        <record id="fal_gen_chart23520000" model="account.account.template">
+            <field name="code">23520000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Custom Clearance</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23530000" model="account.account.template">
+            <field name="code">23530000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Business registration fee</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23540000" model="account.account.template">
+            <field name="code">23540000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - City Construction Tax</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23550000" model="account.account.template">
+            <field name="code">23550000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Education Tax</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23560000" model="account.account.template">
+            <field name="code">23560000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Local Education Tax</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23570000" model="account.account.template">
+            <field name="code">23570000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23500000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">GTE - Non refundable VAT</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23600000" model="account.account.template">
+            <field name="code">23600000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EXCEPTIONAL EXPENSES (EXE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>         
+        <record id="fal_gen_chart23610000" model="account.account.template">
+            <field name="code">23610000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23600000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EXE - Penalties, tax and legal fines</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23620000" model="account.account.template">
+            <field name="code">23620000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23600000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EXE - Provision for risk on supplier</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>        
+        <record id="fal_gen_chart23621000" model="account.account.template">
+            <field name="code">23621000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23620000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">EXE - Provision for risk</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>         
+        <record id="fal_gen_chart23621000" model="account.account.template">
+            <field name="code">23621000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23620000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EXE - Provision for risk on unpaid invoices</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart23622000" model="account.account.template">
+            <field name="code">23622000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart23620000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">EXE - Provision for risk on supplier</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart24000000" model="account.account.template">
+            <field name="code">24000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart20000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Dotation to depreciation and provision (DDP)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>        
+        <record id="fal_gen_chart24100000" model="account.account.template">
+            <field name="code">24100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">DDP - Untangible assets</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>        
+        <record id="fal_gen_chart24110000" model="account.account.template">
+            <field name="code">24110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">DDP - Machinery and equipment</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>        
+        <record id="fal_gen_chart24111000" model="account.account.template">
+            <field name="code">24111000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24110000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Industrial machinery</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>        
+        <record id="fal_gen_chart24112000" model="account.account.template">
+            <field name="code">24112000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24110000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Industrial equipment</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>         
+        <record id="fal_gen_chart24120000" model="account.account.template">
+            <field name="code">24120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24100000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">DDP - General Installation / Fitting out</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>        
+        <record id="fal_gen_chart24121000" model="account.account.template">
+            <field name="code">24121000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Car</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>        
+        <record id="fal_gen_chart24130000" model="account.account.template">
+            <field name="code">24130000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Transportation Material</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>
+        <record id="fal_gen_chart24190000" model="account.account.template">
+            <field name="code">24190000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Other Untangible assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>        
+        <record id="fal_gen_chart24200000" model="account.account.template">
+            <field name="code">24200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - tangible assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record> 
+        <record id="fal_gen_chart24300000" model="account.account.template">
+            <field name="code">24300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Office &amp; IT Materials</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>         
+        <record id="fal_gen_chart24400000" model="account.account.template">
+            <field name="code">24400000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Regulated Provision (GP)</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>        
+        <record id="fal_gen_chart24500000" model="account.account.template">
+            <field name="code">24500000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">DDP - Risk Provision (RP)</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>         
+        <record id="fal_gen_chart24900000" model="account.account.template">
+            <field name="code">24900000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart24000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name"> DDP - Dotation to depreciation and provision on other assets</field>
+            <field name="user_type" ref="user_type_fal_capital"/>
+        </record>        
+        <record id="fal_gen_chart25000000" model="account.account.template">
+            <field name="code">25000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart20000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">FINANCIAL REVENU &amp; CHARGES</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
+        <record id="fal_gen_chart25100000" model="account.account.template">
+            <field name="code">25100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">FINANCIAL REVENU</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>        
+        <record id="fal_gen_chart25110000" model="account.account.template">
+            <field name="code">25110000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">FIR - Loan Interest revenu</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>         
+        <record id="fal_gen_chart25120000" model="account.account.template">
+            <field name="code">25120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25100000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">FIR - Shares revenu</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>        
+        <record id="fal_gen_chart25120000" model="account.account.template">
+            <field name="code">25120000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">FINANCE EXPENSES (FIE)</field>
+            <field name="user_type" ref="user_type_fal_pl_expense_view"/>
+        </record>         
+        <record id="fal_gen_chart25121000" model="account.account.template">
+            <field name="code">25121000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25120000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">FIE - Interest Charges</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>         
+        <record id="fal_gen_chart25300000" model="account.account.template">
+            <field name="code">25300000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Exchange Rate Gain and Loss (EXR)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>           
+        <record id="fal_gen_chart25310000" model="account.account.template">
+            <field name="code">25310000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25300000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">FIE - Exchange rate loss</field>
+            <field name="user_type" ref="user_type_fal_pl_expense"/>
+        </record>        
+        <record id="fal_gen_chart25320000" model="account.account.template">
+            <field name="code">25320000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart25300000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">FIE - Exchange rate loss</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>        
+        <record id="fal_gen_chart28000000" model="account.account.template">
+            <field name="code">28000000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart20000000" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Profit TAX</field>
+            <field name="user_type" ref="user_type_fal_pl_income_view"/>
+        </record>        
+        <record id="fal_gen_chart28100000" model="account.account.template">
+            <field name="code">28100000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart28000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Hongkong Profit tax</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>        
+        <record id="fal_gen_chart28200000" model="account.account.template">
+            <field name="code">28200000</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart28000000" name="parent_id"/>
+            <field name="type">other</field>
+            <field name="name">Shenzhen Profit tax</field>
+            <field name="user_type" ref="user_type_fal_pl_income"/>
+        </record>         
+
+        <!-- Chart template -->
+        <record id="falinwa_generic_coa_template" model="account.chart.template">
+            <field name="name">Falinwa Generic CoA(2014-2015)</field>
+            <field name="account_root_id" ref="fal_gen_root"/>
+            <field name="code_digits" eval="8"/>
+            <field name="bank_account_view_id" ref="fal_gen_chart11312110"/>
+            <field name="property_account_receivable" ref="fal_gen_chart11410000"/>
+            <field name="property_account_payable" ref="fal_gen_chart12410000"/>
+            <field name="property_account_expense_categ" ref="fal_gen_chart22130000"/>
+            <field name="property_account_income_categ" ref="fal_gen_chart21120000"/>
+        </record>
+
+        <record id="falinwa_generic_coa_value" model="ir.values">
+            <field name="name">Falinwa Generic CoA</field>
+            <field name="model">account.chart.template</field>
+            <field name="key">default</field>
+            <field name="res_id" ref="falinwa_generic_coa_template"/>
+            <field name="value" ref="base.CNY"/>
+        </record>
+
+        <!-- General Business Account Tax Template -->
+        <record id="fal_generic_vats17" model="account.tax.template">
+            <field name="chart_template_id" ref="falinwa_generic_coa_template"/>
+            <field name="name">Sale Tax 17%</field>
+            <field eval="0.17" name="amount"/>
+            <field name="type">percent</field>
+            <field name="account_collected_id" ref="fal_gen_chart12621100"/>
+            <field name="account_paid_id" ref="fal_gen_chart12621100"/>
+            <field name="type_tax_use">sale</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="fal_generic_vatp17" model="account.tax.template">
+            <field name="chart_template_id" ref="falinwa_generic_coa_template"/>
+            <field name="name">Purchase Tax 17%</field>
+            <field eval="0.17" name="amount"/>
+            <field name="type">percent</field>
+            <field name="account_collected_id" ref="fal_gen_chart12622100"/>
+            <field name="account_paid_id" ref="fal_gen_chart12622100"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="sequence">1</field>
+        </record>
+        
+        <record id="fal_genericn_vats3" model="account.tax.template">
+            <field name="chart_template_id" ref="falinwa_generic_coa_template"/>
+            <field name="name">Sale Tax 3%</field>
+            <field eval="0.3" name="amount"/>
+            <field name="type">percent</field>
+            <field name="account_collected_id" ref="fal_gen_chart12621100"/>
+            <field name="account_paid_id" ref="fal_gen_chart12621100"/>
+            <field name="type_tax_use">sale</field>
+            <field name="sequence">2</field>
+        </record>
+        <record id="fal_generic_vatp3" model="account.tax.template">
+            <field name="chart_template_id" ref="falinwa_generic_coa_template"/>
+            <field name="name">Purchase Tax 3%</field>
+            <field eval="0.3" name="amount"/>
+            <field name="type">percent</field>
+            <field name="account_collected_id" ref="fal_gen_chart12622200"/>
+            <field name="account_paid_id" ref="fal_gen_chart12622200"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="sequence">2</field>
+        </record>        
+        
+    </data>
+</openerp>

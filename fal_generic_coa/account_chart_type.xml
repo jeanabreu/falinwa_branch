@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data noupdate="True">
+        
+        <!-- Account Type for Generic Chart -->
+        <record id="user_type_fal_capital" model="account.account.type">
+            <field name="name">Asset</field>
+            <field name="code">Asset</field>
+            <field name="close_method">balance</field>
+            <field name="report_type">asset</field>
+        </record>
+        <record id="user_type_fal_accountreceivable" model="account.account.type">
+            <field name="name">Account Receivable</field>
+            <field name="code">Asset</field>
+            <field name="close_method">unreconciled</field>
+            <field name="report_type">asset</field>
+        </record>        
+        <record id="user_type_fal_balance_sheetview" model="account.account.type">
+            <field name="name">Balance Sheet View</field>
+            <field name="code">Balance Sheet view</field>
+            <field name="close_method">none</field>
+            <field name="report_type">none</field>
+        </record>
+        <record id="user_type_fal_assetview" model="account.account.type">
+            <field name="name">Asset View</field>
+            <field name="code">Asset view</field>
+            <field name="close_method">none</field>
+            <field name="report_type">asset</field>
+        </record>
+        <record id="user_type_fal_bank" model="account.account.type">
+            <field name="name">Bank</field>
+            <field name="code">Bank</field>
+            <field name="close_method">balance</field>
+            <field name="report_type">asset</field>
+        </record>        
+        <record id="user_type_fal_cash" model="account.account.type">
+            <field name="name">Cash</field>
+            <field name="code">Cash</field>
+            <field name="close_method">balance</field>
+            <field name="report_type">asset</field>
+        </record>
+        <record id="user_type_fal_costview" model="account.account.type">
+            <field name="name">COGS View</field>
+            <field name="code">COGS View</field>
+            <field name="close_method">none</field>
+            <field name="report_type">expense</field>
+        </record>        
+        <record id="user_type_fal_cost" model="account.account.type">
+            <field name="name">COGS</field>
+            <field name="code">COGS</field>
+            <field name="close_method">none</field>
+            <field name="report_type">expense</field>
+        </record>
+        <record id="user_type_fal_equity" model="account.account.type">
+            <field name="name">Equity</field>
+            <field name="code">Equity</field>
+            <field name="close_method">balance</field>
+            <field name="report_type">liability</field>
+        </record>
+        <record id="user_type_fal_equity_view" model="account.account.type">
+            <field name="name">Equity View</field>
+            <field name="code">Equity</field>
+            <field name="close_method">none</field>
+            <field name="report_type">liability</field>
+        </record>
+        <record id="user_type_fal_pl_expense" model="account.account.type">
+            <field name="name">P&amp;L Expense</field>
+            <field name="code">Expense</field>
+            <field name="close_method">none</field>
+            <field name="report_type">expense</field>
+        </record>        
+        <record id="user_type_fal_pl_expense_view" model="account.account.type">
+            <field name="name">P&amp;L Expense View</field>
+            <field name="code">Expense view</field>
+            <field name="close_method">none</field>
+            <field name="report_type">expense</field>
+        </record>
+        <record id="user_type_fal_pl_income" model="account.account.type">
+            <field name="name">P&amp;L Income</field>
+            <field name="code">Income</field>
+            <field name="close_method">none</field>
+            <field name="report_type">income</field>
+        </record>        
+        <record id="user_type_fal_pl_income_view" model="account.account.type">
+            <field name="name">P&amp;L Income View</field>
+            <field name="code">Income view</field>
+            <field name="close_method">none</field>
+            <field name="report_type">income</field>
+        </record>
+        <record id="user_type_fal_accountpayable" model="account.account.type">
+            <field name="name">Account Payable</field>
+            <field name="code">Liability</field>
+            <field name="close_method">unreconciled</field>
+            <field name="report_type">liability</field>
+        </record>        
+        <record id="user_type_fal_debt" model="account.account.type">
+            <field name="name">Liability</field>
+            <field name="code">Liability</field>
+            <field name="close_method">balance</field>
+            <field name="report_type">liability</field>
+        </record>
+        <record id="user_type_fal_liability_view" model="account.account.type">
+            <field name="name">Liability View</field>
+            <field name="code">Liability View</field>
+            <field name="close_method">none</field>
+            <field name="report_type">liability</field>
+        </record>
+        <record id="user_type_fal_all" model="account.account.type">
+            <field name="name">Root View</field>
+            <field name="code">View</field>
+            <field name="close_method">none</field>
+            <field name="report_type">none</field>
+        </record>
+
+    </data>
+</openerp>

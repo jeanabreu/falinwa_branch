@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+    <data noupdate="True">
+        <!-- Tax Code Configuration -->
+        <!-- root -->
+        <record id="vat_generic_chart_root" model="account.tax.code.template">
+            <field name="name">Plan Fees</field>
+            <field name="parent_id" eval="False"/>
+        </record>
+        <!-- view -->
+        <record id="vat_generic_chart_tb" model="account.tax.code.template">
+            <field name="name">Tax Bases</field>
+            <field name="parent_id" eval="vat_generic_chart_root"/>
+        </record>
+        <record id="vat_generic_chart_tbp" model="account.tax.code.template">
+            <field name="name">Tax Balance to Pay</field>
+            <field name="parent_id" eval="vat_generic_chart_root"/>
+        </record>        
+
+        <!-- view 2 -->
+        <record id="vat_generic_chart_tr" model="account.tax.code.template">
+            <field name="name">Tax Received</field>
+            <field name="parent_id" eval="vat_generic_chart_tbp"/>
+        </record>        
+        <record id="vat_generic_chart_tp" model="account.tax.code.template">
+            <field name="name">Tax Paid</field>
+            <field name="parent_id" eval="vat_generic_chart_tbp"/>
+        </record>        
+        <record id="vat_generic_chart_tsb" model="account.tax.code.template">
+            <field name="name">Taxable Sales base</field>
+            <field name="parent_id" eval="vat_generic_chart_tb"/>
+        </record>
+        <record id="vat_generic_chart_tpb" model="account.tax.code.template">
+            <field name="name">Taxable Purchases Base</field>
+            <field name="parent_id" eval="vat_generic_chart_tb"/>
+        </record>        
+        
+        <!-- child -->        
+        <record id="vat_generic_chart_tr17" model="account.tax.code.template">
+            <field name="name">Tax Received Rate 17%</field>
+            <field name="parent_id" eval="vat_generic_chart_tr"/>
+        </record>
+        <record id="vat_generic_chart_tr3" model="account.tax.code.template">
+            <field name="name">Tax Received Rate 3%</field>
+            <field name="parent_id" eval="vat_generic_chart_tr"/>
+        </record>        
+        <record id="vat_generic_chart_tp17" model="account.tax.code.template">
+            <field name="name">Tax Paid Rate 17%</field>
+            <field name="parent_id" eval="vat_generic_chart_tp"/>
+        </record>
+        <record id="vat_generic_chart_tp3" model="account.tax.code.template">
+            <field name="name">Tax Paid Rate 3%</field>
+            <field name="parent_id" eval="vat_generic_chart_tp"/>
+        </record>
+        
+        <record id="vat_generic_chart_tpb17" model="account.tax.code.template">
+            <field name="name">Taxable Purchases Rated 17%</field>
+            <field name="parent_id" eval="vat_generic_chart_tpb"/>
+        </record>
+        <record id="vat_generic_chart_tpb3" model="account.tax.code.template">
+            <field name="name">Taxable Purchases Rated 3%</field>
+            <field name="parent_id" eval="vat_generic_chart_tpb"/>
+        </record>        
+        <record id="vat_generic_chart_tsb17" model="account.tax.code.template">
+            <field name="name">Taxable Sale Rated 17%</field>
+            <field name="parent_id" eval="vat_generic_chart_tsb"/>
+        </record>
+        <record id="vat_generic_chart_tsb3" model="account.tax.code.template">
+            <field name="name">Taxable Sale Rated 3%</field>
+            <field name="parent_id" eval="vat_generic_chart_tsb"/>
+        </record>        
+        
+    </data>
+    
+    
+</openerp>

@@ -2897,6 +2897,7 @@
             <field name="account_root_id" ref="fal_gen_root"/>
             <field name="code_digits" eval="8"/>
             <field name="bank_account_view_id" ref="fal_gen_chart11312110"/>
+            <field name="tax_code_root_id" ref="vat_generic_chart_root"/>
             <field name="property_account_receivable" ref="fal_gen_chart11410000"/>
             <field name="property_account_payable" ref="fal_gen_chart12410000"/>
             <field name="property_account_expense_categ" ref="fal_gen_chart22130000"/>

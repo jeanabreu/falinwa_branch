@@ -15,9 +15,6 @@ class account_invoice(orm.Model):
         return result.keys()
         
     _columns = {
-        'commercial_partner_id': fields.related('partner_id', 'commercial_partner_id', string='Commercial Entity', type='many2one',
-                                                relation='res.partner', store=True, readonly=True,
-                                                help="The commercial entity that will be used on Journal Entries for this invoice"),
         'fal_parent_company' : fields.related('partner_id', 'fal_parent_company', string='Parent Company', type='many2one',
                                                 relation='res.partner', 
                                                 store={

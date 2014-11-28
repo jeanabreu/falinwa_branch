@@ -16,7 +16,7 @@ from openerp.tools.safe_eval import safe_eval as eval
 class hr_payslip(orm.Model):
     _name = 'hr.payslip'
     _inherit = 'hr.payslip'
-    
+    #overide real method
     def get_payslip_lines(self, cr, uid, contract_ids, payslip_id, context):
         results = super(hr_payslip, self).get_payslip_lines(cr, uid, contract_ids, payslip_id, context=context)
 
@@ -115,7 +115,14 @@ class hr_payslip(orm.Model):
                             result['rate'] = rate
                             result['fal_rate_er'] = rate2
         return results
-
+    
+    def cancel_sheet(self, cr, uid, ids, context=None):
+        move_obj = self.pool.get('account.move')
+        for payslip in self.browse(cr, uid, ids):
+            if payslip.move_id:
+                move_obj.button_cancel(cr, uid, [payslip.move_id.id], context)
+        return super(hr_payslip, self).cancel_sheet(cr, uid, ids, context)
+        
 #end of hr_payslip()
 
 
@@ -152,4 +159,15 @@ class hr_salary_rule(orm.Model):
     }
 #end of hr_salary_rule()
 
+class hr_contract(orm.Model):
+    _name = 'hr.contract'
+    _inherit = 'hr.contract'
+
+    _columns = {
+        'fal_fixed_allowance': fields.float('Job Allowance', digits=(16,2), required=True, help="Job Allowance of the employee"),
+        'fal_haf_base': fields.float('HAF Base', digits=(16,2), required=True, help="Based for House Allowance of the employee"),
+        'fal_si_base': fields.float('SI Base', digits=(16,2), required=True, help="Based for Social Insurance of the employee"),
+    }
+
+#end of hr_contract()
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

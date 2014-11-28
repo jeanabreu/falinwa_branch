@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "HRD-01_Expense Ext",
+    "name": "EEC Field Extends Module",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to add extention functional in expense
+    Module to add additional field for eec
     """,
-    "depends" : ['base', 'account', 'account_voucher', 'hr', 'hr_expense', 'fal_hr_ext'],
+    "depends" : ['sale','sale_stock','account'],
     'init_xml': [],
-    'update_xml': [
-        'sequence.xml',
-        'account_voucher_view.xml',
-        'hr_expense_view.xml'
+    'update_xml': [       
+        'account_view.xml',
+        'sale_view.xml',
+        'stock_inventory_view.xml',
     ],
     'css': [],
     'js' : [],

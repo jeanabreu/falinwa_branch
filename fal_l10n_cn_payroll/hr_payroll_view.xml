@@ -2,12 +2,34 @@
 <openerp>
     <data>
 
+        <record id="hr_contract_view_form_falpayrol" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.falpayroll</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="wage" position="after">
+                        <field name="fal_fixed_allowance" />
+                        <field name="fal_haf_base" />
+                        <field name="fal_si_base" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
         <record id="view_hr_payslip_form_fal_payroll" model="ir.ui.view">
             <field name="name">hr.payslip.form.fal.payroll</field>
             <field name="model">hr.payslip</field>
             <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
             <field name="arch" type="xml">
                 <data>
+                    <xpath expr="//button[@string='Cancel Payslip']" position="attributes">
+                        <attribute name="states">draft,hr_check,confirm,verify,done</attribute>
+                        <attribute name="groups">account.group_account_manager</attribute>
+                    </xpath>
+                    <button name="refund_sheet" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </button>
                     <xpath expr="//notebook/page[@string='Salary Computation']/field[@name='line_ids']/tree[@string='Salary Structure']" position="attributes">
                         <attribute name="colors">blue:amount == 0</attribute>
                     </xpath>

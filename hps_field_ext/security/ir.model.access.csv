@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ro_user_sale_order,fal.sale.order.ro.user,sale.model_sale_order,hps_field_ext.group_quotation_readonly_user,1,0,0,0
+access_ro_user_sale_order_lines,fal.sale.order.line.ro.user,sale.model_sale_order_line,hps_field_ext.group_quotation_readonly_user,1,0,0,0
+sale.access_sale_order,sale.order,sale.model_sale_order,base.group_sale_salesman,1,0,0,0
+sale.access_sale_order_line,sale.order.line,sale.model_sale_order_line,base.group_sale_salesman,1,0,0,0
+access_sale_order_all_sale,sale.order all leads,sale.model_sale_order,base.group_sale_salesman_all_leads,1,1,1,1
+access_sale_order_line_all_sale,sale.order.line all leads,sale.model_sale_order_line,base.group_sale_salesman_all_leads,1,1,1,1
+
+access_purchase_order_invoice_user,purchase.order.invoice.user,purchase.model_purchase_order,account.group_account_invoice,1,1,1,1
+access_purchase_order_line_invoice_user,purchase.order.line.invoice.user,purchase.model_purchase_order_line,account.group_account_invoice,1,1,1,1

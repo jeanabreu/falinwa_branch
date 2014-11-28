@@ -43,9 +43,9 @@ class hr_payslip(orm.Model):
                 amt = slip.credit_note and -line.total or line.total
                 partner_id = line.salary_rule_id.register_id.partner_id and line.salary_rule_id.register_id.partner_id.id or default_partner_id
                 debit_account_id = line.salary_rule_id.account_debit.id
-                credit_account_id = line.salary_rule_id.account_credit.id
-                
+                credit_account_id = line.salary_rule_id.account_credit.id                
                 #modif start here
+                anal_account = (line.salary_rule_id.analytic_account_id and line.salary_rule_id.analytic_account_id.id) or (slip.contract_id.analytic_account_id and slip.contract_id.analytic_account_id.id) or False                
                 if debit_account_id and amt != 0.00 :
                 #end here
                     debit_line = (0, 0, {
@@ -57,7 +57,9 @@ class hr_payslip(orm.Model):
                     'period_id': period_id,
                     'debit': amt > 0.0 and amt or 0.0,
                     'credit': amt < 0.0 and -amt or 0.0,
-                    'analytic_account_id': line.salary_rule_id.analytic_account_id and line.salary_rule_id.analytic_account_id.id or False,
+                    #modif start here
+                    'analytic_account_id': anal_account,
+                    #end here
                     'tax_code_id': line.salary_rule_id.account_tax_id and line.salary_rule_id.account_tax_id.id or False,
                     'tax_amount': line.salary_rule_id.account_tax_id and amt or 0.0,
                 })
@@ -75,7 +77,9 @@ class hr_payslip(orm.Model):
                     'period_id': period_id,
                     'debit': amt < 0.0 and -amt or 0.0,
                     'credit': amt > 0.0 and amt or 0.0,
-                    'analytic_account_id': line.salary_rule_id.analytic_account_id and line.salary_rule_id.analytic_account_id.id or False,
+                    #modif start here
+                    'analytic_account_id': anal_account,
+                    #end here
                     'tax_code_id': line.salary_rule_id.account_tax_id and line.salary_rule_id.account_tax_id.id or False,
                     'tax_amount': line.salary_rule_id.account_tax_id and amt or 0.0,
                 })
@@ -95,6 +99,7 @@ class hr_payslip(orm.Model):
                     'period_id': period_id,
                     'debit': 0.0,
                     'credit': debit_sum - credit_sum,
+                    'analytic_account_id': slip.contract_id.analytic_account_id and slip.contract_id.analytic_account_id.id or False,
                 })
                 line_ids.append(adjust_credit)
 
@@ -111,6 +116,7 @@ class hr_payslip(orm.Model):
                     'period_id': period_id,
                     'debit': credit_sum - debit_sum,
                     'credit': 0.0,
+                    'analytic_account_id': slip.contract_id.analytic_account_id and slip.contract_id.analytic_account_id.id or False,
                 })
                 line_ids.append(adjust_debit)
             move.update({'line_id': line_ids})
@@ -118,7 +124,7 @@ class hr_payslip(orm.Model):
             self.write(cr, uid, [slip.id], {'move_id': move_id, 'period_id' : period_id}, context=context)
             if slip.journal_id.entry_posted:
                 move_pool.post(cr, uid, [move_id], context=context)
-        return super(hr_payslip, self).process_sheet(cr, uid, [slip.id], context=context)
+        return self.write(cr, uid, ids, {'paid': True, 'state': 'done'}, context=context)
 
 #end of hr_payslip()
 

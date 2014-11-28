@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "HRD-01_Expense Ext",
+    "name": "HRD-02_Expense Control",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to add extention functional in expense
+    Module to add expense budget field in product that can be expense, and add control on expense.
     """,
-    "depends" : ['base', 'account', 'account_voucher', 'hr', 'hr_expense', 'fal_hr_ext'],
+    "depends" : ['base', 'account', 'hr_expense'],
     'init_xml': [],
     'update_xml': [
-        'sequence.xml',
-        'account_voucher_view.xml',
+        'wizard/fal_expense_line_reason_wizard_view.xml',
+        'hr_expense_report.xml',
         'hr_expense_view.xml'
     ],
-    'css': [],
+    'css': ['static/css/expense.css'],
     'js' : [],
     'installable': True,
     'active': False,

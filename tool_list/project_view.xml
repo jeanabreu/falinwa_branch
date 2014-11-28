@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Project -->
+        <record id="fal_edit_project" model="ir.ui.view">
+            <field name="name">fal.project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="%(project.act_project_project_2_project_task_all)d" position="replace">
+                        <button name="%(project.act_project_project_2_project_task_all)d" string="Tools"
+                                                                        type="action" attrs="{'invisible':[('use_tasks','=', 0)]}" position="replace" />
+                    </button>
+                </data>
+            </field>           
+        </record>
+
+
+        <record id="view_project_fal_toolist" model="ir.ui.view">
+            <field name="name">project.project.tree.fal.toolist</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+                <field name="progress_rate" widget="progressbar" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="fal_view_project_kanban">
+            <field name="name">fal.project.project.kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[contains(@class, 'oe_kanban_project_list')]" position="replace">
+                        <div class="oe_kanban_project_list">
+                            <a t-if="record.use_tasks.raw_value" name="%(project.act_project_project_2_project_task_all)d" type="action" style="margin-right: 10px"> 
+                                <span t-if="record.task_count.raw_value gt 1"><field name="task_count"/> Tools</span>
+                                <span t-if="record.task_count.raw_value lt 2"><field name="task_count"/> Tools</span>
+                            </a>
+                            <p>
+                            Project Manager : <field name="user_id" />
+                            </p>
+                        </div>
+                    </xpath>
+                    <xpath expr="//div[contains(@class, 'oe_kanban_footer_left')]/span[@groups='project.group_time_work_estimation_tasks']" position="attributes">
+                        <attribute name="t-if">False</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="fal_toolist_view_task_kanban">
+            <field name="name">project.task.kanban.fal.toolist</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <data>
+                   <span groups="project.group_time_work_estimation_tasks" title="Remaining hours" position="attributes">
+                        <attribute name="t-if">False</attribute>
+                    </span>
+                </data>
+            </field>
+        </record>
+
+        <!-- overide -->
+        <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
+            <field name="name">Tools</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{'search_default_project_id': [active_id], 'default_project_id': active_id, 'active_test': False}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new tools.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tools in order to get things done efficiently. You can
+                track progress, discuss on tools, attach documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <record id="fal_view_task_form2" model="ir.ui.view">
+            <field name="name">fal.project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="stage_id" widget="statusbar" clickable="True" position="attributes">
+                        <attribute name="domain">['|',('case_default', '=', True), ('project_ids', '=', project_id)]</attribute>
+                    </field>
+                    <xpath expr="//sheet/group/group[last()]" position="replace">
+                        <group>
+                            <group>
+                                <field name="date_deadline" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+                                <field name="categ_ids" widget="many2many_tags"/>
+                                <field name="progress" widget="progressbar"
+                                    groups="project.group_time_work_estimation_tasks" attrs="{'invisible':[('state','=','cancelled')]}"/>
+                            </group>
+                            <group>
+                                <field name="date_deadline_re" readonly="1" />
+                                <field name="t_one_date_re" readonly="1" />
+                                <field name="shipment_date_re" readonly="1" />
+                            </group>
+                        </group>
+                    </xpath>
+                    <field name="planned_hours" position="after">
+                        <field name="tool_list_destination_id" on_change="onchange_dest(tool_list_destination_id)"/>
+                        <field name="tool_list_destination_id_name" invisible="1" />
+                        <field name="production_site_id" attrs="{'invisible':[('tool_list_destination_id_name','!=','ON Tool')]}" />
+                    </field>
+                    <sheet string="Task" position="attributes">
+                        <attribute name="string">Tools</attribute>
+                    </sheet>
+                    <field name="name" placeholder="Task summary..." position="attributes">
+                        <attribute name="placeholder">Tools summary...</attribute>
+                    </field>
+                    <field name="name" placeholder="Task summary..." position="after">
+                        <field name="tool_number" readonly="1" />  
+                    </field>
+                    <field name="date_deadline" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}" position="after">
+                        <field name="t_one_date_ex" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+                        <field name="shipment_date_ex" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+                    </field>
+                    <field name="progress" widget="progressbar"
+                        groups="project.group_time_work_estimation_tasks" attrs="{'invisible':[('state','=','cancelled')]}" position="after">
+                        <field name="part_quantity" />
+                    </field>
+                    <field name="progress" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="priority" position="replace">
+                    </field>
+                    <field name="partner_id" position="replace">
+                    </field>
+                    <field name="user_id" position="after">
+                        <field name="partner_id" />
+                        <field name="priority" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="fal_view_task_form3" model="ir.ui.view">
+            <field name="name">fal.project.task.form.fal.toolist3</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="fal_view_task_form2"/>
+            <field name="groups_id" eval="[(6,0,[ref('project.group_project_manager')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_deadline_re" position="attributes">
+                        <attribute name="readonly">0</attribute>
+                    </field>
+                    <field name="t_one_date_re" position="attributes">
+                        <attribute name="readonly">0</attribute>
+                    </field>
+                    <field name="shipment_date_re" position="attributes">
+                        <attribute name="readonly">0</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <!-- overide -->
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tool List</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new tools.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tools in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_task_tree2_fal_toolist" model="ir.ui.view">
+            <field name="name">project.task.tree.fal.toolist</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2" />
+            <field name="arch" type="xml">
+                <field name="name" position="replace">
+                </field>
+                <field name="project_id" position="after">
+                    <field name="name"/>
+                    <field name="tool_number"/>
+                    <field name="tool_list_destination_id" />
+                    <field name="production_site_id"/>
+                </field>
+                <field name="remaining_hours" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="progress" widget="progressbar" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+            </field>
+        </record>
+        
+        <record id="fal_view_task_search_form" model="ir.ui.view">
+            <field name="name">fal.project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="name" string="Tasks" position="attributes">
+                        <attribute name="string">Tools</attribute>
+                    </field>
+                    <field name="name" string="Tasks" position="attributes">
+                        <attribute name="string">Tools</attribute>
+                    </field>
+                    <field name="name" position="after">
+                        <field name="tool_number"/>
+                    </field>
+                    <filter string="End Date" position="after">
+                        <filter string="Tool List Destination" domain="[]" context="{'group_by':'tool_list_destination_id'}" groups="base.group_no_one"/>
+                        <filter string="Production Site" domain="[]" context="{'group_by':'production_site_id'}" groups="base.group_no_one"/>
+                    </filter>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_partner_form_fal_toolist" model="ir.ui.view">
+            <field name="name">res.partner.form.fal.toolist</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="customer" position="before">
+                        <field name="production_site" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="project_long_term.action_project_compute_tasks" model="ir.actions.act_window">
+               <field name="name">Schedule Tools</field>
+               <field name="type">ir.actions.act_window</field>
+               <field name="res_model">project.compute.tasks</field>
+               <field name="view_type">form</field>
+               <field name="view_mode">form</field>
+               <field name="view_id" ref="project_long_term.view_project_compute_tasks"/>
+               <field name="target">new</field>
+        </record>
+
+        <record id="ir_cron_tool_color_action" model="ir.cron">
+            <field name="name">Tool Color</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'project.task'" name="model"/>
+            <field eval="'_get_color_view'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+        
+        <!-- override -->
+        <record model="ir.actions.act_window" id="project_gtd.open_gtd_task">
+            <field name="name">My Tools</field>
+            <field name="res_model">project.task</field>
+            <field name="search_view_id" ref="project_gtd.view_task_gtd_search"/>
+            <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field>
+            <field name="domain">[('user_id','=',uid)]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="open_tool_list_production">
+            <field name="name">Tool List Production Site</field>
+            <field name="res_model">project.task</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('tool_list_destination_id_name','=','ON Tool')]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new tools.
+              </p><p>
+                OpenERP's project management allows you to manage the pipeline
+                of tools in order to get things done efficiently. You can
+                track progress, discuss on tasks, attach documents, etc.
+              </p>
+            </field>
+        </record>
+ 
+         <record id="view_task_search_form_fal_toolist" model="ir.ui.view">
+             <field name="name">task.search.form.fal.toolist</field>
+             <field name="model">project.task</field>
+             <field name="inherit_id" ref="project.view_task_search_form"/>
+             <field name="arch" type="xml">
+                 <field name="user_id" position="after">
+                     <filter name="latest" domain="[('date_deadline','&gt;',(context_today()-relativedelta(years=1)).strftime('%%Y-%%m-%%d'))]" string="1 Year Latest" />
+                 </field>
+             </field>
+        </record>
+ 
+        <!-- overide -->
+        <menuitem action="project.open_task_type_form" name="Tools Stages" id="project.menu_task_types_view" parent="base.menu_project_config_project" sequence="2"/>
+        <menuitem action="project.action_view_task" name="Tool List" id="project.menu_action_view_task" parent="project.menu_project_management" sequence="5"/>
+        <menuitem id="project_long_term.menu_compute_tasks" name="Schedule Tools"
+            parent="project_long_term.menu_phase_schedule" action="project_long_term.action_project_compute_tasks"/>
+        <act_window context="{'search_default_user_id': [active_id], 'default_user_id': active_id}" domain="[('state', '&lt;&gt;', 'cancelled'),('state', '&lt;&gt;', 'done')]" id="project.act_res_users_2_project_task_opened" name="Assigned Tools" res_model="project.task" src_model="res.users" view_mode="tree,form,gantt,calendar,graph" view_type="form"/>
+        <menuitem string="My Tools" action="project_gtd.open_gtd_task" id="project_gtd.menu_open_gtd_timebox_tree" parent="project.menu_project_management" sequence="10"/>
+        <menuitem string="Tool List Production Site" action="open_tool_list_production" id="tool_list_production" parent="project.menu_project_management" sequence="9"/>
+    </data>
+</openerp>

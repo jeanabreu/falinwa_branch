@@ -2,6 +2,32 @@
 <openerp>
     <data>
 
+        <record id="view_hr_expense_filter_fal_expensext" model="ir.ui.view">
+            <field name="name">hr.expense.expense.filter.fal.expensext</field>
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_hr_expense_filter" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="name" position="after">
+                        <field name="fal_expense_number" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_expenses_tree_fal_expenseext" model="ir.ui.view">
+            <field name="name">hr.expense.expense.tree.fal.expenseext</field>
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_expenses_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="employee_id" position="before">
+                        <field name="fal_expense_number" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
         <record id="view_expenses_form_fal_expense_ext" model="ir.ui.view">
             <field name="name">hr.expense.form.fal.expense.ext</field>
             <field name="model">hr.expense.expense</field>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_procurement_form_formulamrp_inherit" model="ir.ui.view">
+            <field name="name">procurement.order.form.formulamrp.inherit</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="origin" class="oe_inline" placeholder="e.g. SO005" position="after">
+                        <field name="fal_stroke" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

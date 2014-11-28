@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <document filename="test.pdf">
   <template title="Test" author="Martin Simon" allowSplitting="20">
     <pageTemplate id="first">
@@ -261,6 +261,9 @@
     <para style="P6">
       <font color="white"> </font>
     </para>
+    <para style="P6">
+      <font color="white"> </font>
+    </para>
     <para style="P6"/>
     <blockTable colWidths="200.0,60.0,65.0,61.0,61.0,61.0,61.0" style="Table8">
       <tr>
@@ -271,19 +274,24 @@
           <para style="P13">Quantity</para>
         </td>
         <td>
-          <para style="P13">Base Amount</para>
+          <para style="P13">Base</para>
+          <para style="P13">Amount</para>
         </td>
         <td>
-          <para style="P13">Employee Rate (%)</para>
+          <para style="P13">Employee</para>
+          <para style="P13">Rate (%)</para>
         </td>
         <td>
-          <para style="P14">Employee Total</para>
+          <para style="P14">Employee</para>
+          <para style="P14">Total</para>
         </td>
         <td>
-          <para style="P13">Employeer Rate (%)</para>
+          <para style="P13">Employeer</para>
+          <para style="P13">Rate (%)</para>
         </td>
         <td>
-          <para style="P14">Employeer Total</para>
+          <para style="P14">Employeer</para>
+          <para style="P14">Total</para>
         </td>
       </tr>
     </blockTable>

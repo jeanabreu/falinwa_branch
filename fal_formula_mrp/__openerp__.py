@@ -1,20 +1,23 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "HRD-01_Expense Ext",
+    "name": "MRP-03_Formula MRP",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to add extention functional in expense
+    Module to define a formula for MRP.
     """,
-    "depends" : ['base', 'account', 'account_voucher', 'hr', 'hr_expense', 'fal_hr_ext'],
+    "depends" : ['base', 'mrp', 'sale', 'purchase', 'fal_mrp_conditional_choice'],
     'init_xml': [],
+    'data': [
+    ],
     'update_xml': [
-        'sequence.xml',
-        'account_voucher_view.xml',
-        'hr_expense_view.xml'
+        'sale_view.xml',
+        'purchase_view.xml',
     ],
     'css': [],
-    'js' : [],
+    'js' : [
+    ],
+    'qweb': [],
     'installable': True,
     'active': False,
     'application' : False,

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <openerp>
-    <data noupdate="0">
+    <data noupdate="1">
     
         <!-- Category -->
         <record id="hr_payroll_BASIC" model="hr.salary.rule.category">
@@ -176,7 +176,7 @@ result_rate = 100</field>
             <field name="category_id" ref="hr_payroll_OT" />
         </record>        
         <record id="hr_rule_input_OT1" model="hr.rule.input">
-            <field name="name">Hours in Overtime 1(weekday)</field>
+            <field name="name">加班平时/Hours in Overtime 1(weekday)</field>
             <field name="code">OT1</field>
             <field name="input_id" ref="hr_salary_rule_OT1"/>
         </record>
@@ -244,7 +244,7 @@ result_rate = 100</field>
             <field name="category_id" ref="hr_payroll_OT" />
         </record>        
         <record id="hr_rule_input_NGHT" model="hr.rule.input">
-            <field name="name">Night Hours</field>
+            <field name="name">加班夜间/Night Hours</field>
             <field name="code">NGHT</field>
             <field name="input_id" ref="hr_salary_rule_NGHT"/>
         </record>
@@ -356,26 +356,7 @@ result_rate = 100</field>
         <record id="hr_salary_rule_ALW" model="hr.salary.rule">
             <field name="name">岗位津贴/Job Allowance</field>
             <field name="amount_select">code</field>
-            <field name="amount_python_compute">
-if contract.trial_date_end > payslip.date_from:     
-    if contract.wage &lt; 2499:         
-        result = 0.00      
-    elif contract.wage &gt;= 2500 and contract.wage &lt; 4499:         
-        result = 1000     
-    elif contract.wage &gt;= 4500 and contract.wage &lt; 9999:         
-        result = 1500     
-    else:         
-        result = 2500 
-else:     
-    if contract.wage &lt; 2499:         
-        result = 0.00     
-    elif contract.wage &gt;= 2500 and contract.wage &lt; 4499:         
-        result = 1500     
-    elif contract.wage &gt;= 4500 and contract.wage &lt; 9999:         
-        result = 2500     
-    else:         
-        result = 3500
-result_rate = 100</field>
+            <field name="amount_python_compute">result = contract.fal_fixed_allowance</field>
             <field name="code">ALW</field>
             <field name="sequence">13</field>
             <field name="condition_select">none</field>
@@ -421,6 +402,8 @@ if categories.SBT &lt; 3500:
     a = 0.00 
 elif employee.country_id.name == 'China':     
     a = categories.SBT - 3500 
+elif categories.SBT - 4800 &lt;= 0: 
+    a = 0.00
 else :     
     a = categories.SBT - 4800 
 if a &lt; 1500:     
@@ -430,7 +413,7 @@ elif a >= 1500 and a &lt; 4500:
 elif a >= 4500 and a &lt; 9000:     
     result = (a * 0.20) - 555 
 elif a >= 9000 and a &lt; 35000:     
-    result = (a * 0.20) - 1005 
+    result = (a * 0.25) - 1005 
 elif a >= 35000 and a &lt; 55000:     
     result = (a * 0.30) - 2755 
 elif a >= 55000 and a &lt; 80000:     
@@ -504,11 +487,13 @@ result_rate = 100</field>
             <field name="name">深户养(公司)_C_SZ Endowment insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 1808 and contract.wage &lt;= 15654:
-    result = contract.wage
-elif contract.wage &lt; 1808 :     
-    result = 1808
-else:     
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 1808 and contract.fal_si_base &lt;= 15654: 
+    result = contract.fal_si_base 
+elif contract.fal_si_base &lt; 1808 : 
+    result = 1808 
+else: 
     result = 15654
 result_rate = 14</field>
             <field name="code">CSEI</field>
@@ -522,12 +507,14 @@ result_rate = 14</field>
             <field name="name">非深户养(公司)_C_Non-SZ Endowment insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 1808 and contract.wage &lt;= 15654:
-    result = contract.wage
-elif contract.wage &lt; 1808 :     
-    result = 1808
-else:     
-    result = 15654
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 1808 and contract.fal_si_base &lt;= 15654: 
+    result = contract.fal_si_base 
+elif contract.fal_si_base &lt; 1808 : 
+    result = 1808 
+else: 
+    result = 15654 
 result_rate = 13</field>
             <field name="code">CNSEI</field>
             <field name="sequence">101</field>
@@ -540,9 +527,11 @@ result_rate = 13</field>
             <field name="name">养老保险(个人)_E_Endowment insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 1808 and contract.wage &lt;= 15654:     
-    result = contract.wage
-elif contract.wage &lt; 1808 :     
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 1808 and contract.fal_si_base &lt;= 15654:     
+    result = contract.fal_si_base
+elif contract.fal_si_base &lt; 1808 :     
     result = 1808
 else:     
     result = 15654
@@ -558,9 +547,11 @@ result_rate = -8</field>
             <field name="name">医疗保险(公司)_C_Level 1 Medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 3131 and contract.wage &lt;= 14754:     
-    result = contract.wage
-elif contract.wage &lt; 3131 :     
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 14754:     
+    result = contract.fal_si_base
+elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     
     result = 14754
@@ -576,9 +567,11 @@ result_rate = 6.2</field>
             <field name="name">医疗保险(个人)_E_Level 1 Medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 3131 and contract.wage &lt;= 14754:     
-    result = contract.wage
-elif contract.wage &lt; 3131 :     
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 14754:     
+    result = contract.fal_si_base
+elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     
     result = 14754
@@ -594,7 +587,10 @@ result_rate = -2</field>
             <field name="name">医疗保险(公司)_C_Level 2 Medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 5218
+if contract.fal_si_base == 0.00:
+    result = 0
+else:
+    result = 5218
 result_rate = 0.6</field>
             <field name="code">C2MI</field>
             <field name="sequence">103</field>
@@ -607,7 +603,10 @@ result_rate = 0.6</field>
             <field name="name">医疗保险(个人)_E_Level 2 Medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 5218
+if contract.fal_si_base == 0.00:
+    result = 0
+else:
+    result = 5218
 result_rate = -0.2</field>
             <field name="code">E2MI</field>
             <field name="sequence">62</field>
@@ -620,7 +619,10 @@ result_rate = -0.2</field>
             <field name="name">医疗保险(公司)_C_Level 3 Medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 5218
+if contract.fal_si_base == 0.00:
+    result = 0
+else:
+    result = 5218
 result_rate = 0.45</field>
             <field name="code">C3MI</field>
             <field name="sequence">104</field>
@@ -633,7 +635,10 @@ result_rate = 0.45</field>
             <field name="name">医疗保险(个人)_E_Level 3 Medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 5218
+if contract.fal_si_base == 0.00:
+    result = 0
+else:
+    result = 5218
 result_rate = -0.1</field>
             <field name="code">E3MI</field>
             <field name="sequence">63</field>
@@ -646,9 +651,11 @@ result_rate = -0.1</field>
             <field name="name">生育保险(公司)_C_Level 1 Maternal medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 3131 and contract.wage &lt;= 14754:     
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 14754:     
     result = contract.wage
-elif contract.wage &lt; 3131 :     
+elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     
     result = 14754
@@ -664,7 +671,10 @@ result_rate = 0.5</field>
             <field name="name">生育保险(公司)_C_Level 2 Maternal medicare insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">   
-result = 5218
+if contract.fal_si_base == 0.00:
+    result = 0
+else:
+    result = 5218
 result_rate = 0.2</field>
             <field name="code">C2MMI</field>
             <field name="sequence">106</field>
@@ -703,9 +713,11 @@ result_rate = 0</field>
             <field name="name">工伤保险(公司)_C_Work-related injury insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-if contract.wage &gt;= 1808 and contract.wage &lt;= 15654:     
-    result = contract.wage
-elif contract.wage &lt; 1808 :     
+if contract.fal_si_base == 0.00:
+    result = 0
+elif contract.fal_si_base &gt;= 1808 and contract.fal_si_base &lt;= 15654:     
+    result = contract.fal_si_base
+elif contract.fal_si_base &lt; 1808 :     
     result = 1808
 else:     
     result = 15654
@@ -733,7 +745,10 @@ result_rate = 0</field>
             <field name="name">失业保险(公司)_C_Unemployment insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = 1808
+if contract.fal_si_base == 0.00:
+    result = 0
+else:	
+    result = 1808
 result_rate = 1.6</field>
             <field name="code">CUI</field>
             <field name="sequence">108</field>
@@ -746,7 +761,10 @@ result_rate = 1.6</field>
             <field name="name">失业保险(个人)_E_Unemployment insurance</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">   
-result = 1808
+if contract.fal_si_base == 0.00:
+    result = 0
+else:
+    result = 1808
 result_rate = -1</field>
             <field name="code">EUI</field>
             <field name="sequence">67</field>
@@ -761,9 +779,11 @@ result_rate = -1</field>
             <field name="name">住房公积金(公司)_G_C_Accumulation fund for housing</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">   
-if contract.wage &gt;= 1600 and contract.wage &lt;= 26091:
-    result =  contract.wage
-elif contract.wage &lt; 1600 :     
+if contract.fal_haf_base == 0.00:
+    result = 0
+elif contract.fal_haf_base &gt;= 1600 and contract.fal_haf_base &lt;= 26091:
+    result =  contract.fal_haf_base
+elif contract.fal_haf_base &lt; 1600 :     
     result =  1600
 else:     
     result =  26091
@@ -779,9 +799,11 @@ result_rate = 5</field>
             <field name="name">住房公积金(个人)_G_E_Accumulation fund for housing</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">   
-if contract.wage &gt;= 1600 and contract.wage &lt;= 26091 :
-    result = contract.wage
-elif contract.wage &lt; 1600 :     
+if contract.fal_haf_base == 0.00:
+    result = 0
+elif contract.fal_haf_base &gt;= 1600 and contract.fal_haf_base &lt;= 26091 :
+    result = contract.fal_haf_base
+elif contract.fal_haf_base &lt; 1600 :     
     result = 1600
 else:     
     result = 26091

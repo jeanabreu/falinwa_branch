@@ -74,7 +74,14 @@ class fapiao(orm.Model):
         'fapiao_date' : fields.date.context_today,
         'company_id': lambda self,cr,uid,c: self.pool.get('res.users').browse(cr, uid, uid, c).company_id.id,
     }
-    
+
+    def copy(self, cr, uid, id, default=None, context=None):
+        default = default or {}
+        default.update({
+            'fapiao_line_ids':[],
+        })        
+        return super(fapiao, self).copy(cr, uid, id, default, context)
+        
     def onchange_partner_id(self, cr, uid, ids, partner_id, context=None):
         if context is None:
             context = {}

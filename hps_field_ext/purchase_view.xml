@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="fal_purchase_order_hpsext_tree">
+            <field name="name">purchase.order.tree.hpsext.view.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="origin" position="after">
+                        <field name="related_sale_order" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_invoice_supplier_form_hpsext" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.fal.hpsext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="fal_order_sheet_invoice.view_invoice_supplier_form_fal_ordersheet"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="purchase_ids" position="attributes">
+                        <attribute name="context">{'tree_view_ref':'purchase.purchase_order_tree'}</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>   
+    
+        <record id="view_purchase_order_hps_ext_form" model="ir.ui.view">
+            <field name="name">purchase.order.hps.ext.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="view_picking" string="Receive Products" type="object" attrs="{'invisible': ['|', ('shipped','=',True), ('state','!=', 'approved')]}" class="oe_highlight" position="attributes">
+                        <attribute name="groups">base.group_system</attribute>
+                    </button>
+                    <xpath expr="/form/sheet/div[@class='oe_title']/h1" position="replace">
+                        <h1>
+                            <label string="Request for Quotation " attrs="{'invisible': [('state','not in',('draft','sent'))]}"/>
+                            <label string="Quotation" states="confirmed"/>
+                            <label string="Purchase Order " attrs="{'invisible': [('state','in',('draft','sent','confirmed'))]}"/>
+                            <field name="name" class="oe_inline" readonly="1" attrs="{'invisible': [('state','=','confirmed')]}"/>
+                        </h1>
+                    </xpath>
+                    <xpath expr="//notebook/page[@string='Purchase Order']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
+                        <attribute name='invisible'>1</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='company_id']" position="after">
+                        <field name="related_sale_order" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_purchase_order_hps_ext_form1" model="ir.ui.view">
+            <field name="name">purchase.order.hps.ext.form1</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="fal_invoice_delivery_fee.fal_idf_purchase_order_line_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Purchase Order']/field[@name='order_line']/tree/field[@name='fapiao_subtotal']" position="attributes">
+                        <attribute name='invisible'>1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="purchase_order_hps_ext_stock_picking" model="ir.ui.view">
+            <field name="name">Purchase Picking Inherited hps ext</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_2_stock_picking"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button type="object" name="view_picking" string="Incoming Shipments" states="approved" position="attributes">
+                        <attribute name="groups">base.group_system</attribute>
+                    </button>
+                </data>
+            </field>
+        </record>
+
+        <record id="fal_procurement_request_tree_hpsext" model="ir.ui.view">
+            <field name="name">fal.procurement.request.tree.hpsext</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="procurement_request.fal_procurement_request_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_order" position="attributes">
+                        <attribute name="string">Quotation Date</attribute>
+                        <attribute name="attrs">{'readonly': [('id','!=',False)],'required': [('state','=','procurement_request')],}</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

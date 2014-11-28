@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_order_tree_eec_ext" model="ir.ui.view">
+            <field name="name">sale.order.tree.eec.ext</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_order" position="attributes">
+                        <attribute name="string">Create Date</attribute>
+                    </field>
+                    <field name="date_order" position="after">
+                        <field name="x_expected_date_of_departure" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_order_form_eec_ext" model="ir.ui.view">
+            <field name="name">sale.order.form.eec.ext</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_order" position="attributes">
+                        <attribute name="string">Create Date</attribute>
+                    </field>
+                    <field name="date_order" position="after">
+                        <field name="x_expected_date_of_departure" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_partner_form_eec_ext" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="title" position="after">
+                        <field name="bank_account_number" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

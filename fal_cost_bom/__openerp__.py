@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "HRD-01_Expense Ext",
+    "name": "MRP-07_Cost of BoM",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to add extention functional in expense
+    Module to define a cost of BoM.
     """,
-    "depends" : ['base', 'account', 'account_voucher', 'hr', 'hr_expense', 'fal_hr_ext'],
+    "depends" : ['base', 'stock','mrp'],
     'init_xml': [],
+    'data': [
+    ],
     'update_xml': [
-        'sequence.xml',
-        'account_voucher_view.xml',
-        'hr_expense_view.xml'
+        'product_view.xml'
     ],
     'css': [],
-    'js' : [],
+    'js' : [
+    ],
+    'qweb': [],
     'installable': True,
     'active': False,
     'application' : False,

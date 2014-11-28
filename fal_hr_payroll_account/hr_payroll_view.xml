@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_hr_payslip_tree_falpayrol" model="ir.ui.view">
+            <field name="name">hr.payslip.tree.falpayroll</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="name" position="after">
+                        <field string="Period" name="period_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_hr_payslip_filter_falpayrol" model="ir.ui.view">
+            <field name="name">hr.payslip.select.falpayroll</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter" />
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Employees" name="employee_id" position="after">
+                        <filter string="Period" name="period_id" context="{'group_by':'period_id'}"/>
+                    </filter>
+                </data>
+            </field>
+        </record>   
+        
+        
+    </data>
+</openerp>
+

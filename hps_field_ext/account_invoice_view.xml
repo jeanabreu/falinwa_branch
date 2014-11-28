@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="invoice_form_fal_hps_ext" model="ir.ui.view">
+            <field name="name">account.invoice.form.hps.ext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='price_subtotal']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="invoice_form_fal_hps_ext1" model="ir.ui.view">
+            <field name="name">account.invoice.form.hps.ext1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="fal_invoice_delivery_fee.invoice_form_fal_idf" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='fapiao_subtotal']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="invoice_supplier_form_hps_ext1" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.hps.ext1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='price_subtotal']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                    <field name="move_id" position="after">
+                        <field name="name" string="Customer Reference" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="invoice_supplier_form_hps_ext2" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.hps.ext2</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="fal_invoice_delivery_fee.invoice_supplier_form_fal_idf" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='fapiao_subtotal']" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

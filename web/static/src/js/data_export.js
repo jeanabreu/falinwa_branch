@@ -397,6 +397,7 @@ instance.web.DataExport = instance.web.Dialog.extend({
         exported_fields.unshift({name: 'id', label: 'External ID'});
 
         var export_format = this.$el.find("#export_format").val();
+
         instance.web.blockUI();
         this.session.get_file({
             url: '/web/export/' + export_format,

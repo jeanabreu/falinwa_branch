@@ -347,7 +347,7 @@ class account_voucher_line(orm.Model):
         
 #end of account_voucher_line()
 
-class account_move_line(osv.osv):
+class account_move_line(orm.Model):
     _name = "account.move.line"
     _inherit = "account.move.line"
     

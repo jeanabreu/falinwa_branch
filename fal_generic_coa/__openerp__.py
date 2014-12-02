@@ -13,8 +13,8 @@
     'update_xml': [
         'account_chart_type.xml',
         'chart_wizard.xml',
-        'account_chart_generic_template.xml',
         'account_tax.xml',
+        'account_chart_generic_template.xml',
         ],
     'css': [],
     'js' : [],

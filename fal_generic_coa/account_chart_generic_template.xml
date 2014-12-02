@@ -2734,9 +2734,9 @@
             <field name="code">24140000</field>
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart24100000" name="parent_id"/>
-            <field name="type">other</field>
+            <field name="type">view</field>
             <field name="name">DDP - Office &amp; IT Material</field>
-            <field name="user_type" ref="user_type_fal_capital"/>
+            <field name="user_type" ref="user_type_fal_assetview"/>
         </record>
         <record id="fal_gen_chart24141000" model="account.account.template">
             <field name="code">24141000</field>

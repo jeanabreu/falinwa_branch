@@ -343,8 +343,14 @@ class account_voucher_line(orm.Model):
             'view_mode': 'form',
             'target': 'new',
             'nodestroy': True,
-        }
+        }        
+        
+#end of account_voucher_line()
 
+class account_move_line(osv.osv):
+    _name = "account.move.line"
+    _inherit = "account.move.line"
+    
     #override real openERP method
     def reconcile(self, cr, uid, ids, type='auto', writeoff_acc_id=False, writeoff_period_id=False, writeoff_journal_id=False, context=None):
         account_obj = self.pool.get('account.account')
@@ -504,5 +510,4 @@ class account_voucher_line(orm.Model):
                         
         return r_id
         
-        
-#end of account_voucher_line()
+#end of account_move_line()

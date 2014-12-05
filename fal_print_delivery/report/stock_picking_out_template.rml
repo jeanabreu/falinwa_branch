@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<document filename="stock_picking_out_template">
+    <template pageSize="(21.1cm,14.6cm)" title="Delivery Order Template" allowSplitting="1">
+        <pageTemplate id="main">
+            <frame id="first" x1="0cm" y1="0cm" width="21.1cm" height="14.6cm" />
+        </pageTemplate>
+    </template>
+    <stylesheet>
+        <blockTableStyle id="table_center">
+            <blockAlignment value="CENTER"/>
+            <blockValign value="TOP"/>
+            <lineStyle kind="GRID" colorName="#000000" start="0,0" stop="-1,-1" /> 
+        </blockTableStyle>
+        <blockTableStyle id="table_center_no_border">
+            <blockAlignment value="CENTER"/>
+            <blockValign value="TOP"/>
+        </blockTableStyle>
+        <initialize>
+            <paraStyle name="all" alignment="justify"/>
+        </initialize>
+        <paraStyle name="terp_header" fontName="Helvetica-BoldOblique" fontSize="14.0" alignment="LEFT" spaceAfter="0.2cm"/>
+        <paraStyle name="normal" fontName="Helvetica" fontSize="12" leading="10" alignment="CENTER" spaceAfter="0.2cm"/>
+        <paraStyle name="small" fontName="Helvetica" fontSize="6" alignment="CENTER"/>
+        <paraStyle name="lsmall" fontName="Helvetica" fontSize="6" alignment="LEFT"/>
+        <paraStyle name="normal_ean" fontName="Helvetica" fontSize="14" leading="10" alignment="CENTER" spaceAfter="0.2cm"/>
+        <paraStyle name="small_ean" fontName="Helvetica" fontSize="9" alignment="CENTER"/>
+        <paraStyle name="normal_18" fontName="Helvetica" fontSize="16" leading="20" alignment="LEFT"/>
+        <paraStyle name="normal_bold" fontName="Helvetica-Bold" fontSize="8" leading="10" alignment="LEFT"/>
+        <paraStyle name="rnormal" fontName="Helvetica" fontSize="6" leading="8" alignment="LEFT"/>
+        <paraStyle name="rnormal_bold" fontName="Helvetica-Bold" fontSize="6" leading="9" alignment="LEFT"/>
+    </stylesheet>
+    <story>
+        <para>[[ repeatIn(objects,'o') ]]</para>
+        <section>
+        <blockTable colWidths="10.4cm,10.4cm" style="table_center_no_border" rowHeights="4.5cm">
+            <tr>
+                <td>
+                    <para style="normal"> </para>
+                </td>
+                <td>
+                    <para style="normal"> </para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="3cm,6cm,1cm,11cm" style="table_center_no_border" rowHeights="0.5cm">
+            <tr>
+                <td>
+                    <para style="normal"> </para>
+                </td>
+                <td>
+                    <para style="lsmall">[[ o.partner_id.name or '' ]]</para>
+                </td>
+                <td>
+                    <para style="normal"></para>
+                </td>
+                <td>
+                    <para style="lsmall">[[ o.fal_client_order_ref or '' ]]</para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="3cm,6cm,1cm,11cm" style="table_center_no_border" rowHeights="0.5cm">
+            <tr>
+                <td>
+                    <para style="normal"> </para>
+                </td>
+                <td>
+                    <para style="lsmall">[[ o.partner_id.ref or '' ]]</para>
+                </td>
+                <td>
+                    <para style="normal"></para>
+                </td>
+                <td>
+                    <para style="lsmall">[[ formatLang(o.min_date, date=True) ]]</para>
+                </td>
+            </tr>
+        </blockTable>
+        <blockTable colWidths="2cm,6cm,5cm,7cm" style="table_center_no_border" rowHeights="1.5cm">
+            <tr>
+                <td>
+                    <para style="normal"> </para>
+                </td>
+                <td>
+                    <para style="normal"></para>
+                </td>
+                <td>
+                    <para style="normal"></para>
+                </td>
+                <td>
+                    <para style="normal"></para>
+                </td>
+            </tr>
+        </blockTable>
+        <section>
+          <para style="terp_default_2">[[repeatIn(o.move_lines, 'line') ]]</para>
+            <blockTable colWidths="9cm,1cm,1.5cm,8cm" style="table_center_no_border" rowHeights="0.5cm">
+                <tr>
+                    <td>
+                        <para style="small">[[ line.name or '' ]]</para>
+                    </td>
+                    <td>
+                        <para style="normal"></para>
+                    </td>
+                    <td>
+                        <para style="lsmall">[[ formatLang(line.product_qty) ]]</para>
+                    </td>
+                    <td>
+                        <para style="lsmall">[[ line.fal_remark or '' ]]</para>
+                    </td>
+                </tr>
+            </blockTable>
+        </section>
+        </section>
+    </story>
+</document>

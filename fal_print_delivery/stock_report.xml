@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- overrride -->
+        <report 
+            id="stock_picking_out_print_template" 
+            model="stock.picking.out" 
+            name="fwa.stock.picking.out.template" 
+            string="Delivery Order based on Template" 
+            rml="fal_print_delivery/report/stock_picking_out_template.rml"
+            menu="True"
+            header="False"
+            auto="False"/>
+            
+    </data>
+</openerp>

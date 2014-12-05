@@ -654,7 +654,7 @@ result_rate = -0.1</field>
 if contract.fal_si_base == 0.00:
     result = 0
 elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 15654:     
-    result = contract.wage
+    result = contract.fal_si_base
 elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     

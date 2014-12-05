@@ -74,7 +74,7 @@
             <field name="inherit_id" ref="purchase.purchase_order_2_stock_picking"/>
             <field name="arch" type="xml">
                 <data>
-                    <button type="object" name="view_picking" string="Incoming Shipments" states="approved" position="attributes">
+                    <button name="view_picking" position="attributes">
                         <attribute name="groups">base.group_system</attribute>
                     </button>
                 </data>

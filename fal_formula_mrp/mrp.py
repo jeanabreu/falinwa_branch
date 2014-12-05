@@ -144,5 +144,33 @@ class mrp_bom(orm.Model):
     
 #end of mrp_bom()
 
+class mrp_bom_line(orm.Model):
+    _name = 'mrp.bom.line'
+    _inherit = 'mrp.bom'
 
+    def _get_product_dima(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom_line in self.browse(cr, uid, ids, context=context):
+            res[bom_line.id] = bom_line.product_id.fal_formula_parameter0
+        return res
+        
+    def _get_extra_length(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom_line in self.browse(cr, uid, ids, context=context):
+            res[bom_line.id] = bom_line.product_id.fal_formula_parameter1 or bom_line.product_id.categ_id.fal_formula_parameter_categ1
+        return res
+        
+    def _get_saw_thickness(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom in self.browse(cr, uid, ids, context=context):
+            res[bom_line.id] = bom_line.product_id.fal_formula_parameter2 or bom_line.product_id.categ_id.fal_formula_parameter_categ2
+        return res
+        
+    _columns = {
+        'fal_product_dima' : fields.function(_get_product_dima, string="DimA", type="float", store=False),
+        'fal_product_extra_length' : fields.function(_get_extra_length, string="Extra Length", type="float", store=False),
+        'fal_product_saw_thickness' : fields.function(_get_saw_thickness, string="Saw Thickness", type="float", store=False),
+    }    
+    
+ #end of mrp_bom_line()  
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

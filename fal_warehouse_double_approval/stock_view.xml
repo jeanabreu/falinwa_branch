@@ -46,7 +46,7 @@
             <field name="inherit_id" ref="stock.view_picking_internal_search"/>
             <field name="arch" type="xml">
                 <data>
-                    <field name="stock_journal_id" position="after">
+                    <field name="group_id" position="after">
                         <field name="date_done" />
                     </field>
                     <group expand="0" string="Group By" position="inside">
@@ -55,13 +55,22 @@
                     <xpath expr="//filter[@name='confirmed']" position="after">
                         <filter name="tbd" string="To be Delivered" domain="[('state','=','tbd')]" help="Delivery orders are to be delivery"/>
                     </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_picking_internal_search_inherit_falda" model="ir.ui.view">
+            <field name="name">stock.picking.search.inherit.falda</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="sale_stock.view_picking_internal_search_inherit"/>
+            <field name="arch" type="xml">
+                <data>
                     <xpath expr="//filter[@name='to_invoice']" position="after">
                         <filter name="none" string="Not applicable" domain="[('invoice_state','=','none')]" help="Delivery orders none"/>
                     </xpath>
                 </data>
             </field>
-        </record>
-        
+        </record>        
         
     </data>
 </openerp>

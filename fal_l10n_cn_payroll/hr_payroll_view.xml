@@ -15,8 +15,8 @@
                     </field>
                 </data>
             </field>
-        </record>
-
+        </record>         
+            
         <record id="view_hr_payslip_form_fal_payroll" model="ir.ui.view">
             <field name="name">hr.payslip.form.fal.payroll</field>
             <field name="model">hr.payslip</field>
@@ -110,8 +110,7 @@
                     </field>
                 </data>
             </field>
-        </record>
-        
+        </record>       
     </data>
 </openerp>
 

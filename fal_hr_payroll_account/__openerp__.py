@@ -15,6 +15,7 @@
         'hr_expense'
     ],
     'update_xml': [
+        'hr_payroll_view.xml',
     ],
     'installable': True,
     'auto_install': False,

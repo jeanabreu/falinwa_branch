@@ -6,11 +6,12 @@
     "description": """
     Module to developed Odoo payroll based on Falinwa standard.
     """,
-    "depends" : ['hr_payroll'],
+    "depends" : ['hr_payroll','account'],
     'init_xml': [],
     'data': [
     ],
     'update_xml': [
+        'hr_payslip_workflow.xml',
         'base_data.xml',
         'hr_payroll_report.xml',
         'hr_payroll_view.xml',

@@ -398,7 +398,7 @@ result_rate = 100</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
 a = 0.00 
-if categories.SBT &lt; 3500:     
+if categories.SBT &lt;= 3500:     
     a = 0.00 
 elif employee.country_id.name == 'China':     
     a = categories.SBT - 3500 
@@ -549,12 +549,12 @@ result_rate = -8</field>
             <field name="amount_python_compute">
 if contract.fal_si_base == 0.00:
     result = 0
-elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 14754:     
+elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 15654:     
     result = contract.fal_si_base
 elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     
-    result = 14754
+    result = 15654
 result_rate = 6.2</field>
             <field name="code">C1MI</field>
             <field name="sequence">102</field>
@@ -569,12 +569,12 @@ result_rate = 6.2</field>
             <field name="amount_python_compute">
 if contract.fal_si_base == 0.00:
     result = 0
-elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 14754:     
+elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 15654:     
     result = contract.fal_si_base
 elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     
-    result = 14754
+    result = 15654
 result_rate = -2</field>
             <field name="code">E1MI</field>
             <field name="sequence">61</field>
@@ -653,12 +653,12 @@ result_rate = -0.1</field>
             <field name="amount_python_compute">
 if contract.fal_si_base == 0.00:
     result = 0
-elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 14754:     
+elif contract.fal_si_base &gt;= 3131 and contract.fal_si_base &lt;= 15654:     
     result = contract.wage
 elif contract.fal_si_base &lt; 3131 :     
     result = 3131
 else:     
-    result = 14754
+    result = 15654
 result_rate = 0.5</field>
             <field name="code">C1MMI</field>
             <field name="sequence">105</field>
@@ -781,12 +781,12 @@ result_rate = -1</field>
             <field name="amount_python_compute">   
 if contract.fal_haf_base == 0.00:
     result = 0
-elif contract.fal_haf_base &gt;= 1600 and contract.fal_haf_base &lt;= 26091:
+elif contract.fal_haf_base &gt;= 1808 and contract.fal_haf_base &lt;= 26090:
     result =  contract.fal_haf_base
-elif contract.fal_haf_base &lt; 1600 :     
-    result =  1600
+elif contract.fal_haf_base &lt; 1808 :     
+    result =  1808
 else:     
-    result =  26091
+    result =  26090
 result_rate = 5</field>
             <field name="code">GCAFFH</field>
             <field name="sequence">107</field>
@@ -801,12 +801,12 @@ result_rate = 5</field>
             <field name="amount_python_compute">   
 if contract.fal_haf_base == 0.00:
     result = 0
-elif contract.fal_haf_base &gt;= 1600 and contract.fal_haf_base &lt;= 26091 :
+elif contract.fal_haf_base &gt;= 1808 and contract.fal_haf_base &lt;= 26090 :
     result = contract.fal_haf_base
-elif contract.fal_haf_base &lt; 1600 :     
-    result = 1600
+elif contract.fal_haf_base &lt; 1808 :     
+    result = 1808
 else:     
-    result = 26091
+    result = 26090
 result_rate = -5</field>
             <field name="code">GEFFH</field>
             <field name="sequence">66</field>

@@ -13,10 +13,10 @@ import openerp.addons.decimal_precision as dp
 from openerp.osv.orm import browse_record, browse_null
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP
 
-class product_product(orm.Model):
+class product_template(orm.Model):
     
-    _name = "product.product"
-    _inherit = "product.product"
+    _name = "product.template"
+    _inherit = "product.template"
 
     _columns = {
         'fal_proc_po_disable' : fields.boolean('Procurement PO Disable'),

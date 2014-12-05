@@ -146,7 +146,7 @@ class mrp_bom(orm.Model):
 
 class mrp_bom_line(orm.Model):
     _name = 'mrp.bom.line'
-    _inherit = 'mrp.bom'
+    _inherit = 'mrp.bom.line'
 
     def _get_product_dima(self, cr, uid, ids, field_name, arg, context=None):
         res = {}

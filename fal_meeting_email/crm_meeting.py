@@ -21,6 +21,6 @@ class crm_meeting(orm.Model):
         for event in self.browse(cr, uid, ids, context):
             if event.is_send_email:
                 super(crm_meeting, self).create_attendees(cr, uid, ids, context)
-        return True
+        return {}
     
 #end of crm_meeting()

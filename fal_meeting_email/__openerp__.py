@@ -6,7 +6,7 @@
     "description": """
     Module to give control whether the meeting will send an email or not.
     """,
-    "depends" : ['base_calendar'],
+    "depends" : ['base','calendar'],
     'init_xml': [],
     'data': [
     ],

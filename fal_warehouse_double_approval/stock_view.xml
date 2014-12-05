@@ -25,12 +25,12 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,assigned,done" statusbar_colors='{"shipping_except":"red","invoice_except":"red","waiting_date":"blue"}' position="replace">
                         <field name="state" widget="statusbar" statusbar_visible="draft,assigned,tbd,done" statusbar_colors='{"shipping_except":"red","invoice_except":"red","waiting_date":"blue"}'/>
                     </field>
-                    <button name="action_process" states="assigned" string="Deliver" type="object" class="oe_highlight" position="replace">
-                        <button name="action_before_process" states="assigned" string="To Be Delivered" type="object" class="oe_highlight" />
-                        <button name="action_process" states="tbd" string="Deliver" type="object" class="oe_highlight" />
+                    <button name="do_enter_transfer_details" states="assigned,partially_available" string="Transfer" position="replace">
+                        <button name="action_before_process" states="assigned,partially_available" string="To Be Tansfer" type="object" class="oe_highlight" />
+                        <button name="do_enter_transfer_details" states="tbd" string="Transfer" type="object" class="oe_highlight" />
                     </button>
-                    <button name="button_cancel" states="assigned,confirmed,draft" string="Cancel Transfer" groups="base.group_user" position="replace">
-                        <button name="button_cancel" states="assigned,tbd,confirmed,draft" string="Cancel Transfer" groups="base.group_user"/>
+                    <button name="action_cancel" states="assigned,confirmed,partially_available,draft" string="Cancel Transfer" groups="base.group_user" position="replace">
+                        <button name="action_cancel" states="assigned,tbd,confirmed,partially_available,draft" type="object" string="Cancel Transfer" groups="base.group_user"/>
                     </button>
                     <field name="date" position="after">
                         <field name="date_done" />
@@ -49,7 +49,7 @@
                     <field name="stock_journal_id" position="after">
                         <field name="date_done" />
                     </field>
-                    <group expand="0" string="Group By..." position="inside">
+                    <group expand="0" string="Group By" position="inside">
                         <filter string="Date of Shipment" domain="[]" context="{'group_by':'date_done'}"/>
                     </group>
                     <xpath expr="//filter[@name='confirmed']" position="after">

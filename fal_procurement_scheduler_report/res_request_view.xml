@@ -99,6 +99,6 @@
             <field name="search_view_id" ref="res_request_search_view"/>
             <field name="context">{"search_default_act_to":uid}</field>
         </record>
-        <menuitem action="res_request-act" id="menu_res_request_act" parent="procurement.menu_stock_sched" sequence="99"/>
+        <menuitem action="res_request-act" id="menu_res_request_act" parent="stock.menu_stock_sched" sequence="99"/>
     </data>
 </openerp>

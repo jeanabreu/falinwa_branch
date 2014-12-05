@@ -5,7 +5,7 @@
     'version' : '1.0',
     'author' : 'Falinwa Hans',
     'website' : 'http://www.falinwa.com',
-    'depends' : ['procurement'],
+    'depends' : ['stock', 'procurement'],
     'description': """
         Module to add procurement Scheduler Report Status
     """,

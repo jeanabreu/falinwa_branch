@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from osv import fields, orm
-from tools.translate import _
+from openerp.osv import fields, orm
+from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 import time
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare

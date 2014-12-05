@@ -48,9 +48,6 @@
             <field name="inherit_id" ref="stock.view_move_form"/>
             <field name="arch" type="xml">
                 <data>
-                    <button name="%(stock.action_partial_move_server)d" position="attributes">
-                        <attribute name="groups">base.group_system</attribute>
-                    </button>
                     <button name="action_done" position="attributes">
                         <attribute name="groups">base.group_system</attribute>
                     </button>

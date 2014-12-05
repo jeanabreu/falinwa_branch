@@ -73,7 +73,7 @@
                         <field name="fal_product_extra_length" readonly="1" class="oe_inline"/>
                         <field name="fal_product_saw_thickness" readonly="1" class="oe_inline"/>
                     </field>
-                    <xpath  expr="//field[@name='bom_lines']/tree/field[@name='product_uom']" position="after">
+                    <xpath  expr="//field[@name='bom_line_ids']/tree/field[@name='product_uom']" position="after">
                         <field name="fal_product_dima" readonly="1" />
                         <field name="fal_product_extra_length" readonly="1" />
                         <field name="fal_product_saw_thickness" readonly="1" />

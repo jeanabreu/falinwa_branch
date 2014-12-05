@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="mrp_production_view_fal_mproject">
+          <field name="name">mrp.production.form.fal.mproject</field>
+          <field name="model">mrp.production</field>
+          <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+          <field name="arch" type="xml">
+            <data>
+                <field name="origin" position="after">
+                    <field name="project_id" />
+                </field>
+            </data>
+          </field>
+        </record>
+        
+    </data>
+</openerp>

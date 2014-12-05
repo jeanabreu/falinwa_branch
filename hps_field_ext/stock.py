@@ -14,16 +14,6 @@ class stock_picking(orm.Model):
     
 #end of stock_picking()
 
-class stock_picking_out(orm.Model):
-    _name = 'stock.picking.out'
-    _inherit = 'stock.picking.out'
-    
-    _columns = {
-        'fal_client_order_ref' : fields.char('Customer PO Number', size=64),
-    }
-    
-#end of stock_picking_out()
-
 class stock_move(orm.Model):
     _name = 'stock.move'
     _inherit = 'stock.move'

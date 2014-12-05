@@ -309,12 +309,6 @@
             <field name="arch" type="xml">
                 <form string="Opportunities" version="7.0">
                     <header>
-                        <!--
-                        <button name="do_open" string="Start Task" type="object"
-                                states="draft,pending" class="oe_highlight"/>
-                        <button name="do_draft" string="Draft" type="object"
-                                states="cancel,done"/>
-                        -->
                         <field name="stage_id" widget="statusbar" clickable="True"/>
                     </header>
                     <sheet string="Tools">
@@ -400,7 +394,6 @@
                             <group col="4">
                                 <field name="priority" groups="base.group_user"/>
                                 <field name="sequence"/>
-                                <field name="state" invisible="1"/>
                                 <field name="company_id" groups="base.group_multi_company" widget="selection"/>
                             </group>
                             <group>
@@ -428,7 +421,7 @@
             <field name="model">project.task</field>
             <field eval="2" name="priority"/>
             <field name="arch" type="xml">
-                <tree fonts="bold:message_unread==True" colors="grey:state in ('cancelled','done');blue:state == 'pending';red:date_deadline and (date_deadline&lt;current_date) and (state in ('draft','pending','open'))" string="Tasks">
+                <tree fonts="bold:message_unread==True" colors="red:date_deadline and (date_deadline&lt;current_date)" string="Tasks">
                     <field name="message_unread" invisible="1"/>
                     <field name="sequence" invisible="not context.get('seq_visible', False)"/>
                     <field name="name" string="Tools Summary"/>

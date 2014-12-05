@@ -81,8 +81,8 @@ class res_request(orm.Model):
         'ref_doc1':fields.reference('Document Ref 1', selection=_links_get, size=128, states={'closed':[('readonly',True)]}),
         'ref_doc2':fields.reference('Document Ref 2', selection=_links_get, size=128, states={'closed':[('readonly',True)]}),
         'state': fields.selection([('draft','draft'),('waiting','waiting'),('active','active'),('closed','closed')], 'Status', required=True, readonly=True),
-        'history': fields.one2many('res.request.history','req_id', 'History')
     }
+    
     _defaults = {
         'act_from': lambda obj,cr,uid,context=None: uid,
         'state': 'draft',

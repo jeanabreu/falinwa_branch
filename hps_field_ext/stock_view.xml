@@ -3,9 +3,9 @@
     <data>
 
         <record id="view_picking_out_search_hpsext" model="ir.ui.view">
-            <field name="name">stock.picking.out.search.hpsext</field>
-            <field name="model">stock.picking.out</field>
-            <field name="inherit_id" ref="stock.view_picking_out_search"/>
+            <field name="name">stock.picking.search.hpsext</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
             <field name="arch" type="xml">
                 <data>
                     <field name="stock_journal_id" position="after">
@@ -15,24 +15,11 @@
                 </data>
             </field>
         </record>
-
-        <record id="view_picking_form_hps_ext" model="ir.ui.view">
-            <field name="name">stock.picking.form.hps.ext</field>
-            <field name="model">stock.picking.out</field>
-            <field name="inherit_id" ref="stock.view_picking_form" />
-            <field name="arch" type="xml">
-                <data>
-                    <field name="origin" position="after">
-                        <field name="fal_client_order_ref" />
-                    </field>
-                </data>
-            </field>
-        </record>
         
         <record id="view_picking_tree_out_hpsext" model="ir.ui.view">
             <field name="name">stock.picking.tree.out.hpsext</field>
-            <field name="model">stock.picking.out</field>
-            <field name="inherit_id" ref="stock.view_picking_out_tree"/>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
             <field name="arch" type="xml">
                 <data>
                     <field name="origin" position="after">

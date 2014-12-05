@@ -46,9 +46,6 @@
                             <field colspan="4" name="ref_doc1"/>
                             <field colspan="4" name="ref_doc2"/>
                         </page>
-                        <page string="History" groups="base.group_extended">
-                            <field colspan="4" name="history" nolabel="1" widget="one2many_list"/>
-                        </page>
                     </notebook>
                 </form>
             </field>

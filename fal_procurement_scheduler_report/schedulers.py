@@ -38,35 +38,6 @@ def _links_get(self, cr, uid, context=None):
 class res_request(orm.Model):
     _name = 'res.request'
 
-    def request_send(self, cr, uid, ids, *args):
-        for id in ids:
-            cr.execute('update res_request set state=%s,date_sent=%s where id=%s', ('waiting', time.strftime('%Y-%m-%d %H:%M:%S'), id))
-            cr.execute('select act_from,act_to,body,date_sent from res_request where id=%s', (id,))
-            values = cr.dictfetchone()
-            if values['body'] and (len(values['body']) > 128):
-                values['name'] = values['body'][:125] + '...'
-            else:
-                values['name'] = values['body'] or '/'
-            values['req_id'] = id
-            self.pool.get('res.request.history').create(cr, uid, values)
-        return True
-
-    def request_reply(self, cr, uid, ids, *args):
-        for id in ids:
-            cr.execute("update res_request set state='active', act_from=%s, act_to=act_from, trigger_date=NULL, body='' where id=%s", (uid,id))
-        return True
-
-    def request_close(self, cr, uid, ids, *args):
-        self.write(cr, uid, ids, {'state':'closed'})
-        return True
-
-    def request_get(self, cr, uid):
-        cr.execute('select id from res_request where act_to=%s and (trigger_date<=%s or trigger_date is null) and active=True and state != %s', (uid,time.strftime('%Y-%m-%d'), 'closed'))
-        ids = map(lambda x:x[0], cr.fetchall())
-        cr.execute('select id from res_request where act_from=%s and (act_to<>%s) and (trigger_date<=%s or trigger_date is null) and active=True and state != %s', (uid,uid,time.strftime('%Y-%m-%d'), 'closed'))
-        ids2 = map(lambda x:x[0], cr.fetchall())
-        return ids, ids2
-
     _columns = {
         'create_date': fields.datetime('Created Date', readonly=True),
         'name': fields.char('Subject', states={'waiting':[('readonly',True)],'active':[('readonly',True)],'closed':[('readonly',True)]}, required=True, size=128),

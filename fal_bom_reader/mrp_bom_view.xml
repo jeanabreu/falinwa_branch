@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="mrp_bom_form_view_bomreader_fal" model="ir.ui.view">
+            <field name="name">mrp.bom.form.bomreader.fal</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <page string="Properties" groups="product.group_mrp_properties" position="inside">
+                        <data>
+                            <separator string="Storage Location"/>
+                            <group>
+                                <group>
+                                    <field name="product_id_standard_price" />                                    
+                                    <field name="product_id_loc_rack" />
+                                    <field name="product_id_loc_row" />
+                                    <field name="product_id_loc_case" />
+                                </group>
+                            </group>
+                        </data>
+                    </page>
+                </data>
+            </field>
+        </record>
+        
+        <!-- record id="mrp_bom_tree_view_bomreader_fal" model="ir.ui.view">
+            <field name="name">mrp.bom.tree.bomreader.fal</field>
+            <field name="model">mrp.bom</field>
+            <field name="field_parent">bom_lines</field>
+            <field name="arch" type="xml">
+                <tree string="Bill of Materials">
+                    <field name="product_id"/>
+                    <field name="name"/>
+                    <field name="position"/>
+                    <field name="product_qty"/>
+                    <field name="product_uom"/>
+                    <field name="product_id_standard_price" />
+                    <field name="product_id_loc_rack"/>
+                    <field name="product_id_loc_row"/>
+                    <field name="product_id_loc_case"/>
+                </tree>
+            </field>
+        </record -->
+        
+        <record id="mrp_bom_tree_view_fal_bomreader" model="ir.ui.view">
+            <field name="name">mrp.bom.tree.fal.bomreader</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="product_uom" groups="product.group_uom" position="after">
+                        <field name="product_id_standard_price" />
+                        <field name="product_id_loc_rack"/>
+                        <field name="product_id_loc_row"/>
+                        <field name="product_id_loc_case"/> 
+                    </field>
+                </data>
+            </field>
+        </record>       
+            
+        <record id="mrp_bom_action_bromreader_fal" model="ir.actions.act_window">
+            <field name="name">Bill of Materials by Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.bom</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="mrp.mrp_bom_tree_view"/>
+            <field name="help" type="html">
+              <p>
+                Here is a list of all your bom classified by product. You
+                can click a product to get the list of all bom linked to
+                this product or to a child of this product.
+              </p>
+            </field>
+        </record>
+
+        <record id="view_mrp_bom_filter_falbomreader" model="ir.ui.view">
+            <field name="name">mrp.bom.select.falbomreader</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.view_mrp_bom_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="product_id" position="replace">
+                        <field name="product_id" context="{'search_barcode':'product_id'}" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <!-- override real action -->
+        <record id="mrp.mrp_bom_form_action" model="ir.actions.act_window">
+            <field name="name">Bill of Materials</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.bom</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('bom_id','=',False)]</field>
+            <field name="search_view_id" ref="mrp.view_mrp_bom_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a bill of material. 
+              </p><p>
+                Bills of Materials allow you to define the list of required raw
+                materials used to make a finished product; through a manufacturing
+                order or a pack of products.
+              </p><p>
+                OpenERP uses these BoMs to automatically propose manufacturing
+                orders according to procurement needs.
+              </p>
+            </field>
+        </record>
+        
+        <record id="open_mrp_bom_form_action" model="ir.actions.act_window">
+            <field name="name">Bill of Materials</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.bom</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('id','=',active_id)]</field>
+            <field name="search_view_id" ref="mrp.view_mrp_bom_filter"/>
+            <field name="target">new</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a bill of material. 
+              </p><p>
+                Bills of Materials allow you to define the list of required raw
+                materials used to make a finished product; through a manufacturing
+                order or a pack of products.
+              </p><p>
+                OpenERP uses these BoMs to automatically propose manufacturing
+                orders according to procurement needs.
+              </p>
+            </field>
+        </record>
+        
+        <record id="ir_act_mrp_bom_fal_bomreader" model="ir.values">
+            <field name="key2">tree_but_open</field>
+            <field name="model">mrp.bom</field>
+            <field name="name">Open BoM</field>
+            <field eval="'ir.actions.act_window,%d'%open_mrp_bom_form_action" name="value"/>
+        </record> 
+        
+    </data>
+</openerp>

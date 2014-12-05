@@ -3,7 +3,7 @@
 -->
 <openerp>
     <data>
-        <template id="assets_backend_easy_reporting" name="easy_reporting assets" inherit_id="web.assets_backend">
+        <template id="assets_backend_fal_project_ext" name="fal_project_ext assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
                 <script type="text/javascript" src="/fal_project_ext/static/src/js/fal_project.js"></script>
             </xpath>

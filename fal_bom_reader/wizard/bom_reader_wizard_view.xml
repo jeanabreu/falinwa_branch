@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_bom_reader_wizard" model="ir.ui.view">
+            <field name="name">bom.reader.wizard</field>
+            <field name="model">bom.reader.wizard</field>
+            <field name="arch" type="xml">
+                <form string="BOM Reader" version="7.0">
+                    <group>
+                        <group>
+                            <field name="ean13" on_change="onchange_ean13(ean13)" class="fal_ean" widget="FalEanBomReader"/>
+                            <field name="fal_of_number" on_change="onchange_of_number(fal_of_number)" />
+                            <field name="product_id"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="search_bom" string="Search" type="object" class="oe_highlight bombutton"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_bom_reader_wizard" model="ir.actions.act_window">
+            <field name="name">BOM Reader</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bom.reader.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_bom_reader_wizard"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem id="menu_bom_reader" name="BOM Reader" groups="group_bom_reader_user" sequence="99"/>
+        <menuitem id="sub_menu_bom_reader" parent="menu_bom_reader" name="BOM Reader" />
+        <menuitem id="sub_menu_item_bom_reader" name="BOM Reader" parent="sub_menu_bom_reader" action="action_bom_reader_wizard" />
+        
+    </data>
+</openerp>

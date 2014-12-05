@@ -61,7 +61,7 @@
             <field name="inherit_id" ref="fal_invoice_delivery_fee.fal_idf_purchase_order_line_form"/>
             <field name="arch" type="xml">
                 <data>
-                    <xpath expr="//notebook/page[@string='Purchase Order']/field[@name='order_line']/tree/field[@name='fapiao_subtotal']" position="attributes">
+                    <xpath expr="//field[@name='fapiao_subtotal']" position="attributes">
                         <attribute name='invisible'>1</attribute>
                     </xpath>
                 </data>

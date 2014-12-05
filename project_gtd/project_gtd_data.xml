@@ -22,7 +22,6 @@
             <field name="name">Long Term</field>
             <field name="icon">terp-project</field>
         </record>
-    </data>
 
     </data>
 </openerp>

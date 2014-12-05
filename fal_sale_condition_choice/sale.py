@@ -368,7 +368,7 @@ class sale_order_line(orm.Model):
             else:
                 value_xv = str(fal_value_xv)
         
-        if serie_name_id.name == 'H160':
+        if serie_name_id and serie_name_id.name == 'H160':
             res['value']['fal_piston_seal'] = 'D'
             res['value']['fal_rod_seal'] = 'J'
             res['value']['fal_ports'] = 'G'

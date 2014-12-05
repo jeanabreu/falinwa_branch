@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="calendar.view_calendar_event_form" />
         <field name="arch" type="xml">
             <data>
-                <field name="allday" position="after">
+                <field name="duration" position="before">
                     <field name="is_send_email" />
                 </field>
             </data>

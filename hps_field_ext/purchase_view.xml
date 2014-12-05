@@ -45,7 +45,7 @@
                             <field name="name" class="oe_inline" readonly="1" attrs="{'invisible': [('state','=','confirmed')]}"/>
                         </h1>
                     </xpath>
-                    <xpath expr="//notebook/page[@string='Purchase Order']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
+                    <xpath expr="//notebook/page[@string='Products Order']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
                         <attribute name='invisible'>1</attribute>
                     </xpath>
                     <xpath expr="//field[@name='company_id']" position="after">

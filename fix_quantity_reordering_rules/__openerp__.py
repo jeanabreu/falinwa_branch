@@ -6,7 +6,7 @@
     "description": """
     Module to add additional option rule Order Fix Quantity 
     """,
-    "depends" : ['procurement'],
+    "depends" : ['procurement', 'stock'],
     'init_xml': [],
     'update_xml': [
         'orderpoint_view.xml'

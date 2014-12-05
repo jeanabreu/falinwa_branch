@@ -23,6 +23,48 @@
                 </field>
             </field>
         </record>
+
+        <record id="product_form_view_fal_routing_ext" model="ir.ui.view">
+            <field name="name">product.form.view.fal.routing.ext</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                     <field name="cost_method" position="after">
+                        <field name="fal_minimum_cycle_time" />
+                        <field name="fal_stroke_cycle_time_ref" />
+                    </field>
+                </data>
+            </field>
+        </record>
         
+        <record id="mrp_production_form_view_fal_routing_ext" model="ir.ui.view">
+            <field name="name">mrp.production.form.fal.routing.ext</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath  expr="//page[@string='Work Orders']/field[@name='workcenter_lines']/tree/field[@name='cycle']" position="before">
+                        <field name="fal_product_minimum_cycle_time" readonly="1" />
+                        <field name="fal_product_stroke_cycle_time_ref" readonly="1" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+        <record model="ir.ui.view" id="mrp_production_workcenter_tree_view_inherit_fal_routing_ext">
+            <field name="name">mrp.production.workcenter.line.tree.fal.routing.ext</field>
+            <field name="model">mrp.production.workcenter.line</field>
+            <field name="inherit_id" ref="mrp_operations.mrp_production_workcenter_tree_view_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="cycle" position="before">
+                        <field name="fal_product_minimum_cycle_time" readonly="1" />
+                        <field name="fal_product_stroke_cycle_time_ref" readonly="1" />                        
+                    </field>
+                </data>
+            </field>
+        </record>
+    
     </data>
 </openerp>

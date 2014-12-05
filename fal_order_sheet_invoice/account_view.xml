@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_invoice_form_fal_ordersheet" model="ir.ui.view">
+            <field name="name">account.invoice.form.fal.ordersheet</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Payments']" position="after">
+                        <page string="Sale Order">
+                            <field name="sale_ids" readonly="1"/>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_invoice_supplier_form_fal_ordersheet" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.fal.ordersheet</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Payments']" position="after">
+                        <page string="Purchase Order">
+                            <field name="purchase_ids" readonly="1"/>
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>        
+        
+    </data>
+</openerp>

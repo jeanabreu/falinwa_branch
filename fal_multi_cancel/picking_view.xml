@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <!-- mrp.production -->        
+    <act_window name="Cancel Picking"
+        res_model="multi.cancel.picking.wizard"
+        src_model="stock.picking"
+        view_mode="form"
+        target="new"
+        multi="True"
+        key2="client_action_multi"
+        id="action_cancel1"/>        
+</data>
+</openerp>

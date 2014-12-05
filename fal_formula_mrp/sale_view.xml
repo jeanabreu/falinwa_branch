@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-
-        <record id="view_order_form_fal_fmrp" model="ir.ui.view">
-            <field name="name">view.order.form.fal.fmrp</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form/group/group/field [@name='price_unit']" position="before">
-                        <field name="fal_stroke"/>
-                    </xpath>
-                </data>
-            </field>
-        </record>
         
         <record id="product_form_view_fal_formulamrp" model="ir.ui.view">
             <field name="name">product.form.view.fal.fomulamrp</field>
@@ -71,6 +58,26 @@
                         <field name="isfal_formula" />
                         <field name="fal_formula_parameter_categ1" />
                     </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="mrp_bom_form_view_falformulamrp" model="ir.ui.view">
+            <field name="name">mrp.bom.form.falformulamrp</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="product_id" position="after">
+                        <field name="fal_product_dima" readonly="1" class="oe_inline"/>
+                        <field name="fal_product_extra_length" readonly="1" class="oe_inline"/>
+                        <field name="fal_product_saw_thickness" readonly="1" class="oe_inline"/>
+                    </field>
+                    <xpath  expr="//field[@name='bom_lines']/tree/field[@name='product_uom']" position="after">
+                        <field name="fal_product_dima" readonly="1" />
+                        <field name="fal_product_extra_length" readonly="1" />
+                        <field name="fal_product_saw_thickness" readonly="1" />
+                    </xpath>
                 </data>
             </field>
         </record>

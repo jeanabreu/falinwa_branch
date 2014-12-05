@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_order_form_fal_sale_condc" model="ir.ui.view">
+            <field name="name">view.order.form.fal.sale.condc</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Order Lines']/field[@name='order_line']/form/group" position="before">
+                        <separator string="Conditional Choice" />
+                        <group name="Conditional Choice">
+                            <group>
+                                <field name="fal_serie_name_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv, True)"/>
+                                <field name="fal_serie_name_id_name" invisible="1" />
+                                <field name="fal_serie_name_id_type" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
+                                <field name="fal_ordering_code_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72'])]}" />
+                                <field name="fal_bore_diameter_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_rod_diameter_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_standard_stroke_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_stroke" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_main_option_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_main_option_code" invisible="1" />
+                                <field name="fal_rod_end_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B','V72'])]}"/>
+                                <field name="fal_rod_end_option_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_seal_kit_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','B'])]}"/>
+                                <field name="fal_mounting_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V','H','B','V72']),('fal_serie_name_id_name','in',['VCR'])]}"/>
+                                <field name="fal_mounting_id_code" invisible="1" />
+                                <field name="fal_piston_seal" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_rod_seal" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_ports" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>                                
+                                <field name="fal_magnet_sensor_position_id" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_main_option_code','not in',['DM'])]}"/>
+                            </group>
+                            <group>
+                                <field name="fal_brace_ring" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['H']),('fal_stroke','&lt;',500)]}"/>
+                                <field name="fal_position_ports_head" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_position_ports_bottom" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_value_xv" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['H']),('fal_mounting_id_code','not in',['MT4','DT4'])]}"/>
+                                <field name="fal_xcma" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['B'])]}"/>
+                                <field name="fal_purge" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','in',['VBL','VBM'])]}"/>
+                                <field name="fal_counter_bores" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','in',['VBL','VBM'])]}"/>
+                                <field name="fal_for_handling" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','in',['VBL','VBM'])]}"/>
+                                <field name="fal_microrupteur" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_magnet_sensor" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_cote_x" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" attrs="{'invisible': ['|',('fal_serie_name_id_type','not in',['V']),('fal_serie_name_id_name','not in',['VCN','VBG','VCR'])]}"/>
+                                <field name="fal_seal_location" on_change="onchange_conditional(fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
+        fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
+        fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv)" invisible="1"/>
+                                <field name="fal_special" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
+                                <field name="fal_y" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V'])]}" />
+                                <field name="fal_w" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['H'])]}" />
+                                <field name="fal_comment_for_vh" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V','H'])]}" />
+                            </group>
+                        </group>
+                        <separator string="References Information" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
+                        <group attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}">
+                            <group attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}">
+                                <field name="fal_single_or_double_rod" attrs="{'invisible': [('fal_serie_name_id_type','not in',['H'])]}"/>
+                                <field name="fal_sale_reference" on_change="fal_sale_ref_change(fal_sale_reference)" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72','V','B','H'])]}"/>
+                                <field name="fal_ref_for_stroke_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','V72'])]}"/>
+                                <field name="fal_by_stroke_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V'])]}"/>
+                            </group>
+                            <group>
+                                <field name="fal_bom_reference" on_change="onchange_bomref(fal_bom_reference)"/>
+                                <field name="fal_ref_priced_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72','V','H'])]}" />
+                                <field name="fal_ref_free_option" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V24','V72','V','H'])]}" />                                
+                            </group>
+                        </group>
+                        <label for="fal_full_reference" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}"/>
+                        <field name="fal_full_reference" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}"/>
+                        <separator string="Order Lines Information" />
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_fal_serie_name_form" model="ir.ui.view">
+            <field name="name">fal.serie.name.form</field>
+            <field name="model">fal.serie.name</field>
+            <field name="arch" type="xml">
+                <form string="Serie Name">
+                    <field name="name" />
+                    <field name="type" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Bore List" attrs="{'invisible': [('type','in',['V24', 'V72'])]}">
+                                <field name="fal_bore_list_ids" nolabel="1" />
+                             </page>
+                            <page string="Main Option List" attrs="{'invisible': [('type','in',['V24', 'V72'])]}">
+                                <field name="fal_main_option_list_ids" nolabel="1" />
+                             </page>
+                            <page string="Rod End List" attrs="{'invisible': [('type','in',['V24',])]}">
+                                <field name="fal_rod_end_list_ids" nolabel="1" />
+                             </page>
+                            <page string="Seal Kit List" attrs="{'invisible': [('type','in',['V24', 'V72'])]}">
+                                <field name="fal_seal_kit_list_ids" nolabel="1" />
+                             </page>   
+                            <page string="Mounting List" attrs="{'invisible': [('type','in',['V24',])]}">
+                                <field name="fal_mounting_list_ids" nolabel="1" />
+                             </page>
+                            <page string="Ordering Code List" attrs="{'invisible': [('type','in',['V','B','F'])]}">
+                                <field name="fal_ordering_code_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_bore_diameter_form" model="ir.ui.view">
+            <field name="name">fal.bore.diameter.form</field>
+            <field name="model">fal.bore.diameter</field>
+            <field name="arch" type="xml">
+                <form string="Bore Diameter">
+                    <field name="name" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Serie Name List">
+                                <field name="fal_serie_list_ids" nolabel="1" />
+                             </page>
+                            <page string="Rod Diameter List">
+                                <field name="fal_rod_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_rod_diameter_form" model="ir.ui.view">
+            <field name="name">fal.rod.diameter.form</field>
+            <field name="model">fal.rod.diameter</field>
+            <field name="arch" type="xml">
+                <form string="Rod Diameter">
+                    <field name="name" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Bore Diameter List">
+                                <field name="fal_bore_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_main_option_form" model="ir.ui.view">
+            <field name="name">fal.main.option.form</field>
+            <field name="model">fal.main.option</field>
+            <field name="arch" type="xml">
+                <form string="Main Option">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="old_code" />
+                    <field name="chinese_name" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Serie Name List">
+                                <field name="fal_serie_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_rod_end_form" model="ir.ui.view">
+            <field name="name">fal.rod.end.form</field>
+            <field name="model">fal.rod.end</field>
+            <field name="arch" type="xml">
+                <form string="Rod End">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="vbl_ref" />
+                    <field name="v_ref" />
+                    <field name="chinese_name" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Serie Name List">
+                                <field name="fal_serie_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_rod_end_option_tree" model="ir.ui.view">
+            <field name="name">fal.rod.end.option.tree</field>
+            <field name="model">fal.rod.end.option</field>
+            <field name="arch" type="xml">
+                <tree string="Rod End Option" editable="top">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="ref" />
+                    <field name="chinese_name" />
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_fal_seal_kit_form" model="ir.ui.view">
+            <field name="name">fal.seal.kit.form</field>
+            <field name="model">fal.seal.kit</field>
+            <field name="arch" type="xml">
+                <form string="Seal Kit">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="vbl_ref" />
+                    <field name="v_ref" />
+                    <field name="chinese_name" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Serie Name List">
+                                <field name="fal_serie_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_mounting_form" model="ir.ui.view">
+            <field name="name">fal.mounting.form</field>
+            <field name="model">fal.mounting</field>
+            <field name="arch" type="xml">
+                <form string="Mounting">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="sr_or_dr" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Serie Name List">
+                                <field name="fal_serie_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_ordering_code_form" model="ir.ui.view">
+            <field name="name">fal.ordering.code.form</field>
+            <field name="model">fal.ordering.code</field>
+            <field name="arch" type="xml">
+                <form string="Mounting">
+                    <field name="name" />
+                    <field name="fal_stroke" />
+                    <field name="fal_full_reference" />
+                    <group colspan="4">
+                        <notebook>
+                            <page string="Serie Name List">
+                                <field name="fal_serie_list_ids" nolabel="1" />
+                             </page>
+                        </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_magnet_position_form" model="ir.ui.view">
+            <field name="name">fal.magnet.position.form</field>
+            <field name="model">fal.magnet.position</field>
+            <field name="arch" type="xml">
+                <form string="Magnet Position">
+                    <field name="name" />
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_fal_stroke_max_tree" model="ir.ui.view">
+            <field name="name">fal.stroke.max.tree</field>
+            <field name="model">fal.stroke.max</field>
+            <field name="arch" type="xml">
+                <tree string="Stroke Max" editable="top">
+                    <field name="name" />
+                    <field name="a_min" />
+                    <field name="a_max" />
+                    <field name="b_min" />
+                    <field name="b_max" />
+                    <field name="c_min" />
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_fal_ref_data_tree" model="ir.ui.view">
+            <field name="name">fal.ref.data.tree</field>
+            <field name="model">fal.ref.data</field>
+            <field name="arch" type="xml">
+                <tree string="Ref Data" editable="top">
+                    <field name="name" />
+                    <field name="value" />
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_fal_stroke_standard_tree" model="ir.ui.view">
+            <field name="name">fal.stroke.standard.tree</field>
+            <field name="model">fal.standard.stroke</field>
+            <field name="arch" type="xml">
+                <tree string="Stroke Standard" editable="top">
+                    <field name="name" />
+                    <field name="value" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_fal_serie_name_action" model="ir.actions.act_window">
+            <field name="name">Serie Name</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.serie.name</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Serie Name. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Serie Name.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_bore_diameter_action" model="ir.actions.act_window">
+            <field name="name">Bore Diameter</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.bore.diameter</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Bore Diameter. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Bore Diameter.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_rod_diameter_action" model="ir.actions.act_window">
+            <field name="name">Rod Diameter</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.rod.diameter</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Rod Diameter. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Rod Diameter.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_main_option_action" model="ir.actions.act_window">
+            <field name="name">Main Option</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.main.option</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Main Option. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Main Option.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_rod_end_action" model="ir.actions.act_window">
+            <field name="name">Rod End</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.rod.end</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Rod End. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Rod End.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_rod_end_option_action" model="ir.actions.act_window">
+            <field name="name">Rod End Option</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.rod.end.option</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Rod End Option. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Rod End Option.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_seal_kit_action" model="ir.actions.act_window">
+            <field name="name">Seal Kit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.seal.kit</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Seal Kit. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Seal Kit.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_mounting_action" model="ir.actions.act_window">
+            <field name="name">Mounting</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.mounting</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Mounting. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Mounting.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_ordering_code_action" model="ir.actions.act_window">
+            <field name="name">Ordering Code</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.ordering.code</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Ordering Code. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Ordering Code.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_magnet_position_action" model="ir.actions.act_window">
+            <field name="name">Magnet Position</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.magnet.position</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Magnet Position. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Magnet Position.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_stroke_max_action" model="ir.actions.act_window">
+            <field name="name">Stroke Max</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.stroke.max</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Stroke Max. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Stroke Max.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_ref_data_action" model="ir.actions.act_window">
+            <field name="name">Ref Data</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.ref.data</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Ref Data. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Ref Data.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_fal_stroke_standard_action" model="ir.actions.act_window">
+            <field name="name">Stroke Standard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.standard.stroke</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a Stroke Standard. 
+              </p><p>
+                This configuration works to configure Conditional Choice for Stroke Standard.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem name="Conditional Choice Configuration" id="fal_submenu_conditional_choice_configuration"
+            parent="base.menu_base_config"
+            sequence="7" />  
+        <menuitem action="view_fal_serie_name_action" id="fal_menu_serie_name"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="1" />  
+        <menuitem action="view_fal_bore_diameter_action" id="fal_menu_bore_diameter"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="2" />  
+        <menuitem action="view_fal_main_option_action" id="fal_menu_main_option"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="3" />              
+        <menuitem action="view_fal_rod_end_action" id="fal_menu_rod_end"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="4" />  
+        <menuitem action="view_fal_seal_kit_action" id="fal_menu_seal_kit"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="5" />  
+        <menuitem action="view_fal_mounting_action" id="fal_menu_mounting"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="6" />  
+        <menuitem action="view_fal_magnet_position_action" id="fal_menu_magnet_position"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="7" /> 
+        <menuitem action="view_fal_stroke_max_action" id="fal_menu_stroke_max"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="8" />
+        <menuitem action="view_fal_ordering_code_action" id="fal_menu_ordering_code"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="9" />
+        <menuitem action="view_fal_ref_data_action" id="fal_menu_ref_data"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="10" />
+        <menuitem action="view_fal_stroke_standard_action" id="fal_menu_stroke_standard"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="11" />
+        <menuitem action="view_fal_rod_diameter_action" id="fal_menu_rod_diameter"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="12" />
+        <menuitem action="view_fal_rod_end_option_action" id="fal_menu_rod_end_option"
+            parent="fal_submenu_conditional_choice_configuration"
+            sequence="13" />
+        
+    </data>
+</openerp>

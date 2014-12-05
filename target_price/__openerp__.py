@@ -1,23 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "MRP-03_Formula MRP",
+    "name": "GEN-02_Target Price",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to define a formula for MRP.
+    Module to add target price both on purchases and sales
     """,
-    "depends" : ['base', 'mrp', 'sale', 'purchase', 'fal_mrp_conditional_choice', 'fal_routing_ext', 'fal_production_planning_ext'],
+    "depends" : ['base','purchase','sale'],
     'init_xml': [],
-    'data': [
-    ],
     'update_xml': [
-        'sale_view.xml',
+        'security/security.xml',
         'purchase_view.xml',
+        'sale_view.xml',
     ],
     'css': [],
-    'js' : [
-    ],
-    'qweb': [],
     'installable': True,
     'active': False,
     'application' : False,

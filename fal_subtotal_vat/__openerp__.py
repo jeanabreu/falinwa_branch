@@ -1,23 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "MRP-03_Formula MRP",
+    "name": "GEN-14_Subtotal with VAT",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to define a formula for MRP.
+    Module to add subtotal with vat both on purchases and sales
     """,
-    "depends" : ['base', 'mrp', 'sale', 'purchase', 'fal_mrp_conditional_choice', 'fal_routing_ext', 'fal_production_planning_ext'],
+    "depends" : ['base','purchase','sale','account','purchase_discount'],
     'init_xml': [],
-    'data': [
-    ],
     'update_xml': [
-        'sale_view.xml',
         'purchase_view.xml',
+        'sale_view.xml',
+        'invoice_view.xml',
     ],
     'css': [],
-    'js' : [
-    ],
-    'qweb': [],
     'installable': True,
     'active': False,
     'application' : False,

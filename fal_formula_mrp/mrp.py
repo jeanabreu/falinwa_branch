@@ -53,7 +53,7 @@ class mrp_production(orm.Model):
                     self.write(cr, uid, [production.id], {'bom_id': bom_id, 'routing_id': routing_id})
     
             if not bom_id:
-                raise orm.except_orm(_('Error!'), _("Cannot find a bill of material for this product."))
+                raise osv.except_osv(_('Error!'), _("Cannot find a bill of material for this product."))
     
             # get components and workcenter_lines from BoM structure
             factor = uom_obj._compute_qty(cr, uid, production.product_uom.id, production.product_qty, bom_point.product_uom.id)            
@@ -95,10 +95,14 @@ class mrp_production(orm.Model):
     
             #reset workcenter_lines in production order
             for line in results2:
+                #modify start here
+                if line.get('fal_is_manufacture',False):
+                    line['cycle'] = production.product_id.fal_minimum_cycle_time + stroke * production.product_id.fal_stroke_cycle_time_ref
+                #end here
                 line['production_id'] = production.id
                 workcenter_line_obj.create(cr, uid, line)
         return results
-        
+
     def _make_production_line_procurement(self, cr, uid, production_line, shipment_move_id, context=None):
         res = super(mrp_production,self)._make_production_line_procurement(cr, uid, production_line, shipment_move_id, context)
         procurement_order_obj = self.pool.get('procurement.order')
@@ -109,5 +113,36 @@ class mrp_production(orm.Model):
         return res
         
 #end of mrp_production()
+
+class mrp_bom(orm.Model):
+    _name = 'mrp.bom'
+    _inherit = 'mrp.bom'
+    
+    def _get_product_dima(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom in self.browse(cr, uid, ids, context=context):
+            res[bom.id] = bom.product_id.fal_formula_parameter0
+        return res
+        
+    def _get_extra_length(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom in self.browse(cr, uid, ids, context=context):
+            res[bom.id] = bom.product_id.fal_formula_parameter1 or bom.product_id.categ_id.fal_formula_parameter_categ1
+        return res
+        
+    def _get_saw_thickness(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom in self.browse(cr, uid, ids, context=context):
+            res[bom.id] = bom.product_id.fal_formula_parameter2 or bom.product_id.categ_id.fal_formula_parameter_categ2
+        return res
+    
+    _columns = {
+        'fal_product_dima' : fields.function(_get_product_dima, string="DimA", type="float", store=False),
+        'fal_product_extra_length' : fields.function(_get_extra_length, string="Extra Length", type="float", store=False),
+        'fal_product_saw_thickness' : fields.function(_get_saw_thickness, string="Saw Thickness", type="float", store=False),
+    }
+    
+#end of mrp_bom()
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "MRP-03_Formula MRP",
+    "name": "MUL-05_Message Multi Company",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to define a formula for MRP.
+    Module to add company field on message object and create an access rule of it.
     """,
-    "depends" : ['base', 'mrp', 'sale', 'purchase', 'fal_mrp_conditional_choice', 'fal_routing_ext', 'fal_production_planning_ext'],
+    "depends" : ['base','mail'],
     'init_xml': [],
     'data': [
     ],
     'update_xml': [
-        'sale_view.xml',
-        'purchase_view.xml',
+        'mail_data.xml',
+        'mail_message_view.xml',
     ],
     'css': [],
     'js' : [

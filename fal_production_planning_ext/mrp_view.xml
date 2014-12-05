@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <record id="mrp_production_form_inherit_view2_fal_planningext" model="ir.ui.view">
+            <field name="name">mrp.production.form.inherit2.fal.planningext</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp_operations.mrp_production_form_inherit_view2"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="button_draft" position="after">
+                         <button name="button_cancel" string="Cancel Order" states="draft,startworking" icon="gtk-stop" help="Cancel Order"/>
+                    </button>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

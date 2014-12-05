@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "MRP-03_Formula MRP",
+    "name": "MRP-08_Manufacture Order Conditional Choice",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to define a formula for MRP.
+    Module to give conditional choice on Manufacture Order.
     """,
-    "depends" : ['base', 'mrp', 'sale', 'purchase', 'fal_mrp_conditional_choice', 'fal_routing_ext', 'fal_production_planning_ext'],
+    "depends" : ['base', 'fal_sale_condition_choice'],
     'init_xml': [],
     'data': [
     ],
     'update_xml': [
-        'sale_view.xml',
-        'purchase_view.xml',
+        'mrp_view.xml',
     ],
     'css': [],
     'js' : [

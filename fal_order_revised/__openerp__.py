@@ -1,25 +1,24 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "MRP-03_Formula MRP",
+    "name": "GEN-11_Order Revised",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to define a formula for MRP.
+    Module to revised some info on order
     """,
-    "depends" : ['base', 'mrp', 'sale', 'purchase', 'fal_mrp_conditional_choice', 'fal_routing_ext', 'fal_production_planning_ext'],
+    "depends" : ['base','account','sale','purchase','project','project_long_term','project_gtd'],
     'init_xml': [],
     'data': [
     ],
     'update_xml': [
+        'wizard/project_update_wizard_view.xml',
         'sale_view.xml',
         'purchase_view.xml',
     ],
     'css': [],
-    'js' : [
-    ],
-    'qweb': [],
     'installable': True,
     'active': False,
     'application' : False,
+    'js': [],
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

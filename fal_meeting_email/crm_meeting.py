@@ -5,10 +5,10 @@ from openerp.osv import fields, orm
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 from openerp.tools.translate import _
 
-class crm_meeting(orm.Model):
+class calendar_event(orm.Model):
     """ Model for CRM meetings """
-    _name = 'crm.meeting'
-    _inherit = 'crm.meeting'
+    _name = 'calendar.event'
+    _inherit = 'calendar.event'
     
     _columns = {
         'is_send_email' : fields.boolean('Send Invitation Email Automatically?'),
@@ -23,4 +23,4 @@ class crm_meeting(orm.Model):
                 super(crm_meeting, self).create_attendees(cr, uid, ids, context)
         return {}
     
-#end of crm_meeting()
+#end of calendar_event()

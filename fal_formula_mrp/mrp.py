@@ -162,7 +162,7 @@ class mrp_bom_line(orm.Model):
         
     def _get_saw_thickness(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
-        for bom in self.browse(cr, uid, ids, context=context):
+        for bom_line in self.browse(cr, uid, ids, context=context):
             res[bom_line.id] = bom_line.product_id.fal_formula_parameter2 or bom_line.product_id.categ_id.fal_formula_parameter_categ2
         return res
         

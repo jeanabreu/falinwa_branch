@@ -29,6 +29,12 @@ from openerp.tools.translate import _
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT
 from openerp import tools
 
+def _links_get(self, cr, uid, context=None):
+    obj = self.pool.get('res.request.link')
+    ids = obj.search(cr, uid, [], context=context)
+    res = obj.read(cr, uid, ids, ['object', 'name'], context)
+    return [(r['object'], r['name']) for r in res]
+    
 class res_request(orm.Model):
     _name = 'res.request'
 

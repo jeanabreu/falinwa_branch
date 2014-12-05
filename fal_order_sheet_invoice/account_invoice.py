@@ -1,8 +1,7 @@
 from openerp.osv import fields, orm
-from tools.translate import _
+from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 import time
-from openerp import netsvc
 
 class account_invoice(orm.Model):
     _name = "account.invoice"

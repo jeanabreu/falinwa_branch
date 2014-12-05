@@ -15,6 +15,7 @@
     'data': [
     ],
     'update_xml': [
+        'views/fal_project_ext.xml',
         'res_partner_view.xml',
         'project_view.xml',
     ],

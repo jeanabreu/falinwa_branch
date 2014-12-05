@@ -333,7 +333,7 @@
                     </group>
                     <notebook>
                         <page string="Description">
-                            <field name="description" attrs="{'readonly':[('state','=','done')]}" placeholder="Add a Description..."/>
+                            <field name="description" placeholder="Add a Description..."/>
                             <field name="work_ids" groups="project.group_tasks_work_on_tasks">
                                 <tree string="Task Work" editable="top">
                                     <field name="name"/>
@@ -356,7 +356,7 @@
                         </page>
                         <page string="Delegation" groups="project.group_delegate_task">
                             <button name="%(project.action_project_task_delegate)d" string="Delegate" type="action"
-                                    states="pending,open,draft" groups="project.group_delegate_task"/>
+                                    groups="project.group_delegate_task"/>
                             <separator string="Parent Tools"/>
                             <field name="parent_ids">
                                 <tree fonts="bold:message_unread==True" colors="red:date_deadline and (date_deadline&lt;current_date)" string="Tasks">
@@ -476,7 +476,7 @@
                                         <li><a name="set_remaining_time_2" type="object" class="oe_kanban_button">2</a></li>
                                         <li><a name="set_remaining_time_5" type="object" class="oe_kanban_button">5</a></li>
                                         <li><a name="set_remaining_time_10" type="object" class="oe_kanban_button">10</a></li>
-                                        <li><a name="do_open" states="draft" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
+                                        <li><a name="do_open" string="Validate planned time" type="object" class="oe_kanban_button oe_kanban_button_active">!</a></li>
                                       </ul>
                                     </li>
                                     <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>

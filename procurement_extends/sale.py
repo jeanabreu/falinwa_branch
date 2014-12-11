@@ -14,17 +14,10 @@ class sale_order(orm.Model):
         'x_expectingdate_departure' : fields.date('Expecting Date of Departure'),
     }
     
-    def _prepare_order_line_procurement(self, cr, uid, order, line, move_id, date_planned, context=None):
-        res = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, move_id, date_planned, context)
-        res['sale_order_line_id'] = line.id
-        res['location_id'] = order.shop_id.warehouse_id.lot_input_id.id 
-        return res
-    
     def _get_date_planned(self, cr, uid, order, line, start_date, context=None):
-        date_planned = False
         if order.x_expectingdate_departure:
-            return order.x_expectingdate_departure
-        return super(sale_order, self)._get_date_planned(cr, uid, order, line, order.date_confirm, context)
+            return order.x_expectingdate_departure + ' 00:00:00'
+        return super(sale_order, self)._get_date_planned(cr, uid, order, line, order.date_confirm+ ' 00:00:00', context)
         
     def _prepare_invoice(self, cr, uid, order, lines, context=None):
         res = super(sale_order, self)._prepare_invoice(cr, uid, order, lines, context)

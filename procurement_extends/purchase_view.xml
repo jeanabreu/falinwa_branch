@@ -40,7 +40,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="origin" class="oe_inline" placeholder="e.g. SO005" position="after">
-                        <field name="sale_order_line_id" />
+                        <field name="sale_line_id" />
                     </field>
                 </data>
             </field>

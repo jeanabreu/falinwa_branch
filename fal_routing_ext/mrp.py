@@ -33,6 +33,8 @@ class mrp_routing_workcenter(orm.Model):
     _columns = {
         'fal_extra_operator' : fields.float('Extra operator', required=True),
         'hour_nbr': fields.float('Number of time', required=True, help="Time for this Work Center to achieve the operation of the specified routing."),
+        'fal_minimum_cycle_time' : fields.float('Minimum Cycle Time'),
+        'fal_stroke_cycle_time_ref' : fields.float('Stroke Cycle Time Ref'),
     }
     
     _defaults = {
@@ -41,35 +43,26 @@ class mrp_routing_workcenter(orm.Model):
     
 #end of mrp_routing_workcenter()
 
-class product_product(orm.Model):
-    _name = "product.product"
-    _inherit = "product.product"
-    
-    _columns = {
-        'fal_minimum_cycle_time' : fields.float('Minimum Cycle Time'),
-        'fal_stroke_cycle_time_ref' : fields.float('Stroke Cycle Time Ref'),
-    }
-#end of product_product()
-
 class mrp_production_workcenter_line(orm.Model):
     _name = 'mrp.production.workcenter.line'
     _inherit = 'mrp.production.workcenter.line'
     
-    def _get_product_cycle_time(self, cr, uid, ids, field_name, arg, context=None):
+    def _get_operation_cycle_time(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for production_workcenter_line in self.browse(cr, uid, ids, context=context):
-            res[production_workcenter_line.id] = production_workcenter_line.product.fal_minimum_cycle_time
+            res[production_workcenter_line.id] = production_workcenter_line.fal_operation_id.fal_minimum_cycle_time
         return res
         
-    def _get_product_stroke_cycle_time_ref(self, cr, uid, ids, field_name, arg, context=None):
+    def _get_operation_stroke_cycle_time_ref(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for production_workcenter_line in self.browse(cr, uid, ids, context=context):
-            res[production_workcenter_line.id] = production_workcenter_line.product.fal_stroke_cycle_time_ref
+            res[production_workcenter_line.id] = production_workcenter_line.fal_operation_id.fal_stroke_cycle_time_ref
         return res
     
     _columns = {
-        'fal_product_minimum_cycle_time' : fields.function(_get_product_cycle_time, string="Product Minimum Cycle Time", type="float", store=False),
-        'fal_product_stroke_cycle_time_ref' : fields.function(_get_product_stroke_cycle_time_ref, string="Product Stroke Cycle Time Ref", type="float", store=False),
+        'fal_operation_id' : fields.many2one('mrp.routing.workcenter', 'Operation'),
+        'fal_operation_minimum_cycle_time' : fields.function(_get_operation_cycle_time, string="Operation Minimum Cycle Time", type="float", store=False),
+        'fal_operation_stroke_cycle_time_ref' : fields.function(_get_operation_stroke_cycle_time_ref, string="Operation Stroke Cycle Time Ref", type="float", store=False),
         'hour': fields.float('Number of Time', digits=(16,2)),
         'delay': fields.float('Working Time',help="The elapsed time between operation start and stop in this Work Center",readonly=True),
     }

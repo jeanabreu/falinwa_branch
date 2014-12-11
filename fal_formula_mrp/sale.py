@@ -10,7 +10,7 @@ class sale_order(orm.Model):
     _inherit = "sale.order"
 
     def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
-        res = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id, context)
+        res = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id, context=context)
         res['sale_order_line_formula_id'] = line.id
         return res
 

@@ -57,19 +57,15 @@ class mrp_production(orm.Model):
     
             # get components and workcenter_lines from BoM structure
             factor = uom_obj._compute_qty(cr, uid, production.product_uom.id, production.product_qty, bom_point.product_uom.id)            
-            res = bom_obj._bom_explode(cr, uid, bom_point, factor / bom_point.product_qty, properties, routing_id=production.routing_id.id)            
-            
-            results = res[0] # product_lines
-            results2 = res[1] # workcenter_lines
-            
+            results, results2 = bom_obj._bom_explode(cr, uid, bom_point, production.product_id, factor / bom_point.product_qty, properties, routing_id=production.routing_id.id, context=context)
+            #results is product_line
+            #results2 is workcenter_line 
             #modify start here
             stroke = production.fal_stroke
             for r1 in results:
                 if r1.get('product_id',False):
                     product_id = product_obj.browse(cr, uid, r1.get('product_id',False), context)
                     if production.product_id.categ_id.isfal_formula:
-                        #print r1['product_qty']
-                        #print stroke
                         extra_length = production.product_id.fal_formula_parameter1
                         saw_thickness = production.product_id.fal_formula_parameter2
                         number_cut = 1
@@ -83,10 +79,6 @@ class mrp_production(orm.Model):
                             saw_thickness = production.product_id.categ_id.fal_formula_parameter_categ2
                         r1['product_qty'] = ((production.product_qty * (stroke + production.product_id.fal_formula_parameter0 + extra_length)) + (saw_thickness * number_cut)) or r1['product_qty']
             #end here
-            #note: should workcenter be formulized too?
-            #print results
-            #print '======================================================================================='
-            #print results2
             
             # reset product_lines in production order
             for line in results:
@@ -97,22 +89,31 @@ class mrp_production(orm.Model):
             for line in results2:
                 #modify start here
                 if line.get('fal_is_manufacture',False):
-                    line['cycle'] = production.product_id.fal_minimum_cycle_time + stroke * production.product_id.fal_stroke_cycle_time_ref
+                    operation_id = operation_obj.browse(cr, uid, line['fal_operation_id'])
+                    wc = operation_id.workcenter_id
+                    d, m = divmod(factor, operation_id.workcenter_id.capacity_per_cycle)
+                    mult = (d + (m and 1.0 or 0.0))
+                    line['cycle'] = production.product_qty * (mult * (operation_id.fal_minimum_cycle_time + stroke * operation_id.fal_stroke_cycle_time_ref))
+                    line['hour'] = float(operation_id.hour_nbr*mult + (line['cycle']*(wc.time_cycle or 0.0)) * (wc.time_efficiency or 1.0))
                 #end here
                 line['production_id'] = production.id
                 workcenter_line_obj.create(cr, uid, line)
         return results
 
-    def _make_production_line_procurement(self, cr, uid, production_line, shipment_move_id, context=None):
-        res = super(mrp_production,self)._make_production_line_procurement(cr, uid, production_line, shipment_move_id, context)
-        procurement_order_obj = self.pool.get('procurement.order')
-        procurement_order_obj.write(cr, uid, [res], {
-            'sale_order_line_formula_id' : production_line.production_id.sale_order_line_formula_id.id,
-            'fal_stroke' : production_line.production_id.fal_stroke,
-        })
-        return res
         
 #end of mrp_production()
+
+class stock_move(orm.Model):
+    _name = "stock.move"
+    _inherit = "stock.move"
+    
+    def _prepare_procurement_from_move(self, cr, uid, move, context=None):
+        res = super(stock_move, self)._prepare_procurement_from_move(cr, uid, move, context)
+        res['sale_order_line_formula_id'] = move.raw_material_production_id and move.raw_material_production_id.sale_order_line_formula_id.id,
+        res['fal_stroke'] = move.raw_material_production_id and move.raw_material_production_id.fal_stroke,
+        return res
+        
+#end of stock_move
 
 class mrp_bom(orm.Model):
     _name = 'mrp.bom'

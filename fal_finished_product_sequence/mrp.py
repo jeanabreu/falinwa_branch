@@ -17,17 +17,20 @@ class mrp_production(orm.Model):
                 finished_product_number = self.pool.get('ir.sequence').get(cr, uid, 'finished.product.fwa') or '/'
                 self.write(cr, uid, [production.id], {'fal_of_number': finished_product_number}, context=context)
         return super(mrp_production, self).action_confirm(cr, uid, ids, context=context)
-    
-    def _make_production_line_procurement(self, cr, uid, production_line, shipment_move_id, context=None):
-        res = super(mrp_production,self)._make_production_line_procurement(cr, uid, production_line, shipment_move_id, context)
-        procurement_order_obj = self.pool.get('procurement.order')
-        procurement_order_obj.write(cr, uid, [res], {
-            'fal_of_number' : production_line.production_id.fal_of_number,
-            'fal_parent_mo_id' : production_line.production_id.id,
-        })
-        return res
         
 #end of mrp_production()
+
+class stock_move(orm.Model):
+    _name = "stock.move"
+    _inherit = "stock.move"
+    
+    def _prepare_procurement_from_move(self, cr, uid, move, context=None):
+        res = super(stock_move, self)._prepare_procurement_from_move(cr, uid, move, context)
+        res['fal_of_number'] = move.raw_material_production_id and move.raw_material_production_id.production_id.fal_of_number,
+        res['fal_parent_mo_id'] = move.raw_material_production_id and move.raw_material_production_id.production_id.id,
+        return res
+        
+#end of stock_move
 
 class product_category(orm.Model):
     _name = "product.category"

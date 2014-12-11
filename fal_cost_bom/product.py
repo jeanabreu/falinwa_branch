@@ -20,10 +20,12 @@ class product_product(orm.Model):
                 pro_qty = bom_line.product_qty
                 if bom_line.product_uom.id != bom_line.product_uom.id:
                     pro_qty = uom_obj._compute_qty(cr, uid, bom_line.product_uom.id, bom_line.product_qty, bom_line.product_uom.id)
-                if bom_line.product_id.bom_ids and bom_line.product_id.supply_method == 'produce' :
+                if bom_line.product_id.bom_ids:
                     cost_of_bom += pro_qty * self.get_cost(cr, uid, bom_line.product_id,  context=context) 
                 else:
                     cost_of_bom += pro_qty * bom_line.product_id.standard_price
+        else:
+            cost_of_bom = product_id.standard_price
         return cost_of_bom
        
     def _get_cost_bom(self, cr, uid, ids, field_name, arg, context=None):
@@ -45,7 +47,7 @@ class product_product(orm.Model):
         'fal_bom_costs' : fields.function(_get_cost_bom, type='float', string='Cost of BoM (CCR)',
             help="Cost of Raw Material",
             digits_compute=dp.get_precision('BoM Cost'),
-            store=
+            store=False
             #{
             #    'product.product' :  (lambda self, cr, uid, ids, c={}: ids, ['standard_price', 'bom_ids', 'supply_method'], 20),
             #    'product.product' :  (_get_product_ids, ['standard_price', 'bom_ids', 'supply_method'], 20),

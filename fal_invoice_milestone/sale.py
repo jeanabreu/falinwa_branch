@@ -34,7 +34,7 @@ class sale_order(orm.Model):
                 temp_rule_line_id = []
                 for rule_line in sale_id.invoice_milestone_rule_id.rule_ids:
                     temp_rule_line_id.append(rule_line.id)
-                    self.write(cr, uid, sale_id.id, {
+                    self.write(cr, uid, [sale_id.id], {
                         'invoice_milestone_rule_line_ids' : [(6, 0, temp_rule_line_id)],
                     } ,context)
         return super(sale_order, self).action_button_confirm(cr, uid, ids, context)

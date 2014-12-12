@@ -90,7 +90,7 @@
                                    groups="project.group_delegate_task"/>
                             <separator string="Parent Tasks"/>
                             <field name="parent_ids">
-                                <tree fonts="bold:message_unread==True" colors="grey:state in ('cancelled','done');blue:state == 'pending';red:date_deadline and (date_deadline&lt;current_date) and (state in ('draft','pending','open'))" string="Tasks">
+                                <tree fonts="bold:message_unread==True" colors="red:date_deadline and (date_deadline&lt;current_date)" string="Tasks">
                                     <field name="message_unread" invisible="1"/>
                                     <field name="sequence" invisible="not context.get('seq_visible', False)"/>
                                     <field name="name" string="Task Summary"/>

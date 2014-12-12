@@ -79,7 +79,7 @@
             <field name="remaining_hours" position="after">
                 <field string="Timeframe" name="timebox_id" invisible=" not context.get('gtd', False)"/>
                 <field name="context_id" invisible="not context.get('context_show', False)" widget="selection"/>
-                <button name="do_reopen" states="done,cancelled" string="Reactivate" type="object" icon="gtk-convert" help="For reopening the tasks" invisible="not context.get('set_visible',False)"/>
+                <button name="do_reopen" string="Reactivate" type="object" icon="gtk-convert" help="For reopening the tasks" invisible="not context.get('set_visible',False)"/>
             </field>
         </field>
     </record>

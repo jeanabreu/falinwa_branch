@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_voucher_user,account.voucher user,account_voucher.model_account_voucher,base.group_user,1,1,1,1
+access_account_voucher_line_user,account.voucher.line user,account_voucher.model_account_voucher_line,base.group_user,1,1,1,1
+access_account_period_user,account.period user,account.model_account_period,base.group_user,1,1,1,1
+access_account_move_user,account.move user,account.model_account_move,base.group_user,1,1,1,1

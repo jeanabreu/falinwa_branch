@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_fal_stop_so" model="ir.ui.view">
+            <field name="name">view.order.form.stop.so</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" position="after">
+                        <button name="action_button_stop" string="Stopped Order" confirm="This button use for stop the order and make the state to Stopped. Are you sure you want to stopped this order?"
+                            type="object" states="progress" />
+                        <button name="action_button_unstop" string="UnStopped Order"
+                            type="object" states="stopped" groups="base.group_sale_manager" />
+                    </button>                    
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

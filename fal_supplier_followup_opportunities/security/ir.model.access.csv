@@ -1,0 +1,48 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fal_sup_management_package_user,fal.sup.management.package user,model_fal_sup_management_package,group_followupfal_user,1,1,1,1
+access_fal_sup_management_package_line_user,fal.sup.management.package.line user,model_fal_sup_management_package_line,group_followupfal_user,1,1,1,1
+access_fal_sup_management_package_base_user,fal.sup.management.package base_user,model_fal_sup_management_package,base.group_user,1,1,1,0
+access_fal_sup_management_package_line_base_user,fal.sup.management.package.line base_user,model_fal_sup_management_package_line,base.group_user,1,1,1,0
+
+access_fal_management_package_srm_user,fal.srm user,model_fal_sup_management_package,group_srm_user,1,1,1,1
+access_fal_srm_management_package_line_user,fal.srm.line user,model_fal_sup_management_package_line,group_srm_user,1,1,1,1
+
+access_sale_order_srm_user,sale.order srm_user,sale.model_sale_order,group_srm_user,1,1,1,0
+access_sale_order_line_srm_user,sale.order.line srm_user,sale.model_sale_order_line,group_srm_user,1,1,1,1
+access_account_invoice_tax_srm_user,account_invoice_tax srm_user,account.model_account_invoice_tax,group_srm_user,1,1,1,0
+access_account_invoice_srm_user,account_invoice srm_user,account.model_account_invoice,group_srm_user,1,1,1,0
+access_account_invoice_line_srm_user,account_invoice.line srm_user,account.model_account_invoice_line,group_srm_user,1,1,1,0
+access_account_payment_term_srm_user,account_payment_term srm_user,account.model_account_payment_term,group_srm_user,1,0,0,0
+access_account_analytic_account_srm_user,account_analytic_account srm_user,analytic.model_account_analytic_account,group_srm_user,1,1,1,0
+access_sale_report_srm_user,sale.report srm_user,sale.model_sale_report,group_srm_user,1,1,1,0
+access_ir_property_sales_srm_user,ir.property.sales srm_user,base.model_ir_property,group_srm_user,1,1,1,1
+access_sale_account_journal_srm_user,account.journal sale srm_user,account.model_account_journal,group_srm_user,1,0,0,0
+access_res_partner_srm_user,res.partner.sale. srm_user,base.model_res_partner,group_srm_user,1,0,0,0
+access_product_template_srm_user,product.template sale srm_user,product.model_product_template,group_srm_user,1,0,0,0
+access_product_product_srm_user,product.product sale srm_user,product.model_product_product,group_srm_user,1,0,0,0
+access_account_fiscalyear_srm_user,account.fiscalyear srm_user,account.model_account_fiscalyear,group_srm_user,1,0,0,0
+access_account_tax_srm_user,account.tax srm_user,account.model_account_tax,group_srm_user,1,0,0,0
+access_ir_attachment_sales_srm_user,ir.attachment.sales srm_user,base.model_ir_attachment,group_srm_user,1,1,1,0
+access_res_partner_bank_type_srm_user,res.partner.bank.type srm_user,base.model_res_partner_bank_type,group_srm_user,1,0,0,0
+access_res_partner_bank_type_field_srm_user,res.partner.bank.type.field srm_user,base.model_res_partner_bank_type_field,group_srm_user,1,0,0,0
+access_product_uom_srm_user,product.uom srm_user,product.model_product_uom,group_srm_user,1,0,0,0
+access_product_pricelist_sale_srm_user,product.pricelist.sale srm_user,product.model_product_pricelist,group_srm_user,1,0,0,0
+access_account_account_srm_user,account_account srm_user,account.model_account_account,group_srm_user,1,0,0,0
+access_product_supplierinfo_srm_user,product.supplierinfo srm_user,product.model_product_supplierinfo,group_srm_user,1,0,0,0
+access_account_invoice_report_srm_user,account.invoice.report srm_user,account.model_account_invoice_report,group_srm_user,1,0,0,0
+access_account_move_line_srm_user,account.move.line invoice srm_user,account.model_account_move_line,group_srm_user,1,0,0,0
+
+access_crm_segmentation_srm_user,crm.segmentation srm_user,crm.model_crm_segmentation,group_srm_user,1,0,0,0
+access_crm_segmentation_line_srm_user,crm.segmentation.line srm_user,crm.model_crm_segmentation_line,group_srm_user,1,0,0,0
+access_crm_case_categ_srm_user,crm.case.categ srm_user,crm.model_crm_case_categ,group_srm_user,1,1,1,0
+access_crm_case_categ_srm_user,crm.case.categ srm_user,crm.model_crm_case_categ,base.group_user,1,0,0,0
+access_crm_lead_srm_user,crm.lead srm_user,crm.model_crm_lead,group_srm_user,1,1,1,0
+access_crm_phonecall_srm_user,crm.phonecall srm_user,crm.model_crm_phonecall,group_srm_user,1,1,1,0
+access_crm_case_section_srm_user,crm.case.section srm_user,crm.model_crm_case_section,group_srm_user,1,1,1,0
+access_crm_phonecall_report_srm_user,crm.phonecall.report srm_user,crm.model_crm_phonecall_report,group_srm_user,1,0,0,0
+access_res_partner_srm_user,res.partner.crm srm_user,base.model_res_partner,group_srm_user,1,1,1,0
+access_res_partner_category_srm_user,res.partner.category.crm srm_user,base.model_res_partner_category,group_srm_user,1,1,1,0
+mail_mailgate_thread_srm_user,mail.thread srm_user,mail.model_mail_thread,group_srm_user,1,1,1,1
+access_crm_lead_report_srm_user,crm.lead.report srm_user,crm.model_crm_lead_report,group_srm_user,1,1,1,1
+access_res_partner_bank_type_crm_srm_user,res.partner.bank.type.crm srm_user,base.model_res_partner_bank_type,group_srm_user,1,0,0,0
+access_crm_payment_mode_srm_user,crm.payment.mode srm_user,crm.model_crm_payment_mode,group_srm_user,1,0,0,0

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="crm.case.stage" id="stage_leadfal1">
+            <field name="name">RFQ Study</field>
+            <field eval="1" name="case_default"/>
+            <field eval="False" name="fold"/>
+            <field name="state">open</field>
+            <field eval="45" name="probability"/>
+            <field eval="112" name="sequence"/>
+            <field name="type">opportunity</field>
+        </record>
+
+        <record model="crm.case.stage" id="stage_leadfal2">
+            <field name="name">RFQ Answered</field>
+            <field eval="1" name="case_default"/>
+            <field eval="False" name="fold"/>
+            <field name="state">open</field>
+            <field eval="45" name="probability"/>
+            <field eval="113" name="sequence"/>
+            <field name="type">opportunity</field>
+        </record>
+
+        <record model="crm.case.section" id="crm.section_sales_department">
+            <field name="name">Stage section for supplier followup</field>
+            <field name="stage_ids" eval="[(4, ref('stage_leadfal1')), (4, ref('stage_leadfal2'))]"/>
+        </record>
+        
+    </data>
+</openerp>

@@ -52,7 +52,8 @@ class purchase_order(orm.Model):
         
     def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, group_id, context=None):
         res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, group_id, context)
-        res['fal_project_number'] = order.order_line[0].account_analytic_id and order.order_line[0].account_analytic_id.code
+        for rex in res:
+            rex['fal_project_number'] = order.order_line[0].account_analytic_id and order.order_line[0].account_analytic_id.code
         return res
         
 #end of purchase_order()

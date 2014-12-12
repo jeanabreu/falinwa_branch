@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="crm_oppor_rfq_management">
+            <field name="name">Opportunities Fal</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="stage_id" widget="statusbar" clickable="True" position="attributes">
+                        <attribute name="domain">['&amp;', '|', ('case_default', '=', True), ('section_ids', '=', section_id), '|', ('type', '=', type), ('type', '=', 'both')]</attribute>
+                    </field>
+                    <field name="priority" position="after">
+                        <field name="rfq_date" />
+                        <field name="expected_finished_date" />
+                    </field>
+                    <page string="Fund Raising" groups="crm.group_fund_raising" position="after">
+                        <page string="Set" groups="fal_supplier_followup_opportunities.group_followupfal_user">
+                            <field name="package_ids" groups="fal_supplier_followup_opportunities.group_followupfal_user">
+                                <tree version="7.0" string="Set" editable="bottom">
+                                    <field name="crm_lead_id" invisible="1"/>
+                                    <field name="name" />
+                                    <field name='delegated_id' />
+                                    <field name="description" />
+                                    <field name="comment" />
+                                    <field name="state" />
+                                    <field name="supplier_name" />
+                                </tree>
+                            </field>
+                        </page>
+                    </page>
+                </data>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="crm_case_kanban_view_leads_rfq_management">
+            <field name="name">CRM - Leads Kanban RFQ Management</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="after">
+                        <div t-if="record.rfq_date.raw_value">
+                            RFQ Date : <field name="rfq_date" />
+                        </div>
+                        <div t-if="record.expected_finished_date.raw_value">
+                            Expected Finished Date : <field name="expected_finished_date" />
+                        </div>
+                        <div>
+                            Priority : <field name="priority" />
+                        </div>
+                        <div t-if="record.delegates_to.raw_value">
+                            Delegates To : <field name="delegates_to" />
+                        </div>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="package_tree_rfq_management">
+            <field name="name">Package</field>
+            <field name="model">fal.sup.management.package</field>
+            <field name="arch" type="xml">
+                <tree version="7.0" string="Set" colors="red:expected_finished_date_rel &lt; current_date;orange:efd_min_cd_rel &lt;= 1">
+                    <field name="crm_lead_id" />
+                    <field name='rfq_date_rel' />
+                    <field name='efd_min_cd_rel' invisible="1" />
+                    <field name="name" />
+                    <field name='delegated_id' />
+                    <field name="salesperson_id" />
+                    <field name='expected_finished_date_rel' />
+                    <field name="description" />
+                    <field name="comment" />
+                    <field name="state" />
+                    <field name="supplier_name" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="package_form_rfq_management">
+            <field name="name">Package</field>
+            <field name="model">fal.sup.management.package</field>
+            <field name="arch" type="xml">
+                <form string="Package" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name='delegated_id' />
+                                <field name="state" />
+                                <field name="crm_lead_id" required="1"/>
+                                <field name='rfq_date_rel' />
+                                <field name='expected_finished_date_rel' />
+                            </group>
+                            <group>                                
+                                <field name="description" />
+                                <field name="comment" />
+                                <field name="salesperson_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page>
+                                <field name="package_line_ids" >
+                                    <tree version="7.0" string="Set Line" editable="top">
+                                        <field name="supplier_name" />
+                                        <field name="description" />
+                                        <field name="comment" />
+                                        <field name="state" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="package_line_tree_rfq_management">
+            <field name="name">Set Line</field>
+            <field name="model">fal.sup.management.package.line</field>
+            <field name="arch" type="xml">
+                <tree version="7.0" string="Set Line" editable="top">
+                    <field name="package_id" domain="[('crm_lead_id.stage_id.name', '=', 'RFQ Study')]" />
+                    <field name="supplier_name" />
+                    <field name="description" />
+                    <field name="comment" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="crm_case_category_act_oppor_suprfq_fal">
+            <field name="name">Opportunities</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,graph,form,calendar</field>
+            <field name="domain">[('type','=','opportunity'),('stage_id.name','in',['RFQ Study', 'RFQ Answered'])]</field>
+            <field name="context">{'stage_type': 'opportunity', 'default_type': 'opportunity', 'default_user_id': uid}</field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+              Click to create a new opportunity.
+              </p><p>
+              OpenERP helps you keep track of your sales pipeline to follow
+              up potential sales and better forecast your future revenues.
+              </p><p>
+              You will be able to plan meetings and phone calls from
+              opportunities, convert them into quotations, attach related
+              documents, track all discussions, and much more.
+              </p>
+            </field>
+        </record>
+        
+        <record id="view_crm_case_set_line_filter" model="ir.ui.view">
+            <field name="name">Set Lines Search</field>
+            <field name="model">fal.sup.management.package.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Set Lines">
+                    <field name="supplier_name" />
+                    <field name="package_id" />
+                    <field name="state" />
+                    <group expand="0" string="Group By..." colspan="16">
+                        <filter name="Set" string="Set" domain="[]" context="{'group_by':'package_id'}"/>
+                        <filter string="Supplier" domain="[]" context="{'group_by':'supplier_name'}"/>
+                        <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record id="view_crm_case_set_filter" model="ir.ui.view">
+            <field name="name">Set Search</field>
+            <field name="model">fal.sup.management.package</field>
+            <field name="arch" type="xml">
+                <search string="Search Set">
+                    <field name="supplier_name" />
+                    <field name="crm_lead_id" />
+                    <field name="delegated_id" />
+                    <field name="name" />
+                    <field name="state" />
+                    <field name="salesperson_id" />
+                    <group expand="0" string="Group By..." colspan="16">
+                        <filter string="Opportunities" domain="[]" context="{'group_by':'crm_lead_id'}"/>
+                        <filter string="Supplier" domain="[]" context="{'group_by':'supplier_name'}"/>
+                        <filter string="Delegated" domain="[]" context="{'group_by':'delegated_id'}"/>
+                        <filter string="State" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Salesperson" domain="[]" context="{'group_by':'salesperson_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="crm_case_category_act_set_fal">
+            <field name="name">Set</field>
+            <field name="res_model">fal.sup.management.package</field>
+            <field name="view_mode">tree,graph,form,calendar</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('crm_lead_id.type','=','opportunity'),('crm_lead_id.stage_id.name','=','RFQ Study'),('state','!=','Finished')]</field>
+            <field name="view_id" eval="False"/>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_crm_case_set_filter"/>
+        </record>
+                
+        <record model="ir.actions.act_window" id="crm_case_category_act_set_line_fal">
+            <field name="name">Set Lines</field>
+            <field name="res_model">fal.sup.management.package.line</field>
+            <field name="view_mode">tree,graph,form,calendar</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('package_id.crm_lead_id.type','=','opportunity'),('package_id.state','!=','Finished'),('package_id.crm_lead_id.stage_id.name','=','RFQ Study')]</field>
+            <field name="view_id" eval="False"/>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_crm_case_set_line_filter"/>
+        </record>
+        
+        <record id="crm_case_category_act_oppor_suprfq_fal00" model="ir.actions.act_window.view">
+            <field eval="0" name="sequence"/>
+            <field name="view_mode">kanban</field>
+            <field name="act_window_id" ref="crm_case_category_act_oppor_suprfq_fal"/>
+        </record>
+        
+        <record id="crm_case_category_act_oppor_suprfq_fal1" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="act_window_id" ref="crm_case_category_act_oppor_suprfq_fal"/>
+        </record>
+        
+        <record id="crm_case_category_act_oppor_suprfq_fal2" model="ir.actions.act_window.view">
+            <field eval="2" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_oppor_rfq_management"/>
+            <field name="act_window_id" ref="crm_case_category_act_oppor_suprfq_fal"/>
+        </record>
+
+        <record id="ir_cron_op_color_action" model="ir.cron">
+            <field name="name">Opportunity Color</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'crm.lead'" name="model"/>
+            <field eval="'_get_color_view'" name="function"/>
+            <field eval="'()'" name="args"/>
+        </record>
+
+        <menuitem name="Purchases"
+            id="base.menu_purchase_root"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user,fal_supplier_followup_opportunities.group_srm_user,fal_supplier_followup_opportunities.group_followupfal_user"
+            sequence="60"/>
+            
+        <menuitem id="purchase.menu_procurement_management" name="Purchase"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            parent="base.menu_purchase_root" sequence="1" />
+
+        <menuitem id="purchase.menu_procurement_management_product" name="Products"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            parent="base.menu_purchase_root" sequence="8"/>
+
+        <menuitem id="purchase.menu_procurement_management_invoice" name="Invoice Control"
+            groups="purchase.group_purchase_manager,purchase.group_purchase_user"
+            parent="base.menu_purchase_root" sequence="6"/>
+          
+        <menuitem name="Supplier Management" id="menu_suprfq_fal" parent="base.menu_purchase_root" sequence="3" groups="group_followupfal_user,group_srm_user" />
+        <menuitem name="Opportunities" id="menu_crm_opportunities_suprfq_fal" parent="menu_suprfq_fal" action="crm_case_category_act_oppor_suprfq_fal" sequence="13" groups="group_followupfal_user"/>
+        <menuitem name="Set" id="menu_crm_set_fal" parent="menu_suprfq_fal" action="crm_case_category_act_set_fal" sequence="14" groups="group_followupfal_user,group_srm_user"/>
+        <menuitem name="Set Line" id="menu_crm_set_line_fal" parent="menu_suprfq_fal" action="crm_case_category_act_set_line_fal" sequence="15" groups="group_followupfal_user,group_srm_user"/>
+        
+    </data>
+</openerp>

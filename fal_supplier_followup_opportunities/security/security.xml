@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="0">
+        
+        <record model="res.groups" id="group_srm_user">
+            <field name="name">SRM - own RFQ only</field>
+        </record>
+
+        <record model="res.groups" id="group_followupfal_user">
+            <field name="name">Followup Opportunities User</field>
+            <field name="implied_ids" eval="[(4, ref('fal_supplier_followup_opportunities.group_srm_user'))]"/>
+        </record>
+
+        <record id="srm_personal_rule" model="ir.rule">
+            <field name="name">Personal SET</field>
+            <field ref="model_fal_sup_management_package" name="model_id"/>
+            <field name="domain_force">['|',('delegated_id','=',user.id),('delegated_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('fal_supplier_followup_opportunities.group_srm_user'))]"/>
+        </record>
+        
+        <record id="srm_all_rule" model="ir.rule">
+            <field name="name">All SET</field>
+            <field ref="model_fal_sup_management_package" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('fal_supplier_followup_opportunities.group_followupfal_user'))]"/>
+        </record>
+
+
+        <record id="srm_personal_rule_line" model="ir.rule">
+            <field name="name">Personal SET Line</field>
+            <field ref="model_fal_sup_management_package_line" name="model_id"/>
+            <field name="domain_force">['|',('package_id.delegated_id','=',user.id),('package_id.delegated_id','=',False)]</field>
+            <field name="groups" eval="[(4, ref('fal_supplier_followup_opportunities.group_srm_user'))]"/>
+        </record>
+        
+        <record id="srm_all_rule_line" model="ir.rule">
+            <field name="name">All SET Line</field>
+            <field ref="model_fal_sup_management_package_line" name="model_id"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('fal_supplier_followup_opportunities.group_followupfal_user'))]"/>
+        </record>
+
+    </data>
+</openerp>
+

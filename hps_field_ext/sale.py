@@ -12,10 +12,6 @@ class sale_order(orm.Model):
         'client_order_ref': fields.char('Customer PO Number', size=64),
     }
     
-    def _prepare_order_picking(self, cr, uid, order, context=None):
-        res =  super(sale_order, self)._prepare_order_picking(cr, uid, order, context=context)
-        res['fal_client_order_ref'] = order.client_order_ref
-        return res
     
     def action_ship_create(self, cr, uid, ids, context=None):
         for order in self.browse(cr, uid, ids, context=context):
@@ -25,9 +21,10 @@ class sale_order(orm.Model):
         res =  super(sale_order, self).action_ship_create(cr, uid, ids, context=context)
         return True
         
-    def _prepare_order_line_move(self, cr, uid, order, line, picking_id, date_planned, context=None):
-        res =  super(sale_order, self)._prepare_order_line_move(cr, uid, order, line, picking_id, date_planned, context=context)
+    def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
+        res = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id, context=context)
         res['fal_remark'] = line.fal_remark
+        res['fal_client_order_ref'] = order.client_order_ref
         return res
     
 #end of sale_order()
@@ -58,3 +55,20 @@ class sale_order_line(orm.Model):
     }
         
 #end of sale_order_line()
+
+class procurement_order(orm.Model):
+    _name = 'procurement.order'
+    _inherit = 'procurement.order'
+        
+    _columns = {
+        'fal_remark' : fields.char('Remark', size=64),
+        'fal_client_order_ref': fields.char('Customer PO Number', size=64),
+    }
+    
+    def _run_move_create(self, cr, uid, procurement, context=None):
+        res = super(procurement_order, self)._run_move_create(cr, uid, procurement, context=context)
+        res['fal_remark'] = procurement.fal_remark
+        res['fal_client_order_ref'] = procurement.fal_client_order_ref
+        return res
+        
+#end of procurement_order()

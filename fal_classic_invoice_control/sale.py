@@ -18,10 +18,10 @@ class sale_order(orm.Model):
                 self.action_ship_create(cr, uid, ids, context)
                 return False
         return super(sale_order, self).action_invoice_create(cr, uid, ids, grouped, states, date_invoice, context)
-    
-    def _prepare_order_picking(self, cr, uid, order, context=None):
-        res = super(sale_order, self)._prepare_order_picking( cr, uid, order, context)
+
+    def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
+        res = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=False, context=context)
         res['invoice_state'] = ((order.order_policy=='picking' or order.order_policy=='prepaid') and '2binvoiced') or 'none'
         return res
-        
+                
 #end of sale_order()

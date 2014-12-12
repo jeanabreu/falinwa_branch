@@ -23,7 +23,7 @@
                          </div>
                          <label string="Cost of BoM (CCR)" for="fal_bom_costs" groups="base.group_user" attrs="{'invisible':[('bom_ids','=',[])]}"/>
                          <div groups="base.group_user" name="fal_bom" attrs="{'invisible':[('bom_ids','=',[])]}">
-                            <field name="fal_bom_costs" attrs="{'invisible':[('supply_method','!=','produce')]}" nolabel="1" class="oe_inline" />
+                            <field name="fal_bom_costs" attrs="{'invisible':[('bom_ids','!=',[])]}" nolabel="1" class="oe_inline" />
                          </div>
                          <field name="bom_ids" invisible="1"/>
                     </field>

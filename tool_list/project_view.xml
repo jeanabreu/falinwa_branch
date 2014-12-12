@@ -218,7 +218,7 @@
                     <field name="name" position="after">
                         <field name="tool_number"/>
                     </field>
-                    <filter string="End Date" position="after">
+                    <filter string="Assignation Month" position="after">
                         <filter string="Tool List Destination" domain="[]" context="{'group_by':'tool_list_destination_id'}" groups="base.group_no_one"/>
                         <filter string="Production Site" domain="[]" context="{'group_by':'production_site_id'}" groups="base.group_no_one"/>
                     </filter>

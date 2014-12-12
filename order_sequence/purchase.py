@@ -33,7 +33,7 @@ class purchase_order(orm.Model):
         if default is None:
             default = {}
         default.update({
-            'name': False,
+            'name': '/',
             'quotation_number': False
         })
         return super(purchase_order, self).copy(cr, uid, id, default, context)

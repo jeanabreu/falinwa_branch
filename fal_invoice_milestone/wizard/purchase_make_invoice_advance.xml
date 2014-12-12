@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_purchase_advance_payment_inv_inherit1" model="ir.ui.view">
+            <field name="name">Invoice Order</field>
+            <field name="model">purchase.advance.payment.inv</field>
+            <field name="inherit_id" ref="fal_invoice_milestone_purchase.view_purchase_advance_payment_inv"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="amount" class="oe_inline" position="replace">
+                        <field name="amount_temp" class="oe_inline"/>
+                        <field name="amount" invisible="1" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

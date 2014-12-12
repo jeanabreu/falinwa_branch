@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_fal_imilage1" model="ir.ui.view">
+            <field name="name">view.order.form.imilage1</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice"
+                        type="action" states="manual" class="oe_highlight" groups="base.group_user" position="replace">
+                        <button name="%(sale.action_view_sale_advance_payment_inv)d" string="Create Invoice Manually"
+                            type="action" states="manual" groups="base.group_sale_manager" />
+                        <button name="action_create_invoices_milestone" string="Create Invoice"
+                            type="object" attrs="{'invisible': ['|',('invoice_milestone_rule_line_ids','=',[]),('state','!=','manual')]}" class="oe_highlight" groups="base.group_user" />
+                    </button>                    
+                </data>
+            </field>
+        </record>
+ 
+        <record id="view_order_form_fal_imilage" model="ir.ui.view">
+            <field name="name">view.order.form.imilage</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="order_policy" on_change="shipping_policy_change(order_policy)" position="after">
+                        <field name="invoice_milestone_rule_id" attrs="{'invisible':[('order_policy','!=','manual')],'required':[('order_policy','=','manual')], 'readonly':[('state','in',('invoice_except','shipping_except','manual','progress','done'))]}" />
+                    </field>
+                    <page string="Other Information" groups="base.group_user" position="after">
+                        <page string="Next Invoice Milestone" groups="base.group_user">
+                            <field name="invoice_milestone_rule_line_ids" readonly="True">
+                                <tree>
+                                    <field name="percentage" sum="Total Percentage" />
+                                    <field name="description"/>
+                                    <field name="payment_term" />
+                                    <field name="sequence"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </page>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_fal_invoice_milestone_tree" model="ir.ui.view">
+            <field name="name">view.fal.invoice.milestone.tree</field>
+            <field name="model">fal.invoice.milestone</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice Milestone">
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>  
+        
+        <record id="view_fal_invoice_milestone_form" model="ir.ui.view">
+            <field name="name">view.fal.invoice.milestone.form</field>
+            <field name="model">fal.invoice.milestone</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Milestone" version="7.0">
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="active" />
+                            <field name="percentage" invisible="0" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Rule Line">
+                            <field name="rule_ids">
+                                <tree string="Rule Lines" editable="bottom">
+                                    <field name="percentage" sum="Total Percentage" />
+                                    <field name="description"/>
+                                    <field name="payment_term" />
+                                    <field name="sequence"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>  
+        
+        <record id="view_fal_invoice_milestone_tree_action" model="ir.actions.act_window">
+            <field name="name">Invoice Milestone</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.invoice.milestone</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a invoice Milestone. 
+              </p><p>
+                This configuration works to generate a invoice based on this rule configuration.
+              </p>
+            </field>
+        </record>
+            
+        <menuitem action="view_fal_invoice_milestone_tree_action" id="fal_menu_invoice_milestone"
+            parent="base.menu_base_config"
+            sequence="1" />   
+            
+        <menuitem action="view_fal_invoice_milestone_tree_action" id="fal_menu_invoice_milestone_purchase"
+            parent="purchase.menu_purchase_config_purchase"
+            sequence="1" />   
+        
+    </data>
+</openerp>

@@ -88,6 +88,12 @@
             <field name="close_method">none</field>
             <field name="report_type">income</field>
         </record>
+        <record id="user_type_fal_tax" model="account.account.type">
+            <field name="name">Tax</field>
+            <field name="code">Liability</field>
+            <field name="close_method">unreconciled</field>
+            <field name="report_type">liability</field>
+        </record>
         <record id="user_type_fal_accountpayable" model="account.account.type">
             <field name="name">Account Payable</field>
             <field name="code">Liability</field>

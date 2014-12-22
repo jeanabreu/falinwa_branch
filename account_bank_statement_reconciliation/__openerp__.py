@@ -28,7 +28,7 @@
 Allows reconciliation of bank statements
     """,
     'website': 'http://www.openerp.com',
-    'depends' : ['account', 'account_voucher'],
+    'depends' : ['account', 'account_voucher', 'analytic'],
     'data': ['account_bank_statement_reconciliation_view.xml' ],
     'demo': [],
     'installable': True,

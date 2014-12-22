@@ -125,8 +125,37 @@ class account_bank_statement(orm.Model):
                     'move_line_ids' : [ (5, False, False) ],
                 })
         return self.write(cr, uid, ids, {}, context=context)
+
+    def button_confirm_bank(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+            
+        res = super(account_bank_statement, self).button_confirm_bank(cr, uid, ids, context=context)
+        for statement in self.browse(cr, uid, ids, context=context):
+            for statement_line in statement.line_ids:
+                if not statement_line.account_id:
+                    raise orm.except_orm(_('Error!'),_('There\'s still bank statement line that has no account yet, please filled it or click reconcile button.'))
+        return res
+
+    def _prepare_move_line_vals(self, cr, uid, st_line, move_id, debit, credit, currency_id=False,
+                amount_currency=False, account_id=False, partner_id=False, context=None):
+        res = super(account_bank_statement, self)._prepare_move_line_vals(cr, uid, st_line, move_id, debit, credit, currency_id=currency_id,
+                amount_currency=amount_currency, account_id=account_id, partner_id=partner_id, context=context)
+        res['analytic_account_id'] = st_line.analytic_account_id.id
+        return res
         
 #end of account_bank_statement()
+
+class account_bank_statement_line(orm.Model):
+    _name = "account.bank.statement.line"
+    _inherit = "account.bank.statement.line"
+    
+    _columns = {
+        'analytic_account_id': fields.many2one('account.analytic.account', 'Analytic Account'),
+    }
+    
+#end of account_bank_statement_line()
+
 
 class account_voucher(orm.Model):
     _name = 'account.voucher'

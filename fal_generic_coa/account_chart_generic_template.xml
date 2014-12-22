@@ -426,10 +426,18 @@
             <field name="name">Bank &amp; Cash</field>
             <field name="user_type" ref="user_type_fal_assetview"/>
         </record>
+        <record id="fal_gen_chart1131" model="account.account.template">
+            <field name="code">1131</field>
+            <field eval="False" name="reconcile"/>
+            <field ref="fal_gen_chart113" name="parent_id"/>
+            <field name="type">view</field>
+            <field name="name">Bank (BK)</field>
+            <field name="user_type" ref="user_type_fal_assetview"/>
+        </record>
         <record id="fal_gen_chart11311" model="account.account.template">
             <field name="code">11311</field>
             <field eval="False" name="reconcile"/>
-            <field ref="fal_gen_chart113" name="parent_id"/>
+            <field ref="fal_gen_chart1131" name="parent_id"/>
             <field name="type">view</field>
             <field name="name">BK - HK Bank Account</field>
             <field name="user_type" ref="user_type_fal_assetview"/>
@@ -453,7 +461,7 @@
         <record id="fal_gen_chart11312" model="account.account.template">
             <field name="code">11312</field>
             <field eval="False" name="reconcile"/>
-            <field ref="fal_gen_chart11311" name="parent_id"/>
+            <field ref="fal_gen_chart1131" name="parent_id"/>
             <field name="type">view</field>
             <field name="name">BK - SHZ Bank Account</field>
             <field name="user_type" ref="user_type_fal_assetview"/>

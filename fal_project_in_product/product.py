@@ -9,7 +9,12 @@ class product_product(orm.Model):
     _inherit = "product.product"
     
     _columns = {
-        'project_id': fields.many2one('account.analytic.account', 'Project', ondelete='set null'),
+        'project_id': fields.property(
+            type='many2one',
+            relation='account.analytic.account',
+            string='Project', 
+            view_load=True,
+            ondelete='set null'),
         'customer_code' : fields.char('Customer Code',size=128),
         'customer_ref_number' : fields.char('Customer Reference Number',size=128),
     }

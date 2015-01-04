@@ -58,7 +58,7 @@ class account_invoice(orm.Model):
         ctx = context.copy()
         for invoice in self.browse(cr, uid, ids, context=context):
             ctx.update({'date': invoice.date_invoice})
-            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HK$'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
+            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HKD'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
             cur = invoice.currency_id
             temp = amount_tax = amount_untaxed = 0.0
             for line in invoice.invoice_line:
@@ -78,7 +78,7 @@ class account_invoice(orm.Model):
         ctx = context.copy()
         for invoice in self.browse(cr, uid, ids, context=context):
             ctx.update({'date': invoice.date_invoice})
-            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HK$'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
+            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HKD'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
             cur = invoice.currency_id
             temp = amount_tax = amount_untaxed = 0.0
             for line in invoice.invoice_line:
@@ -101,7 +101,7 @@ class account_invoice(orm.Model):
             ctx.update({'date': invoice.date_invoice})
             nb_inv_in_partial_rec = max_invoice_id = 0
             temp = result[invoice.id] = 0.0
-            rate_ids = currency_obj.search(cr, uid,[('symbol', '=', 'HK$'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
+            rate_ids = currency_obj.search(cr, uid,[('symbol', '=', 'HKD'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
             cur = invoice.currency_id
             if invoice.move_id:
                 for aml in invoice.move_id.line_id:

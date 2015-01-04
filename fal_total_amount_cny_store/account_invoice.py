@@ -71,6 +71,24 @@ class account_invoice(orm.Model):
                     temp = cur_obj.compute(cr, uid, cur.id, rate_id.id, temp, context=ctx)
             res[invoice.id] = cur_obj.round(cr, uid, cur, temp)
         return res
+
+    def _amount_untaxed_cny(self, cr, uid, ids, field_name, arg, context=None):
+        cur_obj = self.pool.get('res.currency')
+        res = {}
+        ctx = context.copy()
+        for invoice in self.browse(cr, uid, ids, context=context):
+            ctx.update({'date': invoice.date_invoice})
+            rate_ids = cur_obj.search(cr, uid,[('name', '=', 'CNY'),('company_id','=',invoice.company_id.id)] , context=ctx, limit=1)
+            cur = invoice.currency_id
+            temp = amount_tax = amount_untaxed = 0.0
+            for line in invoice.invoice_line:
+                amount_untaxed += line.price_subtotal
+            amount_untaxed = cur_obj.round(cr, uid, cur, amount_untaxed)
+            for rate_id in cur_obj.browse(cr, uid, rate_ids, ctx):
+                if cur != rate_id:
+                    amount_untaxed = cur_obj.compute(cr, uid, cur.id, rate_id.id, amount_untaxed, context=ctx)
+            res[invoice.id] = cur_obj.round(cr, uid, cur, amount_untaxed)
+        return res
         
     def _amount_ballance_cny(self, cr, uid, ids, name, args, context=None):
         """Function of the field residua. It computes the residual amount (balance) for each invoice"""
@@ -122,6 +140,12 @@ class account_invoice(orm.Model):
         return result
         
     _columns = {
+        'untaxed_amount_cny': fields.function(_amount_untaxed_cny, digits_compute=dp.get_precision('Account'), string='Subtotal (CNY)', track_visibility='always',
+            store={
+                'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line','move_id','date_invoice'], 20),
+                'account.invoice.tax': (_get_invoice_tax_fal, None, 20),
+                'account.invoice.line': (_get_invoice_line_fal, ['price_unit','invoice_line_tax_id','quantity','discount','invoice_id'], 20),
+            }),
         'amount_total_cny': fields.function(_amount_all_cny, type='float',digits_compute=dp.get_precision('Account'), string='Total (CNY)',
             store={
                 'account.invoice': (lambda self, cr, uid, ids, c={}: ids, ['invoice_line','move_id','date_invoice'], 20),

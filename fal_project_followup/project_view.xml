@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_account_analytic_account_form_falproup" model="ir.ui.view">
+            <field name="name">account.analytic.account.form.falproup</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr='//div[@name="project"]' position='inside'>
+                        <field name="fal_is_business" />
+                        <label for="fal_is_business"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
+        <record id="view_order_tree__falproup" model="ir.ui.view">
+            <field name="name">sale.order.tree.falproup</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="after">
+                        <field name="project_id" invisible="1" />
+                        <field name="project_fal_is_business" invisible="1" />
+                        <button name="fal_refresh" type="object" string="Empty" icon="gtk-no" attrs="{'invisible': ['|',('project_id', '!=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" type="object" string="Fully Defined" icon="gtk-yes" attrs="{'invisible': ['|',('project_id', '=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" type="object" string="Business" icon="gtk-cdrom" attrs="{'invisible': [('project_fal_is_business', '=', False)]}" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_quotation_tree_falproup" model="ir.ui.view">
+            <field name="name">quotation.order.tree.falproup</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="after">
+                        <field name="project_id" invisible="1" />
+                        <field name="project_fal_is_business" invisible="1" />
+                        <button name="fal_refresh" type="object" string="Empty" icon="gtk-no" attrs="{'invisible': ['|',('project_id', '!=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" type="object" string="Fully Defined" icon="gtk-yes" attrs="{'invisible': ['|',('project_id', '=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" type="object" string="Business" icon="gtk-cdrom" attrs="{'invisible': [('project_fal_is_business', '=', False)]}" />
+                    </field>
+                </data>
+            </field>
+        </record>
+    
+    </data>
+</openerp>

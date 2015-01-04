@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="amount_total" sum="Total Tax Included" position="before">
+                        <field name="untaxed_amount_hkd" sum="Subtotal in HKD"/>
                         <field name="amount_total_hkd" sum="Total in HKD"/>
                     </field>
                     <field name="amount_total" sum="Total Tax Included" position="after">
@@ -26,6 +27,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="amount_total" sum="Total Tax Included" position="before">
+                        <field name="untaxed_amount_hkd" sum="Subtotal in HKD"/>
                         <field name="amount_total_hkd" sum="Total in HKD"/>
                     </field>
                     <field name="amount_total" sum="Total Tax Included" position="after">

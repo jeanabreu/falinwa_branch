@@ -9,7 +9,8 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="amount_total" sum="Total Tax Included" position="before">
-                        <field name="amount_total_cny" sum="Total in CNY"/>                        
+                        <field name="amount_total_cny" sum="Total in CNY"/>
+                        <field name="amount_total_cny" sum="Total in CNY"/>
                     </field>
                     <field name="amount_total" sum="Total Tax Included" position="after">
                         <field name="currency_id" string="Order Currency" />

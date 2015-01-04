@@ -10,6 +10,7 @@
                 <data>
                     <field name="currency_id" groups="base.group_multi_currency" position="after">
                         <field name="amount_ballance_cny" sum="Balance in CNY"/>
+                        <field name="untaxed_amount_cny" sum="Subtotal in CNY"/>
                         <field name="amount_total_cny" sum="Total in CNY"/>
                     </field>
                 </data>

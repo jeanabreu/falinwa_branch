@@ -22,6 +22,24 @@ class sale_order(orm.Model):
         if invoices:
             sale_ids = self.pool.get('sale.order').search(cr, uid, [('invoice_ids','in',invoices.keys())], context=context)
         return sale_ids
+
+    def _amount_untaxed_cny(self, cr, uid, ids, field_name, arg, context=None):
+        cur_obj = self.pool.get('res.currency')
+        res = {}
+        ctx = context.copy()
+        for order in self.browse(cr, uid, ids, context=context):
+            ctx.update({'date': order.date_order})
+            rate_ids = cur_obj.search(cr, uid,[('name', '=', 'CNY'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
+            temp = val = val1 = amount_tax = amount_untaxed = 0.0
+            cur = order.currency_id
+            for line in order.order_line:
+                val1 += line.price_subtotal
+            val1 = cur_obj.round(cr, uid, cur, val1)
+            for rate_id in cur_obj.browse(cr, uid, rate_ids, ctx):
+                if cur != rate_id:
+                    val1 = cur_obj.compute(cr, uid, cur.id, rate_id.id, val1, context=ctx)
+            res[order.id] = cur_obj.round(cr, uid, cur, val1)
+        return res
         
     def _amount_all_cny(self, cr, uid, ids, field_name, arg, context=None):
         cur_obj = self.pool.get('res.currency')
@@ -104,6 +122,12 @@ class sale_order(orm.Model):
         return res
 
     _columns = {
+        'untaxed_amount_cny': fields.function(_amount_untaxed_cny, digits_compute=dp.get_precision('Account'), string='Untaxed Amount (CNY)',
+            store={
+                'sale.order' : (lambda self, cr, uid, ids, c={}: ids, None, 20),
+                'sale.order.line': (_get_order_fal, None, 10),
+            },
+            help="The amount without tax in CNY.", track_visibility='always'),
         'amount_total_cny': fields.function(_amount_all_cny, digits_compute=dp.get_precision('Account'), string='Total (CNY)',
             store={
                 'sale.order' : (lambda self, cr, uid, ids, c={}: ids, None, 20),

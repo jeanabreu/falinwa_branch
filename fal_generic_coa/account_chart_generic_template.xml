@@ -2295,7 +2295,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Taxi</field>
+            <field name="name">MAT - Taxi</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>        
         <record id="fal_gen_chart233212" model="account.account.template">
@@ -2303,7 +2303,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Train</field>
+            <field name="name">MAT - Train</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>
          <record id="fal_gen_chart233213" model="account.account.template">
@@ -2311,7 +2311,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Flight</field>
+            <field name="name">MAT - Flight</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>
         <record id="fal_gen_chart233214" model="account.account.template">
@@ -2319,7 +2319,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Bus</field>
+            <field name="name">MAT - Bus</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>       
         <record id="fal_gen_chart233215" model="account.account.template">
@@ -2327,7 +2327,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Private Car</field>
+            <field name="name">MAT - Private Car</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>
          <record id="fal_gen_chart233216" model="account.account.template">
@@ -2335,7 +2335,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Gazoline</field>
+            <field name="name">MAT - Gazoline</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>
         <record id="fal_gen_chart233217" model="account.account.template">
@@ -2343,7 +2343,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Toll gate</field>
+            <field name="name">MAT - Toll gate</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record> 
         <record id="fal_gen_chart233219" model="account.account.template">
@@ -2351,7 +2351,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart23312" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">MLT - Other mission local travelling</field>
+            <field name="name">MAT - Other mission local travelling</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record> 
         <record id="fal_gen_chart2332" model="account.account.template">

@@ -15,8 +15,8 @@ class sale_order(orm.Model):
     def _get_date_planned(self, cr, uid, order, line, start_date, context=None):
         date_planned = False
         if order.x_expected_date_of_departure:
-            return order.x_expected_date_of_departure
-        return super(sale_order, self)._get_date_planned(cr, uid, order, line, order.date_confirm, context)
+            return order.x_expected_date_of_departure + ' 00:00:00'
+        return super(sale_order, self)._get_date_planned(cr, uid, order, line, order.date_confirm + ' 00:00:00', context)
         
 #end of sale_order()
 

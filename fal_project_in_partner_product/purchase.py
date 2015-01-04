@@ -21,14 +21,14 @@ class purchase_order_line(orm.Model):
     
     def onchange_product_id(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,
             partner_id, date_order=False, fiscal_position_id=False, date_planned=False,
-            name=False, price_unit=False, context=None):
+            name=False, price_unit=False, state='draft', context=None):
         
         if context is None:
             context = {}       
         
-        res = super(purchase_order_line, self).onchange_product_id(cr ,uid, ids, pricelist_id, product_id, qty, uom_id,
-            partner_id, date_order, fiscal_position_id, date_planned,
-            name, price_unit, context=context)
+        res = super(purchase_order_line, self).onchange_product_id(cr, uid, ids, pricelist_id, product_id, qty, uom_id,
+            partner_id, date_order=date_order, fiscal_position_id=fiscal_position_id, date_planned=date_planned,
+            name=name, price_unit=price_unit, state=state, context=context)
         if partner_id:
             partner = self.pool.get('res.partner').browse(cr ,uid, partner_id, context)
             if partner.fal_project_id:

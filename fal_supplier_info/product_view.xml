@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="fal_product_supplierinfo_pricelist_tree_view" model="ir.ui.view">
+            <field name="name">product.supplierinfo.pricelist.fal.tree.view</field>
+            <field name="model">pricelist.partnerinfo</field>
+            <field name="arch" type="xml">
+                <tree string="Supplier Information Pricelist" editable="bottom">
+                    <field name="name"/>
+                    <field name="suppinfo_id"/>
+                    <field name="min_quantity"/>
+                    <field name="price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="fal_act_product_supplier_info">
+           <field name="name">Supplier Info</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">product.supplierinfo</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="product.product_supplierinfo_tree_view"/>
+           <field name="help" type="html">
+             <p>
+                Define Supplier Info in here.
+             </p>
+           </field>
+       </record>
+       
+       <record model="ir.actions.act_window" id="fal_act_product_supplier_info_pricelist">
+           <field name="name">Supplier Info Pricelist</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="res_model">pricelist.partnerinfo</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="fal_product_supplierinfo_pricelist_tree_view"/>
+           <field name="help" type="html">
+             <p>
+                Define Supplier Info pricelist in here.
+             </p>
+           </field>
+       </record>
+
+       <menuitem action="fal_act_product_supplier_info"
+            id="menu_fal_act_product_supplier_info" parent="purchase.menu_product_in_config_purchase"
+            sequence="98"/>
+            
+       <menuitem action="fal_act_product_supplier_info_pricelist"
+            id="menu_fal_act_product_supplier_info_pricelist" parent="purchase.menu_product_in_config_purchase"
+            sequence="99"/>
+        
+    </data>
+</openerp>

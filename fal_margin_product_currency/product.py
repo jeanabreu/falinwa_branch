@@ -50,9 +50,27 @@ class product_product(orm.Model):
         return result.keys()
         
     _columns = {
-        'sale_currency_id' : fields.many2one('res.currency', 'Sale Currency', help="Select a Sale Currency"),
-        'cost_currency_id' : fields.many2one('res.currency', 'Cost Currency', help="Select a Cost Currency"),
-        'net_currency_id' : fields.many2one('res.currency', 'Net Margin Currency', help="Select a Net Margin Currency"),
+        'sale_currency_id' : fields.property(
+            type='many2one',
+            relation='res.currency',
+            string="Sale Currency",
+            view_load=True,
+            help="Select a Sale Currency"
+            ),
+        'cost_currency_id' : fields.property(
+            type='many2one',
+            relation='res.currency',
+            string="Cost Currency",
+            view_load=True,
+            help="Select a Cost Currency"
+            ),
+        'net_currency_id' : fields.property(
+            type='many2one',
+            relation='res.currency',
+            string="Net Margin Currency",
+            view_load=True,
+            help="Select a Net Margin Currency"
+            ),
         'fal_net_margin' : fields.function(_get_net_margin, type='float', string='Net Margin',
             help="Net Margin",
             digits_compute=dp.get_precision('Account'),

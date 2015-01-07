@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="action_fal_delivery_picking_move" model="ir.actions.act_window">
+            <field name="name">Deliver Products</field>
+            <field name="res_model">stock.move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain" eval="[('picking_id.picking_type_id.code','=','outgoing'), ('location_dest_id.usage', 'in', ['customer','supplier'])]"/>
+            <field name="view_id" ref="stock.view_move_tree_receipt_picking"/>
+            <field name="context">{'picking_type': 'out', 'search_default_future': True}</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to register a product deliver. 
+              </p><p>
+                Here you can deliver individual products, no matter what
+                sale order or picking order they come from. You will find
+                the list of all products you are waiting for. Once you deliver
+                an order, you can filter based on the name of the customer or
+                the sale order reference. Then you can confirm all products
+                received using the buttons on the right of each line.
+              </p>
+            </field>
+        </record>
+
+        <record id="action_fal_picking_tree_picking" model="ir.actions.act_window">
+            <field name="name">Incoming Shipments</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="context">{"default_type": "in", "contact_display": "partner_address"}</field>
+            <field name="domain" eval="[('picking_type_id.code','=','incoming')]"/>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new incoming shipment.
+              </p><p> 
+                Here you can track all the product receipts of purchase
+                orders.
+              </p>
+            </field>
+       </record>
+        
+        <menuitem id="fal_menu_stock_products_moves" name="Receive/Deliver Products"
+            parent="stock.menu_stock_root" sequence="1"/>                
+        <menuitem action="stock.action_receipt_picking_move" id="fal_pro_menu_action_receipt_picking_tree_in_move"
+            parent="fal_menu_stock_products_moves" sequence="1"/>            
+        <menuitem action="action_fal_delivery_picking_move" id="fal_pro_menu_action_receipt_delivery_tree_in_move"
+            parent="fal_menu_stock_products_moves" sequence="2"/>
+
+        <menuitem action="action_fal_picking_tree_picking" id="fal_pro_menu_action_picking_tree"
+            parent="purchase.menu_procurement_management_inventory" sequence="10"/>
+        
+    </data>
+</openerp>

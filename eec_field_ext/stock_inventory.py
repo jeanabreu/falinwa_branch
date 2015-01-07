@@ -7,10 +7,6 @@ import time
 class stock_move(orm.Model):
     _name = "stock.move"
     _inherit = "stock.move"
-
-    _columns = {
-        'date_expected': fields.date('Expected Date of Departure', states={'done': [('readonly', True)]}, select=True, help="Scheduled date for the processing of this move"),
-    }
     
     def open_move(self, cr, uid, ids, context=None):
         if context is None:

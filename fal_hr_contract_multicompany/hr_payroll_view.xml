@@ -15,7 +15,7 @@
             </field>
         </record>         
 
-        <record id="hr_contract_view_tree" model="ir.ui.view">
+        <record id="hr_contract_view_tree_fal_contract_multicompany" model="ir.ui.view">
             <field name="name">hr.contract.view.tree.fal.contract.multicompany</field>
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_contract.hr_contract_view_tree" />
@@ -27,41 +27,67 @@
                 </data>
             </field>
         </record>
-        
+
+        <record id="hr_payslip_run_tree_fal_contract_multicompany" model="ir.ui.view">
+            <field name="name">hr.payslip.run.tree.fal.contract.multicompany</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="after">
+                        <field name="fal_company_id"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="hr_payslip_run_form_fal_contract_multicompany" model="ir.ui.view">
+            <field name="name">hr.payslip.run.form.fal.contract.multicompany</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="credit_note" position="after">
+                        <field name="fal_company_id" widget="selection" />
+                    </field>
+                </data>
+            </field>
+        </record>        
+
     </data>
     <data noupdate="1">
 
         <record id="fal_hr_contract_multicompany_rule" model="ir.rule">
             <field name="name" >Fal HR Contract multi-company</field>
-            <field name="model_id" ref="model_hr_contract"/>
+            <field name="model_id" ref="hr_payroll.model_hr_contract"/>
             <field name="global" eval="True"/>
             <field name="domain_force"> ['|','|',('fal_company_id.child_ids','child_of',[user.company_id.id]),('fal_company_id','child_of',[user.company_id.id]),('fal_company_id','=',False)]</field>
         </record>
         
         <record id="fal_hr_payslip_multicompany_rule" model="ir.rule">
             <field name="name" >Fal Payslip Multicompany</field>
-            <field name="model_id" ref="model_hr_payslip"/>
+            <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
             <field name="global" eval="True"/>
             <field name="domain_force"> ['|','|',('company_id.child_ids','child_of',[user.company_id.id]),('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
         </record>
         
         <record id="fal_hr_salary_rule_multicompany_rule" model="ir.rule">
             <field name="name" >Fal Salary Rule Multicompany</field>
-            <field name="model_id" ref="model_hr_salary_rule"/>
+            <field name="model_id" ref="hr_payroll.model_hr_salary_rule"/>
             <field name="global" eval="True"/>
             <field name="domain_force"> ['|','|',('company_id.child_ids','child_of',[user.company_id.id]),('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
         </record>
         
         <record id="fal_hr_payroll_structure_multicompany_rule" model="ir.rule">
             <field name="name" >Fal Payroll Structure Multicompany</field>
-            <field name="model_id" ref="model_hr_payroll_structure"/>
+            <field name="model_id" ref="hr_payroll.model_hr_payroll_structure"/>
             <field name="global" eval="True"/>
             <field name="domain_force"> ['|','|',('company_id.child_ids','child_of',[user.company_id.id]),('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
         </record>
         
         <record id="fal_hr_paysliprun_multicompany_rule" model="ir.rule">
             <field name="name" >Fal Payslip Run Multicompany</field>
-            <field name="model_id" ref="model_hr_payslip_run"/>
+            <field name="model_id" ref="hr_payroll.model_hr_payslip_run"/>
             <field name="global" eval="True"/>
             <field name="domain_force"> ['|','|',('fal_company_id.child_ids','child_of',[user.company_id.id]),('fal_company_id','child_of',[user.company_id.id]),('fal_company_id','=',False)]</field>
         </record>

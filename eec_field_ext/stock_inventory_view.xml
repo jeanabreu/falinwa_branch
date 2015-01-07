@@ -17,7 +17,7 @@
                     <field name="date_expected" invisible="1" position="replace">
                     </field>
                     <field name="date" position="after">
-                        <field name="date_expected" required="1" on_change="onchange_date(date,date_expected)" />
+                        <field name="date_expected" required="1" widget="date" on_change="onchange_date(date,date_expected)" />
                     </field>
                     <field name="date_expected" position="after">
                         <button name="open_move" type="object" string="View in Form View" icon="gtk-justify-fill"/>

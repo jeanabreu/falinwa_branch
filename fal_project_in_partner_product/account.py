@@ -19,14 +19,18 @@ class account_invoice_line(orm.Model):
         'account_analytic_id' : _get_default_project,
     }
     
-    def product_id_change(self, cr, uid, ids, product, uom_id, qty=0, name='', type='out_invoice', partner_id=False, fposition_id=False, price_unit=False, currency_id=False, context=None, company_id=None):
+    def product_id_change(self, cr, uid, ids, product, uom_id, qty=0, name='', type='out_invoice',
+            partner_id=False, fposition_id=False, price_unit=False, currency_id=False,
+            company_id=None, context=None):
         
         if context is None:
             context = {}       
         
-        res = super(account_invoice_line, self).product_id_change(cr ,uid, ids, product, uom_id, qty, name, type, partner_id, fposition_id, price_unit, currency_id, context)
+        res = super(account_invoice_line, self).product_id_change(cr ,uid, ids, product, uom_id, qty, name, type,
+            partner_id, fposition_id, price_unit, currency_id,
+            company_id, context=context)
         if partner_id:
-            partner = self.pool.get('res.partner').browse(cr ,uid, partner_id, context)
+            partner = self.pool.get('res.partner').browse(cr, uid, partner_id, context)
             if partner.fal_project_id:
                 res['value']['account_analytic_id'] = partner.fal_project_id.id
                 return res

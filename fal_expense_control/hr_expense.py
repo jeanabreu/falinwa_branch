@@ -85,6 +85,9 @@ class hr_expense_line(orm.Model):
         res = dict(cr.fetchall())
         return res
         
+    def _fal_reason_why_selection(self, cr, uid, context=None):
+        return [('customer','With Customer'), ('manager','With Manager'), ('director','Require Refund To Director'), ('employee','Require at Employee Charge')]
+        
     _columns = {
         'product_id': fields.many2one('product.product', 'Product', domain=[('hr_expense_ok','=',True)], required=True),
         'unit_amount': fields.float('Price', digits_compute=dp.get_precision('Product Price')),
@@ -93,7 +96,7 @@ class hr_expense_line(orm.Model):
         'fal_real_amount': fields.float('Real Price', digits_compute=dp.get_precision('Product Price')),
         'fal_real_currency' : fields.many2one('res.currency','Real Currency', required=True),
         'fal_accepted_amount' : fields.function(_get_accepted_amount, type='float', string='Accepted Amount', digits_compute=dp.get_precision('Product Price'), store=True),
-        'fal_reason_why' : fields.selection([('customer','With Customer'), ('manager','With Manager'), ('director','Require Refund To Director'), ('employee','Require at Employee Charge')], string="Reason"),
+        'fal_reason_why' : fields.selection(_fal_reason_why_selection, string="Reason"),
         'fal_reason' : fields.text('Explanation'),
         'fal_document_currency_id' : fields.many2one('res.currency', 'Document Currency'),
         'fal_quantity' : fields.float('Quantity', digits_compute= dp.get_precision('Product Unit of Measure')),

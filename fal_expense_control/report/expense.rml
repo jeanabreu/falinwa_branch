@@ -137,7 +137,8 @@
           <para style="terp_tblheader_Details">Ref.</para>
         </td>
         <td>
-          <para style="terp_tblheader_Details_Right">Unit Price</para>
+          <para style="terp_tblheader_Details_Right2">Unit</para>
+          <para style="terp_tblheader_Details_Right2">Price</para>
         </td>
         <td>
           <para style="terp_tblheader_Details_Right">Qty</para>
@@ -149,7 +150,8 @@
           <para style="terp_tblheader_Details_Right">Price</para>
         </td>
         <td>
-          <para style="terp_tblheader_Details_Right">Expense Control</para>
+          <para style="terp_tblheader_Details_Right2">Expense</para>
+          <para style="terp_tblheader_Details_Right2">Control</para>
         </td>
       </tr>
     </blockTable>

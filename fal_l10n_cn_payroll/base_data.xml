@@ -339,7 +339,7 @@ result_rate = 100</field>
             <field name="code">ANBNS</field>
             <field name="sequence">11</field>
             <field name="condition_select">none</field>
-            <field name="category_id" ref="hr_payroll_BNS" />
+            <field name="category_id" ref="hr_payroll_ANBNS" />
         </record>        
         <record id="hr_rule_input_ANBNS" model="hr.rule.input">
             <field name="name">年终奖/Annual Bonus</field>

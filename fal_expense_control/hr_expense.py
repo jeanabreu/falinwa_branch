@@ -108,9 +108,11 @@ class hr_expense_line(orm.Model):
     }
     
     def onchange_product_id(self, cr, uid, ids, product_id, context=None):
-        res = super(hr_expense_line, self).onchange_product_id(cr, uid, ids, product_id, context = context)
+        ctx = context.copy()
+        ctx.pop("currency_id", None)
+        res = super(hr_expense_line, self).onchange_product_id(cr, uid, ids, product_id, context = ctx)
         if product_id:
-            product = self.pool.get('product.product').browse(cr, uid, product_id, context=context)
+            product = self.pool.get('product.product').browse(cr, uid, product_id, context=ctx)
             res['value']['fal_real_amount'] = product.price_get('standard_price')[product.id]
             res['value']['fal_budget'] = product.expense_budget
         return res

@@ -23,6 +23,18 @@
             <field name="name">奖金/Bonus</field>
             <field name="code">BNS</field>
         </record>
+        <record id="hr_payroll_ANBNS" model="hr.salary.rule.category">
+            <field name="name">年终奖 / Annual Bonus</field>
+            <field name="code">ANBNS</field>
+        </record>
+        <record id="hr_payroll_ANBTX" model="hr.salary.rule.category">
+            <field name="name">年终奖个税/Annual Bonus Tax</field>
+            <field name="code">ANBTX</field>
+        </record>
+        <record id="hr_payroll_SBTC" model="hr.salary.rule.category">
+            <field name="name">税前工资 / Salary before tax compute</field>
+            <field name="code">SBTC</field>
+        </record>
         <record id="hr_payroll_TBNS" model="hr.salary.rule.category">
             <field name="name">奖金总计/Total Bonus</field>
             <field name="code">TBNS</field>
@@ -64,8 +76,8 @@
             <field name="code">IPBC</field>
         </record>
         <record id="hr_payroll_ST" model="hr.salary.rule.category">
-            <field name="name">个人所得税/Salary Tax</field>
-            <field name="code">ST</field>
+            <field name="name">个人所得税/Total Tax</field>
+            <field name="code">TT</field>
         </record>
         <record id="hr_payroll_TIPBE" model="hr.salary.rule.category">
             <field name="name">个人社保总计/Total Insurance Employee Cost</field>
@@ -143,7 +155,7 @@ result_rate = 100</field>
             <field name="name">应付工资 /Gross</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = categories.BASIC + categories.ALW + categories.DED + categories.BNS + categories.COMPS + categories.OT
+result = categories.BASIC + categories.ALW + categories.DED + categories.BNS + categories.ANBNS + categories.COMPS + categories.OT
 result_rate = 100</field>
             <field name="code">GROSS</field>
             <field name="sequence">50</field>
@@ -154,7 +166,7 @@ result_rate = 100</field>
             <field name="name">实发工资/Net</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
-result = categories.SBT +  categories.ST
+result = categories.SBT +  categories.TT
 result_rate = 100</field>
             <field name="code">NET</field>
             <field name="sequence">999</field>
@@ -392,42 +404,86 @@ result_rate = 100</field>
             <field name="condition_select">none</field>
             <field name="category_id" ref="hr_payroll_SBT" />
         </record>
+		
+        <record id="hr_salary_rule_SBTC" model="hr.salary.rule">
+            <field name="name">工资(不含年终奖)/Salary not include annual bonus</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+result = categories.GROSS - categories.ANBNS + categories.IEC + categories.HAFE
+result_rate = 100</field>
+            <field name="code">SBTC</field>
+            <field name="sequence">900</field>
+            <field name="condition_select">none</field>
+			<field name="appears_on_payslip" eval="False" />
+            <field name="category_id" ref="hr_payroll_SBTC" />
+        </record>
         
         <record id="hr_salary_rule_ST" model="hr.salary.rule">
-            <field name="name">个人所得税/Salary Tax</field>
+            <field name="name">个人所得税/Total Tax</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">
 a = 0.00 
-if categories.SBT &lt;= 3500:     
+if categories.SBTC  &lt;= 3500:     
     a = 0.00 
 elif employee.country_id.name == 'China':     
-    a = categories.SBT - 3500 
-elif categories.SBT - 4800 &lt;= 0: 
+    a = categories.SBTC  - 3500 
+elif categories.SBTC  - 4800 &lt;= 0: 
     a = 0.00
 else :     
-    a = categories.SBT - 4800 
+    a = categories.SBTC  - 4800 
 if a &lt; 1500:     
     result = a * 0.03 
-elif a >= 1500 and a &lt; 4500:     
+elif a &gt;= 1500 and a &lt; 4500:     
     result = (a * 0.10) - 105 
-elif a >= 4500 and a &lt; 9000:     
+elif a &gt;= 4500 and a &lt; 9000:     
     result = (a * 0.20) - 555 
-elif a >= 9000 and a &lt; 35000:     
+elif a &gt;= 9000 and a &lt; 35000:     
     result = (a * 0.25) - 1005 
-elif a >= 35000 and a &lt; 55000:     
+elif a &gt;= 35000 and a &lt; 55000:     
     result = (a * 0.30) - 2755 
-elif a >= 55000 and a &lt; 80000:     
+elif a &gt;= 55000 and a &lt; 80000:     
     result = (a * 0.35) - 5505 
 else:     
     result = (a * 0.45) - 13505
 result_rate = 100
-result = -result</field>
-            <field name="code">ST</field>
+result = -result + categories.ANBTX</field>
+            <field name="code">TT</field>
             <field name="sequence">910</field>
             <field name="condition_select">none</field>
             <field name="category_id" ref="hr_payroll_ST" />
         </record>
 
+        <record id="hr_salary_rule_ANBTX" model="hr.salary.rule">
+            <field name="name">年终奖个税/Annual Bonus Tax</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">
+a = 0.00
+if inputs.ANBNS and inputs.ANBNS.amount:
+    a = inputs.ANBNS.amount / 12
+
+if a &lt; 1500:     
+    result = inputs.ANBNS.amount * 0.03 
+elif a &gt;= 1500 and a &lt; 4500:     
+    result = (inputs.ANBNS.amount * 0.10) - 105 
+elif a &gt;= 4500 and a &lt; 9000:     
+    result = (inputs.ANBNS.amount * 0.20) - 555 
+elif a &gt;=9000 and a &lt; 35000:     
+    result = (inputs.ANBNS.amount * 0.25) - 1005 
+elif a &gt;=35000 and a &lt; 55000:     
+    result = (inputs.ANBNS.amount * 0.30) - 2755 
+elif a &gt;= 55000 and a &lt; 80000:     
+    result = (inputs.ANBNS.amount * 0.35) - 5505 
+else:     
+    result = (inputs.ANBNS.amount * 0.45) - 13505
+result_rate = 100
+result = -result</field>
+            <field name="code">ANBTX</field>
+            <field name="sequence">909</field>
+            <field name="condition_select">none</field>
+			<field name="appears_on_payslip" eval="False" />
+            <field name="category_id" ref="hr_payroll_ANBTX" />
+        </record>
+		
         <record id="hr_salary_rule_TFFHPC" model="hr.salary.rule">
             <field name="name">住房公积金(公司)/Total Fund For Housing Company Cost</field>
             <field name="amount_select">code</field>
@@ -721,7 +777,7 @@ elif contract.fal_si_base &lt; 1808 :
     result = 1808
 else:     
     result = 15654
-result_rate = 0.2</field>
+result_rate = 0.4</field>
             <field name="code">CWII</field>
             <field name="sequence">108</field>
             <field name="condition_select">none</field>
@@ -948,11 +1004,13 @@ result_rate = -5</field>
                 (4, ref('hr_payroll_hr_rule_tbns')),
                 (4, ref('hr_payroll_hr_rule_tot')),
                 (4, ref('hr_salary_rule_ANBNS')),
+				(4, ref('hr_salary_rule_ANBTX')),
                 (4, ref('hr_salary_rule_COMPS')),
                 (4, ref('hr_salary_rule_ALW')),
                 (4, ref('hr_salary_rule_HALW')),
                 (4, ref('hr_payroll_hr_rule_taxable')),
                 (4, ref('hr_salary_rule_SBT')),
+				(4, ref('hr_salary_rule_SBTC')),
                 (4, ref('hr_salary_rule_ST')),
                 (4, ref('hr_salary_rule_TFFHPE')),
                 (4, ref('hr_salary_rule_TFFHPC')),

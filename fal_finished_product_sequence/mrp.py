@@ -26,6 +26,7 @@ class stock_move(orm.Model):
     
     def _prepare_procurement_from_move(self, cr, uid, move, context=None):
         res = super(stock_move, self)._prepare_procurement_from_move(cr, uid, move, context)
+
         res['fal_of_number'] = move.raw_material_production_id and move.raw_material_production_id.production_id.fal_of_number,
         res['fal_parent_mo_id'] = move.raw_material_production_id and move.raw_material_production_id.production_id.id,
         return res

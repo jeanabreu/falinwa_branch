@@ -12,6 +12,7 @@
         'account_view.xml',
         'sale_view.xml',
         'stock_inventory_view.xml',
+        'purchase_view.xml',
     ],
     'css': [],
     'js' : [],

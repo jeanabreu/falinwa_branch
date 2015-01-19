@@ -10,6 +10,7 @@
                 <data>
                     <field name="dest_address_id" position="attributes">
                         <attribute name="attrs">{'required': [('related_usage','=', 'customer')]}</attribute>
+                        <attribute name="on_change"></attribute>
                     </field>
                 </data>
             </field>

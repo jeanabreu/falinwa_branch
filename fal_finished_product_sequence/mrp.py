@@ -17,7 +17,14 @@ class mrp_production(orm.Model):
                 finished_product_number = self.pool.get('ir.sequence').get(cr, uid, 'finished.product.fwa') or '/'
                 self.write(cr, uid, [production.id], {'fal_of_number': finished_product_number}, context=context)
         return super(mrp_production, self).action_confirm(cr, uid, ids, context=context)
-        
+    
+    def copy(self, cr, uid, id, default=None, context=None):
+        default = default or {}
+        default.update({
+            'fal_mo_line_ids':[],
+        })        
+        return super(mrp_production, self).copy(cr, uid, id, default, context)
+    
 #end of mrp_production()
 
 class stock_move(orm.Model):
@@ -27,8 +34,8 @@ class stock_move(orm.Model):
     def _prepare_procurement_from_move(self, cr, uid, move, context=None):
         res = super(stock_move, self)._prepare_procurement_from_move(cr, uid, move, context)
 
-        res['fal_of_number'] = move.raw_material_production_id and move.raw_material_production_id.production_id.fal_of_number,
-        res['fal_parent_mo_id'] = move.raw_material_production_id and move.raw_material_production_id.production_id.id,
+        res['fal_of_number'] = move.raw_material_production_id.fal_of_number
+        res['fal_parent_mo_id'] = move.raw_material_production_id.id
         return res
         
 #end of stock_move
@@ -50,12 +57,13 @@ class procurement_order(orm.Model):
         'fal_parent_mo_id': fields.many2one('mrp.production', 'Parent Manufacturing Order'),
     }
     
-    def _mo_prepare_val(self, cr, uid, procurement, res_id, newdate, context=None):
-        res = super(procurement_order, self)._mo_prepare_val(cr, uid, procurement, res_id, newdate, context)
+    def _prepare_mo_vals(self, cr, uid, procurement, context=None):
+        res = super(procurement_order, self)._prepare_mo_vals(cr, uid, procurement, context)
         res['fal_of_number'] =  procurement.fal_of_number
         res['fal_parent_mo_id'] =  procurement.fal_parent_mo_id.id
         return res
-        
+    
+    """    
     def make_mo(self, cr, uid, ids, context=None):
         mrp_obj = self.pool.get('mrp.production')
         res = super(procurement_order, self).make_mo(cr, uid, ids, context)
@@ -63,5 +71,5 @@ class procurement_order(orm.Model):
             if po.fal_of_number and po.fal_parent_mo_id.id:
                 mrp_obj.write(cr, uid, res[po.id], {'fal_of_number': po.fal_of_number, 'fal_parent_mo_id': po.fal_parent_mo_id.id})
         return res
-        
+    """    
 #end of procurement_order()

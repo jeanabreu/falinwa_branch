@@ -25,13 +25,20 @@ class mrp_production(orm.Model):
 class procurement_order(orm.Model):
     _name = 'procurement.order'
     _inherit = 'procurement.order'
-
+    
+    """
     def make_mo(self, cr, uid, ids, context=None):
         mrp_obj = self.pool.get('mrp.production')
         res = super(procurement_order, self).make_mo(cr, uid, ids, context)
         for po in self.browse(cr, uid, ids):
             if po.sale_order_line_id:
                 mrp_obj.write(cr, uid, res[po.id], {'project_id': po.sale_order_line_id.order_id.project_id.id})
+        return res
+    """
+    
+    def _prepare_mo_vals(self, cr, uid, procurement, context=None):
+        res = super(procurement_order, self)._prepare_mo_vals(cr, uid, procurement, context)
+        res['project_id'] =  procurement.sale_line_id.order_id.project_id.id
         return res
         
 #end of procurement_order()

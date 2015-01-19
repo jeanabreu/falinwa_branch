@@ -26,6 +26,7 @@ class mrp_bom(orm.Model):
     _name = 'mrp.bom'
     _inherit = 'mrp.bom'
 
+    #override real openERP method
     def _bom_explode(self, cr, uid, bom, product, factor, properties=None, level=0, routing_id=False, previous_products=None, master_bom=None, context=None):
         """ Finds Products and Work Centers for related BoM for manufacturing order.
         @param bom: BoM of particular product template.
@@ -62,6 +63,7 @@ class mrp_bom(orm.Model):
                 d, m = divmod(factor, wc_use.workcenter_id.capacity_per_cycle)
                 mult = (d + (m and 1.0 or 0.0))
                 cycle = mult * wc_use.cycle_nbr
+                #modify start here
                 if wc.time_start:
                     result2.append({
                         'name': 'SU-' + tools.ustr(wc_use.name) + ' - '  + tools.ustr(bom.product_id.name),
@@ -89,6 +91,7 @@ class mrp_bom(orm.Model):
                         'hour': wc.time_stop or 0.0,
                         'fal_operation_id' : wc_use.id,
                     }) 
+                #modify end here
         for bom_line_id in bom.bom_line_ids:
             if bom_line_id.date_start and bom_line_id.date_start > time.strftime(DEFAULT_SERVER_DATETIME_FORMAT) or \
                 bom_line_id.date_stop and bom_line_id.date_stop < time.strftime(DEFAULT_SERVER_DATETIME_FORMAT):
@@ -103,6 +106,31 @@ class mrp_bom(orm.Model):
 
             quantity = _factor(bom_line_id.product_qty * factor, bom_line_id.product_efficiency, bom_line_id.product_rounding)
             bom_id = self._bom_find(cr, uid, product_id=bom_line_id.product_id.id, properties=properties, context=context)
+            
+            #If BoM should not behave like PhantoM, just add the product, otherwise explode further
+            if bom_line_id.type != "phantom" and (not bom_id or self.browse(cr, uid, bom_id, context=context).type != "phantom"):
+                result.append({
+                    'name': bom_line_id.product_id.name,
+                    'product_id': bom_line_id.product_id.id,
+                    'product_qty': quantity,
+                    'product_uom': bom_line_id.product_uom.id,
+                    'product_uos_qty': bom_line_id.product_uos and _factor(bom_line_id.product_uos_qty * factor, bom_line_id.product_efficiency, bom_line_id.product_rounding) or False,
+                    'product_uos': bom_line_id.product_uos and bom_line_id.product_uos.id or False,
+                })
+            elif bom_id:
+                all_prod = [bom.product_tmpl_id.id] + (previous_products or [])
+                bom2 = self.browse(cr, uid, bom_id, context=context)
+                # We need to convert to units/UoM of chosen BoM
+                factor2 = uom_obj._compute_qty(cr, uid, bom_line_id.product_uom.id, quantity, bom2.product_uom.id)
+                quantity2 = factor2 / bom2.product_qty
+                res = self._bom_explode(cr, uid, bom2, bom_line_id.product_id, quantity2,
+                    properties=properties, level=level + 10, previous_products=all_prod, master_bom=master_bom, context=context)
+                result = result + res[0]
+                result2 = result2 + res[1]
+            else:
+                raise osv.except_osv(_('Invalid Action!'), _('BoM "%s" contains a phantom BoM line but the product "%s" does not have any BoM defined.') % (master_bom.name,bom_line_id.product_id.name_get()[0][1]))
+            
+            """
             if bom_id:
                 all_prod = [bom.product_tmpl_id.id] + (previous_products or [])
                 bom2 = self.browse(cr, uid, bom_id, context=context)
@@ -114,7 +142,7 @@ class mrp_bom(orm.Model):
                 result2 = result2 + res[1]
             #else:
             #    raise orm.except_orm(_('Invalid Action!'), _('BoM "%s" contains a phantom BoM line but the product "%s" does not have any BoM defined.') % (master_bom.name,bom_line_id.product_id.name_get()[0][1]))
-        
+            """
         return result, result2
         
 #end of mrp_bom()

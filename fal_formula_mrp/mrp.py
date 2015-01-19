@@ -25,7 +25,6 @@ class mrp_production(orm.Model):
         """ Compute product_lines and workcenter_lines from BoM structure
         @return: product_lines
         """
-
         if properties is None:
             properties = []
         results = []
@@ -34,19 +33,16 @@ class mrp_production(orm.Model):
         prod_line_obj = self.pool.get('mrp.production.product.line')
         workcenter_line_obj = self.pool.get('mrp.production.workcenter.line')
         product_obj = self.pool.get('product.product')
-        
         for production in self.browse(cr, uid, ids, context=context):
             #unlink product_lines
             prod_line_obj.unlink(cr, SUPERUSER_ID, [line.id for line in production.product_lines], context=context)
-    
             #unlink workcenter_lines
             workcenter_line_obj.unlink(cr, SUPERUSER_ID, [line.id for line in production.workcenter_lines], context=context)
-    
             # search BoM structure and route
             bom_point = production.bom_id
             bom_id = production.bom_id.id
             if not bom_point:
-                bom_id = bom_obj._bom_find(cr, uid, production.product_id.id, production.product_uom.id, properties)
+                bom_id = bom_obj._bom_find(cr, uid, product_id=production.product_id.id, properties=properties, context=context)
                 if bom_id:
                     bom_point = bom_obj.browse(cr, uid, bom_id)
                     routing_id = bom_point.routing_id.id or False
@@ -54,13 +50,15 @@ class mrp_production(orm.Model):
     
             if not bom_id:
                 raise osv.except_osv(_('Error!'), _("Cannot find a bill of material for this product."))
-    
+
             # get components and workcenter_lines from BoM structure
-            factor = uom_obj._compute_qty(cr, uid, production.product_uom.id, production.product_qty, bom_point.product_uom.id)            
+            factor = uom_obj._compute_qty(cr, uid, production.product_uom.id, production.product_qty, bom_point.product_uom.id)
+            # product_lines, workcenter_lines
             results, results2 = bom_obj._bom_explode(cr, uid, bom_point, production.product_id, factor / bom_point.product_qty, properties, routing_id=production.routing_id.id, context=context)
-            #results is product_line
-            #results2 is workcenter_line 
+
             #modify start here
+            #results is product_line
+            #results2 is workcenter_line
             stroke = production.fal_stroke
             for r1 in results:
                 if r1.get('product_id',False):
@@ -80,11 +78,12 @@ class mrp_production(orm.Model):
                         r1['product_qty'] = ((production.product_qty * (stroke + production.product_id.fal_formula_parameter0 + extra_length)) + (saw_thickness * number_cut)) or r1['product_qty']
             #end here
             
+            
             # reset product_lines in production order
             for line in results:
                 line['production_id'] = production.id
                 prod_line_obj.create(cr, uid, line)
-    
+
             #reset workcenter_lines in production order
             for line in results2:
                 #modify start here
@@ -99,7 +98,7 @@ class mrp_production(orm.Model):
                 line['production_id'] = production.id
                 workcenter_line_obj.create(cr, uid, line)
         return results
-
+        
         
 #end of mrp_production()
 
@@ -109,8 +108,8 @@ class stock_move(orm.Model):
     
     def _prepare_procurement_from_move(self, cr, uid, move, context=None):
         res = super(stock_move, self)._prepare_procurement_from_move(cr, uid, move, context)
-        res['sale_order_line_formula_id'] = move.raw_material_production_id and move.raw_material_production_id.sale_order_line_formula_id.id,
-        res['fal_stroke'] = move.raw_material_production_id and move.raw_material_production_id.fal_stroke,
+        res['sale_order_line_formula_id'] = move.raw_material_production_id.sale_order_line_formula_id.id
+        res['fal_stroke'] = move.raw_material_production_id.fal_stroke
         return res
         
 #end of stock_move

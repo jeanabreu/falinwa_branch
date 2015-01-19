@@ -43,6 +43,15 @@
                     <button name="refuse" position="attributes">
                         <attribute name="groups">fal_hr_ext.fal_employee_manager,base.group_hr_user</attribute>
                     </button>
+                    <field name="employee_id" position="before">
+                        <field name="fal_expense_number" readonly="1" />
+                    </field>
+                    <field name="user_valid" position="after">
+                        <field name="force_generate_accounting_entries_date" />
+                    </field>
+                    <field name="journal_id" position="attributes">
+                        <attribute name="domain"></attribute>
+                    </field>
                 </data>
             </field>
         </record>

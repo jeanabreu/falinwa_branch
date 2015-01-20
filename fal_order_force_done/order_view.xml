@@ -23,7 +23,7 @@
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
                 <data>
-                    <button name="purchase_cancel" position="after" >
+                    <button name="action_cancel" position="after" >
                         <button name="action_done" string="Force Done"
                             type="object" states="approved,except_picking,except_invoice" groups="purchase.group_purchase_manager" />
                     </button>

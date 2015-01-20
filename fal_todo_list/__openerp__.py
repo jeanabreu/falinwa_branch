@@ -6,7 +6,7 @@
     "description": """
     Module To create a To Do list submenu in human resource 
     """,
-    "depends" : ['project','project_long_term','project_gtd','hr'],
+    "depends" : ['project','hr'],
     'init_xml': [],
     'data': [
         'security/project_security.xml',

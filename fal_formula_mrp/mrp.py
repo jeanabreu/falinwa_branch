@@ -102,18 +102,6 @@ class mrp_production(orm.Model):
         
 #end of mrp_production()
 
-class stock_move(orm.Model):
-    _name = "stock.move"
-    _inherit = "stock.move"
-    
-    def _prepare_procurement_from_move(self, cr, uid, move, context=None):
-        res = super(stock_move, self)._prepare_procurement_from_move(cr, uid, move, context)
-        res['sale_order_line_formula_id'] = move.raw_material_production_id.sale_order_line_formula_id.id
-        res['fal_stroke'] = move.raw_material_production_id.fal_stroke
-        return res
-        
-#end of stock_move
-
 class mrp_bom(orm.Model):
     _name = 'mrp.bom'
     _inherit = 'mrp.bom'

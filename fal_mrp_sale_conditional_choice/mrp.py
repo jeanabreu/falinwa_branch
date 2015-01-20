@@ -57,7 +57,9 @@ class procurement_order(orm.Model):
         res['fal_ref_priced_option'] = procurement.sale_line_id.fal_ref_priced_option
         res['fal_ref_free_option'] = procurement.sale_line_id.fal_ref_free_option
         res['fal_by_stroke_option'] = procurement.sale_line_id.fal_by_stroke_option
-        res['fal_stroke'] = procurement.sale_line_id.fal_stroke
+        #to fix the conflict between fal_mrp_sale_conditional_choice with fal_formula_mrp
+        if not res.get('fal_stroke',False):
+            res['fal_stroke'] = procurement.sale_line_id.fal_stroke
         res['fal_standard_stroke_id'] = procurement.sale_line_id.fal_standard_stroke_id.id
         res['fal_piston_seal'] = procurement.sale_line_id.fal_piston_seal
         res['fal_rod_seal'] = procurement.sale_line_id.fal_rod_seal

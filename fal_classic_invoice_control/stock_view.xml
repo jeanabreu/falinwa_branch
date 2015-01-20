@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="stock.view_picking_form" />
             <field name="arch" type="xml">
                 <data>
-                    <button name="%(stock.action_stock_invoice_onshipping)d" position="attributes">
+                    <button name="%(stock_account.action_stock_invoice_onshipping)d" position="attributes">
                         <attribute name="attrs">{'invisible': ['|',('state','not in',['tbd','done']),'|',('invoice_state','=','invoiced'),('invoice_state','=','none')]}</attribute>
                     </button>
                 </data>

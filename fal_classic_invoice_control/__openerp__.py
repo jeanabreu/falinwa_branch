@@ -6,7 +6,7 @@
     "description": """
     Module to give classic invoice control
     """,
-    "depends" : ['base', 'stock', 'sale', 'sale_stock','account','fal_warehouse_double_approval'],
+    "depends" : ['base', 'stock', 'sale', 'sale_stock','account', 'stock_account'],
     'init_xml': [],
     'update_xml': [
         'stock_view.xml',

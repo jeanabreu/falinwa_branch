@@ -29,10 +29,7 @@ class stock_move(orm.Model):
         res = super(stock_move, self)._picking_assign(cr, uid, move_ids, procurement_group, location_from, location_to, context=context)
         pick_obj = self.pool.get("stock.picking")
         move = self.browse(cr, uid, move_ids, context=context)[0]
-        print 'jalansx'
         if move.picking_id:
-            print 'jalans'
-            print move.fal_client_order_ref
             pick_obj.write(cr, uid, [move.picking_id.id], {
                 'fal_client_order_ref': move.fal_client_order_ref
             })

@@ -5,26 +5,12 @@
         <record id="view_picking_form_fal_clasiv" model="ir.ui.view">
             <field name="name">stock.picking.form.fal.clasiv</field>
             <field name="model">stock.picking.out</field>
-            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="inherit_id" ref="stock_account.view_picking_inherit_form2" />
             <field name="arch" type="xml">
                 <data>
                     <button name="%(stock_account.action_stock_invoice_onshipping)d" position="attributes">
                         <attribute name="attrs">{'invisible': ['|',('state','not in',['tbd','done']),'|',('invoice_state','=','invoiced'),('invoice_state','=','none')]}</attribute>
                     </button>
-                </data>
-            </field>
-        </record>
-        
-        <record id="view_picking_form_fal_clasiv1" model="ir.ui.view">
-            <field name="name">stock.picking.form.fal.clasiv1</field>
-            <field name="model">stock.picking.out</field>
-            <field name="inherit_id" ref="fal_warehouse_double_approval.view_picking_out_form_falda" />
-            <field name="arch" type="xml">
-                <data>
-                    <xpath expr="/form/header//button[@name='action_process']" position="attributes">
-                        <attribute name="states"></attribute>
-                        <attribute name="attrs">{'invisible': [('state','!=','tbd')]}</attribute>
-                    </xpath>
                 </data>
             </field>
         </record>
@@ -51,7 +37,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,calendar</field>
             <field name="domain">[('type','=','out')]</field>
-            <field name="context">{'default_type': 'out', 'contact_display': 'partner_address', 'search_default_tbd': 1, 'search_default_to_invoice': 1, 'default_invoice_state': '2binvoiced'}</field>
+            <field name="context">{'default_type': 'out', 'contact_display': 'partner_address', 'search_default_to_invoice': 1, 'default_invoice_state': '2binvoiced'}</field>
             <field name="search_view_id" ref="stock.view_picking_out_search"/>
         </record>
         

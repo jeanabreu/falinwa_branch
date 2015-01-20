@@ -553,17 +553,6 @@
             <field name="act_window_id" ref="open_gtd_task_fal_tdl"/>
         </record>
         
-        <!-- override -->
-        <record model="ir.actions.act_window" id="project_gtd.open_gtd_task">
-            <field name="name">My Tasks</field>
-            <field name="res_model">project.task</field>
-            <field name="search_view_id" ref="project.view_task_search_form"/>
-            <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field>
-            <field name="domain">[('user_id','=',uid),('project_id.classic_project','=',1)]</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
-        </record>
-        
         <menuitem name="To Do List" id="submenu_view_todolist" parent="hr.menu_hr_root" sequence="6"/>
         <menuitem action="fal_tdl_open_view_project_all" name="Job Scope" id="menu_action_view_project" parent="submenu_view_todolist" sequence="10"/>
         <menuitem action="fal_tdl_action_view_task" name="Tasks" id="menu_action_view_faltasklist" parent="submenu_view_todolist" sequence="20"/>

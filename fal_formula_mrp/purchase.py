@@ -23,8 +23,8 @@ class procurement_order(orm.Model):
 
     def _prepare_mo_vals(self, cr, uid, procurement, context=None):
         res = super(procurement_order, self)._prepare_mo_vals(cr, uid, procurement, context)
-        res['sale_order_line_formula_id'] =  procurement.sale_order_line_formula_id and procurement.sale_order_line_formula_id.id
-        res['fal_stroke'] =  procurement.fal_stroke or (procurement.sale_line_id.id and procurement.sale_line_id.fal_stroke)
+        res['sale_order_line_formula_id'] =  procurement.sale_order_line_formula_id.id # and procurement.sale_order_line_formula_id.id
+        res['fal_stroke'] =  procurement.fal_stroke #or (procurement.sale_line_id.id and procurement.sale_line_id.fal_stroke)
         """
         self.write(cr, uid, procurement.id, {
             'sale_order_line_formula_id' : procurement.sale_order_line_formula_id and procurement.sale_order_line_formula_id.id, 

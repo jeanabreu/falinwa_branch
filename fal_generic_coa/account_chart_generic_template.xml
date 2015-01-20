@@ -2871,7 +2871,7 @@
             <field eval="False" name="reconcile"/>
             <field ref="fal_gen_chart253" name="parent_id"/>
             <field name="type">other</field>
-            <field name="name">FIE - Exchange rate loss</field>
+            <field name="name">FIE - Exchange rate gain</field>
             <field name="user_type" ref="user_type_fal_pl_expense"/>
         </record>        
         <record id="fal_gen_chart2532" model="account.account.template">

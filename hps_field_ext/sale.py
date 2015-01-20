@@ -11,15 +11,6 @@ class sale_order(orm.Model):
     _columns = {
         'client_order_ref': fields.char('Customer PO Number', size=64),
     }
-    
-    
-    def action_ship_create(self, cr, uid, ids, context=None):
-        for order in self.browse(cr, uid, ids, context=context):
-            for picking in order.picking_ids:
-                if picking.state != 'cancel':
-                    return False
-        res =  super(sale_order, self).action_ship_create(cr, uid, ids, context=context)
-        return True
         
     def _prepare_order_line_procurement(self, cr, uid, order, line, group_id=False, context=None):
         res = super(sale_order, self)._prepare_order_line_procurement(cr, uid, order, line, group_id=group_id, context=context)

@@ -557,7 +557,7 @@
         <record model="ir.actions.act_window" id="project_gtd.open_gtd_task">
             <field name="name">My Tasks</field>
             <field name="res_model">project.task</field>
-            <field name="search_view_id" ref="project_gtd.view_task_gtd_search"/>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
             <field name="context">{'set_editable':True,'set_visible':True,'gtd':True,'user_invisible':True, "search_default_open": 1}</field>
             <field name="domain">[('user_id','=',uid),('project_id.classic_project','=',1)]</field>
             <field name="view_type">form</field>

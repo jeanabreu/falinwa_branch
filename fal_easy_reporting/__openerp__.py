@@ -4,19 +4,16 @@
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to easily  export record
+    Module to easily  export records without loading any records from tree.
     """,
     "depends" : ['base'],
     'init_xml': [],
     'data': [
     ],
     'update_xml': [
+        'wizard/easy_exporting_wizard_view.xml',
         'views/easy_reporting.xml',
-        'wizard/easy_exporting_wizard_view.xml',        
-    ],
-    'css': [],
-    'js' : [
-        'static/src/js/click.js'
+        'export_view.xml', 
     ],
     'installable': True,
     'active': False,

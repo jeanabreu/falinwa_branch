@@ -6,7 +6,7 @@
     "description": """
     Module to use the task object as a tool and follow-up all the tool produced 
     """,
-    "depends" : ['base','project'],
+    "depends" : ['base','project','project_long_term','project_gtd'],
     'init_xml': [],
     'data': [
         'project_data.xml',

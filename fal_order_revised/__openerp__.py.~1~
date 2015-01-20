@@ -6,7 +6,7 @@
     "description": """
     Module to revised some info on order
     """,
-    "depends" : ['base','account','sale','purchase','project','project_long_term','project_gtd'],
+    "depends" : ['base','account','sale','purchase','project'],
     'init_xml': [],
     'data': [
     ],

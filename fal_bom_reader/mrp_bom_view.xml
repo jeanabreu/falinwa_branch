@@ -89,7 +89,7 @@
         </record>
         
         <!-- override real action -->
-        <record id="mrp.mrp_bom_form_action" model="ir.actions.act_window">
+        <!-- record id="mrp.mrp_bom_form_action" model="ir.actions.act_window">
             <field name="name">Bill of Materials</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">mrp.bom</field>
@@ -108,7 +108,7 @@
                 orders according to procurement needs.
               </p>
             </field>
-        </record>
+        </record -->
         
         <record id="open_mrp_bom_form_action" model="ir.actions.act_window">
             <field name="name">Bill of Materials</field>

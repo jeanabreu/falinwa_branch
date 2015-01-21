@@ -53,9 +53,9 @@ class purchase_order(orm.Model):
     def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, group_id, context=None):
         res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, group_id, context)
         for rex in res:
-            rex['fal_project_number'] = order.order_line[0].account_analytic_id and order.order_line[0].account_analytic_id.code
+            rex['fal_project_id'] = order_line.account_analytic_id.id
         return res
-        
+            
 #end of purchase_order()
 
 
@@ -92,6 +92,11 @@ class procurement_order(orm.Model):
                     'sale_order_line_id' : procurement.sale_line_id and procurement.sale_line_id.id,
                     'fal_incoterm_id' : procurement.sale_line_id and procurement.sale_line_id.order_id.incoterm.id,
                 })
+        return res
+
+    def _run_move_create(self, cr, uid, procurement, context=None):
+        res = super(procurement_order, self)._run_move_create(cr, uid, procurement, context=context)
+        res['fal_project_id'] = procurement.sale_line_id.order_id.project_id.id
         return res
         
 #end of procurement_order()

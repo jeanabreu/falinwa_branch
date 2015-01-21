@@ -177,7 +177,7 @@ class purchase_order(orm.Model):
     def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, group_id, context=None):
         res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, group_id, context=context)
         for rex in res:
-            res['fal_warehouse_manager_comment'] = order_line.warehouse_manager_comment
+            rex['fal_warehouse_manager_comment'] = order_line.warehouse_manager_comment
         return res
     
 #end of purchase_order()

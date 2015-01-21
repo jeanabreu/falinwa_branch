@@ -174,8 +174,8 @@ class purchase_order(orm.Model):
                 raise orm.except_orm(_('Invalid Action!'), _('In order to confirm a quotation, you must define supplier first.'))
         return super(purchase_order, self).wkf_confirm_order(cr, uid, ids, context)
 
-    def _prepare_order_line_move(self, cr, uid, order, order_line, group_id, context=None):
-        res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, group_id, context=context)
+    def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, group_id, context=None):
+        res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, group_id, context=context)
         for rex in res:
             res['fal_warehouse_manager_comment'] = order_line.warehouse_manager_comment
         return res

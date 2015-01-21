@@ -51,7 +51,7 @@ class purchase_order(orm.Model):
         return res
         
     def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, group_id, context=None):
-        res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, group_id, context)
+        res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, group_id, context=context)
         for rex in res:
             rex['fal_project_id'] = order_line.account_analytic_id.id
         return res

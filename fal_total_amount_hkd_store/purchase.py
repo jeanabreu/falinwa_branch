@@ -35,7 +35,7 @@ class purchase_order(orm.Model):
         ctx = context.copy()
         for order in self.browse(cr, uid, ids, context=context):
             ctx.update({'date': order.date_order})
-            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HKD'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
+            rate_ids = cur_obj.search(cr, uid,[('name', '=', 'HKD'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
             temp = val = val1 = amount_tax = amount_untaxed = 0.0
             cur = order.currency_id
             for line in order.order_line:
@@ -53,7 +53,7 @@ class purchase_order(orm.Model):
         ctx = context.copy()
         for order in self.browse(cr, uid, ids, context=context):
             ctx.update({'date': order.date_order})
-            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HKD'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
+            rate_ids = cur_obj.search(cr, uid,[('name', '=', 'HKD'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
             temp = val = val1 = amount_tax = amount_untaxed = 0.0
             cur = order.currency_id
             for line in order.order_line:
@@ -97,7 +97,7 @@ class purchase_order(orm.Model):
         invoice_obj = self.pool.get('account.invoice')
         for order in self.browse(cr,uid,ids,context=context):
             ctx.update({'date': order.date_order})
-            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HKD'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
+            rate_ids = cur_obj.search(cr, uid,[('name', '=', 'HKD'),('company_id','=',order.company_id.id)] , context=ctx, limit=1)
             total_order_tax = total_invoice_tax = result = total_order_subtotal = total_invoice_subtotal = 0.0
             origin_currency = order.currency_id
             temp = []

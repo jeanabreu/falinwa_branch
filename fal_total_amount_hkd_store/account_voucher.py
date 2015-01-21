@@ -13,7 +13,7 @@ class account_voucher(orm.Model):
         ctx = context.copy()
         for voucher in self.browse(cr, uid, ids, context=context):
             ctx.update({'date': voucher.date})
-            rate_ids = cur_obj.search(cr, uid,[('symbol', '=', 'HK$'),('company_id','=',voucher.company_id.id)] , context=ctx, limit=1)
+            rate_ids = cur_obj.search(cr, uid,[('name', '=', 'HKD'),('company_id','=',voucher.company_id.id)] , context=ctx, limit=1)
             temp = voucher.amount
             cur = voucher.currency_id
             for rate_id in cur_obj.browse(cr, uid, rate_ids, ctx):

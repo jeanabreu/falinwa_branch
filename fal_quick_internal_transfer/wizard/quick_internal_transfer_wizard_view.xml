@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_quick_internal_transfer_wizard" model="ir.ui.view">
+            <field name="name">quick.internal.transfer.wizard</field>
+            <field name="model">quick.internal.transfer.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Quick Internal Transfer" version="7.0">
+                    <group>
+                        <group>
+                            <field name="picking_type_id" on_change="onchange_picking_type(picking_type_id)" />
+                            <field name="name" widget="falname" invisible="1" />
+                            <field name="ean13" on_change="onchange_ean13(ean13)" widget="FalEan" />
+                            <field name="product_id" on_change="onchange_product(product_id)" />
+                            <label for="product_qty"/>
+                            <div>
+                                <field name="product_qty" class="oe_inline falqty" />
+                                <field name="product_uom" class="oe_inline" />
+                            </div>
+                            <field name="source_ean13" on_change="onchange_source_ean13(source_ean13)" widget="FalSourceEan" />
+                            <field name="source_location_id"/>
+                            <field name="destination_ean13" on_change="onchange_destination_ean13(destination_ean13)" widget="FalDestinationEan" />
+                            <field name="destination_location_id"/>
+                            <button name="validate_product" string="Validate" type="object" class="oe_highlight"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Operation Information">
+                            <field name="quick_internal_transfer_line_wizard_ids">
+                                <tree string="Quick Internal Transfer Line" editable="top">
+                                    <field name="product_id" />
+                                    <field name="product_qty" />
+                                    <field name="product_uom" />
+                                    <field name="source_location_id" />
+                                    <field name="destination_location_id" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button name="save_quick_transfer" string="Confirmed" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_quick_internal_transfer_wizard" model="ir.actions.act_window">
+            <field name="name">Quick Internal Transfer</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">quick.internal.transfer.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_quick_internal_transfer_wizard"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_quick_internal_transfer" name="Quick Internal Transfer" groups="group_quick_internal_transfer_user" sequence="99" />
+        <menuitem id="sub_menu_quick_internal_transfer" parent="menu_quick_internal_transfer" name="Quick Internal Transfer" />        
+        <menuitem id="sub_menu_item_quick_internal_transfer" name="Quick Internal Transfer" parent="sub_menu_quick_internal_transfer" sequence="20" action="action_quick_internal_transfer_wizard" />
+    </data>
+</openerp>

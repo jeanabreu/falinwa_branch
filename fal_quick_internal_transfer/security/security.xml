@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+
+        <record model="res.groups" id="group_quick_internal_transfer_user">
+            <field name="name">Quick Internal Transfer User</field>
+        </record>
+
+    </data>
+</openerp>
+

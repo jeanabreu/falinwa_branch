@@ -56,6 +56,22 @@
                 </data>
             </field>
         </record>
+
+        <record model="ir.ui.view" id="view_account_asset_asset_tree_hpsext">
+            <field name="name">account.asset.asset.tree.hpsext</field>
+            <field name="model">account.asset.asset</field>
+            <field name="inherit_id" ref="account_asset.view_account_asset_asset_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="attributes">
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="partner_id" position="after">
+                        <field name="note" />
+                    </field>
+                </data>
+            </field>
+        </record>
         
     </data>
 </openerp>

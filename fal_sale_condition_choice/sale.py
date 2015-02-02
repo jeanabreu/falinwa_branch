@@ -62,17 +62,17 @@ class sale_order_line(orm.Model):
         if stroke_max_ids:
             stroke_id = stroke_max_obj.browse(cr, uid, stroke_max_ids[0])
             if stroke_id.a_min != 'NO':
-                if fal_stroke <= int(stroke_id.a_min):
+                if fal_stroke < int(stroke_id.a_min):
                     return 'STROKE TOO SHORT'                
                 elif fal_stroke <= int(stroke_id.a_max):
                     return 'A'
             if stroke_id.b_min != 'NO':
-                if fal_stroke <= int(stroke_id.b_min):
+                if fal_stroke < int(stroke_id.b_min):
                     return 'STROKE TOO SHORT'                    
                 elif stroke_id.b_max == 'NO SUP' or fal_stroke <= int(stroke_id.b_max):
                     return 'B'                    
             if stroke_id.c_min != 'NO':
-                if fal_stroke <= int(stroke_id.c_min):
+                if fal_stroke < int(stroke_id.c_min):
                     return 'STROKE TOO SHORT'                
                 elif fal_stroke >= int(stroke_id.c_min):
                     return 'C'                    

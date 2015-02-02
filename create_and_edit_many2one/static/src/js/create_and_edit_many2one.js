@@ -40,11 +40,12 @@ openerp.create_and_edit_many2one = function(instance) {
         },
         evict_create_edit: function(values) {
             for (i=0; i<values.length; ++i) {
+                console.log(values[i].label);
                 if(values[i].label == _t("Create and Edit...")) {
                     values.splice(i, 1);                    
                     //values.splice(values.length-1, 1);
-                }
-                else if(values[i].label.indexOf(_t('Create "<strong>')) != -1){
+                }                
+                else if(values[i].label.indexOf(_t('Create')) != -1){
                     values.splice(i, 2);  
                 }
             }

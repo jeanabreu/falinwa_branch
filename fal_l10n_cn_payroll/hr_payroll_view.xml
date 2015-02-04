@@ -10,6 +10,7 @@
                 <data>
                     <field name="wage" position="after">
                         <field name="fal_fixed_allowance" />
+                        <field name="fal_house_allowance" />
                         <field name="fal_haf_base" />
                         <field name="fal_si_base" />
                     </field>

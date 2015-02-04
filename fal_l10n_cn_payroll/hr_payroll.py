@@ -165,6 +165,7 @@ class hr_contract(orm.Model):
 
     _columns = {
         'fal_fixed_allowance': fields.float('Job Allowance', digits=(16,2), required=True, help="Job Allowance of the employee"),
+        'fal_house_allowance': fields.float('House Allowance', digits=(16,2), help="House Allowance of the employee"),
         'fal_haf_base': fields.float('HAF Base', digits=(16,2), required=True, help="Based for House Allowance of the employee"),
         'fal_si_base': fields.float('SI Base', digits=(16,2), required=True, help="Based for Social Insurance of the employee"),
     }

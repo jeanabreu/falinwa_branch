@@ -25,6 +25,7 @@ class account_voucher(orm.Model):
         'fal_employeer_amount' : fields.float('Employer Amount', digits_compute=dp.get_precision('Account'), readonly=True, states={'draft':[('readonly',False)]}),
     }
     
+    """
     def onchange_partner_id(self, cr, uid, ids, partner_id, journal_id, amount, currency_id, ttype, date, context=None):
         res = super(account_voucher, self).onchange_partner_id(cr, uid, ids, partner_id, journal_id, amount, currency_id, ttype, date, context)
         if partner_id:
@@ -38,7 +39,8 @@ class account_voucher(orm.Model):
         res = {'value':{}}
         res['value']['amount'] = fal_employee_amount + fal_employeer_amount
         return res
-
+    
+    
     def voucher_move_line_create2(self, cr, uid, voucher_id, line_total, move_id, company_currency, current_currency, context=None):
         if context is None:
             context = {}
@@ -135,7 +137,7 @@ class account_voucher(orm.Model):
                         move_pool.post(cr, uid, [move_id], context={})
                 return True
         return super(account_voucher, self).action_move_line_create(cr, uid, ids, context)
-        
+    """    
 #end of account_voucher()
 
 class res_partner(orm.Model):

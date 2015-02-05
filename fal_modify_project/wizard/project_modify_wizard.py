@@ -9,7 +9,7 @@ class project_modify_wizard(orm.TransientModel):
     _description = "Project Modify Wizard"
     
     _columns = {
-        'project_id' : fields.many2one('account.analytic.account', 'Analytic Account', domain=[('parent_id', '!=', False)]),
+        'project_id' : fields.many2one('account.analytic.account', 'Analytic Account', domain=[('type', '!=', 'view')]),
     }
     
     def _get_default_project(self, cr, uid, context=None):

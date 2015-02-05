@@ -8,7 +8,7 @@ class project_update_wizard(orm.TransientModel):
     _description = "Order Revised Wizard"
     
     _columns = {
-        'project_id' : fields.many2one('account.analytic.account', 'Analytic Account', domain=[('parent_id', '!=', False)]),
+        'project_id' : fields.many2one('account.analytic.account', 'Analytic Account', domain=[('type', '!=', 'view')]),
         'partner_id' : fields.many2one('res.partner', 'Partner', required=True),
         'partner_invoice_id' : fields.many2one('res.partner', 'Invoice Address'),
         'partner_shipping_id' : fields.many2one('res.partner', 'Delivery Address'),

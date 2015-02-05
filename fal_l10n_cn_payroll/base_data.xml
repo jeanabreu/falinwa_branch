@@ -441,17 +441,17 @@ elif categories.SBTC  - 4800 &lt;= 0:
     a = 0.00
 else :     
     a = categories.SBTC  - 4800 
-if a &lt; 1500:     
+if a &lt;= 1500:     
     result = a * 0.03 
-elif a &gt;= 1500 and a &lt; 4500:     
+elif a &gt; 1500 and a &lt;= 4500:     
     result = (a * 0.10) - 105 
-elif a &gt;= 4500 and a &lt; 9000:     
+elif a &gt; 4500 and a &lt;= 9000:     
     result = (a * 0.20) - 555 
-elif a &gt;= 9000 and a &lt; 35000:     
+elif a &gt; 9000 and a &lt;= 35000:     
     result = (a * 0.25) - 1005 
-elif a &gt;= 35000 and a &lt; 55000:     
+elif a &gt; 35000 and a &lt;= 55000:     
     result = (a * 0.30) - 2755 
-elif a &gt;= 55000 and a &lt; 80000:     
+elif a &gt; 55000 and a &lt;= 80000:     
     result = (a * 0.35) - 5505 
 else:     
     result = (a * 0.45) - 13505
@@ -471,17 +471,17 @@ a = 0.00
 if inputs.ANBNS and inputs.ANBNS.amount:
     a = inputs.ANBNS.amount / 12
 
-if a &lt; 1500:     
+if a &lt;= 1500:     
     result = inputs.ANBNS.amount * 0.03 
-elif a &gt;= 1500 and a &lt; 4500:     
+elif a &gt; 1500 and a &lt;= 4500:     
     result = (inputs.ANBNS.amount * 0.10) - 105 
-elif a &gt;= 4500 and a &lt; 9000:     
+elif a &gt; 4500 and a &lt;= 9000:     
     result = (inputs.ANBNS.amount * 0.20) - 555 
-elif a &gt;=9000 and a &lt; 35000:     
+elif a &gt; 9000 and a &lt;= 35000:     
     result = (inputs.ANBNS.amount * 0.25) - 1005 
-elif a &gt;=35000 and a &lt; 55000:     
+elif a &gt; 35000 and a &lt;= 55000:     
     result = (inputs.ANBNS.amount * 0.30) - 2755 
-elif a &gt;= 55000 and a &lt; 80000:     
+elif a &gt; 55000 and a &lt;= 80000:     
     result = (inputs.ANBNS.amount * 0.35) - 5505 
 else:     
     result = (inputs.ANBNS.amount * 0.45) - 13505

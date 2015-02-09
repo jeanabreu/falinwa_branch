@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <!-- insert js and css in here -->
+    <template id="fal_interactive_map_assets_frontend" inherit_id="website.assets_frontend" name="Assets for Interactive Map">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/fal_web_interactive_map/static/src/css/interactive_map.css" />
+            <script src="/fal_web_interactive_map/static/src/js/fal_interactive_map.js"></script>
+        </xpath>
+    </template>
+
+    <!-- insert the snippet -->    
+    <template id="fal_interactive_map_snippet" inherit_id="website.snippets" name="Interactive Map Snippets">
+        
+        <!-- option to pick the snippet -->
+        <xpath expr="//div[@class='scroll']/ul[@class='nav navbar-nav nav-tabs']" position="inside">
+            <li><a href="#snippet_map_interactive" data-toggle="tab">Interactive Map</a></li>
+        </xpath>
+        
+        <!-- the snippet -->
+        <xpath expr="//div[@class='tab-content']" position="inside">
+            <div id="snippet_map_interactive" class="tab-pane">
+                <div>
+                    <!-- thumbnail -->
+                    <div class="oe_snippet_thumbnail">
+                        <img class="oe_snippet_thumbnail_img" src="/fal_web_interactive_map/static/src/img/snippet/map-icon.png" />
+                        <span class="oe_snippet_thumbnail_title">Map</span>
+                    </div>
+
+                    <!-- snippet body -->
+                    <section class="oe_snippet_body fal_world_map" style="background-image: url('/fal_web_interactive_map/static/src/img/snippet/world-map.jpg')">
+                        <div class="container">
+                            <div class="oe_structure">
+                                <div class="fal_map_description">                                    
+                                    <p><img src="/fal_web_interactive_map/static/src/img/snippet/manufacture.png"></img>PRODUCTION UNITS</p>
+                                    <p><img src="/fal_web_interactive_map/static/src/img/snippet/subsidiary.png"></img>SUBSIDIARY</p>
+                                    <p><img src="/fal_web_interactive_map/static/src/img/snippet/dealers.png"></img>DEALERS</p>
+                                </div>
+                                <div class="fal_mark_dealers india1" id="fal_mark_india1" onmouseout="hideMarkDescription('fal_mark_description_india1')" onmouseover="showMarkDescription('fal_mark_india1', 'fal_mark_description_india1')">
+                                </div>
+                                <div class="fal_mark_dealers india2" id="fal_mark_india2" onmouseout="hideMarkDescription('fal_mark_description_india2')" onmouseover="showMarkDescription('fal_mark_india2', 'fal_mark_description_india2')">
+                                </div> 
+                                <div class="fal_mark_dealers iran" id="fal_mark_iran" onmouseout="hideMarkDescription('fal_mark_description_iran')" onmouseover="showMarkDescription('fal_mark_iran', 'fal_mark_description_iran')">
+                                </div>
+                                <div class="fal_mark_dealers israel" id="fal_mark_israel" onmouseout="hideMarkDescription('fal_mark_description_israel')" onmouseover="showMarkDescription('fal_mark_israel', 'fal_mark_description_israel')">
+                                </div>
+                                <div class="fal_mark_dealers turquie" id="fal_mark_turquie" onmouseout="hideMarkDescription('fal_mark_description_turquie')" onmouseover="showMarkDescription('fal_mark_turquie', 'fal_mark_description_turquie')">
+                                </div>
+                                <div class="fal_mark_dealers south_africa" id="fal_mark_south_africa" onmouseout="hideMarkDescription('fal_mark_description_south_africa')" onmouseover="showMarkDescription('fal_mark_south_africa', 'fal_mark_description_south_africa')">
+                                </div>
+                                <div class="fal_mark_dealers maroc" id="fal_mark_maroc" onmouseout="hideMarkDescription('fal_mark_description_maroc')" onmouseover="showMarkDescription('fal_mark_maroc', 'fal_mark_description_maroc')">
+                                </div>
+                                <div class="fal_mark_dealers swiss" id="fal_mark_swiss" onmouseout="hideMarkDescription('fal_mark_description_swiss')" onmouseover="showMarkDescription('fal_mark_swiss', 'fal_mark_description_swiss')">
+                                </div>
+                                <div class="fal_mark_dealers benelux" id="fal_mark_benelux" onmouseout="hideMarkDescription('fal_mark_description_benelux')" onmouseover="showMarkDescription('fal_mark_benelux', 'fal_mark_description_benelux')">
+                                </div>
+                                <div class="fal_mark_dealers royaume" id="fal_mark_royaume" onmouseout="hideMarkDescription('fal_mark_description_royaume')" onmouseover="showMarkDescription('fal_mark_royaume', 'fal_mark_description_royaume')">
+                                </div>
+                                <div class="fal_mark_dealers swedia" id="fal_mark_swedia" onmouseout="hideMarkDescription('fal_mark_description_swedia')" onmouseover="showMarkDescription('fal_mark_swedia', 'fal_mark_description_swedia')">
+                                </div>
+                                <div class="fal_mark_dealers finland" id="fal_mark_finland" onmouseout="hideMarkDescription('fal_mark_description_finland')" onmouseover="showMarkDescription('fal_mark_finland', 'fal_mark_description_finland')">
+                                </div>
+                                <div class="fal_mark_dealers rusia" id="fal_mark_rusia" onmouseout="hideMarkDescription('fal_mark_description_rusia')" onmouseover="showMarkDescription('fal_mark_rusia', 'fal_mark_description_rusia')">
+                                </div>
+                                <div class="fal_mark_dealers mexico" id="fal_mark_mexico" onmouseout="hideMarkDescription('fal_mark_description_mexico')" onmouseover="showMarkDescription('fal_mark_mexico', 'fal_mark_description_mexico')">
+                                </div>
+                                <div class="fal_mark_dealers usa" id="fal_mark_usa" onmouseout="hideMarkDescription('fal_mark_description_usa')" onmouseover="showMarkDescription('fal_mark_usa', 'fal_mark_description_usa')">
+                                </div>
+                                <div class="fal_mark_dealers canada" id="fal_mark_canada" onmouseout="hideMarkDescription('fal_mark_description_canada')" onmouseover="showMarkDescription('fal_mark_canada', 'fal_mark_description_canada')">
+                                </div>
+                                <div class="fal_mark_subsidiary hongkong" id="fal_mark_hongkong" onmouseout="hideMarkDescription('fal_mark_description_hongkong')" onmouseover="showMarkDescription('fal_mark_hongkong', 'fal_mark_description_hongkong')">
+                                </div>
+                                <div class="fal_mark_subsidiary portugal" id="fal_mark_portugal" onmouseout="hideMarkDescription('fal_mark_description_portugal')" onmouseover="showMarkDescription('fal_mark_portugal', 'fal_mark_description_portugal')">
+                                </div>
+                                <div class="fal_mark_subsidiary espagne" id="fal_mark_espagne" onmouseout="hideMarkDescription('fal_mark_description_espagne')" onmouseover="showMarkDescription('fal_mark_espagne', 'fal_mark_description_espagne')">
+                                </div>
+                                <div class="fal_mark_subsidiary italie" id="fal_mark_italie" onmouseout="hideMarkDescription('fal_mark_description_italie')" onmouseover="showMarkDescription('fal_mark_italie', 'fal_mark_description_italie')">
+                                </div>
+                                <div class="fal_mark_subsidiary roumanie" id="fal_mark_roumanie" onmouseout="hideMarkDescription('fal_mark_description_roumanie')" onmouseover="showMarkDescription('fal_mark_roumanie', 'fal_mark_description_roumanie')">
+                                </div>
+                                <div class="fal_mark_subsidiary slovaquie" id="fal_mark_slovaquie" onmouseout="hideMarkDescription('fal_mark_description_slovaquie')" onmouseover="showMarkDescription('fal_mark_slovaquie', 'fal_mark_description_slovaquie')">
+                                </div>
+                                <div class="fal_mark_subsidiary pologne" id="fal_mark_pologne" onmouseout="hideMarkDescription('fal_mark_description_pologne')" onmouseover="showMarkDescription('fal_mark_pologne', 'fal_mark_description_pologne')">
+                                </div>
+                                <div class="fal_mark_subsidiary allemagne" id="fal_mark_allemagne" onmouseout="hideMarkDescription('fal_mark_description_allemagne')" onmouseover="showMarkDescription('fal_mark_allemagne', 'fal_mark_description_allemagne')">
+                                </div>
+                                <div class="fal_mark_manufacture chine" id="fal_mark_chine" onmouseout="hideMarkDescription('fal_mark_description_chine')" onmouseover="showMarkDescription('fal_mark_chine', 'fal_mark_description_chine')">
+                                </div>
+                                <div class="fal_mark_manufacture france" id="fal_mark_france" onmouseout="hideMarkDescription('fal_mark_description_france')" onmouseover="showMarkDescription('fal_mark_france', 'fal_mark_description_france')">
+                                </div>
+                                <div class="fal_mark_manufacture bresil" id="fal_mark_bresil" onmouseout="hideMarkDescription('fal_mark_description_bresil')" onmouseover="showMarkDescription('fal_mark_bresil', 'fal_mark_description_bresil')">
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_india1" style="display: None;">
+                                    <h2 class="fal_name">INDE - SUD</h2>
+                                    <p class="fal_name2">SERVHOSYS BANGALORE</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Shankar Nag Road. 1st Cross Ward No.14</p>
+                                        <p class="fal_address2">Virata Nagar, Bommanahalli</p>
+                                        <p class="fal_address3">Bangalore</p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +91 01124527655</p>
+                                        <p class="fal_fax">Fax: +91 01129921483</p>
+                                        <p class="fal_mail">Email: rk@samaideep.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_india2" style="display: None;">
+                                    <h2 class="fal_name">INDE - NORD</h2>
+                                    <p class="fal_name2">SAMAIDEEP TECHNO ENGG</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">1st Floor, 22nd Main Devil road</p>
+                                        <p class="fal_address2">110062 Khanpur, New Delhi</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +91 080-40997134</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: servhosys@airtelmail.in</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_iran" style="display: None;">
+                                    <h2 class="fal_name">HPS IRAN</h2>
+                                    <p class="fal_name2"></p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address"></p>
+                                        <p class="fal_address2"></p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hp-systems.fr</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_israel" style="display: None;">
+                                    <h2 class="fal_name">HPS ISRAEL</h2>
+                                    <p class="fal_name2"></p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address"></p>
+                                        <p class="fal_address2"></p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hp-systems.fr</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_turquie" style="display: None;">
+                                    <h2 class="fal_name">TURQUIE</h2>
+                                    <p class="fal_name2">ORTAK PNOMATIK OTOMA SYON HIDROLIK</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Niluter Ticaret merkezi 64, sok. No 14</p>
+                                        <p class="fal_address2">BURSA/TURQUIE</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +90 224 441 72 42</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: cemkizil@ortakhidrolik.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_south_africa" style="display: None;">
+                                    <h2 class="fal_name">SOUTH AFRICA</h2>
+                                    <p class="fal_name2">ARNSCHELL HYDRAULICS</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">18/20 Strang Street Sidwell</p>
+                                        <p class="fal_address2">6001 Port Elizabeth</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel:  +27 (041)453 4103</p>
+                                        <p class="fal_fax">Fax:  +27 (041)453 4193</p>
+                                        <p class="fal_mail"></p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_maroc" style="display: None;">
+                                    <h2 class="fal_name">MAROC</h2>
+                                    <p class="fal_name2">TECHNOLOGIE SERVICE</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Route de Rabat, Tanger free zone</p>
+                                        <p class="fal_address2">ilot 14, lot no 10 90100 TANGER</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: gforest.technologieservice@gmail.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_swiss" style="display: None;">
+                                    <h2 class="fal_name">SWISS</h2>
+                                    <p class="fal_name2"></p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address"></p>
+                                        <p class="fal_address2"></p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hp-systems.fr</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_benelux" style="display: None;">
+                                    <h2 class="fal_name">HPS BENELUX</h2>
+                                    <p class="fal_name2"></p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address"></p>
+                                        <p class="fal_address2"></p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hp-systems.fr</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_royaume" style="display: None;">
+                                    <h2 class="fal_name">ROYAUME UNI</h2>
+                                    <p class="fal_name2">2EMME TECHNOLOGY UK LTD</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Unit 4, Irradion House, Southdown</p>
+                                        <p class="fal_address2">Industrial Estate, Harpenden AL5 1PW</p>
+                                        <p class="fal_address3">HERTS</p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +44 1582 76 99 92</p>
+                                        <p class="fal_fax">Fax: +44 1582 46 06 66</p>
+                                        <p class="fal_mail">Email: oshea@2emmetechnology.com.uk</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_swedia" style="display: None;">
+                                    <h2 class="fal_name">HPS SWEDEN</h2>
+                                    <p class="fal_name2"></p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address"></p>
+                                        <p class="fal_address2"></p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hp-systems.fr</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_finland" style="display: None;">
+                                    <h2 class="fal_name">FINLANDE</h2>
+                                    <p class="fal_name2">MOULDIN OY</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">kainunkuja 4L3</p>
+                                        <p class="fal_address2">29600 Noormarkku</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +358 2 6384 999</p>
+                                        <p class="fal_fax">Fax: +358 2 6384 998</p>
+                                        <p class="fal_mail">Email: info@mouldin.fi</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_rusia" style="display: None;">
+                                    <h2 class="fal_name">RUSSIE</h2>
+                                    <p class="fal_name2">TECHNO PARTNER SERVICE LTD</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Zheleznodorozhryi Prospekt, 45</p>
+                                        <p class="fal_address2">Building 5 192148 SAINT PETERSBOURG</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +7 921 322 2205</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: winter.arnold@rambler.ru</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_mexico" style="display: None;">
+                                    <h2 class="fal_name">HPS Mexico</h2>
+                                    <p class="fal_name2"></p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">AV. JOSEFA ORTZ DE DOMINGUEZ</p>
+                                        <p class="fal_address2">2574 COL. BUROCRATAS FEDERALES</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site">MONTERREY</p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +52 (81) 8883 9070</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: jorgemty2201@gmail.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_usa" style="display: None;">
+                                    <h2 class="fal_name">USA</h2>
+                                    <p class="fal_name2">DELANG FLUID POWER</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">14055 Achyl</p>
+                                        <p class="fal_address2">MI - 48089 WARREN</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +1 586 775 7770</p>
+                                        <p class="fal_fax">Fax: +1 586 775 3389</p>
+                                        <p class="fal_mail">Email: mddelang@delangfluidpower.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_canada" style="display: None;">
+                                    <h2 class="fal_name">Canada</h2>
+                                    <p class="fal_name2">CB MOULDS SERVICES</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">76 Mc Guire Trail</p>
+                                        <p class="fal_address2">L7E 0E3 CALEDON</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +1 905 880 8029</p>
+                                        <p class="fal_fax">Fax: +1 905 880 8030</p>
+                                        <p class="fal_mail">Email: colin@cbmouldservices.ca</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_hongkong" style="display: None;">
+                                    <h2 class="fal_name">Hongkong</h2>
+                                    <p class="fal_name2">HPS ASIA LTD</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">2308-9, 23 Rd Floor, Tower Two</p>
+                                        <p class="fal_address2">Lippo Centre, 89</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site">HONGKONG</p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel"></p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hps-china.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_portugal" style="display: None;">
+                                    <h2 class="fal_name">PORTUGAL</h2>
+                                    <p class="fal_name2">JARRY LDA</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Rua Alcorredores - Edificio Onix</p>
+                                        <p class="fal_address2">Fracao E 3020-923 TORRE DE VILELA</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +351 239 910 030</p>
+                                        <p class="fal_fax">Fax: +351 239 911 116</p>
+                                        <p class="fal_mail">Email: hps@hps-portugal.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_espagne" style="display: None;">
+                                    <h2 class="fal_name">ESPAGNE</h2>
+                                    <p class="fal_name2">JARRY LDA</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Rua Alcorredores - Edificio Onix</p>
+                                        <p class="fal_address2">Fracao E 3020-923 TORRE DE VILELA</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +351 239 910 030</p>
+                                        <p class="fal_fax">Fax: +351 239 911 116</p>
+                                        <p class="fal_mail">Email: hps@hps-portugal.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_italie" style="display: None;">
+                                    <h2 class="fal_name">ITALIE</h2>
+                                    <p class="fal_name2">HPS ITALIE</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Via S. Lucia, 9</p>
+                                        <p class="fal_address2">24128 BERGAMO</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +39 035 0603557</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: nuno.guerreiro@hps-italia.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_roumanie" style="display: None;">
+                                    <h2 class="fal_name">ROUMANIE</h2>
+                                    <p class="fal_name2">HPS SLOVAQUIE</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Nobelova 34</p>
+                                        <p class="fal_address2">83605 BRATISLAVA</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +421 904 288 203</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hps-slovensko.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_slovaquie" style="display: None;">
+                                    <h2 class="fal_name">SLOVAQUIE</h2>
+                                    <p class="fal_name2">HPS SLOVAQUIE</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Nobelova 34</p>
+                                        <p class="fal_address2">83605 BRATISLAVA</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +421 904 288 203</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hps-slovensko.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_pologne" style="display: None;">
+                                    <h2 class="fal_name">POLOGNE</h2>
+                                    <p class="fal_name2">HPS POLSKA</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">UI. J. Styki 18/10</p>
+                                        <p class="fal_address2">03928 WARSAWA</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +48 605 764 995</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: hps@hps-polska.pl</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_allemagne" style="display: None;">
+                                    <h2 class="fal_name">ALLEMAGNE</h2>
+                                    <p class="fal_name2">HYDRAULIK PRODUKTION SYSTEME GMBH</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Daimlerstrasse 6</p>
+                                        <p class="fal_address2">61449 STEINBACH</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +49 617 127 911 14</p>
+                                        <p class="fal_fax">Fax: +49 617 127 911 29</p>
+                                        <p class="fal_mail">Email: info@hoszylinder.de</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_chine" style="display: None;">
+                                    <h2 class="fal_name">CHINE</h2>
+                                    <p class="fal_name2">HPS SHENZHEN LTD</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Floor 1, Industrial Building 2, Furong 7th Rd</p>
+                                        <p class="fal_address2">Furong Industrial Zoz, Shajin St, Bao'an</p>
+                                        <p class="fal_address3">District 518103 SHENZHEN</p>
+                                        <p class="fal_site">GUANGDONG</p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +86 755 2917 8531</p>
+                                        <p class="fal_fax">Fax: +86 755 2903 4152</p>
+                                        <p class="fal_mail">Email: hps@hps-china.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_france" style="display: None;">
+                                    <h2 class="fal_name">FRANCE</h2>
+                                    <p class="fal_name2">HPS FRANCE</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">62, chemin de la chapelle Saint Antoine</p>
+                                        <p class="fal_address2">95300 ENNERY</p>
+                                        <p class="fal_address3"></p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +33 1 34 35 38 38</p>
+                                        <p class="fal_fax">Fax: +33 1 30 75 08 08</p>
+                                        <p class="fal_mail">Email: hps@hps-systems.fr</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_bresil" style="display: None;">
+                                    <h2 class="fal_name">BRESIL(Sao Paulo)</h2>
+                                    <p class="fal_name2">HPS MERCOSUL</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Rua Maria Antonio C Ribeiro dos santos</p>
+                                        <p class="fal_address2">No 63</p>
+                                        <p class="fal_address3">CEP. 13086-746 Campinas-SP Brasil</p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +55 19 998620287</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: jose.teixeira@hpsmercosul.com.br</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                            </div>                        
+                        </div>
+                    </section>
+                </div>              
+            </div>
+        </xpath>        
+    </template>
+   
+</data>
+</openerp>

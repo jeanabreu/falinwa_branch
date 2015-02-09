@@ -1,0 +1,261 @@
+.fal_world_map {
+  background-size: cover;
+}
+.fal_world_map > div {
+  position: relative;
+  display: table;
+  width: 100%;
+  min-height: 680px;
+}
+.fal_world_map > div > div {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 32px 0;
+}
+
+.fal_mark_dealers {
+  background-image: url('../img/snippet/dealers.png');
+  position: absolute;
+  cursor: pointer;
+  height: 40px;
+  width: 30px;
+}
+
+.fal_mark_subsidiary {
+  background-image: url('../img/snippet/subsidiary.png');
+  position: absolute;
+  cursor: pointer;
+  height: 40px;
+  width: 30px;
+}
+
+.fal_mark_manufacture {
+  background-image: url('../img/snippet/manufacture.png');
+  position: absolute;
+  cursor: pointer;
+  height: 40px;
+  width: 30px;
+}
+
+.india1 {
+  top: 319px;
+  left: 844px;
+}
+
+.india2 {
+  top: 249px;
+  left: 841px;
+}
+
+.iran {
+  top: 251px;
+  left: 775px;
+}
+
+.israel {
+  top: 255px;
+  left: 715px;
+}
+
+.turquie {
+  top: 225px;
+  left: 689px;
+}
+
+.south_africa {
+  top: 500px;
+  left: 675px;
+}
+
+.maroc {
+  top: 250px;
+  left: 578px;
+}
+
+.swiss {
+  top: 181px;
+  left: 626px;
+}
+
+.benelux {
+  top: 169px;
+  left: 607px;
+}
+
+.royaume {
+  top: 158px;
+  left: 593px;
+}
+
+.swedia {
+  top: 136px;
+  left: 641px;
+}
+
+.finland {
+  top: 112px;
+  left: 670px;
+}
+
+.rusia {
+  top: 128px;
+  left: 683px;
+}
+
+.mexico {
+  top: 300px;
+  left: 266px;
+}
+
+.usa {
+  top: 215px;
+  left: 340px;
+}
+
+.canada {
+  top: 186px;
+  left: 346px;
+}
+
+.hongkong {
+  top: 284px;
+  left: 980px;
+}
+
+.portugal {
+  top: 214px;
+  left: 570px;
+}
+
+.espagne {
+  top: 214px;
+  left: 590px;
+}
+
+.italie {
+  top: 200px;
+  left: 630px;
+}
+
+.roumanie {
+  top: 194px;
+  left: 650px;
+}
+
+.slovaquie {
+  top: 174px;
+  left: 660px;
+}
+
+.pologne {
+  top: 154px;
+  left: 666px;
+}
+
+.allemagne {
+  top: 214px;
+  left: 590px;
+}
+
+.chine {
+  top: 264px;
+  left: 970px;
+}
+
+.france {
+  top: 181px;
+  left: 606px;
+}
+
+.bresil {
+  top: 481px;
+  left: 446px;
+}
+
+.fal_map_description {
+  height: 150px;
+  width: 190px;
+  background-color: #DAD4D4;
+  margin-left: 15px;
+  margin-top: 220px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.fal_mark_description {
+  width: 450px;
+  height: 135px;
+  position: absolute;
+  background-image: url('../img/snippet/mark_description_bg.png');
+  cursor: pointer;
+}
+
+.fal_name {
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  padding-left: 13px;
+  padding-top: 9px;
+  padding-bottom: 2px;
+}
+
+.fal_name2 {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.fal_address {
+  font-size: 10px;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.fal_address2 {
+  font-size: 10px;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.fal_address3 {
+  font-size: 10px;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.fal_site {
+  font-size: 10px;
+  margin: 0;
+  padding-left: 13px;
+}
+
+.fal_tel {
+  font-size: 10px;
+  margin: 0;
+  margin-left: 13px;
+}
+
+.fal_fax {
+  font-size: 10px;
+  margin: 0;
+  margin-left: 13px;
+}
+
+.fal_mail {
+  font-size: 10px;
+  margin: 0;
+  margin-left: 13px;
+}
+
+.fal_info1 {
+  width: 250px;
+  float: left;
+}
+
+.fal_info2 {
+  width: 162px;
+  float: left;
+  margin-left: 12px;
+}

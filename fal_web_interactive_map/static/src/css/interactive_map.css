@@ -1,5 +1,8 @@
 .fal_world_map {
-  background-size: cover;
+  width: 1274px;
+  height: 679px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .fal_world_map > div {
   position: relative;

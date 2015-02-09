@@ -68,6 +68,10 @@
                                 </div>
                                 <div class="fal_mark_dealers canada" id="fal_mark_canada" onmouseout="hideMarkDescription('fal_mark_description_canada')" onmouseover="showMarkDescription('fal_mark_canada', 'fal_mark_description_canada')">
                                 </div>
+                                <div class="fal_mark_dealers korea" id="fal_mark_korea" onmouseout="hideMarkDescription('fal_mark_description_korea')" onmouseover="showMarkDescription('fal_mark_korea', 'fal_mark_description_korea')">
+                                </div>
+                                <div class="fal_mark_dealers japan" id="fal_mark_japan" onmouseout="hideMarkDescription('fal_mark_description_japan')" onmouseover="showMarkDescription('fal_mark_japan', 'fal_mark_description_japan')">
+                                </div>
                                 <div class="fal_mark_subsidiary hongkong" id="fal_mark_hongkong" onmouseout="hideMarkDescription('fal_mark_description_hongkong')" onmouseover="showMarkDescription('fal_mark_hongkong', 'fal_mark_description_hongkong')">
                                 </div>
                                 <div class="fal_mark_subsidiary portugal" id="fal_mark_portugal" onmouseout="hideMarkDescription('fal_mark_description_portugal')" onmouseover="showMarkDescription('fal_mark_portugal', 'fal_mark_description_portugal')">
@@ -90,7 +94,7 @@
                                 </div>
                                 <div class="fal_mark_manufacture bresil" id="fal_mark_bresil" onmouseout="hideMarkDescription('fal_mark_description_bresil')" onmouseover="showMarkDescription('fal_mark_bresil', 'fal_mark_description_bresil')">
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_india1" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_india1" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_india1')" onmouseover="showMarkDescription('fal_mark_india1', 'fal_mark_description_india1')">
                                     <h2 class="fal_name">INDE - SUD</h2>
                                     <p class="fal_name2">SERVHOSYS BANGALORE</p>
                                     <div class="fal_info1">
@@ -106,7 +110,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_india2" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_india2" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_india2')" onmouseover="showMarkDescription('fal_mark_india2', 'fal_mark_description_india2')">
                                     <h2 class="fal_name">INDE - NORD</h2>
                                     <p class="fal_name2">SAMAIDEEP TECHNO ENGG</p>
                                     <div class="fal_info1">
@@ -122,7 +126,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_iran" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_iran" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_iran')" onmouseover="showMarkDescription('fal_mark_iran', 'fal_mark_description_iran')">
                                     <h2 class="fal_name">HPS IRAN</h2>
                                     <p class="fal_name2"></p>
                                     <div class="fal_info1">
@@ -138,7 +142,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_israel" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_israel" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_israel')" onmouseover="showMarkDescription('fal_mark_israel', 'fal_mark_description_israel')">
                                     <h2 class="fal_name">HPS ISRAEL</h2>
                                     <p class="fal_name2"></p>
                                     <div class="fal_info1">
@@ -154,7 +158,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_turquie" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_turquie" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_turquie')" onmouseover="showMarkDescription('fal_mark_turquie', 'fal_mark_description_turquie')">
                                     <h2 class="fal_name">TURQUIE</h2>
                                     <p class="fal_name2">ORTAK PNOMATIK OTOMA SYON HIDROLIK</p>
                                     <div class="fal_info1">
@@ -170,7 +174,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_south_africa" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_south_africa" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_south_africa')" onmouseover="showMarkDescription('fal_mark_south_africa', 'fal_mark_description_south_africa')">
                                     <h2 class="fal_name">SOUTH AFRICA</h2>
                                     <p class="fal_name2">ARNSCHELL HYDRAULICS</p>
                                     <div class="fal_info1">
@@ -186,7 +190,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_maroc" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_maroc" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_maroc')" onmouseover="showMarkDescription('fal_mark_maroc', 'fal_mark_description_maroc')">
                                     <h2 class="fal_name">MAROC</h2>
                                     <p class="fal_name2">TECHNOLOGIE SERVICE</p>
                                     <div class="fal_info1">
@@ -202,7 +206,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_swiss" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_swiss" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_swiss')" onmouseover="showMarkDescription('fal_mark_swiss', 'fal_mark_description_swiss')">
                                     <h2 class="fal_name">SWISS</h2>
                                     <p class="fal_name2"></p>
                                     <div class="fal_info1">
@@ -218,7 +222,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_benelux" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_benelux" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_benelux')" onmouseover="showMarkDescription('fal_mark_benelux', 'fal_mark_description_benelux')">
                                     <h2 class="fal_name">HPS BENELUX</h2>
                                     <p class="fal_name2"></p>
                                     <div class="fal_info1">
@@ -234,7 +238,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_royaume" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_royaume" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_royaume')" onmouseover="showMarkDescription('fal_mark_royaume', 'fal_mark_description_royaume')">
                                     <h2 class="fal_name">ROYAUME UNI</h2>
                                     <p class="fal_name2">2EMME TECHNOLOGY UK LTD</p>
                                     <div class="fal_info1">
@@ -250,7 +254,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_swedia" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_swedia" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_swedia')" onmouseover="showMarkDescription('fal_mark_swedia', 'fal_mark_description_swedia')">
                                     <h2 class="fal_name">HPS SWEDEN</h2>
                                     <p class="fal_name2"></p>
                                     <div class="fal_info1">
@@ -266,7 +270,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_finland" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_finland" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_finland')" onmouseover="showMarkDescription('fal_mark_finland', 'fal_mark_description_finland')">
                                     <h2 class="fal_name">FINLANDE</h2>
                                     <p class="fal_name2">MOULDIN OY</p>
                                     <div class="fal_info1">
@@ -282,7 +286,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_rusia" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_rusia" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_rusia')" onmouseover="showMarkDescription('fal_mark_rusia', 'fal_mark_description_rusia')">
                                     <h2 class="fal_name">RUSSIE</h2>
                                     <p class="fal_name2">TECHNO PARTNER SERVICE LTD</p>
                                     <div class="fal_info1">
@@ -298,7 +302,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_mexico" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_mexico" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_mexico')" onmouseover="showMarkDescription('fal_mark_mexico', 'fal_mark_description_mexico')">
                                     <h2 class="fal_name">HPS Mexico</h2>
                                     <p class="fal_name2"></p>
                                     <div class="fal_info1">
@@ -314,7 +318,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_usa" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_usa" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_usa')" onmouseover="showMarkDescription('fal_mark_usa', 'fal_mark_description_usa')">
                                     <h2 class="fal_name">USA</h2>
                                     <p class="fal_name2">DELANG FLUID POWER</p>
                                     <div class="fal_info1">
@@ -330,7 +334,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_canada" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_canada" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_canada')" onmouseover="showMarkDescription('fal_mark_canada', 'fal_mark_description_canada')">
                                     <h2 class="fal_name">Canada</h2>
                                     <p class="fal_name2">CB MOULDS SERVICES</p>
                                     <div class="fal_info1">
@@ -346,7 +350,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_hongkong" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_hongkong" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_hongkong')" onmouseover="showMarkDescription('fal_mark_hongkong', 'fal_mark_description_hongkong')">
                                     <h2 class="fal_name">Hongkong</h2>
                                     <p class="fal_name2">HPS ASIA LTD</p>
                                     <div class="fal_info1">
@@ -362,7 +366,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_portugal" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_portugal" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_portugal')" onmouseover="showMarkDescription('fal_mark_portugal', 'fal_mark_description_portugal')">
                                     <h2 class="fal_name">PORTUGAL</h2>
                                     <p class="fal_name2">JARRY LDA</p>
                                     <div class="fal_info1">
@@ -378,7 +382,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_espagne" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_espagne" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_espagne')" onmouseover="showMarkDescription('fal_mark_espagne', 'fal_mark_description_espagne')">
                                     <h2 class="fal_name">ESPAGNE</h2>
                                     <p class="fal_name2">JARRY LDA</p>
                                     <div class="fal_info1">
@@ -394,7 +398,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_italie" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_italie" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_italie')" onmouseover="showMarkDescription('fal_mark_italie', 'fal_mark_description_italie')">
                                     <h2 class="fal_name">ITALIE</h2>
                                     <p class="fal_name2">HPS ITALIE</p>
                                     <div class="fal_info1">
@@ -410,7 +414,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_roumanie" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_roumanie" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_roumanie')" onmouseover="showMarkDescription('fal_mark_roumanie', 'fal_mark_description_roumanie')">
                                     <h2 class="fal_name">ROUMANIE</h2>
                                     <p class="fal_name2">HPS SLOVAQUIE</p>
                                     <div class="fal_info1">
@@ -426,7 +430,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_slovaquie" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_slovaquie" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_slovaquie')" onmouseover="showMarkDescription('fal_mark_slovaquie', 'fal_mark_description_slovaquie')">
                                     <h2 class="fal_name">SLOVAQUIE</h2>
                                     <p class="fal_name2">HPS SLOVAQUIE</p>
                                     <div class="fal_info1">
@@ -442,7 +446,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_pologne" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_pologne" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_pologne')" onmouseover="showMarkDescription('fal_mark_pologne', 'fal_mark_description_pologne')">
                                     <h2 class="fal_name">POLOGNE</h2>
                                     <p class="fal_name2">HPS POLSKA</p>
                                     <div class="fal_info1">
@@ -458,7 +462,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_allemagne" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_allemagne" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_allemagne')" onmouseover="showMarkDescription('fal_mark_allemagne', 'fal_mark_description_allemagne')">
                                     <h2 class="fal_name">ALLEMAGNE</h2>
                                     <p class="fal_name2">HYDRAULIK PRODUKTION SYSTEME GMBH</p>
                                     <div class="fal_info1">
@@ -474,7 +478,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_chine" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_chine" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_chine')" onmouseover="showMarkDescription('fal_mark_chine', 'fal_mark_description_chine')">
                                     <h2 class="fal_name">CHINE</h2>
                                     <p class="fal_name2">HPS SHENZHEN LTD</p>
                                     <div class="fal_info1">
@@ -490,7 +494,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_france" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_france" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_france')" onmouseover="showMarkDescription('fal_mark_france', 'fal_mark_description_france')">
                                     <h2 class="fal_name">FRANCE</h2>
                                     <p class="fal_name2">HPS FRANCE</p>
                                     <div class="fal_info1">
@@ -506,7 +510,7 @@
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>
-                                <div class="fal_mark_description" id="fal_mark_description_bresil" style="display: None;">
+                                <div class="fal_mark_description" id="fal_mark_description_bresil" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_bresil')" onmouseover="showMarkDescription('fal_mark_bresil', 'fal_mark_description_bresil')">
                                     <h2 class="fal_name">BRESIL(Sao Paulo)</h2>
                                     <p class="fal_name2">HPS MERCOSUL</p>
                                     <div class="fal_info1">
@@ -519,6 +523,38 @@
                                         <p class="fal_tel">Tel: +55 19 998620287</p>
                                         <p class="fal_fax"></p>
                                         <p class="fal_mail">Email: jose.teixeira@hpsmercosul.com.br</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_korea" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_korea')" onmouseover="showMarkDescription('fal_mark_korea', 'fal_mark_description_korea')">
+                                    <h2 class="fal_name">SOUTH KOREA</h2>
+                                    <p class="fal_name2">SMK co., Ltd</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">Systematic Molding Korea</p>
+                                        <p class="fal_address2">#307, Seongwoo Sakar tower</p>
+                                        <p class="fal_address3">43-55, Mugunghwa-ro, Ilsandong-gu,</p>
+                                        <p class="fal_site">Goyang-si, Gyeonggi-do, Korea</p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +82 31 905 7620</p>
+                                        <p class="fal_fax">Fax: +82 31 904 7620</p>
+                                        <p class="fal_mail">Email: hrssmk@chol.com</p>
+                                    </div>
+                                    <div class="fal_clear"></div>
+                                </div>
+                                <div class="fal_mark_description" id="fal_mark_description_japan" style="display: None;" onmouseout="hideMarkDescription('fal_mark_description_japan')" onmouseover="showMarkDescription('fal_mark_japan', 'fal_mark_description_japan')"> 
+                                    <h2 class="fal_name">JAPAN</h2>
+                                    <p class="fal_name2">JAPAN TOOL &amp; DIE CO,LTD.</p>
+                                    <div class="fal_info1">
+                                        <p class="fal_address">5-27-1 Nishikamata</p>
+                                        <p class="fal_address2">Ohta-ku Tokyo</p>
+                                        <p class="fal_address3">Japan 144-0051</p>
+                                        <p class="fal_site"></p>
+                                    </div>
+                                    <div class="fal_info2">
+                                        <p class="fal_tel">Tel: +81 3 3733 6311</p>
+                                        <p class="fal_fax"></p>
+                                        <p class="fal_mail">Email: yokoyama_s@jtdtky.co.jp</p>
                                     </div>
                                     <div class="fal_clear"></div>
                                 </div>

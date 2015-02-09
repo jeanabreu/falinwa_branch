@@ -20,163 +20,173 @@
   background-image: url('../img/snippet/dealers.png');
   position: absolute;
   cursor: pointer;
-  height: 40px;
-  width: 30px;
+  height: 16px;
+  width: 16px;
 }
 
 .fal_mark_subsidiary {
   background-image: url('../img/snippet/subsidiary.png');
   position: absolute;
   cursor: pointer;
-  height: 40px;
-  width: 30px;
+  height: 16px;
+  width: 16px;
 }
 
 .fal_mark_manufacture {
   background-image: url('../img/snippet/manufacture.png');
   position: absolute;
   cursor: pointer;
-  height: 40px;
-  width: 30px;
+  height: 16px;
+  width: 16px;
 }
 
 .india1 {
-  top: 319px;
+  top: 350px;
   left: 844px;
 }
 
 .india2 {
-  top: 249px;
+  top: 290px;
   left: 841px;
 }
 
 .iran {
-  top: 251px;
-  left: 775px;
+  top: 285px;
+  left: 785px;
 }
 
 .israel {
-  top: 255px;
+  top: 280px;
   left: 715px;
 }
 
 .turquie {
-  top: 225px;
+  top: 250px;
   left: 689px;
 }
 
 .south_africa {
-  top: 500px;
+  top: 525px;
   left: 675px;
 }
 
 .maroc {
-  top: 250px;
+  top: 285px;
   left: 578px;
 }
 
 .swiss {
-  top: 181px;
+  top: 210px;
   left: 626px;
 }
 
 .benelux {
-  top: 169px;
+  top: 194px;
   left: 607px;
 }
 
 .royaume {
-  top: 158px;
+  top: 193px;
   left: 593px;
 }
 
 .swedia {
-  top: 136px;
+  top: 160px;
   left: 641px;
 }
 
 .finland {
-  top: 112px;
+  top: 137px;
   left: 670px;
 }
 
 .rusia {
-  top: 128px;
-  left: 683px;
+  top: 153px;
+  left: 703px;
 }
 
 .mexico {
-  top: 300px;
+  top: 325px;
   left: 266px;
 }
 
 .usa {
-  top: 215px;
+  top: 240px;
   left: 340px;
 }
 
 .canada {
-  top: 186px;
+  top: 210px;
   left: 346px;
 }
 
 .hongkong {
-  top: 284px;
-  left: 980px;
+  top: 320px;
+  left: 970px;
 }
 
 .portugal {
-  top: 214px;
+  top: 250px;
   left: 570px;
 }
 
 .espagne {
-  top: 214px;
+  top: 250px;
   left: 590px;
 }
 
 .italie {
-  top: 200px;
+  top: 225px;
   left: 630px;
 }
 
 .roumanie {
-  top: 194px;
+  top: 214px;
   left: 650px;
 }
 
 .slovaquie {
-  top: 174px;
+  top: 200px;
   left: 660px;
 }
 
 .pologne {
-  top: 154px;
+  top: 179px;
   left: 666px;
 }
 
 .allemagne {
-  top: 214px;
-  left: 590px;
+  top: 199px;
+  left: 620px;
 }
 
 .chine {
-  top: 264px;
+  top: 300px;
   left: 970px;
 }
 
 .france {
-  top: 181px;
+  top: 216px;
   left: 606px;
 }
 
 .bresil {
-  top: 481px;
+  top: 506px;
   left: 446px;
 }
 
+.korea {
+  top: 265px;
+  left: 1010px;
+}
+
+.japan {
+  top: 270px;
+  left: 1040px;
+}
+
 .fal_map_description {
-  height: 150px;
+  height: 80px;
   width: 190px;
   background-color: #DAD4D4;
   margin-left: 15px;

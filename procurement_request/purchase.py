@@ -10,21 +10,16 @@ from openerp import netsvc
 class purchase_order(orm.Model):
     _name = "purchase.order"
     _inherit = "purchase.order"
-    
-    STATE_SELECTION = [
-        ('procurement_request', 'Procurement Request'),
-        ('draft', 'Draft PO'),
-        ('sent', 'RFQ Sent'),
-        ('validated', 'Validated'),
-        ('confirmed', 'Waiting Approval'),
-        ('approved', 'Purchase Order'),
-        ('except_picking', 'Shipping Exception'),
-        ('except_invoice', 'Invoice Exception'),
-        ('done', 'Done'),
-        ('cancel', 'Cancelled')
-    ]
+
+    def __init__(self, pool, cr):
+        init_res = super(purchase_order, self).__init__(pool, cr)
+        option = ('procurement_request','Procurement Request')
+        state_selection = self._columns['state'].selection
+        if option not in state_selection:
+            state_selection.append(option)
+        return init_res
+        
     _columns = {
-        'state': fields.selection(STATE_SELECTION, 'Status', readonly=True, help="The status of the purchase order or the quotation request. A quotation is a purchase order in a 'Draft' status. Then the order has to be confirmed by the user, the status switch to 'Confirmed'. Then the supplier must confirm the order to change the status to 'Approved'. When the purchase order is paid and received, the status becomes 'Done'. If a cancel action occurs in the invoice or in the reception of goods, the status becomes in exception.", select=True, track_visibility='onchange'),
         'req_product_id' : fields.many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True),
         'req_product_description' : fields.text('Description'),
         'req_product_qty' : fields.float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure')),
@@ -86,7 +81,7 @@ class purchase_order(orm.Model):
             if supplierinfo:
                 dt = order_line_obj._get_date_planned(cr, uid, supplierinfo, vals['date_order'], context=context).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
             else:
-                dt = datetime.strptime(vals['date_order'], DEFAULT_SERVER_DATE_FORMAT) + relativedelta(days=product_id.produce_delay)
+                dt = datetime.strptime(vals['date_order'], DEFAULT_SERVER_DATETIME_FORMAT) + relativedelta(days=product_id.produce_delay)
             vals['order_line'] = [(0,0,{
                 'product_id' : product_id.id,
                 'name' : vals.get('req_product_description', False) or product_id.name,

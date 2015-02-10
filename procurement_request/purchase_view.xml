@@ -37,6 +37,7 @@
                      <field name="journal_id" invisible='1'/>
                      <field name="company_id" groups="base.group_multi_company" widget="selection" invisible='1'/>
                      <field name="dest_address_id" string="Customer Address" on_change="onchange_dest_address_id(dest_address_id)" invisible="1" />
+                     <field name="picking_type_id" invisible="1" on_change="onchange_picking_type_id(picking_type_id, context)" domain="[('code','=','incoming')]" options="{'no_create': True}" context="{'special_shortened_wh_name': True}" />
                      <field name="location_id" invisible="1"/>
                      <field name="req_product_id" on_change="onchange_req_product_id(req_product_id)" />
                      <field name="req_product_description" attrs="{'readonly': [('state','!=','procurement_request')]}" required="1" />
@@ -53,15 +54,31 @@
 
         <record model="ir.ui.view" id="falpr_product_form_view_procurement_button">
             <field name="name">falpr.product.product.procurement</field>
-            <field name="model">product.product</field>
-            <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
-                <data>
-                    <xpath expr="//button[@name='%(stock.product_open_quants)d']" position="attributes">
-                        <attribute name="name">%(action_procurement_request_wizard)d</attribute>
-                        <attribute name="string">Procurement Request</attribute>
-                    </xpath>
-                </data>
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_stat_button"
+                           name="%(action_procurement_request_wizard)d"
+                           icon="fa-building-o"
+                           string="Procurement Request"
+                           type="action"/>                
+                </xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="falpr_product_form_view_procurement_button1">
+            <field name="name">falpr.product.product.procurement1</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_stat_button"
+                           name="%(action_procurement_request_wizard)d"
+                           icon="fa-building-o"
+                           string="Procurement Request"
+                           type="action"/>
+                </xpath>
             </field>
         </record>
         

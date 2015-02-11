@@ -52,7 +52,7 @@ class account_asset_asset(orm.Model):
         return res
 
     _columns = {
-        'simple_prorata' : fields.boolean('Simple Prorata')
+        'simple_prorata' : fields.boolean('Simple Prorata'),
         'fal_closing_date' : fields.function(_fal_closing_date, string='Closing Date', type='date', 
             store={
                 'account.asset.asset' : (lambda self, cr, uid, ids, c={}: ids, None, 20),

@@ -104,12 +104,12 @@ class oecn_font_installer(orm.TransientModel):
             ParagraphStyle.defaults['wordWrap'] = 'CJK'
         return True
                     
-    def __init__(self, pool, cr):
-        super(orm.TransientModel, self).__init__(pool, cr)
-        config_obj = pool.get("ir.config_parameter")
-        wrap_style = config_obj.get_param(cr, SUPERUSER_ID, 'wrap_style')
-        new_mappings = config_obj.get_param(cr, SUPERUSER_ID, 'fonts_map')
-        self._convert_system_font_2_base_font(wrap_style, new_mappings)
+    #def __init__(self, pool, cr):
+    #    super(orm.TransientModel, self).__init__(pool, cr)
+    #    config_obj = pool.get("ir.config_parameter")
+    #    wrap_style = config_obj.get_param(cr, SUPERUSER_ID, 'wrap_style')
+    #    new_mappings = config_obj.get_param(cr, SUPERUSER_ID, 'fonts_map')
+    #    self._convert_system_font_2_base_font(wrap_style, new_mappings)
         
     _columns = {
         'wrap': fields.boolean('CJK wrap', required=True, 

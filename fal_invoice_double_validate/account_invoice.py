@@ -7,7 +7,13 @@ import time
 class account_invoice(models.Model):
     _name = "account.invoice"
     _inherit = "account.invoice"
-            
+
+    state = fields.Selection(selection_add=[
+                ('validate1','Double Validate'),
+                ('validate2','Final Validate'),
+                ])
+             
+    """
     def __init__(self, pool, cr):
         init_res = super(account_invoice, self).__init__(pool, cr)
         option1 = ('validate1','Double Validate')
@@ -18,7 +24,8 @@ class account_invoice(models.Model):
         if option2 not in state_selection:
             state_selection.append(option2)
         return init_res
-
+    """
+    
     @api.multi
     def invoice_validate1(self):
         return self.write({'state': 'validate1'})

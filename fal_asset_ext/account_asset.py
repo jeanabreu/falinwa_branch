@@ -35,8 +35,29 @@ class account_asset_asset(orm.Model):
                     res = residual_amount * asset.method_progress_factor
         return res
 
+    def _get_asset_fal(self, cr, uid, ids, context=None):
+        result = {}
+        for line in self.pool.get('account.asset.depreciation.line').browse(cr, uid, ids, context=context):
+            result[line.asset_id.id] = True
+        return result.keys()
+
+    def _fal_closing_date(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for asset in self.browse(cr, uid, ids, context=context):
+            temp_last_date = False
+            for depreciation in asset.depreciation_line_ids:
+                if temp_last_date < depreciation.depreciation_date:
+                    temp_last_date = depreciation.depreciation_date
+            res[asset.id] = temp_last_date
+        return res
+
     _columns = {
         'simple_prorata' : fields.boolean('Simple Prorata')
+        'fal_closing_date' : fields.function(_fal_closing_date, string='Closing Date', type='date', 
+            store={
+                'account.asset.asset' : (lambda self, cr, uid, ids, c={}: ids, None, 20),
+                'account.asset.depreciation.line': (_get_asset_fal, None, 10),
+            }, help="The Closing Date"),
     }
     
     def onchange_category_id(self, cr, uid, ids, category_id, context=None):

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="act_fal_validate_1" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">validate1</field>
+            <field name="action">action_date_assign()
+action_move_create1()
+action_number()
+invoice_validate1()</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_fal_validate_2" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">validate2</field>
+            <field name="action">action_move_create2()
+invoice_validate2()</field>
+            <field name="kind">function</field>
+        </record>
+        <record model="workflow.activity" id="act_fal_revalidate_2">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">re-validate2</field>
+            <field name="action">write({'state':'validate2'})</field>
+            <field name="kind">function</field>
+        </record>
+        <record id="act_fal_paid2" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">paid2</field>
+            <!--<field name="flow_stop">True</field>-->
+            <field name="action">confirm_paid()</field>
+            <field name="kind">function</field>
+            <field name="signal_send">subflow.paid</field>
+        </record>
+        <record id="act_fal_backto_validate_1" model="workflow.activity">
+            <field name="wkf_id" ref="account.wkf"/>
+            <field name="name">backto_validate1</field>
+            <field name="action">action_backto_validate1()
+            write({'state':'validate1'})</field>
+            <field name="kind">function</field>
+        </record>
+
+        <record id="fal_t1" model="workflow.transition">
+            <field name="act_from" ref="account.act_draft"/>
+            <field name="act_to" ref="act_fal_validate_1"/>
+            <field name="signal">invoice_validate1</field>
+        </record>
+        
+        <record id="fal_t2" model="workflow.transition">
+            <field name="act_from" ref="act_fal_validate_1"/>
+            <field name="act_to" ref="act_fal_validate_2"/>
+            <field name="signal">invoice_validate2</field>
+        </record>
+        
+        <record id="fal_t3" model="workflow.transition">
+            <field name="act_from" ref="act_fal_validate_2"/>
+            <field name="act_to" ref="act_fal_paid2"/>
+            <field name="signal"/>
+            <field name="condition">reconciled</field>
+        </record>
+
+        <record id="fal_t4" model="workflow.transition">
+            <field name="act_from" ref="act_fal_paid2"/>
+            <field name="act_to" ref="act_fal_revalidate_2"/>
+            <field name="signal"/>
+            <field name="condition">not reconciled</field>
+        </record>
+        
+        <record id="fal_t5" model="workflow.transition">
+            <field name="act_from" ref="act_fal_validate_1"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel2</field>
+        </record>
+        
+        <record id="fal_t6" model="workflow.transition">
+            <field name="act_from" ref="act_fal_validate_2"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel2</field>
+        </record>
+        
+        <record id="fal_t7" model="workflow.transition">
+            <field name="act_from" ref="act_fal_revalidate_2"/>
+            <field name="act_to" ref="act_fal_paid2"/>
+            <field name="signal"/>
+            <field name="condition">reconciled</field>
+        </record>
+        
+        <record id="fal_t8" model="workflow.transition">
+            <field name="act_from" ref="act_fal_revalidate_2"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel2</field>
+        </record>
+        
+        <record id="fal_t9" model="workflow.transition">
+            <field name="act_from" ref="act_fal_validate_2"/>
+            <field name="act_to" ref="act_fal_backto_validate_1"/>
+            <field name="signal">invoice_back_validate1</field>
+        </record> 
+
+        <record id="fal_t10" model="workflow.transition">
+            <field name="act_from" ref="act_fal_backto_validate_1"/>
+            <field name="act_to" ref="act_fal_validate_2"/>
+            <field name="signal">invoice_validate2</field>
+        </record> 
+
+    </data>
+</openerp>

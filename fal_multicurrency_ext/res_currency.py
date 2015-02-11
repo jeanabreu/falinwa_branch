@@ -7,10 +7,15 @@ from openerp import SUPERUSER_ID
 class res_company(orm.Model):
     _name = "res.company"
     _inherit = "res.company"
+    _rec_name = "code"
     
     _columns = {
         'code' : fields.char('Code', Size="3", required=True),
     }
+
+    _sql_constraints = [
+        ('code_uniq', 'unique(code)', 'Code must be unique!'),
+    ]
     
 #end of res_company()
 

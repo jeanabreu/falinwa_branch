@@ -23,9 +23,26 @@
                 <field name="prorata" position="after">
                     <field name="simple_prorata" />
                 </field>
+                <field name="purchase_date" position="after">
+                    <field name="fal_closing_date" />
+                </field>
             </data>
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_account_asset_asset_tree_fal_asset">
+        <field name="name">account.asset.asset.tree.fal.asset</field>
+        <field name="model">account.asset.asset</field>
+        <field name="inherit_id" ref="account_asset.view_account_asset_asset_tree" />
+        <field name="arch" type="xml">
+            <data>
+                <field name="value_residual" position="after">
+                    <field name="method_number" />
+                    <field name="fal_closing_date" />
+                </field>
+            </data>
+        </field>
+    </record>
+    
 </data>
 </openerp>

@@ -101,7 +101,25 @@ invoice_validate2()</field>
             <field name="act_from" ref="act_fal_backto_validate_1"/>
             <field name="act_to" ref="act_fal_validate_2"/>
             <field name="signal">invoice_validate2</field>
-        </record> 
+        </record>
+        
+        <record id="fal_t11" model="workflow.transition">
+            <field name="act_from" ref="act_fal_backto_validate_1"/>
+            <field name="act_to" ref="account.act_cancel"/>
+            <field name="signal">invoice_cancel2</field>
+        </record>
+        
+        <record id="fal_t12" model="workflow.transition">
+            <field name="act_from" ref="act_fal_revalidate_2"/>
+            <field name="act_to" ref="act_fal_backto_validate_1"/>
+            <field name="signal">invoice_back_validate1</field>
+        </record>
+        
+        <record id="fal_t13" model="workflow.transition">
+            <field name="act_from" ref="act_fal_backto_validate_1"/>
+            <field name="act_to" ref="act_fal_revalidate_2"/>
+            <field name="signal">invoice_validate2</field>
+        </record>
 
     </data>
 </openerp>

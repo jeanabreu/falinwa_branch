@@ -22,5 +22,9 @@ class stock_move(orm.Model):
             'target': 'current',
             'nodestroy': True,
         }
-        
+    
+    _columns = {        
+        'fal_partner_id' : fields.related('picking_id', 'partner_id', type='many2one', relation='res.partner', string='Partner', readonly=True),
+    }
+    
 #end of stock_move()

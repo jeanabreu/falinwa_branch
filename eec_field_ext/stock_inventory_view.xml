@@ -22,6 +22,12 @@
                     <field name="date_expected" position="after">
                         <button name="open_move" type="object" string="View in Form View" icon="gtk-justify-fill"/>
                     </field>
+                    <field name="partner_id" position="before">
+                        <field name="fal_partner_id" string="Supplier" />
+                    </field>
+                    <field name="partner_id" position="attributes">
+                        <attribute name="string">Destination Address</attribute>
+                    </field>
                 </data>
             </field>
         </record>

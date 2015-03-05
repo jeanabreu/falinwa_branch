@@ -6,7 +6,7 @@
     "description": """
     Module to add additional field for eec
     """,
-    "depends" : ['sale','sale_stock','account', 'fal_expense_control'],
+    "depends" : ['sale', 'purchase', 'sale_stock', 'account', 'fal_expense_control'],
     'init_xml': [],
     'update_xml': [       
         'account_view.xml',

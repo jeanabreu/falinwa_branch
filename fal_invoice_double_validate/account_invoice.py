@@ -7,12 +7,14 @@ import time
 class account_invoice(models.Model):
     _name = "account.invoice"
     _inherit = "account.invoice"
-
+    
+    #fields start here
     state = fields.Selection(selection_add=[
                 ('validate1','Double Validate'),
                 ('validate2','Final Validate'),
                 ])
-             
+    #end here
+    
     """
     def __init__(self, pool, cr):
         init_res = super(account_invoice, self).__init__(pool, cr)
@@ -353,6 +355,8 @@ class account_move_line(models.Model):
     _name = "account.move.line"
     _inherit = "account.move.line"
     
+    #fields start here
     fal_second_post = fields.Boolean("Second Post")
+    #end here
     
 #end of account_move_line()

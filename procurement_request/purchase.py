@@ -11,16 +11,16 @@ class purchase_order(orm.Model):
     _name = "purchase.order"
     _inherit = "purchase.order"
         
-    _columns = {
-        'state' : fields.selection(selection_add=[
-                ('procurement_request','Procurement Request'),
-                ]),
-        'req_product_id' : fields.many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True),
-        'req_product_description' : fields.text('Description'),
-        'req_product_qty' : fields.float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure')),
-        'req_uom_id' : fields.many2one('product.uom', string="UOM"),
-        'warehouse_manager_comment' : fields.text('Warehouse Manager Comment'),
-    }
+    #fields start here
+    state' = fields.Selection(selection_add=[
+            ('procurement_request','Procurement Request'),
+            ])
+    req_product_id = fields.Many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True)
+    req_product_description = fields.Text('Description')
+    req_product_qty = fields.Float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure'))
+    req_uom_id = fields.Many2one('product.uom', string="UOM")
+    warehouse_manager_comment = fields.Text('Warehouse Manager Comment')
+    #end here
     
     def onchange_req_product_id(self, cr, uid, ids, req_product_id, context=None):
         if not req_product_id:

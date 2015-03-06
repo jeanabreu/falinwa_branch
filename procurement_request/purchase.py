@@ -10,16 +10,11 @@ from openerp import netsvc
 class purchase_order(orm.Model):
     _name = "purchase.order"
     _inherit = "purchase.order"
-
-    def __init__(self, pool, cr):
-        init_res = super(purchase_order, self).__init__(pool, cr)
-        option = ('procurement_request','Procurement Request')
-        state_selection = self._columns['state'].selection
-        if option not in state_selection:
-            state_selection.append(option)
-        return init_res
         
     _columns = {
+        'state' : fields.selection(selection_add=[
+                ('procurement_request','Procurement Request'),
+                ]),
         'req_product_id' : fields.many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True),
         'req_product_description' : fields.text('Description'),
         'req_product_qty' : fields.float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure')),

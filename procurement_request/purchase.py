@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from openerp.osv import fields, orm
+from openerp import fields, models, api
+from openerp.exceptions import except_orm, Warning, RedirectWarning
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP
@@ -7,28 +8,10 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from openerp import netsvc
 
-class purchase_order(orm.Model):
+class purchase_order(models.Model):
     _name = "purchase.order"
     _inherit = "purchase.order"
         
-    #fields start here
-    state = fields.Selection(selection_add=[
-            ('procurement_request','Procurement Request'),
-            ])
-    req_product_id = fields.Many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True)
-    req_product_description = fields.Text('Description')
-    req_product_qty = fields.Float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure'))
-    req_uom_id = fields.Many2one('product.uom', string="UOM")
-    warehouse_manager_comment = fields.Text('Warehouse Manager Comment')
-    #end here
-    
-    def onchange_req_product_id(self, cr, uid, ids, req_product_id, context=None):
-        if not req_product_id:
-            return {}        
-        product_id = self.pool.get('product.product').browse(cr, uid, req_product_id, context=context)
-        return {'value': {'req_product_description': product_id.name,'req_uom_id': product_id.uom_po_id.id}}
-    
-    
     def _get_supplier(self, cr, uid, context=None):
         if context is None:
             context = {}
@@ -37,12 +20,24 @@ class purchase_order(orm.Model):
                                             ('supplier', '=', True)],
                                                 limit=1)
         return res and res[0] or False  
-        
-    _defaults = {
-        'state': 'procurement_request',
-        'partner_id': _get_supplier,
-        'req_product_qty': 1.00,
-    }
+
+    #fields start here
+    state = fields.Selection(selection_add=[
+            ('procurement_request','Procurement Request'),
+            ], default= 'procurement_request')
+    req_product_id = fields.Many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True)
+    req_product_description = fields.Text('Description')
+    req_product_qty = fields.Float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure'), default= 1.00)
+    req_uom_id = fields.Many2one('product.uom', string="UOM")
+    warehouse_manager_comment = fields.Text('Warehouse Manager Comment')
+    partner_id = fields.Many2one(default=_get_supplier)
+    #end here
+    
+    def onchange_req_product_id(self, cr, uid, ids, req_product_id, context=None):
+        if not req_product_id:
+            return {}        
+        product_id = self.pool.get('product.product').browse(cr, uid, req_product_id, context=context)
+        return {'value': {'req_product_description': product_id.name,'req_uom_id': product_id.uom_po_id.id}}
 
     def create(self, cr, uid, vals, context=None):
         if vals.get('req_product_id', False):
@@ -143,7 +138,7 @@ class purchase_order(orm.Model):
             if s['state'] in ['draft','cancel','procurement_request']:
                 unlink_ids.append(s['id'])
             else:
-                raise orm.except_orm(_('Invalid Action!'), _('In order to delete a purchase order, you must cancel it first.'))
+                raise except_orm(_('Invalid Action!'), _('In order to delete a purchase order, you must cancel it first.'))
 
         # automatically sending subflow.delete upon deletion
         wf_service = netsvc.LocalService("workflow")
@@ -160,9 +155,9 @@ class purchase_order(orm.Model):
         todo = []
         for po in self.browse(cr, uid, ids, context=context):
             if not po.order_line:
-                raise orm.except_orm(_('Error!'),_('You cannot confirm a purchase order without any purchase order line.'))
+                raise except_orm(_('Error!'),_('You cannot confirm a purchase order without any purchase order line.'))
             if po.partner_id.name == 'SUPPLIER TO BE DEFINED':
-                raise orm.except_orm(_('Invalid Action!'), _('In order to confirm a quotation, you must define supplier first.'))
+                raise except_orm(_('Invalid Action!'), _('In order to confirm a quotation, you must define supplier first.'))
         return super(purchase_order, self).wkf_confirm_order(cr, uid, ids, context)
 
     def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, group_id, context=None):
@@ -173,7 +168,7 @@ class purchase_order(orm.Model):
     
 #end of purchase_order()
 
-class purchase_order_line(orm.Model):
+class purchase_order_line(models.Model):
     _name = 'purchase.order.line'
     _inherit = 'purchase.order.line'
     

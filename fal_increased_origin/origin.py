@@ -84,6 +84,6 @@ class stock_move(orm.Model):
     _inherit = "stock.move"
     
     _columns = {
-        'origin': fields.related('picking_id','origin',type='char', size=512, relation="stock.picking", string="Source", store=True),
+        'origin': fields.char("Source"),
     }
 #end of stock_move()

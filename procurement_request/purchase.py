@@ -12,7 +12,7 @@ class purchase_order(orm.Model):
     _inherit = "purchase.order"
         
     #fields start here
-    state' = fields.Selection(selection_add=[
+    state = fields.Selection(selection_add=[
             ('procurement_request','Procurement Request'),
             ])
     req_product_id = fields.Many2one('product.product', 'Product', domain=[('purchase_ok','=',True)], change_default=True)

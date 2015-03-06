@@ -172,8 +172,8 @@ class purchase_order_line(models.Model):
     _name = 'purchase.order.line'
     _inherit = 'purchase.order.line'
     
-    _columns = {
-        'warehouse_manager_comment' : fields.text('Warehouse Manager Comment'),
-    }
+    #fields start here
+    warehouse_manager_comment = fields.Text('Warehouse Manager Comment')
+    #end here
 
 #end of purchase_order_line()

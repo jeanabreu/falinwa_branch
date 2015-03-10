@@ -73,7 +73,7 @@
                         <field name="fal_rule_child_employeer_id" attrs="{'invisible': [('fal_is_insurance','=',False)], 'required': [('fal_is_insurance','=',True)]}" /><newline/>
                     </xpath>
                     <field name="appears_on_payslip" position="after">
-                        <field name="fal_bold_on_payslip" />
+                        <field name="fal_highlight_on_payslip" />
                     </field>
                 </data>
             </field>

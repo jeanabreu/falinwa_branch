@@ -126,9 +126,9 @@
     <paraStyle name="P2" rightIndent="-56.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P3" rightIndent="-56.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P4" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P4B" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P4B" rightIndent="0.0" leftIndent="0.0" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0" backColor="lightblue"/>
     <paraStyle name="P5" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
-    <paraStyle name="P5B" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="P5B" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0" backColor="lightblue"/>
     <paraStyle name="P6" rightIndent="0.0" leftIndent="0.0" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P7" fontName="Helvetica-Bold" fontSize="14.0" leading="17" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
     <paraStyle name="P8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
@@ -302,25 +302,25 @@
       <blockTable colWidths="200.0,60.0,65.0,61.0,61.0,61.0,61.0" style="Table9">
         <tr>
           <td>
-            <para style="P4">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]] [[ p.name ]]</para>
+            <para style="P4">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]] [[ p.name ]]</para>
           </td>
           <td>
-            <para style="P4">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ formatLang(p.quantity) ]]</para>
+            <para style="P4">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ formatLang(p.quantity) ]]</para>
           </td>
           <td>
-            <para style="P4">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ p.amount or '-' ]]</para>
+            <para style="P4">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ p.amount or '-' ]]</para>
           </td>
           <td>
-            <para style="P4">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ p.rate or '-' ]]</para>
+            <para style="P4">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ p.rate or '-' ]]</para>
           </td>
           <td>
-            <para style="P5">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P5B'}))) ]][[ p.total or '-' ]] </para>
+            <para style="P5">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P5B'}))) ]][[ p.total or '-' ]] </para>
           </td>
           <td>
-            <para style="P4">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ p.fal_rate_er or '-' ]]</para>
+            <para style="P4">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P4B'}))) ]][[ p.fal_rate_er or '-' ]]</para>
           </td>
           <td>
-            <para style="P5">[[ (p.salary_rule_id.fal_bold_on_payslip and (setTag('para','para',{'style':'P5B'}))) ]][[ p.fal_total_er or '-' ]]</para>
+            <para style="P5">[[ (p.salary_rule_id.fal_highlight_on_payslip and (setTag('para','para',{'style':'P5B'}))) ]][[ p.fal_total_er or '-' ]]</para>
           </td>
         </tr>
       </blockTable>

@@ -114,6 +114,7 @@ result_rate = 100</field>
             <field name="sequence">1</field>
             <field name="condition_select">none</field>
             <field name="category_id" ref="hr_payroll_BASIC" />
+			<field name="fal_bold_on_payslip" eval="True" />
         </record>
         <record id="hr_payroll_hr_rule_sal" model="hr.salary.rule">
             <field name="name">工资/Salary</field>
@@ -161,6 +162,7 @@ result_rate = 100</field>
             <field name="sequence">50</field>
             <field name="condition_select">none</field>
             <field name="category_id" ref="hr_payroll_GROSS" />
+			<field name="fal_bold_on_payslip" eval="True" />
         </record>
         <record id="hr_salary_rule_NET" model="hr.salary.rule">
             <field name="name">实发工资/Net</field>
@@ -172,6 +174,7 @@ result_rate = 100</field>
             <field name="sequence">999</field>
             <field name="condition_select">none</field>
             <field name="category_id" ref="hr_payroll_NET" />
+			<field name="fal_bold_on_payslip" eval="True" />
         </record>
         
         <!-- Additional Sallary rule -->
@@ -413,6 +416,7 @@ result_rate = 100</field>
             <field name="sequence">900</field>
             <field name="condition_select">none</field>
             <field name="category_id" ref="hr_payroll_SBT" />
+			<field name="fal_bold_on_payslip" eval="True" />
         </record>
 		
         <record id="hr_salary_rule_SBTC" model="hr.salary.rule">

@@ -156,7 +156,9 @@ class hr_salary_rule(orm.Model):
         'fal_is_insurance' : fields.boolean('Is Insurance'),
         'fal_rule_child_employee_id':fields.many2one('hr.salary.rule', 'Rule Child for Employee'),
         'fal_rule_child_employeer_id':fields.many2one('hr.salary.rule', 'Rule Child for Employeer'),
+        'fal_bold_on_payslip' : fields.boolean('Bold on payslip', help="Bold on the payslip"),
     }
+    
 #end of hr_salary_rule()
 
 class hr_contract(orm.Model):

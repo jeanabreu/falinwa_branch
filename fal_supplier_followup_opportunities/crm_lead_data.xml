@@ -23,8 +23,18 @@
         </record>
 
         <record model="crm.case.section" id="crm.section_sales_department">
-            <field name="name">Stage section for supplier followup</field>
             <field name="stage_ids" eval="[(4, ref('stage_leadfal1')), (4, ref('stage_leadfal2'))]"/>
+        </record>
+
+        <record id="ir_cron_nextaction_reminder_action" model="ir.cron">
+            <field name="name">Run Next Action Reminder Opportunities</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall"/>
+            <field eval="'crm.lead'" name="model"/>
+            <field eval="'_create_nextaction_reminder'" name="function"/>
+            <field eval="'()'" name="args"/>
         </record>
         
     </data>

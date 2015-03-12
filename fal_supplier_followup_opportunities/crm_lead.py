@@ -51,15 +51,38 @@ class crm_lead(orm.Model):
         for op in self.browse(cr, uid, ids, context=context):            
             #white:0, red:2, blue:7 , yellow:3
             color = 0
-                               
-            if op.expected_finished_date:
-                efd = datetime.strptime(op.expected_finished_date, '%Y-%m-%d').date()
-                if efd - date.today() < timedelta(1):
-                    color = 3
-                if efd - date.today() < timedelta(0):
-                    color = 2
+            if op.stage_id.name == 'RFQ Study':            
+                if op.date_action:
+                    da = datetime.strptime(op.date_action, '%Y-%m-%d').date()
+                    if da <= date.today():
+                        color = 2
+                        
+                if op.expected_finished_date:
+                    efd = datetime.strptime(op.expected_finished_date, '%Y-%m-%d').date()
+                    if efd - date.today() < timedelta(1):
+                        color = 3
+                    if efd - date.today() < timedelta(0):
+                        color = 2
                                                  
                 self.write(cr , uid, op.id, {'color': color})
+        return True
+
+    def _create_nextaction_reminder(self, cr, uid, ids=False, context=None):
+        if not ids:
+            ids = self.search(cr, uid, [('stage_id.name','=','RFQ Study')])
+        return self.create_nextaction_reminder(cr, uid, ids, context=context)
+
+    def create_nextaction_reminder(self, cr, uid, ids, context=None):
+        mail_message_obj = self.pool.get('mail.message')
+        for op in self.browse(cr, uid, ids):
+            if op.date_action:
+                da = datetime.strptime(op.date_action, '%Y-%m-%d').date()
+                if da <= date.today():
+                    temp = []
+                    temp_partner = [op.user_id.partner_id.id]
+                    #folowers = self._get_followers(cr, uid, [op.id], None, None, context=context)[po.id]['message_follower_ids']
+                    message_id = self.message_post(cr, uid, [op.id], body="Next action date already exceeds on this opportunity, Please followup this opportunity", subtype='mt_comment', partner_ids= temp_partner, context=context)
+                    mail_message_obj.write(cr, uid, [message_id], {'company_id':False})                    
         return True
         
 #end of crm_lead()

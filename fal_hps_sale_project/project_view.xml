@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="action_myfinal_partner_form_hpsprojectcrm" model="ir.actions.act_window">
+            <field name="name">My Final Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{"search_default_is_final_customer":1, "default_user_id":uid, "default_is_final_customer":1,"default_customer":0}</field>
+            <field name="domain">[('user_id','=',uid),('is_final_customer','=',1)]</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                a final customer; discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+
+        <record id="action_mypartner_form_hpsprojectcrm" model="ir.actions.act_window">
+            <field name="name">My Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('customer','=',1),('user_id','=',uid)]</field>
+            <field name="context">{'default_customer':1, 'default_user_id':uid, 'search_default_customer':1}</field>
+            <field name="search_view_id" ref="base.view_res_partner_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a contact in your address book.
+              </p><p>
+                OpenERP helps you easily track all activities related to
+                a customer; discussions, history of business opportunities,
+                documents, etc.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem name="CRM" id="mainmenu_crm_hpsproject" groups="group_sale_crm_user_hps,group_sale_crm_agent_hps"/>
+        <menuitem name="CRM" id="menu_crm_hpsproject" parent="mainmenu_crm_hpsproject" />
+        <menuitem id="menu_final_customer_form_hpsproject" parent="menu_crm_hpsproject" action="fal_project_ext.action_final_partner_form" sequence="1" groups="group_sale_crm_manager_hps" />
+        <menuitem id="menu_my_final_customer_form_hpsproject" parent="menu_crm_hpsproject" action="action_myfinal_partner_form_hpsprojectcrm" sequence="2" groups="group_sale_crm_agent_hps" />
+        <menuitem id="menu_customer_form_hpsproject" parent="menu_crm_hpsproject" action="base.action_partner_form" sequence="3" groups="group_sale_crm_manager_hps"/>
+        <menuitem id="menu_my_customer_form_hpsproject" parent="menu_crm_hpsproject" action="action_mypartner_form_hpsprojectcrm" sequence="4" groups="group_sale_crm_user_hps"/>
+        <menuitem name="Project Follower" id="menu_project_crm_hpspext" parent="menu_crm_hpsproject" action="fal_project_ext.fal_pext_open_view_project_all" sequence="5" groups="group_sale_crm_user_hps" />
+        <menuitem action="fal_project_ext.open_gtd_task_fal_pext" name="My Tools" id="menu_action_view_projectcrmtoollist" parent="menu_crm_hpsproject" sequence="6" groups="group_sale_crm_user_hps" />
+        
+   </data>
+</openerp>

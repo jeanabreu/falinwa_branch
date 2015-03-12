@@ -201,7 +201,7 @@
                     <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
                          <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible':[('use_tasks','=', 0)]}"
                             name="%(project.act_project_project_2_project_task_all)d" icon="fa-tasks">
-                            <field string="Tasks" name="task_count" widget="statinfo"/>
+                            <field string="Tools" name="task_count" widget="statinfo"/>
                         </button>
                         <button  class="oe_inline oe_stat_button" name="attachment_tree_view"  type="object" icon="fa-files-o">
                             <field string="Documents" name="doc_count" widget="statinfo"/>
@@ -248,7 +248,7 @@
                                     <div>
                                         <field name="alias_id" invisible="1" required="0"/>
                                         <label for="alias_name" class="oe_edit_only "/>
-                                        <field name="alias_name" class="oe_inline" attrs="{'required': [('alias_id', '!=', False)]}"/>@<field name="alias_domain" class="oe_inline"/>
+                                        <field name="alias_name" class="oe_inline" />@<field name="alias_domain" class="oe_inline"/>
                                     </div>
                                 </group>
                                 <group string="Administration" groups="project.group_time_work_estimation_tasks">

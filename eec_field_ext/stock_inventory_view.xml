@@ -23,10 +23,20 @@
                         <button name="open_move" type="object" string="View in Form View" icon="gtk-justify-fill"/>
                     </field>
                     <field name="partner_id" position="before">
-                        <field name="fal_partner_id" string="Supplier" />
+                        <field name="fal_partner_id" />
                     </field>
                     <field name="partner_id" position="attributes">
                         <attribute name="string">Destination Address</attribute>
+                        <attribute name="invisible">1</attribute>
+                    </field>
+                    <field name="origin" position="attributes">
+                        <attribute name="readonly">1</attribute>
+                    </field>
+                    <field name="product_id" position="attributes">
+                        <attribute name="readonly">1</attribute>
+                    </field>
+                    <field name="product_uom_qty" position="attributes">
+                        <attribute name="readonly">1</attribute>
                     </field>
                 </data>
             </field>
@@ -41,6 +51,35 @@
                     <field name="min_date" position="attributes">
                         <attribute name="invisible">0</attribute>
                     </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="product_product_tree_view_fal_proinproeec" model="ir.ui.view">
+            <field name="name">product.product.tree.fal.proinproeec</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="fal_project_in_product.product_product_tree_view_fal_proinpro"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="project_id" position="replace">
+                    </field>
+                    <field name="customer_code" position="replace">
+                    </field>
+                    <field name="customer_ref_number" position="replace">
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_normal_procurement_locations_form_falpmw_primaryeec" model="ir.ui.view">
+            <field name="name">product.normal.procurement.locations.inherit.falpmw.primaryeec</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="stock.view_template_property_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <button name="%(stock.action_view_change_product_quantity)d" position="attributes">
+                        <attribute name="groups">stock.group_stock_manager</attribute>
+                    </button>
                 </data>
             </field>
         </record>

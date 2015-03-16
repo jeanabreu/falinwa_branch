@@ -92,8 +92,10 @@ class quick_internal_transfer_wizard(orm.TransientModel):
         else :
             raise orm.except_orm(_("Warning"), _('Please Provide Operation information to save..')) 
         for line in temp_quick_transfer_line:
+            qit_number = self.pool.get('ir.sequence').get(cr, uid, 'quick.internal.transfer.falinwa') or 'Quick Internal Transfer'   
+            wh_code = data_wizard.picking_type_id.warehouse_id.code + '/' 
             res_id = stock_picking_obj.create(cr, uid, {
-                'origin' : data_wizard.name or 'Quick Internal Transfer',
+                'origin' : wh_code + qit_number,
                 'picking_type_id': data_wizard.picking_type_id.id,
                 'move_lines' : [line],
                 } ,context)            
@@ -103,7 +105,7 @@ class quick_internal_transfer_wizard(orm.TransientModel):
             #force assign
             stock_picking_obj.force_assign(cr, uid, temp_internal_transfer, context=context)
             #do_transfer
-            stock_picking_obj.do_transfer(cr, uid, temp_internal_transfer, context=context)
+            #stock_picking_obj.do_transfer(cr, uid, temp_internal_transfer, context=context)
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'stock.picking',

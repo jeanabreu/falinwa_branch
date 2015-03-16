@@ -18,9 +18,9 @@
                                 <field name="product_uom" class="oe_inline" />
                             </div>
                             <field name="source_ean13" on_change="onchange_source_ean13(source_ean13)" widget="FalSourceEan" />
-                            <field name="source_location_id"/>
+                            <field name="source_location_id" domain="[('usage', '=', 'internal')]" />
                             <field name="destination_ean13" on_change="onchange_destination_ean13(destination_ean13)" widget="FalDestinationEan" />
-                            <field name="destination_location_id"/>
+                            <field name="destination_location_id" domain="[('usage', '=', 'internal')]" />
                             <button name="validate_product" string="Validate" type="object" class="oe_highlight"/>
                         </group>
                     </group>

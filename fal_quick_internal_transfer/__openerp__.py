@@ -13,6 +13,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'wizard/quick_internal_transfer_wizard_view.xml',
+        'quick_transfer_sequence.xml',
     ],
     'css': [],
     'js' : [],

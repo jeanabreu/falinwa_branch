@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="invoice_form_fal_address_textbox" model="ir.ui.view">
+            <field name="name">account.invoice.form.faladdresstextbox</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="after">
+                        <field name="fal_delivery_address" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

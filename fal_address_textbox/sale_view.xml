@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_order_form_fal_address_textbox" model="ir.ui.view">
+            <field name="name">sale.order.form.fal.address.textbox</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_shipping_id" position="after">
+                        <field name="fal_delivery_address"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>

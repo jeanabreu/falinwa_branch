@@ -10,6 +10,8 @@
     'init_xml': [],
     'update_xml': [
         'views/qweb_view.xml',
+        'sale_view.xml',
+        'account_view.xml',
     ],
     'css': [],
     'js' : [],

@@ -10,7 +10,7 @@ from openerp import fields, models, api
 from openerp import tools
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
-
+from openerp.exceptions import except_orm, Warning, RedirectWarning
 from openerp.tools.safe_eval import safe_eval as eval
 
 class hr_payslip(models.Model):

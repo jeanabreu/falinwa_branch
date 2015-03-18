@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="invoice_form_fal_aarequired" model="ir.ui.view">
+            <field name="name">account.invoice.form.fal.aarequired</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="groups_id" eval="[(6,0,[ref('group_fal_normal_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='account_analytic_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="invoice_supplier_form_fal_aarequired" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.fal.aarequired</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="groups_id" eval="[(6,0,[ref('group_fal_normal_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='invoice_line']/tree/field[@name='account_analytic_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_move_line_tree_fal_aarequired" model="ir.ui.view">
+            <field name="name">account.move.line.tree.fal.aarequired</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree" />
+            <field name="groups_id" eval="[(6,0,[ref('group_fal_normal_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="analytic_account_id" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_move_form_fal_aarequired" model="ir.ui.view">
+            <field name="name">account.move.form.fal.aarequired</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form" />
+            <field name="groups_id" eval="[(6,0,[ref('group_fal_normal_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Journal Items']/field[@name='line_id']/tree/field[@name='analytic_account_id']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>                    
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_bank_statement_form_fal_aarequired" model="ir.ui.view">
+            <field name="name">account.bank.statement.form.fal.aarequired</field>
+            <field name="model">account.bank.statement</field>
+            <field name="inherit_id" ref="account_bank_statement_reconciliation.view_bank_statement_form_fal_abs"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_fal_normal_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="analytic_account_id" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_expenses_form_fal_aarequired" model="ir.ui.view">
+            <field name="name">hr.expense.form.fal.aarequired</field>
+            <field name="model">hr.expense.expense</field>
+            <field name="inherit_id" ref="hr_expense.view_expenses_form"/>
+            <field name="groups_id" eval="[(6,0,[ref('group_fal_normal_user')])]" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/form/group/group/field[@name='analytic_account']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                    <xpath expr="//page[@string='Description']/field[@name='line_ids']/tree/field[@name='analytic_account']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>                    
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>

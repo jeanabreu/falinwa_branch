@@ -8,12 +8,7 @@ class account_invoice(orm.Model):
     _name = 'account.invoice'
     _inherit = 'account.invoice'
     
-    def invoice_validate(self, cr, uid, ids, context=None):
-        for invoice in self.browse(cr, uid, ids):
-            for invoice_line in invoice.invoice_line:
-                if not invoice_line.account_analytic_id:
-                    raise orm.except_orm(_('Error!'), _('Please filled the analytic account on invoice  line.'))
-        return super(account_invoice, self).invoice_validate(cr, uid, ids, context)
+
         
 #end of account_invoice()
 

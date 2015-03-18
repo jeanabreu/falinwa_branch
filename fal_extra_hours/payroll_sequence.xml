@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="seq_type_fal_extra_hours" model="ir.sequence.type">
+            <field name="name">Falinwa Extra Hours</field>
+            <field name="code">fal.extra.hours</field>
+        </record>
+        <record id="seq_fal_extra_hours" model="ir.sequence">
+            <field name="name">Falinwa Extra Hours</field>
+            <field name="code">fal.extra.hours</field>
+            <field name="prefix">SEH.%(y)s-</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</openerp>

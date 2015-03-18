@@ -10,7 +10,8 @@
                         <group>
                             <field name="ean13" on_change="onchange_ean13(ean13)" class="fal_ean" widget="FalEanBomReader"/>
                             <field name="fal_of_number" on_change="onchange_of_number(fal_of_number)" />
-                            <field name="product_id"/>
+                            <field name="product_id" on_change="onchange_product(product_id)"/>
+                            <field name="bom_id" domain="[('product_id','=',product_id)]" />
                         </group>
                     </group>
                     <footer>

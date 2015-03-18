@@ -6,7 +6,7 @@
     "description": """
     Module to add additional field for HPS
     """,
-    "depends" : ['base', 'stock', 'purchase', 'sale', 'hr_expense', 'sale_stock', 'mrp', 'crm', 'fal_bom_reader', 'procurement_request', 'fal_invoice_delivery_fee', 'purchase_discount', 'fal_order_sheet_invoice'],
+    "depends" : ['base', 'stock', 'purchase', 'sale', 'hr_expense', 'sale_stock', 'mrp', 'crm', 'fal_bom_reader', 'procurement_request', 'fal_invoice_delivery_fee', 'purchase_discount', 'fal_order_sheet_invoice', 'account_asset'],
     'init_xml': [],
     'update_xml': [
         'security/security.xml',

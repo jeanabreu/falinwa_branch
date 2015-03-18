@@ -42,8 +42,8 @@
             </field>
         </record>
         
-        <menuitem name="CRM" id="mainmenu_crm_hpsproject" groups="group_sale_crm_user_hps,group_sale_crm_agent_hps"/>
-        <menuitem name="CRM" id="menu_crm_hpsproject" parent="mainmenu_crm_hpsproject" />
+        <menuitem name="Project Followers" id="mainmenu_crm_hpsproject" groups="group_sale_crm_user_hps,group_sale_crm_agent_hps"/>
+        <menuitem name="Project Followers" id="menu_crm_hpsproject" parent="mainmenu_crm_hpsproject" />
         <menuitem id="menu_final_customer_form_hpsproject" parent="menu_crm_hpsproject" action="fal_project_ext.action_final_partner_form" sequence="1" groups="group_sale_crm_manager_hps" />
         <menuitem id="menu_my_final_customer_form_hpsproject" parent="menu_crm_hpsproject" action="action_myfinal_partner_form_hpsprojectcrm" sequence="2" groups="group_sale_crm_agent_hps" />
         <menuitem id="menu_customer_form_hpsproject" parent="menu_crm_hpsproject" action="base.action_partner_form" sequence="3" groups="group_sale_crm_manager_hps"/>

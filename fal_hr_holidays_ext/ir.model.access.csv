@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_holydays_status_empmanager,hr.holidays.status empmanager,hr_holidays.model_hr_holidays_status,fal_hr_ext.fal_employee_manager,1,1,1,1

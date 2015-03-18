@@ -6,7 +6,7 @@
     "description": """
     Module to add additional field for onl
     """,
-    "depends" : ['base', 'account', 'purchase', 'sale', 'crm', 'hr_expense'],
+    "depends" : ['base', 'account', 'purchase', 'sale', 'crm', 'hr_expense', 'project'],
     'init_xml': [],
     'update_xml': [
         'security/security.xml',

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_multi_transfer_picking_wizard" model="ir.ui.view">
+            <field name="name">multi.transfer.picking.wizard</field>
+            <field name="model">multi.transfer.picking.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Merge Wizard" version="7.0">                
+                    <label string="This process will Transfer all selected picking." colspan="2"/>
+                    <label string="" colspan="2"/>
+                    <footer>
+                        <button name="action_transfer" string="Transfer" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

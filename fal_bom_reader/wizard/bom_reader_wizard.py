@@ -10,7 +10,8 @@ class bom_reader_wizard(orm.TransientModel):
         'state': fields.selection([('page1', 'page1'), ('page2', 'page2')], 'State'),
         'ean13': fields.char('EAN13 Barcode', size=13, help="International Article Number used for product identification."),
         'fal_of_number' : fields.char('OF Number',size=64,help="Sequence for Finished Product"),
-        'product_id' : fields.many2one('product.product', 'Product', help="Select the product on which want BOM to be view."),
+        'product_id' : fields.many2one('product.template', 'Product', help="Select the product on which want BOM to be view."),
+        'bom_id' : fields.many2one('mrp.bom', 'BoM', help="BoM of the product."),
         'temp' : fields.text('temp',readonly=True),
     }
     
@@ -37,14 +38,17 @@ class bom_reader_wizard(orm.TransientModel):
             product_id = data_wizard.product_id.id
         else:
             raise orm.except_orm(_("Warning!"), _("Please Provide the Information to search!"))
+        
+        if not data_wizard.bom_id:
+            raise orm.except_orm(_("Warning!"), _("BoM doesnt exist!"))
         return {
             'type': 'ir.actions.act_window',
             'name': data_wizard.product_id.name,
-            'res_model': 'mrp.bom',
+            'res_model': 'mrp.bom.line',
             'view_mode': 'tree',
             'view_type': 'tree',
             'view_id': self.pool.get('ir.model.data').get_object_reference(cr, uid, 'mrp', 'mrp_bom_tree_view')[1],
-            'domain' : '[("bom_id","=",False),("product_id","=",'+str(product_id)+')]',
+            'domain' : '[("bom_id","=",'+str(data_wizard.bom_id.id)+')]',
             'target': 'new',
              }
 
@@ -52,7 +56,7 @@ class bom_reader_wizard(orm.TransientModel):
         if context is None:
             context = {}
         res = {}
-        product_obj = self.pool.get('product.product')
+        product_obj = self.pool.get('product.template')
         if ean13:
             product_id = product_obj.search(cr, uid, [('ean13', '=', ean13)],limit=1)
             for i in product_id:
@@ -67,7 +71,18 @@ class bom_reader_wizard(orm.TransientModel):
         if of_number:
             mrp_ids = mrp_obj.search(cr, uid, [('fal_of_number', '=', of_number)],limit=1)
             for i in mrp_obj.browse(cr, uid, mrp_ids):
-                res['value'] = { 'product_id':i.product_id.id}
+                res['value'] = { 'product_id':i.product_id.product_tmpl_id.id}
+        return res
+        
+    def onchange_product(self, cr, uid, ids, product_id, context=None):
+        if context is None:
+            context = {}
+        res = {}
+        bom_obj = self.pool.get('mrp.bom')
+        if product_id:
+            bom_ids = bom_obj.search(cr, uid, [('product_tmpl_id', '=', product_id)],limit=1)
+            if bom_ids:
+                res['value'] = { 'bom_id':bom_ids[0]}
         return res
         
 #end of bom_reader_wizard()

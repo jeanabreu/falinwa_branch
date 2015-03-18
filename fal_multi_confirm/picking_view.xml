@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    
+    <!-- mrp.production -->        
+    <act_window name="Transfer Picking"
+        res_model="multi.transfer.picking.wizard"
+        src_model="stock.picking"
+        view_mode="form"
+        target="new"
+        multi="True"
+        key2="client_action_multi"
+        id="action_fal_transfer_picking"/>
+        
+</data>
+</openerp>

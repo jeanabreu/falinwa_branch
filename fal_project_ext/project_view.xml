@@ -131,9 +131,12 @@
                                 <div class="oe_kanban_content">
 
                                     <h4><field name="name"/></h4>
-                                    <h4>Final Customer: <field name="partner_id"/></h4>
-                                    <h4>Program Name: <field name="program_name"/></h4>
-                                    <h4>Total Mold Qty: <field name="mold_serial_number"/></h4>
+                                    <t t-if="!record.partner_id.raw_value" t-set="red1">oe_kanban_text_red</t>
+                                    <h4 t-attf-class="#{red1 || ''}">Final Customer: <field name="partner_id"/></h4>
+                                    <t t-if="!record.program_name.raw_value" t-set="red2">oe_kanban_text_red</t>
+                                    <h4 t-attf-class="#{red2 || ''}">Program Name: <field name="program_name"/></h4>
+                                    <t t-if="!record.mold_serial_number.raw_value" t-set="red3">oe_kanban_text_red</t>
+                                    <h4 t-attf-class="#{red3 || ''}">Total Mold Qty: <field name="mold_serial_number"/></h4>
                                     <div class="oe_kanban_project_list">
                                         <a t-if="record.use_tasks.raw_value" name="%(act_project_project_2_project_task_all_fal_pext)d" type="action" style="margin-right: 10px"> 
                                             <span t-if="record.task_count.raw_value gt 1"><field name="task_count"/> Tools</span>

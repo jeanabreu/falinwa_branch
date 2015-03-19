@@ -8,6 +8,11 @@ class sale_order(models.Model):
     _name = "sale.order"
     _inherit = "sale.order"
 
+    #
+    payment_term = fields.Many2one(required=True)
+    incoterm = fields.Many2one(required=True)
+    #
+
     @api.model
     def _prepare_invoice(self, order, lines):
         res = super(sale_order, self)._prepare_invoice(order, lines)

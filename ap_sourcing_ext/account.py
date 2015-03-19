@@ -11,7 +11,9 @@ class account_invoice(models.Model):
     _inherit = "account.invoice"
 
     #fields start here
-    fal_incoterm = fields.Many2one('stock.incoterms', 'Incoterm', help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
+    fal_incoterm = fields.Many2one('stock.incoterms', 'Incoterm', help="International Commercial Terms are a series of predefined commercial terms used in international transactions.", required=True)
+    payment_term = fields.Many2one(required=True)
     #end here
         
 #end of account_invoice()
+

@@ -5,7 +5,9 @@
         <!-- modify invoice pdf -->
         <template id="report_invoice_document_fal_bank_info" inherit_id="account.report_invoice_document">
             <xpath expr="//p[@t-if='o.fiscal_position.note']" position="after">
-                <strong><u>Bank Accounts:</u></strong>
+                <t t-if='o.company_id.bank_ids'>
+                    <strong><u>Bank Account:</u></strong>
+                </t>
                 <table t-foreach="o.company_id.bank_ids" t-as="l" border="1" style="margin-bottom:5px;">
                     <t t-if='l.footer'>
                         <tr t-if='l.partner_id.name'>

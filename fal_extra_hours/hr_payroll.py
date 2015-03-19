@@ -16,7 +16,7 @@ from openerp.tools.safe_eval import safe_eval as eval
 class hr_payslip(models.Model):
     _name = 'hr.payslip'
     _inherit = 'hr.payslip'
-    
+           
     @api.model
     def get_inputs(self, contract_ids, date_from, date_to):
         res = super(hr_payslip, self).get_inputs(contract_ids, date_from, date_to)
@@ -43,7 +43,7 @@ class hr_payslip(models.Model):
                     unit_amount = basic_wage / working_days
                     input['fal_unit_amount'] = - unit_amount
                     input['fal_qty'] = qty
-                    input['amount'] = unit_amount * qty                    
+                    input['amount'] = input['fal_unit_amount'] * qty                    
         return res
 
     @api.model
@@ -68,7 +68,7 @@ class hr_payslip(models.Model):
         clause_final =  [('employee_id', '=', employee.id)] + clause_2 + clause_4
         extra_hours_ids = extra_hours_line_obj.search(clause_final)
         return extra_hours_ids
-        
+    
 #end of hr_payslip()
 
 
@@ -78,7 +78,7 @@ class hr_rule_input(models.Model):
     
     #fields start here
     fal_is_extra_hours = fields.Boolean('Is Extra Hours')
-    fal_is_leave = fields.Boolean('Is Extra Hours')
+    fal_is_leave = fields.Boolean('Is Leave')
     fal_rate = fields.Float('Rate')
     #end here
     
@@ -157,7 +157,7 @@ class fal_extra_hours_line(models.Model):
     #fields start here
     fal_extra_hours_id = fields.Many2one('fal.extra.hours', 'Extra Hours')
     employee_id = fields.Many2one('hr.employee', 'Employee', required=True)
-    salary_rule_input_id = fields.Many2one('hr.rule.input', 'Extra Hours Type', required=True, domain="[('fal_is_extra_hours','=',1)]")
+    salary_rule_input_id = fields.Many2one('hr.rule.input', 'Extra Hours Type', required=True, domain="['|',('fal_is_extra_hours','=',1),('fal_is_leave','=',1)]")
     hours = fields.Float('Qty')
     #end here
 

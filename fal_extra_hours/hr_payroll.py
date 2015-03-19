@@ -28,13 +28,22 @@ class hr_payslip(models.Model):
         for input in res:
             extrahours_line_ids = self.get_fal_extrahours_line(contract_id.employee_id, date_from, date_to, input['code'])
             for eh_line in extrahours_line_ids:
-                working_days = eh_line.fal_extra_hours_id.working_days
-                qty = eh_line.hours
-                rate = eh_line.salary_rule_input_id.fal_rate                               
-                unit_amount = basic_wage / working_days / 8 * rate
-                input['fal_unit_amount'] = unit_amount
-                input['fal_qty'] = qty
-                input['amount'] = unit_amount * qty             
+                if eh_line.salary_rule_input_id.fal_is_extra_hours:
+                    working_days = eh_line.fal_extra_hours_id.working_days
+                    qty = eh_line.hours
+                    rate = eh_line.salary_rule_input_id.fal_rate                               
+                    unit_amount = basic_wage / working_days / 8 * rate
+                    input['fal_unit_amount'] = unit_amount
+                    input['fal_qty'] = qty
+                    input['amount'] = unit_amount * qty
+                if eh_line.salary_rule_input_id.fal_is_leave:
+                    working_days = eh_line.fal_extra_hours_id.working_days
+                    qty = eh_line.hours
+                    rate = eh_line.salary_rule_input_id.fal_rate                               
+                    unit_amount = basic_wage / working_days
+                    input['fal_unit_amount'] = - unit_amount
+                    input['fal_qty'] = qty
+                    input['amount'] = unit_amount * qty                    
         return res
 
     @api.model
@@ -69,6 +78,7 @@ class hr_rule_input(models.Model):
     
     #fields start here
     fal_is_extra_hours = fields.Boolean('Is Extra Hours')
+    fal_is_leave = fields.Boolean('Is Extra Hours')
     fal_rate = fields.Float('Rate')
     #end here
     
@@ -92,7 +102,7 @@ class fal_extra_hours(models.Model):
     
     #fields start here
     name = fields.Char("Extra Hours Number", copy=False)
-    working_days = fields.Integer("Working days", default=22, readonly=True, states={'draft': [('readonly', False)]})
+    working_days = fields.Float("Working days", default=21.75, readonly=True, states={'draft': [('readonly', False)]})
     date_from = fields.Date('Date From', readonly=True, states={'draft': [('readonly', False)]}, default=lambda *a: time.strftime('%Y-%m-01'), required=True)
     date_to = fields.Date('Date To', readonly=True, states={'draft': [('readonly', False)]}, default=lambda *a: str(datetime.now() + relativedelta.relativedelta(months=+1, day=1, days=-1))[:10], required=True)
     state =  fields.Selection([
@@ -148,7 +158,7 @@ class fal_extra_hours_line(models.Model):
     fal_extra_hours_id = fields.Many2one('fal.extra.hours', 'Extra Hours')
     employee_id = fields.Many2one('hr.employee', 'Employee', required=True)
     salary_rule_input_id = fields.Many2one('hr.rule.input', 'Extra Hours Type', required=True, domain="[('fal_is_extra_hours','=',1)]")
-    hours = fields.Float('Hours')
+    hours = fields.Float('Qty')
     #end here
 
 #end of fal_extra_hours_line()

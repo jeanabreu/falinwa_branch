@@ -24,6 +24,7 @@
                 <data>
                     <xpath expr="//page[@string='Inputs']/field[@name='input_ids']/tree/field[@name='code']" position="after">                        
                         <field name="fal_is_extra_hours" />
+                        <field name="fal_is_leave" />
                         <field name="fal_rate" attrs="{'invisible': [('fal_is_extra_hours','=',False)]}" />
                     </xpath>
                 </data>

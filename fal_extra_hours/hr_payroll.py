@@ -64,11 +64,23 @@ class hr_payslip(models.Model):
         #OR if it starts before the date_from and finish after the date_end (or never finish)
         #clause_3 = ['&',('fal_extra_hours_id.date_from','<=', date_from),'|',('dfal_extra_hours_id.ate_to', '=', False),('fal_extra_hours_id.date_to','>=', date_to)]
         clause_4 = [('salary_rule_input_id.code','=',input_code)]
-        clause_5 = [('salary_rule_input_id.state','=','done')]
-        clause_final =  [('employee_id', '=', employee.id)] + clause_2 + clause_4
+        clause_5 = [('fal_extra_hours_id.state','=','done')]
+        clause_final =  [('employee_id', '=', employee.id)] + clause_2 + clause_4 + clause_5
         extra_hours_ids = extra_hours_line_obj.search(clause_final)
         return extra_hours_ids
     
+    @api.multi
+    def refresh_inputs(self):
+        for input in self.input_line_ids:
+            input.unlink()
+        input_line_values = self.get_inputs([self.contract_id.id], self.date_from, self.date_to)
+        temp = []
+        for input_line_value in input_line_values:
+            temp.append((0, 0, input_line_value)) 
+        return self.write({
+            'input_line_ids' : temp,
+        })
+        
 #end of hr_payslip()
 
 

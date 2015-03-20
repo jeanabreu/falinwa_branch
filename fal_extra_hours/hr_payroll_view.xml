@@ -12,6 +12,9 @@
                         <field name="fal_unit_amount" />
                         <field name="fal_qty" />
                     </xpath>
+                    <separator string="Other Inputs" position="after">
+                        <button name="refresh_inputs" type="object" string="Refresh Inputs" states="draft" />
+                    </separator>
                 </data>
             </field>
         </record>

@@ -35,5 +35,18 @@ class hr_expense_expense(orm.Model):
     def create(self, cr, uid, vals, context=None):
         vals['fal_expense_number'] = self.pool.get('ir.sequence').get(cr, uid, 'expense.fwa') or '/'
         return super(hr_expense_expense, self).create(cr, uid, vals, context=context) 
+
+    def action_move_create(self, cr, uid, ids, context=None):
+        res = super(hr_expense_expense, self).action_move_create(cr, uid, ids, context)
+        move_obj = self.pool.get('account.move')
+        move_line_obj = self.pool.get('account.move.line')
+        for exp in self.browse(cr, uid, ids, context=context):
+            if exp.account_move_id:
+                for line in exp.account_move_id.line_id:
+                    if line.name == '/':
+                        move_line_obj.write(cr ,uid, [line.id], {
+                            'name': exp.fal_expense_number,
+                        })
+        return res
         
 #end of hr_expense_expense()

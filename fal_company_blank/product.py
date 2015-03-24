@@ -2,12 +2,12 @@
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
-class product_product(orm.Model):
-    _name = "product.product"
-    _inherit = "product.product"
+class product_template(orm.Model):
+    _name = "product.template"
+    _inherit = "product.template"
     
     _defaults = {
         'company_id' : False,
     }
 
-#end of product_product()
+#end of product_template()

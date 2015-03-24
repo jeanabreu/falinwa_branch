@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="invoice_supplier_form_fal_aarequired" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.fal.aarequired</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//notebook/page[@string='Payments']" position="after">
+                        <page string="Related Customer Invoices">
+                            <field name="related_customer_invoice_ids" context="{'form_view_ref':'account.invoice_form', 'tree_view_ref':'account.invoice_tree'}" />
+                        </page>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

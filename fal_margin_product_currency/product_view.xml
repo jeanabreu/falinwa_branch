@@ -15,7 +15,7 @@
                         <field name="cost_currency_id" nolabel="1" class="oe_inline" attrs="{'invisible':[('bom_ids','!=',[])]}"/>
                     </field>
                     <field name="fal_bom_costs" position="after">
-                        <field name="cost_currency_id" attrs="{'invisible':[('bom_ids','=',[])]}" nolabel="1" />
+                        <field name="bom_cost_currency_id" attrs="{'invisible':[('bom_ids','=',[])]}" nolabel="1" />
                     </field>
                 </data>
             </field>

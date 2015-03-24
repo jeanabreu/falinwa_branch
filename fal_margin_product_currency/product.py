@@ -74,7 +74,7 @@ class product_product(orm.Model):
                         cost_of_bom += pro_qty * bom_line.product_id.standard_price
         else:
             if product_id.cost_currency_id and product_id.bom_cost_currency_id:
-                if bom_line.product_id.cost_currency_id.id != product_id.bom_cost_currency_id.id:
+                if product_id.product_id.cost_currency_id.id != product_id.bom_cost_currency_id.id:
                     cost_of_bom = cur_obj.compute(cr, uid, product_id.cost_currency_id.id, product_id.bom_cost_currency_id.id, product_id.standard_price, context=ctx)
             else:
                 cost_of_bom = product_id.standard_price

@@ -2,6 +2,32 @@
 <openerp>
     <data>
         
+        <record model="ir.ui.view" id="afdis_fal_view_order_tree">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_order" position="attributes">
+                        <attribute name="widget">date</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="afdis_fal_view_quotation_tree">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_order" position="attributes">
+                        <attribute name="widget">date</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="afdis_fal_sale_order_line_form">
             <field name="name">sale.order.line.tree.afdisfal.view.form</field>
             <field name="model">sale.order</field>
@@ -23,6 +49,9 @@
                     <xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="attributes">
                         <attribute name="invisible">1</attribute>
                     </xpath>
+                    <field name="date_order" position="attributes">
+                        <attribute name="widget">date</attribute>
+                    </field>
                 </data>
             </field>
         </record>

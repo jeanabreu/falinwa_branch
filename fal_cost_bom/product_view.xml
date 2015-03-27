@@ -21,7 +21,7 @@
                         <div groups="base.group_user" attrs="{'invisible':[('bom_ids','!=',[])]}">
                             <field name="standard_price" attrs="{'readonly':[('cost_method','=','average')]}" nolabel="1" class="oe_inline" />
                          </div>
-                         <label string="Cost of BoM (CCR)" for="fal_bom_costs" groups="base.group_user" attrs="{'invisible':[('bom_ids','=',[])]}"/>
+                         <label string="Cost of BoM" for="fal_bom_costs" groups="base.group_user" attrs="{'invisible':[('bom_ids','=',[])]}"/>
                          <div groups="base.group_user" name="fal_bom" attrs="{'invisible':[('bom_ids','=',[])]}">
                             <field name="fal_bom_costs" attrs="{'invisible':[('bom_ids','=',[])]}" nolabel="1" class="oe_inline" />
                          </div>
@@ -38,7 +38,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="lst_price" position="before">
-                        <field name="fal_bom_costs" />
+                        <field name="fal_bom_costs" string="Cost of BoM" />
                     </field>
                 </data>
             </field>

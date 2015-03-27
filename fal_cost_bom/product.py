@@ -44,15 +44,10 @@ class product_product(orm.Model):
         return result.keys()
         
     _columns = {
-        'fal_bom_costs' : fields.function(_get_cost_bom, type='float', string='Cost of BoM (CCR)',
+        'fal_bom_costs' : fields.function(_get_cost_bom, type='float', string='Cost of BoM',
             help="Cost of Raw Material",
             digits_compute=dp.get_precision('BoM Cost'),
             store=False
-            #{
-            #    'product.product' :  (lambda self, cr, uid, ids, c={}: ids, ['standard_price', 'bom_ids', 'supply_method'], 20),
-            #    'product.product' :  (_get_product_ids, ['standard_price', 'bom_ids', 'supply_method'], 20),
-            #    'mrp.bom' : (_get_bom, ['bom_lines', 'product_id', 'product_qty', 'product_uom'], 20),
-            #},
             ),
     }
 

@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
             <field name="arch" type="xml">
                 <data>
-                    <page string="Properties" groups="product.group_mrp_properties" position="inside">
+                    <page string="Properties" position="inside">
                         <data>
                             <separator string="Storage Location"/>
                             <group>

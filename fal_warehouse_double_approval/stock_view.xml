@@ -15,7 +15,7 @@
             </field>
         </record>
         
-        
+        <!--
         <record id="view_picking_out_form_falda" model="ir.ui.view">
             <field name="name">stock.picking.form.falda</field>
             <field name="model">stock.picking</field>
@@ -71,6 +71,6 @@
                 </data>
             </field>
         </record>        
-        
+        -->
     </data>
 </openerp>

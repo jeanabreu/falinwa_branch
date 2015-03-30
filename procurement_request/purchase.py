@@ -11,8 +11,9 @@ from openerp import netsvc
 class purchase_order(models.Model):
     _name = "purchase.order"
     _inherit = "purchase.order"
-        
-    def _get_supplier(self, cr, uid, context=None):
+    
+    @api.model    
+    def _get_supplier(self):
         if context is None:
             context = {}
         supplier_obj = self.pool.get('res.partner')
@@ -72,7 +73,7 @@ class purchase_order(models.Model):
             if supplierinfo:
                 dt = order_line_obj._get_date_planned(cr, uid, supplierinfo, vals['date_order'] + ' 00:00:00', context=context).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
             else:
-                dt = datetime.strptime(vals['date_order'], DEFAULT_SERVER_DATETIME_FORMAT) + relativedelta(days=product_id.produce_delay)
+                dt = datetime.strptime(vals['date_order'] + ' 00:00:00', DEFAULT_SERVER_DATETIME_FORMAT) + relativedelta(days=product_id.produce_delay)
             vals['order_line'] = [(0,0,{
                 'product_id' : product_id.id,
                 'name' : vals.get('req_product_description', False) or product_id.name,

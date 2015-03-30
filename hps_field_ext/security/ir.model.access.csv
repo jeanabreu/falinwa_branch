@@ -8,3 +8,5 @@ access_sale_order_line_all_sale,sale.order.line all leads,sale.model_sale_order_
 
 access_purchase_order_invoice_user,purchase.order.invoice.user,purchase.model_purchase_order,account.group_account_invoice,1,1,1,1
 access_purchase_order_line_invoice_user,purchase.order.line.invoice.user,purchase.model_purchase_order_line,account.group_account_invoice,1,1,1,1
+
+access_fal_res_partner_category_group_user,fal_res_partner_category group_user,model_fal_res_partner_category,base.group_user,1,1,1,1

@@ -51,7 +51,7 @@ class procurement_request_wizard(orm.TransientModel):
             'req_uom_id' : data_wizard.product_id.uom_po_id.id,
             'req_product_qty' : data_wizard.product_qty,
             'location_id' : wh.wh_input_stock_loc_id.id,
-            'date_order' : data_wizard.date_order,
+            'date_order' : data_wizard.date_order+ ' 00:00:00',
             'partner_id' : data_wizard.partner_id.id,
             'pricelist_id' : data_wizard.partner_id.property_product_pricelist_purchase.id,
             'origin' : 'Direct from Product',

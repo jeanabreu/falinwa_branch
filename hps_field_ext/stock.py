@@ -9,6 +9,7 @@ class stock_picking(orm.Model):
     _name = 'stock.picking'
     _inherit = 'stock.picking'
     
+    
     _columns = {
         'fal_client_order_ref' : fields.char('Customer PO Number', size=64),
     }

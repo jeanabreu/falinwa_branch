@@ -10,7 +10,7 @@ class mrp_production(orm.Model):
         self.force_production(cr, uid, ids, [])
         for mrp_id in self.browse(cr, uid, ids):
             if mrp_id.state != 'done':
-                self.action_produce(cr, uid, mrp_id.id, mrp_id.product_qty, 'consume_produce', context)
+                self.action_produce(cr, uid, mrp_id.id, mrp_id.product_qty, 'consume_produce', context=context)
         return True
     
     

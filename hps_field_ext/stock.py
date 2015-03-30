@@ -8,7 +8,7 @@ from openerp import SUPERUSER_ID, api
 class stock_picking(orm.Model):
     _name = 'stock.picking'
     _inherit = 'stock.picking'
-    
+    _order = "id desc"
     
     _columns = {
         'fal_client_order_ref' : fields.char('Customer PO Number', size=64),

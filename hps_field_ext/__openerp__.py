@@ -12,6 +12,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'report.xml',
+        'views/report_stockpicking.xml',
         'purchase_view.xml',
         'sale_view.xml',
         'product_view.xml',

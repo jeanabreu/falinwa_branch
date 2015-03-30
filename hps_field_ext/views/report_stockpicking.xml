@@ -27,7 +27,7 @@
                         <span t-field="o.origin"/>
                     </td>
                     <td>
-                        <span t-field="o.date_done"/>
+                        <span t-field="o.date_done" t-field-options='{"widget": "date"}' />
                     </td>
                 </tr>          
             </xpath>

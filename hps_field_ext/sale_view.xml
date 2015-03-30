@@ -68,7 +68,53 @@
                 </data>
             </field>
         </record>
-        
+
+        <record id="view_partner_form_hps_ext_form" model="ir.ui.view">
+            <field name="name">res.partner.form.hps.ext.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="category_id" position="after">
+                        <field name="fal_category_id" widget="many2many_tags" placeholder="Customer Industrial Area"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_kanban_view_hps_ext_form">
+            <field name="name">res.partner.kanban.hpsext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="category_id" position="after">
+                        <field name="fal_category_id" />
+                    </field>
+                    <xpath expr="//div[@class='oe_kanban_details']/div[@class='oe_kanban_partner_categories']" position="after">
+                        <div class="oe_kanban_partner_categories falinwa">
+                            <span class="oe_kanban_list_many2many falinwa">
+                                <field name="fal_category_id"/>
+                            </span>
+                        </div>
+                    </xpath>
+                </data>
+            </field>
+        </record>            
+
+       <record id="view_res_partner_filter_hps_ext_form" model="ir.ui.view">
+            <field name="name">res.partner.select.hpsext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="category_id" position="after">
+                        <field name="fal_category_id" string="Customer Industrial Area" filter_domain="[('fal_category_id','ilike', self)]"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+                
         <record id="sale.action_quotations" model="ir.actions.act_window">
             <field name="name">Quotations</field>
             <field name="type">ir.actions.act_window</field>

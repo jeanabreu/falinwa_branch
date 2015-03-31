@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-    <!-- mrp.production -->        
+    <!-- Picking -->        
     <act_window name="Cancel Picking"
         res_model="multi.cancel.picking.wizard"
         src_model="stock.picking"
@@ -9,6 +9,26 @@
         target="new"
         multi="True"
         key2="client_action_multi"
-        id="action_cancel1"/>        
+        id="action_cancel1"/> 
+        
+    <!-- mrp.production -->        
+    <act_window name="Cancel MRP"
+        res_model="multi.cancel.production.wizard"
+        src_model="mrp.production"
+        view_mode="form"
+        target="new"
+        multi="True"
+        key2="client_action_multi"
+        id="action_cancel_mrp_production1"/> 
+        
+    <!-- procurement -->        
+    <act_window name="Cancel Procurement"
+        res_model="multi.cancel.procurement.wizard"
+        src_model="procurement.order"
+        view_mode="form"
+        target="new"
+        multi="True"
+        key2="client_action_multi"
+        id="action_cancel_procurement"/> 
 </data>
 </openerp>

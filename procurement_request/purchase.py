@@ -82,6 +82,7 @@ class purchase_order(models.Model):
                 'taxes_id': [(6,0,taxes)],
                 'warehouse_manager_comment' : vals.get('warehouse_manager_comment', False)
             })]
+        """
         else :
             if vals.get('order_line', False):
                 vals['req_product_id'] = vals['order_line'][0][2].get('product_id')
@@ -89,7 +90,7 @@ class purchase_order(models.Model):
                 vals['req_product_qty'] = vals['order_line'][0][2].get('product_qty',0)
                 vals['warehouse_manager_comment'] = vals['order_line'][0][2].get('warehouse_manager_comment',0)
                 vals['req_uom_id'] = vals['order_line'][0][2].get('product_uom',False)
-      
+        """
         return super(purchase_order, self).create(cr, uid, vals, context=context)
     
     def write(self, cr, uid, ids, vals, context=None):

@@ -5,47 +5,49 @@
         <!-- modify invoice pdf -->
         <template id="report_invoice_document_fal_bank_info" inherit_id="account.report_invoice_document">
             <xpath expr="//p[@t-if='o.fiscal_position.note']" position="after">
-                <t t-if='o.company_id.bank_ids'>
-                    <strong><u>Bank Account:</u></strong>
-                </t>
-                <table t-foreach="o.company_id.bank_ids" t-as="l" border="1" style="margin-bottom:5px;">
-                    <t t-if='l.footer'>
-                        <tr t-if='l.partner_id.name'>
-                            <td><strong>Beneficialy:</strong></td>
-                            <td><span t-field="l.partner_id.name"/>
-                            </td>
-                        </tr>
-                        <tr t-if='l.name'>
-                            <td><strong>Bank Name:</strong></td>
-                            <td><span t-field="l.bank_name"/>
-                            </td>
-                        </tr>
-                        <tr t-if='l.street'>
-                            <td><strong>Bank Address:</strong></td>
-                            <td><span t-field="l.street"/>
-                            <t t-if='l.zip'><span t-field="l.zip"/></t>
-                            <t t-if='l.city'><span t-field="l.city"/></t>
-                            <t t-if='l.state_id.name'><span t-field="l.state_id.name"/></t>
-                            <t t-if='l.country_id.name'><span t-field="l.country_id.name"/></t>
-                            </td>
-                        </tr>
-                        <tr t-if='l.bank.name'>
-                            <td><strong>Bank Code:</strong></td>
-                            <td><span t-field="l.bank.name"/>
-                            </td>
-                        </tr>
-                        <tr t-if='l.acc_number'>
-                            <td><strong>Account Number:</strong></td>
-                            <td><span t-field="l.acc_number"/>
-                            </td>
-                        </tr>
-                        <tr t-if='l.bank_bic'>
-                            <td><strong>Swift Code:</strong></td>
-                            <td><span t-field="l.bank_bic"/>
-                            </td>
-                        </tr>
+                <t t-if='o.type in ["out_invoice", "in_refund"]'>
+                    <t t-if='o.company_id.bank_ids'>
+                        <strong><u>Bank Account:</u></strong>
                     </t>
-                </table>
+                    <table t-foreach="o.company_id.bank_ids" t-as="l" border="1" style="margin-bottom:5px;">
+                        <t t-if='l.footer'>
+                            <tr t-if='l.partner_id.name'>
+                                <td><strong>Beneficialy:</strong></td>
+                                <td><span t-field="l.partner_id.name"/>
+                                </td>
+                            </tr>
+                            <tr t-if='l.name'>
+                                <td><strong>Bank Name:</strong></td>
+                                <td><span t-field="l.bank_name"/>
+                                </td>
+                            </tr>
+                            <tr t-if='l.street'>
+                                <td><strong>Bank Address:</strong></td>
+                                <td><span t-field="l.street"/>
+                                <t t-if='l.zip'><span t-field="l.zip"/></t>
+                                <t t-if='l.city'><span t-field="l.city"/></t>
+                                <t t-if='l.state_id.name'><span t-field="l.state_id.name"/></t>
+                                <t t-if='l.country_id.name'><span t-field="l.country_id.name"/></t>
+                                </td>
+                            </tr>
+                            <tr t-if='l.bank.name'>
+                                <td><strong>Bank Code:</strong></td>
+                                <td><span t-field="l.bank.name"/>
+                                </td>
+                            </tr>
+                            <tr t-if='l.acc_number'>
+                                <td><strong>Account Number:</strong></td>
+                                <td><span t-field="l.acc_number"/>
+                                </td>
+                            </tr>
+                            <tr t-if='l.bank_bic'>
+                                <td><strong>Swift Code:</strong></td>
+                                <td><span t-field="l.bank_bic"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </t>
             </xpath>
         </template>
 

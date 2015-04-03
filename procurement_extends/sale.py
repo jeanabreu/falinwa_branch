@@ -11,7 +11,7 @@ class sale_order(orm.Model):
     _inherit = "sale.order"
 
     _columns = {
-        'x_expectingdate_departure' : fields.date('Expecting Date of Departure'),
+        'x_expectingdate_departure' : fields.date('Expecting Date of Departure', track_visibility='onchange'),
     }
     
     def _get_date_planned(self, cr, uid, order, line, start_date, context=None):

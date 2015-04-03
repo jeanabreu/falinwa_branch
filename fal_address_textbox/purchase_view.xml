@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_purchase_order_fal_addresstextbox_form" model="ir.ui.view">
+            <field name="name">purchase.order.fal.addresstextbox.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="dest_address_id" position="attributes">
+                        <attribute name="attrs">{'required': [('related_usage','=', 'customer')]}</attribute>
+                        <attribute name="on_change">onchange_dest_address_id(dest_address_id, related_usage, context)</attribute>
+                    </field>
+                    <field name="dest_address_id" position="after">
+                        <field name="fal_delivery_address" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>    
+</openerp>

@@ -1,24 +1,20 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "GEN-38_Address Textbox",
+    "name": "REP-06_Report name number",
     "version": "1.0",
     'author': 'Falinwa Hans',
     "description": """
-    Module to add address as textbox
+    Module to print report name number.
     """,
-    "depends" : ['base','account','sale','purchase'],
+    "depends" : ['base', 'report'],
     'init_xml': [],
-    'data': [
-    ],
     'update_xml': [
-        'sale_view.xml',
-        'account_view.xml',
-        'purchase_view.xml',
+
     ],
     'css': [],
+    'js' : [],
     'installable': True,
     'active': False,
     'application' : False,
-    'js': [],
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

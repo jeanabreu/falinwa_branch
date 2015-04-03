@@ -6,7 +6,7 @@ openerp.fal_bom_reader = function(instance) {
     instance.web.TreeView.include({        
         getdata: function (id, children_ids) {
             var self = this;
-            if(this.dataset.model != 'mrp.bom'){
+            if(this.dataset.model != 'mrp.bom.line'){
                 this._super.apply(this, arguments);
             } else {
                 self.dataset.read_ids(children_ids, this.fields_list()).done(function(records) {

@@ -14,6 +14,19 @@
                 </data>
             </field>
         </record>
+        
+        <record id="invoice_supplier_form_fal_address_textbox" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.faladdresstextbox</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="partner_id" position="after">
+                        <field name="fal_delivery_address" />
+                    </field>
+                </data>
+            </field>
+        </record>
 
     </data>
 </openerp>

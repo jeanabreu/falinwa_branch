@@ -12,6 +12,7 @@
         'views/qweb_view.xml',
         'sale_view.xml',
         'account_view.xml',
+        'purchase_view.xml',
     ],
     'css': [],
     'js' : [],

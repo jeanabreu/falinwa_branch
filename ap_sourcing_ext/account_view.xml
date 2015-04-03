@@ -15,5 +15,18 @@
             </field>
         </record>
 
+        <record id="invoice_tree_apsext" model="ir.ui.view">
+            <field name="name">account.invoice.tree.apsext</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <tree string="Invoice" position="attributes">
+                        <attribute name="colors">blue:state == 'draft';red:date_due&lt;=current_date and state not in ('paid','cancel');black:state in ('proforma','proforma2','open');gray:state == 'cancel';green:state =='paid';</attribute>
+                    </tree>
+                </data>                
+            </field>
+        </record>
+        
     </data>
 </openerp>

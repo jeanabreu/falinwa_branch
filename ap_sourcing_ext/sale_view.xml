@@ -2,7 +2,27 @@
 <openerp>
     <data>
     
+        <record id="view_order_tree_apsext" model="ir.ui.view">
+            <field name="name">sale.order.tree.apsext</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <tree string="Sales Orders" position="attributes">
+                    <attribute name="colors">blue:state in ('draft','sent');grey:state=='cancel';black:state in ('waiting_date','manual','progress');red:state in ('invoice_except','shipping_except');green:state == 'done';</attribute>
+                </tree>
+            </field>
+        </record>
 
+        <record id="view_quotation_tree_apsext" model="ir.ui.view">
+            <field name="name">sale.order.tree.apsext</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <tree string="Quotation" position="attributes">
+                    <attribute name="colors">blue:state in ('draft','sent');grey:state=='cancel';black:state in ('waiting_date','manual','progress');red:state in ('invoice_except','shipping_except');green:state == 'done';</attribute>
+                </tree>
+            </field>
+        </record>
         
     </data>
 </openerp>

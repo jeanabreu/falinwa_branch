@@ -11,7 +11,7 @@ class sale_order(models.Model):
     _inherit = "sale.order"
 
     #fields start here
-    fal_expected_delivery_date = fields.Datetime('Delivery Date')
+    fal_expected_delivery_date = fields.Datetime('Delivery Date', track_visibility='onchange')
     #end here
 
     @api.model

@@ -21,7 +21,8 @@ class purchase_order(models.Model):
         if delivery_partner_id:
             res['value']['fal_delivery_address'] = delivery_partner_id.contact_address
             if related_usage != 'customer':
-                res['value']['location_id'] = False
+                if res['value']['location_id']:
+                    del res['value']['location_id']
         return res
 
     @api.model

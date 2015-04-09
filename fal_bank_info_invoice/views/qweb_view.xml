@@ -12,17 +12,12 @@
                     <table t-foreach="o.company_id.bank_ids" t-as="l" border="1" style="margin-bottom:5px;">
                         <t t-if='l.footer'>
                             <tr t-if='l.partner_id.name'>
-                                <td><strong>Beneficialy:</strong></td>
+                                <td><strong>Beneficiary:</strong></td>
                                 <td><span t-field="l.partner_id.name"/>
                                 </td>
                             </tr>
-                            <tr t-if='l.name'>
-                                <td><strong>Bank Name:</strong></td>
-                                <td><span t-field="l.bank_name"/>
-                                </td>
-                            </tr>
                             <tr t-if='l.street'>
-                                <td><strong>Bank Address:</strong></td>
+                                <td><strong>Beneficiary Address:</strong></td>
                                 <td><span t-field="l.street"/>
                                 <t t-if='l.zip'><span t-field="l.zip"/></t>
                                 <t t-if='l.city'><span t-field="l.city"/></t>
@@ -31,8 +26,22 @@
                                 </td>
                             </tr>
                             <tr t-if='l.bank.name'>
-                                <td><strong>Bank Code:</strong></td>
+                                <td><strong>Bank Name:</strong></td>
                                 <td><span t-field="l.bank.name"/>
+                                </td>
+                            </tr>
+                            <tr t-if='l.fal_bank_street'>
+                                <td><strong>Bank Address:</strong></td>
+                                <td><span t-field="l.fal_bank_street"/>
+                                <t t-if='l.fal_bank_zip'><span t-field="l.fal_bank_zip"/></t>
+                                <t t-if='l.fal_bank_city'><span t-field="l.fal_bank_city"/></t>
+                                <t t-if='l.fal_bank_state_id.name'><span t-field="l.fal_bank_state_id.name"/></t>
+                                <t t-if='l.fal_bank_country_id.name'><span t-field="l.fal_bank_country_id.name"/></t>
+                                </td>
+                            </tr>
+                            <tr t-if='l.bank_name'>
+                                <td><strong>Bank Code:</strong></td>
+                                <td><span t-field="l.bank_name"/>
                                 </td>
                             </tr>
                             <tr t-if='l.acc_number'>

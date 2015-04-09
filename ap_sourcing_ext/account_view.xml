@@ -27,6 +27,53 @@
                 </data>                
             </field>
         </record>
-        
+
+        <record id="view_partner_bank_form_apsext" model="ir.ui.view">
+            <field name="name">res.partner.bank.form.apsext</field>
+            <field name="model">res.partner.bank</field>
+            <field name="inherit_id" ref="base.view_partner_bank_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <group name="owner" position="attributes">
+                        <attribute name="string">Beneficiary</attribute>
+                    </group>
+                    <field name="bank" position="attributes">
+                        <attribute name="string">Bank Name</attribute>
+                    </field>
+                    <field name="bank_name" position="attributes">
+                        <attribute name="string">Bank Code</attribute>
+                    </field>  
+                    <field name="bank_bic" position="attributes">
+                        <attribute name="string">Swift Code</attribute>
+                    </field>
+                    <field name="bank_bic" position="after">
+                        <label for="fal_bank_street" string="Bank Address"/>
+                        <div>
+                            <field name="fal_bank_street" placeholder="Bank Street"/>
+                            <div>
+                                <field name="fal_bank_zip" class="oe_inline" placeholder="Bank ZIP"/>
+                                <field name="fal_bank_city" class="oe_inline" placeholder="Bank City"/>
+                            </div>
+                            <field name="fal_bank_state_id" placeholder="Bank State" options='{"no_open": True}'/>
+                            <field name="fal_bank_country_id" placeholder="Bank Country" options='{"no_open": True}'/>
+                        </div>                        
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_partner_property_form_apsext" model="ir.ui.view">
+            <field name="name">res.partner.property.form.inherit.apsext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="account.view_partner_property_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='bank_ids']/tree/field[@name='owner_name']" position="attributes">
+                        <attribute name="string">Beneficiary</attribute>    
+                    </xpath>
+                </data>
+            </field>
+        </record>
+            
     </data>
 </openerp>

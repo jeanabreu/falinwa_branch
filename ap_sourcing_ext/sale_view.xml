@@ -23,25 +23,6 @@
                 </tree>
             </field>
         </record>
-        
-        <record id="view_partner_bank_form_apsext" model="ir.ui.view">
-            <field name="name">res.partner.bank.form.apsext</field>
-            <field name="model">res.partner.bank</field>
-            <field name="inherit_id" ref="base.view_partner_bank_form"/>
-            <field name="arch" type="xml">
-                <data>
-                    <field name="bank" position="attributes">
-                        <attribute name="string">Bank Name</attribute>
-                    </field>
-                    <field name="bank_name" position="attributes">
-                        <attribute name="string">Bank Code</attribute>
-                    </field>  
-                    <field name="bank_bic" position="attributes">
-                        <attribute name="string">Swift Code</attribute>
-                    </field>  
-                </data>
-            </field>
-        </record>
-        
+                
     </data>
 </openerp>

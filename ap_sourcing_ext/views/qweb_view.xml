@@ -171,7 +171,53 @@
             </xpath>
 
         </template>
-
-    
+        
+        <!-- modify purchase pdf -->
+        <template id="report_purchaseorder_document_aps_ext" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']/div[@t-if='o.validator']" position="after">
+                <div class="col-xs-2" t-if="o.incoterm_id.name">
+                    <strong>Incoterm:</strong>
+                    <p t-field="o.incoterm_id.name"/>
+                </div> 
+                <div class="col-xs-2" t-if="o.payment_term_id.name">
+                    <strong>Payment Term:</strong>
+                    <p t-field="o.payment_term_id.name"/>
+                </div> 
+            </xpath>
+            <xpath expr="//p[@t-field='o.notes']" position="after">
+                <table t-foreach="o.partner_id.bank_ids" t-as="l" border="1" style="margin-bottom:5px;">
+                    <tr t-if='l.name'>
+                        <td><strong>Bank Name:</strong></td>
+                        <td><span t-field="l.bank_name"/>
+                        </td>
+                    </tr>
+                    <tr t-if='l.street'>
+                        <td><strong>Bank Address:</strong></td>
+                        <td><span t-field="l.street"/>
+                        <t t-if='l.zip'><span t-field="l.zip"/></t>
+                        <t t-if='l.city'><span t-field="l.city"/></t>
+                        <t t-if='l.state_id.name'><span t-field="l.state_id.name"/></t>
+                        <t t-if='l.country_id.name'><span t-field="l.country_id.name"/></t>
+                        </td>
+                    </tr>
+                    <tr t-if='l.bank.name'>
+                        <td><strong>Bank Code:</strong></td>
+                        <td><span t-field="l.bank.name"/>
+                        </td>
+                    </tr>
+                    <tr t-if='l.acc_number'>
+                        <td><strong>Account Number:</strong></td>
+                        <td><span t-field="l.acc_number"/>
+                        </td>
+                    </tr>
+                    <tr t-if='l.bank_bic'>
+                        <td><strong>Swift Code:</strong></td>
+                        <td><span t-field="l.bank_bic"/>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+        </template>
+        
     </data>
 </openerp>

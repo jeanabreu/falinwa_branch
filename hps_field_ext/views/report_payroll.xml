@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="fal_hr_payslip_hps_ext" inherit_id="fal_l10n_cn_payroll.fal_hr_payslip">
+            <xpath expr="//div[@class='page']/h2" position="before">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 45px;"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+        
+    </data>
+</openerp>

@@ -6,13 +6,14 @@
     "description": """
     Module to add additional field for HPS
     """,
-    "depends" : ['base', 'stock', 'purchase', 'sale', 'hr_expense', 'sale_stock', 'mrp', 'crm', 'fal_bom_reader', 'procurement_request', 'fal_invoice_delivery_fee', 'purchase_discount', 'fal_order_sheet_invoice', 'account_asset'],
+    "depends" : ['base', 'report', 'stock', 'purchase', 'sale', 'hr_expense', 'sale_stock', 'mrp', 'crm', 'fal_bom_reader', 'procurement_request', 'fal_invoice_delivery_fee', 'purchase_discount', 'fal_order_sheet_invoice', 'account_asset', 'fal_l10n_cn_payroll'],
     'init_xml': [],
     'update_xml': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'report.xml',
         'views/report_stockpicking.xml',
+        'views/report_payroll.xml',
         'purchase_view.xml',
         'sale_view.xml',
         'product_view.xml',

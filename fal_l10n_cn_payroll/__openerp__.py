@@ -11,6 +11,7 @@
     'data': [
     ],
     'update_xml': [
+        'views/hr_payroll_report_view.xml',
         'hr_payslip_workflow.xml',
         'base_data.xml',
         'hr_payroll_report.xml',

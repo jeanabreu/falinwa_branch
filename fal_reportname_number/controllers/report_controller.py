@@ -10,13 +10,10 @@ class FalReportController(ReportController):
     @route(['/report/download'], type='http', auth="user")
     def report_download(self, data, token):
         
-        sale_obj = http.request.env['sale.order']
-        purchase_obj = http.request.env['purchase.order']
-        invoice_obj = http.request.env['account.invoice']
-        picking_obj = http.request.env['stock.picking']
-        mo_obj = http.request.env['mrp.production']
-        payslip_obj = http.request.env['hr.payslip']
-        expense_obj = http.request.env['hr.expense.expense']
+        #picking_obj = http.request.env['stock.picking']
+        #mo_obj = http.request.env['mrp.production']
+        #payslip_obj = http.request.env['hr.payslip']
+        #expense_obj = http.request.env['hr.expense.expense']
         
         requestcontent = simplejson.loads(data)
 
@@ -40,18 +37,21 @@ class FalReportController(ReportController):
             if reportname in ['sale.report_saleorder', 'purchase.report_purchaseorder', 'account.report_invoice', 'stock.report_picking', 'mrp.report_mrporder', 'hr_payroll.report_payslip', 'hr_expense.report_expense']:
                 filename = reportname
                 if reportname == 'sale.report_saleorder':
+                    sale_obj = http.request.env['sale.order']
                     object = sale_obj.browse(int(docids))
 
                     filename = object.name
                     # filename = SO0012
 
                 if reportname == 'purchase.report_purchaseorder':
+                    purchase_obj = http.request.env['purchase.order']
                     object = purchase_obj.browse(int(docids))
 
                     filename = object.name
                     # filename = SO0012
 
                 if reportname == 'account.report_invoice':
+                    invoice_obj = http.request.env['account.invoice']
                     object = invoice_obj.browse(int(docids))
                     if object.number:
                         filename = object.number

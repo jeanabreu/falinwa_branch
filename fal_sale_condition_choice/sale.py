@@ -388,10 +388,10 @@ class sale_order_line(orm.Model):
                 res['value']['fal_rod_end_id'] = v24rod_end_ids and v24rod_end_ids[0]
                 res['value']['fal_seal_kit_id'] = v24seal_kit_ids and v24seal_kit_ids[0]
                 res['value']['fal_mounting_id'] = v24mounting_ids and v24mounting_ids[0]
-                res['value']['fal_full_reference'] = ordering_code_id.fal_full_reference
-                res['value']['fal_bom_reference'] = ordering_code_id.fal_full_reference[:22]
-                res['value']['fal_ref_priced_option'] = ordering_code_id.fal_full_reference[23:41]
-                res['value']['fal_ref_free_option'] = ordering_code_id.fal_full_reference[42:]
+                res['value']['fal_full_reference'] = ordering_code_id.name
+                res['value']['fal_bom_reference'] = ordering_code_id.name
+                #res['value']['fal_ref_priced_option'] = ordering_code_id.fal_full_reference[23:41]
+                #res['value']['fal_ref_free_option'] = ordering_code_id.fal_full_reference[42:]
             
             if serie_name_id_type == 'V72':
                 ful_ref_obj = self.pool.get('fal.ref.data')
@@ -408,10 +408,10 @@ class sale_order_line(orm.Model):
                 res['value']['fal_bore_diameter_id'] = v72bore_diameter_ids and v72bore_diameter_ids[0]
                 res['value']['fal_main_option_id'] = v72main_option_ids and v72main_option_ids[0]
                 res['value']['fal_seal_kit_id'] = v72seal_kit_ids and v72seal_kit_ids[0]
-                res['value']['fal_full_reference'] = ful_ref
-                res['value']['fal_bom_reference'] = ful_ref[:22]
-                res['value']['fal_ref_priced_option'] = ful_ref[23:41]
-                res['value']['fal_ref_free_option'] = ful_ref[42:]
+                res['value']['fal_full_reference'] = '%s-%s-%s' %(ordering_code_id.name, rod_end, mounting)
+                res['value']['fal_bom_reference'] = '%s-%s-%s' %(ordering_code_id.name, rod_end, mounting)
+                #res['value']['fal_ref_priced_option'] = ful_ref[23:41]
+                #res['value']['fal_ref_free_option'] = ful_ref[42:]
             res['value']['fal_sale_reference'] = ordering_code_id.name.replace('-',' ')
             return res
         

@@ -8,15 +8,15 @@
                     <t t-set="data_report_margin_top" t-value="5"/>
                     <t t-set="data_report_header_spacing" t-value="9"/>
                     <t t-foreach="docs" t-as="o">
-						<div class="page" style="font-size: 23px; color: darkgray;">
-							<t t-if="o.fal_serie_name_id.name == 'VBM'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: blue;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name == 'VBL'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: lightblue;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name in ['VCN','VBG']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: purple;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name in ['VXP','VPC']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: green;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name == 'VCR'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: red;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name == 'HVB'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: yellow;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name == 'H160'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: orange;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name in ['V24','V72']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: grey;'"/></t>
+						<div class="page" style="font-size: 21px; color: darkgray;">
+							<t t-if="o.fal_serie_name_id.name == 'VBM'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: blue;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'VBL'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: lightblue;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['VCN','VBG']"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: purple;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['VXP','VPC']"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: green;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'VCR'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: red;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'HVB'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: yellow;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'H160'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: orange;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['V24','V72']"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: grey;'"/></t>
                             
                             <div name="mo_header" class="" t-att-style="div_header_footer_style">
                             
@@ -180,7 +180,7 @@
                                                 <span t-if="o.product_id.ean13">
                                                     <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
                                                 </span><br/>
-                                                <span t-if="o.product_id.ean13" t-field="o.product_id.ean13"/>
+                                                <span style="font-size: 12px;" t-if="o.product_id.ean13" t-field="o.product_id.ean13"/>
                                             </td>
                                         </tr>
                                     </table>

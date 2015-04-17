@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+   
+        <template id="eec_purchase_report1" inherit_id="purchase.report_purchaseorder_document">
+
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+                <div t-if="o.currency_id" class="col-xs-3">
+                    <strong>Currency:</strong>
+                    <p t-field="o.currency_id"/>
+                </div>
+                <div t-if="o.payment_term_id" class="col-xs-3">
+                    <strong>Payment Term:</strong>
+                    <p t-field="o.payment_term_id"/>
+                </div>
+                <div t-if="o.date_approve" class="col-xs-3">
+                    <strong>Approved Date:</strong>
+                    <p t-field="o.date_approve"/>
+                </div>
+                <div t-if="o.minimum_planned_date" class="col-xs-3">
+                    <strong>Expected Date:</strong>
+                    <p t-field="o.minimum_planned_date"/>
+                </div>
+                <div t-if="o.fiscal_position" class="col-xs-3">
+                    <strong>VAT:</strong>
+                    <p t-field="o.fiscal_position"/>
+                </div>
+            </xpath> 
+
+            <xpath expr="//div[@class='page']/div[@class='row'][2]" position="after">
+                <table>
+                    <tr>
+                        <td style="width: 575px;">
+                            <strong>Purchase Dept :</strong>
+                        </td>
+                        <td style="width: 575px;">
+                            <strong>General Manager :</strong>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+
+            <xpath expr="//div[@class='page']/table[@class='table table-condensed']/thead" position="replace">
+                <thead>
+                    <tr>
+                        <th><strong>Description</strong></th>
+                        <th class="text-right"><strong>Qty</strong></th>
+                        <th class="text-right"><strong>VAT Incl.Unit Price</strong></th>
+                        <th class="text-right"><strong>VAT Excl.Net Price</strong></th>
+                    </tr>
+                </thead>
+            </xpath>
+             
+            <xpath expr="//div[@class='page']/table[@class='table table-condensed']/tbody" position="replace">
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line">
+                        <td>
+                           <span t-field="line.name"/>
+                        </td>
+                        <td class="text-right">
+                           <span t-field="line.product_qty"/>
+                           <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                        </td>
+                        <td class="text-right">
+                           <span t-field="line.price_unit"/>
+                        </td>
+                        <td class="text-right">
+                           <span t-field="line.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                        </td>
+                   </tr>
+                </tbody>
+            </xpath>
+
+            <xpath expr="//div[@class='page']/div[@class='row'][2]" position="replace">
+                <div class="row">
+                <div class="col-xs-4 pull-right">
+                    <table class="table table-condensed">
+                        <tr class="border-black">
+                            <td><strong>Total Without Taxes</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.amount_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <td><strong>Total</strong></td>
+                            <td class="text-right">
+                                <span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            </xpath>
+
+            
+        </template>
+
+  </data>
+</openerp>

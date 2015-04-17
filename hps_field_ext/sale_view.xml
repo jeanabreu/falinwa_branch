@@ -164,7 +164,21 @@
               </p>
             </field>
         </record>
-        
+
+        <record model="ir.ui.view" id="view_calendar_event_form_popup_hpsext">
+            <field name="name">Meetings Popup HPSEXT</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form_popup" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group" position="after">
+                        <label for="description"/>
+                        <field name="description"/>                        
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    
         <menuitem id="menu_fal_cancel_sale_quotations"
         action="action_falcancel_quotations" parent="base.menu_sales"
         sequence="99"/>    

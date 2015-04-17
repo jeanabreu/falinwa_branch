@@ -9,9 +9,10 @@
     "depends" : ['base', 'account', 'hr_expense'],
     'init_xml': [],
     'update_xml': [
+        'views/fal_hr_expense_report.xml',
         'wizard/fal_expense_line_reason_wizard_view.xml',
         'hr_expense_report.xml',
-        'hr_expense_view.xml'
+        'hr_expense_view.xml',
     ],
     'css': ['static/css/expense.css'],
     'js' : [],

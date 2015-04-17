@@ -6,5 +6,14 @@
                 name="v_form" rml="fal_hps_mrp_report/report/v_form.rml"
                 usage="default" string="HPS MO FORM" header="False"/>
 
+        <report
+           id="fal_mrp_report"
+           model="mrp.production"
+           string="Falinwa HPS MO FORM"
+           report_type="qweb-pdf"
+           name="fal_hps_mrp_report.fal_hps_mrp_report"
+           file="fal_hps_mrp_report.fal_hps_mrp_report"
+        />        
+
     </data>
 </openerp>

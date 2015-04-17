@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+   <!-- modify headers -->
+
+        <template id="eec_sales_report" inherit_id="report.external_layout_header">
+
+            <xpath expr="//div[@class='header']/div[@class='row']/div[@class='col-xs-3']/div[@t-field='company.partner_id']" position="attributes">
+
+                <attribute name="style">border-bottom: 1px solid black;width: 777px;</attribute>
+
+            </xpath> 
+        </template>
+        
+        
+  </data>
+</openerp>

@@ -30,5 +30,6 @@
         <report auto="False" id="report_quotation_hps_ext" model="purchase.order"
                 name="purchase.order" rml="purchase/report/order.rml"
                 usage="default" string="Quotation with Delivery Fees" />
+
     </data>
 </openerp>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="fal_hps_mrp_report" >
+    		<t t-name="fal_hps_mrp_report.fal_mrp_report">
+    			<t t-call="report.html_container">
+                    <t t-set="data_report_margin_top" t-value="5"/>
+                    <t t-set="data_report_header_spacing" t-value="9"/>
+                    <t t-foreach="docs" t-as="o">
+						<div class="page" style="font-size: 27px; color: darkgray;">
+							<t t-if="o.fal_serie_name_id.name == 'VBM'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: blue;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'VBL'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: lightblue;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['VCN','VBG']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: purple;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['VXP','VPC']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: green;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'VCR'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: red;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'HVB'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: yellow;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name == 'H160'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: orange;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['V24','V72']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: grey;'"/></t>
+                            
+                            <div name="mo_header" class="" t-att-style="div_header_footer_style">
+                            
+							</div>
+                            <div class="row">
+                                <div class="mt32 mb32">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td style="width: 20%;"><span>CUSTOMER</span></td>
+                                            <td style="width: 20%;"><span>客户</span></td>
+                                            <td><strong><span style="color: black;" t-field="o.fal_customer_id.name"/></strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>SOURCE DOCUMENT</span></td>
+                                            <td></td>
+                                            <td><strong><span style="color: black;" t-field="o.origin"/></strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>OF</span></td>
+                                            <td><span>生产序列号</span></td>
+                                            <td><strong><span style="color: black;" t-field="o.fal_of_number"/></strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>MO NUMBER</span></td>
+                                            <td></td>
+                                            <td><strong><span style="color: black;" t-field="o.name"/></strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>QTY</span></td>
+                                            <td><span>数量</span></td>
+                                            <td><strong><span style="color: black;" t-esc="'%.0f'%o.product_qty"/></strong></td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                                <div class="mt32 mb32">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td colspan="4"><strong style="color: black;" ><span t-field="o.fal_serie_name_id.name"/><t t-if="o.fal_bore_diameter_id.name">-<span t-field="o.fal_bore_diameter_id.name"/></t><t t-if="o.fal_rod_diameter_id.name">-<span t-field="o.fal_rod_diameter_id.name"/></t><t t-if="o.fal_mounting_id.code">-<span t-field="o.fal_mounting_id.code"/></t><t t-if="o.fal_stroke">-<span t-field="o.fal_stroke"/></t><t t-if="not o.fal_stroke">-0</t></strong></td>
+                                        </tr> 
+                                        <t t-if="o.fal_serie_name_id.name not in ['H160','HVB']">
+                                            <tr>
+                                                <td style="width: 30%;"><span>MAGNETIC SENSOR POSITION</span></td>
+                                                <td style="width: 15%;"><span>磁敏传感器位置</span></td>
+                                                <td><span t-if="o.fal_magnet_sensor_position_id.name" t-field="o.fal_magnet_sensor_position_id.name"/><span t-if="not o.fal_magnet_sensor_position_id.name">0</span></td>
+                                                <td style="width: 11%;"><span></span></td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td><span>MAIN OPTION</span></td>
+                                            <td><span>主要可选择项</span></td>
+                                            <td><strong><span style="color: black;" t-field="o.fal_main_option_id.code"/>-</strong><span t-field="o.fal_main_option_id.name"/></td>
+                                            <td><span t-field="o.fal_main_option_id.chinese_name"/></td>
+                                        </tr>
+                                        <t t-if="o.fal_serie_name_id.name in ['VCN','VBG','VCR']">
+                                            <tr>                                
+                                                <td><span>COTE X</span></td>
+                                                <td><span>尺寸X</span></td>
+                                                <td><span t-field="o.fal_cote_x"/></td>
+                                                <td><span></span></td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td><span>ROD END</span></td>
+                                            <td><span>活塞杆</span></td>
+                                            <td><strong><span style="color: black;" t-field="o.fal_rod_end_id.code"/></strong>-<span t-field="o.fal_rod_end_id.name"/></td>
+                                            <td><span t-field="o.fal_rod_end_id.chinese_name"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>SEAL KIT</span></td>
+                                            <td><span>密封圈</span></td>
+                                            <td><strong><span style="color: black;" t-field="o.fal_seal_kit_id.code"/></strong>-<span t-field="o.fal_seal_kit_id.name"/></td>
+                                            <td><span t-field="o.fal_seal_kit_id.chinese_name"/></td>
+                                        </tr>
+                                        <t t-if="o.fal_serie_name_id.name == 'H160'">
+                                            <tr>
+                                                <td><span>POSITION OF PORTS</span></td>
+                                                <td><span></span></td>
+                                                <td><span t-field="o.fal_position_ports_head"/>.<span t-field="o.fal_position_ports_bottom"/></td>
+                                                <td><span></span></td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="o.fal_serie_name_id.name == 'H160' or o.fal_mounting_id.code in ['MT4','DT4']">
+                                            <tr>                                    
+                                                <td><span>VALUE FOR XV (FOR MT4?DT4 ONLY)</span></td>
+                                                <td><span></span></td>
+                                                <td><span t-field="o.fal_value_xv"/></td>
+                                                <td><span></span></td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="o.fal_serie_name_id.name not in ['H160','HVB'] and o.fal_purge">
+                                            <tr>                                    
+                                                <td><span>PURGE(PG)</span></td>
+                                                <td><span>排气孔 (PG)</span></td>
+                                                <td><span><t t-if="o.fal_purge"><strong style="color: black;">PG</strong> - PURGE</t><t t-if="not o.fal_purge"><strong style="color: black;">NP</strong> - NO PURGE</t></span></td>
+                                                <td><span><t t-if="o.fal_purge">带排气孔</t><t t-if="not o.fal_purge">无排气孔</t></span></td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="o.fal_serie_name_id.name not in ['H160','HVB'] and o.fal_counter_bores">
+                                            <tr>                                    
+                                                <td><span>COUNTERBORES(LV)</span></td>
+                                                <td><span>沉头孔 (LV)</span></td>
+                                                <td><span><t t-if="o.fal_counter_bores"><strong style="color: black;">LM</strong> - COUNTERBORES</t><t t-if="not o.fal_counter_bores"><strong style="color: black;">NL</strong> - NO COUNTERBORES</t></span></td>
+                                                <td><span><t t-if="o.fal_counter_bores">带沉头孔</t><t t-if="not o.fal_counter_bores">无沉头孔</t></span></td>
+                                            </tr>
+                                        </t>
+                                        <t t-if="o.fal_serie_name_id.name not in ['H160','HVB'] and o.fal_for_handling">
+                                            <tr>                                
+                                                <td><span>FOR HANDLING(TA)</span></td>
+                                                <td><span>吊环孔 (TA)</span></td>
+                                                <td><span><t t-if="o.fal_for_handling"><strong style="color: black;">TR</strong> - FOR HANDLING</t><t t-if="not o.fal_for_handling"><strong style="color: black;">NT</strong> - NO FOR HANDLING</t></span></td>
+                                                <td><span><t t-if="o.fal_for_handling">带吊环孔</t><t t-if="not o.fal_for_handling">无吊环孔</t></span></td>
+                                            </tr>
+                                        </t>
+                                    </table>
+                                </div>
+
+                                <t t-if="o.fal_special">
+                                    <div class="mt32 mb32">
+                                        <table class="table table-bordered">
+                                            <t t-if="o.fal_serie_name_id_type == 'V'">
+                                                <tr>
+                                                    <td style="width: 20%;"><span>Y</span></td>
+                                                    <td><span></span></td>
+                                                    <td><span t-field="o.fal_y"/></td>
+                                                </tr>
+                                            </t>
+                                            <t t-if="o.fal_serie_name_id_type == 'H'">
+                                                <tr>
+                                                    <td><span>W</span></td>
+                                                    <td><span></span></td>
+                                                    <td><span t-field="o.fal_w"/></td>
+                                                </tr>
+                                            </t>
+                                            <tr>                                    
+                                                <td><span>COMMENT</span></td>
+                                                <td><span></span></td>
+                                                <td><span t-field="o.fal_comment_for_vh"/></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </t>
+                                
+                                <div class="mt32 mb32">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td><span>Leadtime</span></td>
+                                            <td><span>货期</span></td>
+                                            <td style="width: 20%;"><span></span></td>
+                                            <td><span>Check by</span></td>
+                                            <td><span>核查员</span></td>
+                                            <td style="width: 20%;"><span></span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <div class="mt32 mb32">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td>
+                                                <span t-if="o.product_id.ean13">
+                                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.product_id.ean13, 600, 100)" style="width:300px;height:50px"/>
+                                                </span><br/>
+                                                <span t-if="o.product_id.ean13" t-field="o.product_id.ean13"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div name="mo_footer" t-att-style="div_header_footer_style">
+                            
+							</div>
+						</div>                        
+					</t>
+				</t>
+			</t>
+		</template>
+    </data>
+</openerp>

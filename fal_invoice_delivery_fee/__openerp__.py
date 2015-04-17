@@ -11,6 +11,9 @@
     "depends" : ['base','account','purchase','sale','fal_subtotal_vat','purchase_discount'],
     'init_xml': [],
     'update_xml': [
+        'views/fal_report_saleorder_idf.xml',
+        'views/fal_report_invoice_idf.xml',
+        'views/fal_report_purchaseorder_idf.xml',
         'security/security.xml',
         'account_invoice_view.xml',
         'purchase_view.xml',

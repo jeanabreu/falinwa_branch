@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+   
+        <template id="eec_invoice_report" inherit_id="account.report_invoice_document">
+        
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
+                <div class="col-xs-2" t-if="o.name">
+                    <strong>Description:</strong>
+                    <p t-field="o.name"/>
+                </div>
+                <div class="col-xs-2" t-if="o.date_invoice">
+                    <strong>Invoice Date:</strong>
+                    <p t-field="o.date_invoice"/>
+                </div>
+                <div class="col-xs-2" t-if="o.partner_id.ref">
+                    <strong>Partner Ref:</strong>
+                    <p t-field="o.partner_id.ref"/>
+                </div>
+                <div class="col-xs-2" t-if="o.origin">
+                    <strong>Source:</strong>
+                    <p t-field="o.origin"/>
+                </div>
+            </xpath>
+        </template>
+
+  </data>
+</openerp>

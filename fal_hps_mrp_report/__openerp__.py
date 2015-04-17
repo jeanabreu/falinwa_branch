@@ -10,6 +10,7 @@
     'init_xml': [],
     'update_xml': [
         'fal_report.xml',
+        'views/fal_mrp_report.xml',
     ],
     'css': [],
     'installable': True,

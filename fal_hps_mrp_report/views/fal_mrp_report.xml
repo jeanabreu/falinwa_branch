@@ -8,7 +8,7 @@
                     <t t-set="data_report_margin_top" t-value="5"/>
                     <t t-set="data_report_header_spacing" t-value="9"/>
                     <t t-foreach="docs" t-as="o">
-						<div class="page" style="font-size: 25px; color: darkgray;">
+						<div class="page" style="font-size: 23px; color: darkgray;">
 							<t t-if="o.fal_serie_name_id.name == 'VBM'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: blue;'"/></t>
                             <t t-if="o.fal_serie_name_id.name == 'VBL'"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: lightblue;'"/></t>
                             <t t-if="o.fal_serie_name_id.name in ['VCN','VBG']"><t t-set="div_header_footer_style" t-value="'height:100px; background-color: purple;'"/></t>
@@ -62,7 +62,7 @@
                                                 <td style="width: 30%;"><span>MAGNETIC SENSOR POSITION</span></td>
                                                 <td style="width: 15%;"><span>磁敏传感器位置</span></td>
                                                 <td><span t-if="o.fal_magnet_sensor_position_id.name" t-field="o.fal_magnet_sensor_position_id.name"/><span t-if="not o.fal_magnet_sensor_position_id.name">0</span></td>
-                                                <td style="width: 11%;"><span></span></td>
+                                                <td style="width: 15%;"><span></span></td>
                                             </tr>
                                         </t>
                                         <tr>

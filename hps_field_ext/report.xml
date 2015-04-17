@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-    
-        <report auto="False" id="report_fal_quotation" model="purchase.order"
-                name="purchase.order.fal" rml="fal_invoice_delivery_fee/report/order.rml"
-                usage="default" string="Quotation" />
                 
-        <report
-            auto="False"
-            id="account_invoices_hps_ext"
-            model="account.invoice"
-            name="account.invoice"
-            rml="account/report/account_print_invoice.rml"
-            string="Invoices with Delivery Fees"
-            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
-            attachment_use="True"
-            usage="default"
-            />
-            
-                
-        <report auto="False" id="report_purchase_order_hps_ext" model="purchase.order"
-                name="purchase.order" rml="purchase/report/order.rml"
-                usage="default" string="Purchase Order with Delivery Fees"/>
-                
-        <report auto="False" id="report_sale_order_hpx_ext" model="sale.order" name="sale.order"
-                rml="sale/report/sale_order.rml" string="Quotation / Order with Delivery Fees"
-                usage="default"/>
-                
-        <report auto="False" id="report_quotation_hps_ext" model="purchase.order"
-                name="purchase.order" rml="purchase/report/order.rml"
-                usage="default" string="Quotation with Delivery Fees" />
 
     </data>
 </openerp>

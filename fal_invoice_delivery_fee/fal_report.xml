@@ -1,30 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <!--
-        <report
-            auto="False"
+
+        <report 
             id="account.account_invoices"
             model="account.invoice"
-            name="account.invoice.fal"
-            rml="fal_invoice_delivery_fee/report/account_print_invoice.rml"
-            string="Invoices"
-            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+            string="Invoices with Delivery Fees"
+            report_type="qweb-pdf"
+            name="account.report_invoice"
+            file="account.report_invoice"
             attachment_use="True"
-            usage="default"
-            />
+            attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"
+        />
             
-        <report auto="False" id="purchase.report_purchase_quotation" model="purchase.order" 
-                name="purchase.quotation.fal" rml="fal_invoice_delivery_fee/report/request_quotation.rml"
-                string="Request for Quotation"/>
-        <report auto="False" id="purchase.report_purchase_order" model="purchase.order"
-                name="purchase.order.fal" rml="fal_invoice_delivery_fee/report/order.rml"
-                usage="default" string="Purchase Order"/>
+        <report 
+            string="Purchase Order with Delivery Fees" 
+            id="purchase.action_report_purchase_order" 
+            model="purchase.order" 
+            report_type="qweb-pdf"
+            name="purchase.report_purchaseorder" 
+            file="purchase.report_purchaseorder" 
+        />
                 
-        <report auto="False" id="sale.report_sale_order" model="sale.order" name="sale.order.fal"
-                rml="fal_invoice_delivery_fee/report/sale_order.rml" string="Quotation / Order"
-                usage="default"/>
-        -->
+        <report 
+            id="sale.report_sale_order"
+            string="Quotation / Order with Delivery Fees"
+            model="sale.order" 
+            report_type="qweb-pdf"
+            file="sale.report_saleorder" 
+            name="sale.report_saleorder" 
+        />
         
         <report
            id="fal_report_account_invoice_idf"

@@ -69,7 +69,7 @@
         </xpath>
     </template>
     
-    <template id="fal_invoice_view" inherit_id="fal_invoice_delivery_fee.fal_report_invoice_document_idf">
+    <template id="fal_invoice_view_idf_inherit" inherit_id="fal_invoice_delivery_fee.fal_report_invoice_document_idf">
         <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']" position="replace">
             <div class="row mt32 mb32">
                 <div t-if="o.name" class="col-xs-2">

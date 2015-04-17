@@ -138,7 +138,7 @@
     <template id="fal_report_invoice_idf">
         <t t-call="report.html_container">
             <t t-foreach="doc_ids" t-as="doc_id">
-                <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'account.fal_report_invoice_document_idf')"/>
+                <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'fal_invoice_delivery_fee.fal_report_invoice_document_idf')"/>
             </t>
         </t>
     </template>

@@ -24,7 +24,7 @@
      
     </template>
     
-    <template id="fal_purchaseorder_view" inherit_id="fal_invoice_delivery_fee.fal_report_purchaseorder_document_idf">
+    <template id="fal_purchaseorder_view_idf_inherit" inherit_id="fal_invoice_delivery_fee.fal_report_purchaseorder_document_idf">
 
         <xpath expr="//div[@class='page']/h2[1]" position="replace">
             <h2 t-if="o.state not in ['cancel','draft','sent','bid','confirmed']">Purchase Order Confirmation N° <span t-field="o.name"/></h2>

@@ -216,8 +216,8 @@
 					<t t-if='not l.is_delivery_fees'>
                         <td><span t-field="l.name"/></td>
                         <td><span t-field="l.product_uom_qty"/></td>
-                        <td class="text-right"><span t-field="l.unit_price_after_discount"/></td>
-                        <td class="text-right"><span t-field="l.price_subtotal_vat" t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/></td>
+                        <td class="text-right"><span t-field="l.fapiao_unit_price_vat"/></td>
+                        <td class="text-right"><span t-field="l.fapiao_subtotal_vat" t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/></td>
                         <td class="text-right" style="width: 100px;"><span t-field="l.fal_remark"/></td>
                     </t>
 				</tr>

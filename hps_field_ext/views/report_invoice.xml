@@ -100,7 +100,6 @@
                         <th>Description</th>
                         <th class="text-left">Quantity</th>
                         <th class="text-right">Unit Price</th>
-                        <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
                         <th class="text-right">Price</th>
                     </tr>
                 </thead>
@@ -115,7 +114,6 @@
                             <td class="text-right">
                                 <span t-field="l.fapiao_unit_price_vat"/>
                             </td>
-                            <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
                             <td class="text-right"><span t-field="l.fapiao_subtotal_vat" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></td>
                         </t>
                     </tr>

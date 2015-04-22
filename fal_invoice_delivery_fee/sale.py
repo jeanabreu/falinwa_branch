@@ -101,7 +101,7 @@ class sale_order_line(orm.Model):
                     if tax_id.price_include:
                         tin.append(tax_id)
                 if tin :
-                    if order_line_id.fal_manual_delivery_fee:
+                    if order_line_id.fal_manual_delivery_fee or manual:
                         if not order_line_id.is_delivery_fees :
                             if subtotal and total:
                                 totalex = order_line_id.price_subtotal + order_line_id.fal_manual_delivery_fee
@@ -155,7 +155,7 @@ class sale_order_line(orm.Model):
                     if tax_id.price_include:
                         tin.append(tax_id)
                 if tin :
-                    if order_line_id.fal_manual_delivery_fee:
+                    if order_line_id.fal_manual_delivery_fee or manual:
                         if not order_line_id.is_delivery_fees :
                             if subtotal and total:
                                 totalex = order_line_id.price_subtotal_vat + delivery_fee_with_vat

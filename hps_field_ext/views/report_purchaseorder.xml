@@ -12,15 +12,55 @@
             <h2 t-if="o.state in ['draft','sent','bid','confirmed']">This is not a PO, cannot be used as a PO</h2>
             <h2 t-if="o.state in ['draft','sent','bid','confirmed']">这不是采购订单，不能作为采购订单。</h2>
         </xpath>
-   
-        <xpath expr="//div[@class='page']/table[@class='table table-condensed']/thead/tr/th[1]" position="after">
-            <th><strong>Comment</strong></th>  
+ 
+        <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']/div[@t-if='o.date_order']/p[@t-field='o.date_order']" position="attributes">
+            <attribute name="t-field-options">{"widget": "date"}</attribute>
         </xpath>
-
-        <xpath expr="//div[@class='page']/table[@class='table table-condensed']/tbody/tr[@t-foreach='o.order_line']/td[1]" position="after">
-            <td><span t-field="line.warehouse_manager_comment"/></td>
-        </xpath>        
-     
+ 
+        <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th><strong>Description</strong></th>
+                        <th><strong>Comment</strong></th>
+                        <th><strong>Taxes</strong></th>
+                        <th class="text-center"><strong>Date Req.</strong></th>
+                        <th class="text-right"><strong>Qty</strong></th>
+                        <th class="text-right"><strong>Unit Price</strong></th>
+                        <th class="text-right"><strong>Disc.(%)</strong></th>
+                        <th class="text-right"><strong>Net Price</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line">
+                        <td>
+                            <span t-field="line.name"/>
+                        </td>
+                        <td><span t-field="line.warehouse_manager_comment"/></td>
+                        <td>
+                            <span t-esc="', '.join(map(lambda x: x.name, line.taxes_id))"/>
+                        </td>
+                        <td class="text-center">
+                            <span t-field="line.date_planned"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-esc="'%.2f'%line.product_qty" />
+                            <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-esc="'%.2f'%line.price_unit" />
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.discount"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="line.price_subtotal"
+                                t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>  
+        </xpath>     
      
     </template>
     
@@ -35,37 +75,56 @@
             <h2 t-if="o.state in ['draft','sent','bid','confirmed']">This is not a PO, cannot be used as a PO</h2>
             <h2 t-if="o.state in ['draft','sent','bid','confirmed']">这不是采购订单，不能作为采购订单。</h2>
         </xpath>
-        
-        <xpath expr="//div[@class='page']/table[@class='table table-condensed']/thead/tr/th[1]" position="after">
-            <th><strong>Comment</strong></th>  
-        </xpath>
 
-        <xpath expr="//div[@class='page']/table[@class='table table-condensed']/tbody/tr[@t-foreach='o.order_line']" position="replace">
-            <tr t-foreach="o.order_line" t-as="line">
-                <t t-if='not line.is_delivery_fees'>
-                    <td>
-                        <span t-field="line.name"/>
-                    </td>
-                    <td><span t-field="line.warehouse_manager_comment"/></td>
-                    <td>
-                        <span t-esc="', '.join(map(lambda x: x.name, line.taxes_id))"/>
-                    </td>
-                    <td class="text-center">
-                        <span t-field="line.date_planned"/>
-                    </td>
-                    <td class="text-right">
-                        <span t-field="line.product_qty"/>
-                        <span t-field="line.product_uom.name" groups="product.group_uom"/>
-                    </td>
-                    <td class="text-right">
-                        <span t-field="line.price_unit"/>
-                    </td>
-                    <td class="text-right">
-                        <span t-field="line.price_subtotal"
-                            t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
-                    </td>
-                </t>
-            </tr>
+        <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']/div[@t-if='o.date_order']/p[@t-field='o.date_order']" position="attributes">
+            <attribute name="t-field-options">{"widget": "date"}</attribute>
+        </xpath>
+        
+        <xpath expr="//div[@class='page']/table[@class='table table-condensed']" position="replace">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th><strong>Description</strong></th>
+                        <th><strong>Comment</strong></th>
+                        <th><strong>Taxes</strong></th>
+                        <th class="text-center"><strong>Date Req.</strong></th>
+                        <th class="text-right"><strong>Qty</strong></th>
+                        <th class="text-right"><strong>Unit Price</strong></th>
+                        <th class="text-right"><strong>Disc.(%)</strong></th>
+                        <th class="text-right"><strong>Net Price</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="o.order_line" t-as="line">
+                        <t t-if='not line.is_delivery_fees'>
+                            <td>
+                                <span t-field="line.name"/>
+                            </td>
+                            <td><span t-field="line.warehouse_manager_comment"/></td>
+                            <td>
+                                <span t-esc="', '.join(map(lambda x: x.name, line.taxes_id))"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-field="line.date_planned"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="'%.2f'%line.product_qty" />
+                                <span t-field="line.product_uom.name" groups="product.group_uom"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="'%.2f'%line.price_unit" />
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.discount"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="line.price_subtotal"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                            </td>
+                        </t>
+                    </tr>
+                </tbody>
+            </table>  
         </xpath>
 
         <xpath expr="//div[@class='page']/div[@class='row'][2]" position="replace">

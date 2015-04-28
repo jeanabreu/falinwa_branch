@@ -42,6 +42,9 @@
                     <field name="origin" position="after">
                         <field name="fal_client_order_ref" />
                     </field>
+                    <field name="date" position="replace">
+                        <field name="date_done" widget="date"/>
+                    </field>
                 </data>
             </field>
         </record>

@@ -10,9 +10,9 @@
                 <data>
                     <field name="origin" position="after">
                         <field name="related_sale_order" />
-                        <field name="date_order" position="attributes">
-                            <attribute name="widget">date</attribute>
-                        </field>
+                    </field>
+                    <field name="date_order" position="attributes">
+                        <attribute name="widget">date</attribute>
                     </field>
                 </data>
             </field>

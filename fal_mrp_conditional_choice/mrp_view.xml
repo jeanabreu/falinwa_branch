@@ -101,7 +101,7 @@
                                 <field name="fal_special" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
                                 <field name="fal_y" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V'])]}" />
                                 <field name="fal_w" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['H'])]}" />
-                                <field name="fal_comment_for_vh" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V','H'])]}" />
+                                <field name="fal_comment_for_vh" attrs="{'invisible': ['|',('fal_special','=',False),('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />
                             </group>
                         </group>
                         <separator string="References Information" attrs="{'invisible': [('fal_serie_name_id_type','not in',['V','H','V24','V72','B'])]}" />

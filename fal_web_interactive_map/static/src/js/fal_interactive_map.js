@@ -9,16 +9,3 @@
     document.getElementById(des_id).style.top = des_top;
     document.getElementById(des_id).style.left = des_left;
   };
-
-(function () {
-    'use strict';
-    var website = openerp.website;  
-    console.log(website.snippet);
-    console.log(website.snippet.options.slider);
-    website.snippet.options.slider.include({
-        start : function () {
-            this._super();
-            this.$target.carousel({interval: 1});
-        },    
-    }); 
-})();

@@ -42,16 +42,20 @@ class stock_move(models.Model):
     @api.model
     def _prepare_procurement_from_move(self, move):
         res = super(stock_move, self)._prepare_procurement_from_move(move)
+        uom_obj = self.env['product.uom']
         #print move.rule_id.name
         #print move.rule_id.route_id.fal_check_stock
         #print 'sad'
         #print move.route_ids
         #print [(x.fal_check_stock) for x in move.route_ids]
         if move.rule_id.route_id.fal_check_stock or True in [(x.fal_check_stock) for x in move.route_ids]:
-            if move.product_id.virtual_available >= 0:
-                res['product_qty'] = move.product_uom_qty - move.product_id.virtual_available
-                res['name'] += _(" The quantity of order is: %s , but Forescasted Quantity for this product is: %s , so we automatically adjust it to: %s") % (move.product_uom_qty, move.product_id.virtual_available, res['product_qty'])
-            if move.product_uom_qty <= move.product_id.virtual_available:
+            virtual_qty_available = uom_obj._compute_qty(move.product_id.uom_id.id,
+                                                 move.product_id.virtual_available,
+                                                 move.product_uom.id)
+            if virtual_qty_available >= 0:
+                res['product_qty'] = move.product_uom_qty - virtual_qty_available
+                res['name'] += _(" The quantity of order is: %s %s, but Forescasted Quantity for this product is: %s %s, so we automatically adjust it to: %s %s") % (move.product_uom_qty, move.product_uom.name, virtual_qty_available, move.product_uom.name, res['product_qty'], move.product_uom.name)
+            if move.product_uom_qty <= virtual_qty_available:
                 res['state'] = 'cancel'
         return res
         

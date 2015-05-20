@@ -31,8 +31,10 @@ class product_category(orm.Model):
     
     _columns = {
         'isfal_formula' : fields.boolean('Formula MRP Activated'),
+        'fal_formula_type': fields.selection([('vpart','V-Parts Raw Material'),('old', 'Old Raw Material'),], 'Formula Type'),
         'fal_formula_parameter_categ1' : fields.float('Extra Length'),
         'fal_formula_parameter_categ2' : fields.float('Saw Thickness'),
+        'fal_formula_parameter_categ3' : fields.float('Part Thickness'),
     }
 #end of product_category()
 
@@ -44,5 +46,6 @@ class product_product(orm.Model):
         'fal_formula_parameter0' : fields.float('DimA'),
         'fal_formula_parameter1' : fields.float('Extra Length'),
         'fal_formula_parameter2' : fields.float('Saw Thickness'),
+        'fal_formula_parameter3' : fields.float('Part Thickness'),
     }
 #end of product_product()

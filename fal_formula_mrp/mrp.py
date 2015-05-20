@@ -63,7 +63,7 @@ class mrp_production(orm.Model):
             for r1 in results:
                 if r1.get('product_id',False):
                     product_id = product_obj.browse(cr, uid, r1.get('product_id',False), context)
-                    if production.product_id.categ_id.isfal_formula:
+                    if production.product_id.categ_id.fal_formula_type == 'old':
                         extra_length = production.product_id.fal_formula_parameter1
                         saw_thickness = production.product_id.fal_formula_parameter2
                         number_cut = 1
@@ -76,6 +76,17 @@ class mrp_production(orm.Model):
                         if not production.product_id.fal_formula_parameter2:
                             saw_thickness = production.product_id.categ_id.fal_formula_parameter_categ2
                         r1['product_qty'] = ((production.product_qty * (stroke + production.product_id.fal_formula_parameter0 + extra_length)) + (saw_thickness * number_cut)) or r1['product_qty']
+                    elif production.product_id.categ_id.fal_formula_type == 'vpart':
+                        extra_length = production.product_id.fal_formula_parameter1
+                        saw_thickness = production.product_id.fal_formula_parameter2
+                        part_thickness = production.product_id.fal_formula_parameter3
+                        if not production.product_id.fal_formula_parameter1:
+                            extra_length = production.product_id.categ_id.fal_formula_parameter_categ1
+                        if not production.product_id.fal_formula_parameter2:
+                            saw_thickness = production.product_id.categ_id.fal_formula_parameter_categ2   
+                        if not production.product_id.fal_formula_parameter3:
+                            part_thickness = production.product_id.categ_id.fal_formula_parameter_categ3   
+                        r1['product_qty'] = part_thickness + saw_thickness + extra_length
             #end here
             
             
@@ -123,11 +134,18 @@ class mrp_bom(orm.Model):
         for bom in self.browse(cr, uid, ids, context=context):
             res[bom.id] = bom.product_id.fal_formula_parameter2 or bom.product_id.categ_id.fal_formula_parameter_categ2
         return res
+        
+    def _get_part_thickness(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom in self.browse(cr, uid, ids, context=context):
+            res[bom.id] = bom.product_id.fal_formula_parameter3 or bom.product_id.categ_id.fal_formula_parameter_categ3
+        return res
     
     _columns = {
         'fal_product_dima' : fields.function(_get_product_dima, string="DimA", type="float", store=False),
         'fal_product_extra_length' : fields.function(_get_extra_length, string="Extra Length", type="float", store=False),
         'fal_product_saw_thickness' : fields.function(_get_saw_thickness, string="Saw Thickness", type="float", store=False),
+        'fal_product_part_thickness' : fields.function(_get_part_thickness, string="Part Thickness", type="float", store=False),
     }
     
 #end of mrp_bom()
@@ -154,10 +172,17 @@ class mrp_bom_line(orm.Model):
             res[bom_line.id] = bom_line.product_id.fal_formula_parameter2 or bom_line.product_id.categ_id.fal_formula_parameter_categ2
         return res
         
+    def _get_part_thickness(self, cr, uid, ids, field_name, arg, context=None):
+        res = {}
+        for bom_line in self.browse(cr, uid, ids, context=context):
+            res[bom_line.id] = bom_line.product_id.fal_formula_parameter3 or bom_line.product_id.categ_id.fal_formula_parameter_categ3
+        return res
+        
     _columns = {
         'fal_product_dima' : fields.function(_get_product_dima, string="DimA", type="float", store=False),
         'fal_product_extra_length' : fields.function(_get_extra_length, string="Extra Length", type="float", store=False),
         'fal_product_saw_thickness' : fields.function(_get_saw_thickness, string="Saw Thickness", type="float", store=False),
+        'fal_product_part_thickness' : fields.function(_get_part_thickness, string="Part Thickness", type="float", store=False),
     }    
     
  #end of mrp_bom_line()  

@@ -69,7 +69,7 @@ class purchase_order(models.Model):
                     #        res['warning'] = {'title': _('Warning!'), 'message': _('The selected supplier has a minimal quantity set to %s %s, you should not purchase less.') % (supplierinfo.min_qty, supplierinfo.product_uom.name)}
                     #    qty = min_qty
             if supplierinfo:
-                dt = order_line_obj._get_date_planned(cr, uid, supplierinfo, vals['date_order'] + ' 00:00:00', context=context).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
+                dt = order_line_obj._get_date_planned(cr, uid, supplierinfo, vals['date_order'], context=context).strftime(DEFAULT_SERVER_DATETIME_FORMAT)
             else:
                 dt = datetime.strptime(vals['date_order'], DEFAULT_SERVER_DATETIME_FORMAT) + relativedelta(days=product_id.produce_delay)
             vals['order_line'] = [(0,0,{

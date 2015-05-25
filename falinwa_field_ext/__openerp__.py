@@ -6,11 +6,12 @@
     "description": """
     Module to add additional field for falinwa
     """,
-    "depends" : ['base', 'account','analytic'],
+    "depends" : ['base', 'account','analytic','project'],
     'init_xml': [],
     'update_xml': [
         'account_view.xml',
         'project_view.xml',
+        'views/fal_account_invoice.xml',
     ],
     'css': [],
     'js' : [],

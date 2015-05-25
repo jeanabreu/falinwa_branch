@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+  	<template id="fal_invoice_report" inherit_id="account.report_invoice_document">
+  		<xpath expr="//div[@class='page']/p[@t-if='o.fiscal_position.note']" position="after">
+  			<div class='row'>
+  				<div class="col-xs-4 pull-right">
+  					<strong>Financial Manager:</strong>
+  				</div><br/>
+  				<br />
+  				<div class="col-xs-4 pull-right">
+  					<strong>Project Manager:</strong>
+  				</div>
+  			</div>
+  		</xpath>
+  	</template>
+  
+  </data>
+</openerp>

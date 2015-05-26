@@ -25,9 +25,9 @@
                     <field name="state" position="after">
                         <field name="project_id" invisible="1" />
                         <field name="project_fal_is_business" invisible="1" />
-                        <button name="fal_refresh" type="object" string="Empty" icon="gtk-no" attrs="{'invisible': ['|',('project_id', '!=', False),('project_fal_is_business', '=', True)]}" />
-                        <button name="fal_refresh" type="object" string="Fully Defined" icon="gtk-yes" attrs="{'invisible': ['|',('project_id', '=', False),('project_fal_is_business', '=', True)]}" />
-                        <button name="fal_refresh" type="object" string="Business" icon="gtk-cdrom" attrs="{'invisible': [('project_fal_is_business', '=', False)]}" />
+                        <button name="fal_refresh" string="Empty" icon="gtk-no" attrs="{'invisible': ['|',('project_id', '!=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" string="Fully Defined" icon="gtk-yes" attrs="{'invisible': ['|',('project_id', '=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" string="Business" icon="gtk-cdrom" attrs="{'invisible': [('project_fal_is_business', '=', False)]}" />
                     </field>
                 </data>
             </field>
@@ -42,9 +42,9 @@
                     <field name="state" position="after">
                         <field name="project_id" invisible="1" />
                         <field name="project_fal_is_business" invisible="1" />
-                        <button name="fal_refresh" type="object" string="Empty" icon="gtk-no" attrs="{'invisible': ['|',('project_id', '!=', False),('project_fal_is_business', '=', True)]}" />
-                        <button name="fal_refresh" type="object" string="Fully Defined" icon="gtk-yes" attrs="{'invisible': ['|',('project_id', '=', False),('project_fal_is_business', '=', True)]}" />
-                        <button name="fal_refresh" type="object" string="Business" icon="gtk-cdrom" attrs="{'invisible': [('project_fal_is_business', '=', False)]}" />
+                        <button name="fal_refresh" string="Empty" icon="gtk-no" attrs="{'invisible': ['|',('project_id', '!=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" string="Fully Defined" icon="gtk-yes" attrs="{'invisible': ['|',('project_id', '=', False),('project_fal_is_business', '=', True)]}" />
+                        <button name="fal_refresh" string="Business" icon="gtk-cdrom" attrs="{'invisible': [('project_fal_is_business', '=', False)]}" />
                     </field>
                 </data>
             </field>

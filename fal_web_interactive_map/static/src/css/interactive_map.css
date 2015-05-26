@@ -42,7 +42,7 @@
 
 .india1 {
   top: 350px;
-  left: 844px;
+  left: 834px;
 }
 
 .india2 {
@@ -196,15 +196,15 @@
 }
 
 .fal_mark_description {
-  width: 450px;
-  height: 135px;
+  width: 470px;
+  height: 155px;
   position: absolute;
   background-image: url('../img/snippet/mark_description_bg.png');
   cursor: pointer;
 }
 
 .fal_name {
-  font-size: 22px;
+  font-size: 25px;
   font-weight: bold;
   font-style: italic;
   margin: 0;
@@ -214,56 +214,56 @@
 }
 
 .fal_name2 {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: bold;
   margin: 0;
   padding-left: 13px;
 }
 
 .fal_address {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   padding-left: 13px;
 }
 
 .fal_address2 {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   padding-left: 13px;
 }
 
 .fal_address3 {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   padding-left: 13px;
 }
 
 .fal_site {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   padding-left: 13px;
 }
 
 .fal_tel {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   margin-left: 13px;
 }
 
 .fal_fax {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   margin-left: 13px;
 }
 
 .fal_mail {
-  font-size: 10px;
+  font-size: 13px;
   margin: 0;
   margin-left: 13px;
 }
 
 .fal_info1 {
-  width: 250px;
+  width: 270px;
   float: left;
 }
 

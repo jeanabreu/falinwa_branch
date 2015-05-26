@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="fal_mark_dealers rusia" id="fal_mark_rusia" onmouseout="hideMarkDescription('fal_mark_description_rusia')" onmouseover="showMarkDescription('fal_mark_rusia', 'fal_mark_description_rusia')">
                                 </div>
-                                <div class="fal_mark_dealers mexico" id="fal_mark_mexico" onmouseout="hideMarkDescription('fal_mark_description_mexico')" onmouseover="showMarkDescription('fal_mark_mexico', 'fal_mark_description_mexico')">
+                                <div class="fal_mark_subsidiary mexico" id="fal_mark_mexico" onmouseout="hideMarkDescription('fal_mark_description_mexico')" onmouseover="showMarkDescription('fal_mark_mexico', 'fal_mark_description_mexico')">
                                 </div>
                                 <div class="fal_mark_dealers usa" id="fal_mark_usa" onmouseout="hideMarkDescription('fal_mark_description_usa')" onmouseover="showMarkDescription('fal_mark_usa', 'fal_mark_description_usa')">
                                 </div>

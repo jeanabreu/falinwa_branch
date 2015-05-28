@@ -136,7 +136,7 @@ class mrp_bom(orm.Model):
     def _get_part_thickness(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for bom in self.browse(cr, uid, ids, context=context):
-            res[bom.id] = bom.product_id.fal_formula_parameter3 or bom.product_id.categ_id.fal_formula_parameter_categ3
+            res[bom.id] = bom.product_id.fal_formula_parameter3
         return res
     
     _columns = {
@@ -173,7 +173,7 @@ class mrp_bom_line(orm.Model):
     def _get_part_thickness(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for bom_line in self.browse(cr, uid, ids, context=context):
-            res[bom_line.id] = bom_line.product_id.fal_formula_parameter3 or bom_line.product_id.categ_id.fal_formula_parameter_categ3
+            res[bom_line.id] = bom_line.product_id.fal_formula_parameter3
         return res
         
     _columns = {

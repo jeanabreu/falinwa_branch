@@ -16,7 +16,7 @@
                             <t t-if="o.fal_serie_name_id.name == 'VCR'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: red;'"/></t>
                             <t t-if="o.fal_serie_name_id.name == 'HVB'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: yellow;'"/></t>
                             <t t-if="o.fal_serie_name_id.name == 'H160'"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: orange;'"/></t>
-                            <t t-if="o.fal_serie_name_id.name in ['V24','V72']"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: grey;'"/></t>
+                            <t t-if="o.fal_serie_name_id.name in ['V24','V72','INT_V24','INT_V72']"><t t-set="div_header_footer_style" t-value="'height:75px; background-color: grey;'"/></t>
                             
                             <div name="mo_header" class="" t-att-style="div_header_footer_style">
                             
@@ -71,7 +71,7 @@
                                             <td><strong><span style="color: black;" t-field="o.fal_main_option_id.code"/>-</strong><span t-field="o.fal_main_option_id.name"/></td>
                                             <td><span t-field="o.fal_main_option_id.chinese_name"/></td>
                                         </tr>
-                                        <t t-if="o.fal_serie_name_id.name in ['VCN','VBG','VCR']">
+                                        <t t-if="o.fal_serie_name_id.name in ['VCN','VBG','VCR','V24','INT_V24']">
                                             <tr>                                
                                                 <td><span>COTE X</span></td>
                                                 <td><span>尺寸X</span></td>

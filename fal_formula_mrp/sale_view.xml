@@ -9,10 +9,11 @@
             <field name="arch" type="xml">
                 <data>
                      <field name="cost_method" position="after">
-                        <field name="fal_formula_parameter0"/>
-                        <field name="fal_formula_parameter1"/>
-                        <field name="fal_formula_parameter2"/>
-                        <field name="fal_formula_parameter3"/>
+                        <field name="fal_categ_formula_type" invisible="1"/>
+                        <field name="fal_formula_parameter0" attrs="{'invisible': [('fal_categ_formula_type','not in',['vpart'])]}"/>
+                        <field name="fal_formula_parameter1" />
+                        <field name="fal_formula_parameter2" />
+                        <field name="fal_formula_parameter3" attrs="{'invisible': [('fal_categ_formula_type','not in',['old'])]}"/>
                     </field>
                 </data>
             </field>
@@ -30,7 +31,6 @@
                     <field name="type" position="after">
                         <field name="fal_formula_parameter_categ1" />
                         <field name="fal_formula_parameter_categ2" />
-                        <field name="fal_formula_parameter_categ3" />
                     </field>
                 </data>
             </field>

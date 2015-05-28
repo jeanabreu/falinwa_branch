@@ -83,9 +83,7 @@ class mrp_production(orm.Model):
                         if not production.product_id.fal_formula_parameter1:
                             extra_length = production.product_id.categ_id.fal_formula_parameter_categ1
                         if not production.product_id.fal_formula_parameter2:
-                            saw_thickness = production.product_id.categ_id.fal_formula_parameter_categ2   
-                        if not production.product_id.fal_formula_parameter3:
-                            part_thickness = production.product_id.categ_id.fal_formula_parameter_categ3   
+                            saw_thickness = production.product_id.categ_id.fal_formula_parameter_categ2 
                         r1['product_qty'] = part_thickness + saw_thickness + extra_length
             #end here
             

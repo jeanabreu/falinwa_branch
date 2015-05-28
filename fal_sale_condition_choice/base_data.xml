@@ -46,6 +46,16 @@
             <field name="name">V72</field>
 			<field name="type">V72</field>
         </record>
+        
+        <record id="fal_seri_name_intV24" model="fal.serie.name">
+            <field name="name">INT_V24</field>
+			<field name="type">V24</field>
+        </record>
+
+        <record id="fal_seri_name_intV72" model="fal.serie.name">
+            <field name="name">INT_V72</field>
+			<field name="type">V72</field>
+        </record>
 		
         <record id="fal_seri_name_HVB" model="fal.serie.name">
             <field name="name">HVB</field>
@@ -60,70 +70,70 @@
         <record id="fal_bore_diameter_025" model="fal.bore.diameter">
             <field name="name">025</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_V24, fal_seri_name_V72,fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_V24, fal_seri_name_V72,fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>    
         
         <record id="fal_bore_diameter_032" model="fal.bore.diameter">
             <field name="name">032</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>  
         
         <record id="fal_bore_diameter_040" model="fal.bore.diameter">
             <field name="name">040</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_050" model="fal.bore.diameter">
             <field name="name">050</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_063" model="fal.bore.diameter">
             <field name="name">063</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_080" model="fal.bore.diameter">
             <field name="name">080</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_100" model="fal.bore.diameter">
             <field name="name">100</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_125" model="fal.bore.diameter">
             <field name="name">125</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_160" model="fal.bore.diameter">
             <field name="name">160</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
         
         <record id="fal_bore_diameter_200" model="fal.bore.diameter">
             <field name="name">200</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record> 
 		
@@ -203,7 +213,7 @@
             <field name="old_code">A or A0</field>
             <field name="chinese_name">无缓冲</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -213,7 +223,7 @@
             <field name="old_code">1</field>
             <field name="chinese_name">前后缓冲</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -223,7 +233,7 @@
             <field name="old_code">2</field>
             <field name="chinese_name">前缓冲</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -233,7 +243,7 @@
             <field name="old_code">3</field>
             <field name="chinese_name">后缓冲</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBL,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -242,7 +252,7 @@
             <field name="code">DM</field>
             <field name="chinese_name">带磁敏传感器</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBM,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160])
+                (6,0,[fal_seri_name_VBM,fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC,fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -251,7 +261,7 @@
             <field name="code">IR</field>
             <field name="chinese_name">带连接杆</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC, fal_seri_name_V24, fal_seri_name_VCR, fal_seri_name_HVB])
+                (6,0,[fal_seri_name_VCN,fal_seri_name_VXP,fal_seri_name_VBG,fal_seri_name_VPC, fal_seri_name_V24, fal_seri_name_VCR, fal_seri_name_HVB, fal_seri_name_intV24])
                 ]" />
         </record>
         
@@ -262,7 +272,7 @@
             <field name="v_ref">1</field>
             <field name="chinese_name">外螺纹</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_VCR, fal_seri_name_HVB])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_VCR, fal_seri_name_HVB, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -273,7 +283,7 @@
             <field name="v_ref">2</field>
             <field name="chinese_name">内螺纹</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -283,7 +293,7 @@
             <field name="v_ref">3</field>
             <field name="chinese_name">T型槽</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_V24])
+                (6,0,[fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_V72, fal_seri_name_HVB, fal_seri_name_V24, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
 		
@@ -293,7 +303,7 @@
             <field name="v_ref">Tenon</field>
             <field name="chinese_name"></field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_H160, fal_seri_name_V24])
+                (6,0,[fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
         </record>
 		
@@ -303,7 +313,7 @@
             <field name="v_ref">KK</field>
             <field name="chinese_name"></field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_H160, fal_seri_name_V24])
+                (6,0,[fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
         </record>
 		
@@ -313,7 +323,7 @@
             <field name="v_ref">KK1</field>
             <field name="chinese_name"></field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_H160, fal_seri_name_V24])
+                (6,0,[fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
         </record>
 		
@@ -345,7 +355,7 @@
             <field name="v_ref">N</field>
             <field name="chinese_name">普通密封圈</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -356,7 +366,7 @@
             <field name="v_ref">V</field>
             <field name="chinese_name">耐高温密封圈</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VCN, fal_seri_name_VXP, fal_seri_name_VBG, fal_seri_name_VPC, fal_seri_name_VCR, fal_seri_name_HVB, fal_seri_name_H160, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -364,7 +374,7 @@
             <field name="name">M01</field>
             <field name="code">M1</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_V24, fal_seri_name_VBM, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_V24, fal_seri_name_VBM, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -372,7 +382,7 @@
             <field name="name">M02</field>
             <field name="code">M2</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -380,7 +390,7 @@
             <field name="name">M03</field>
             <field name="code">M3</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -388,7 +398,7 @@
             <field name="name">M04</field>
             <field name="code">M4</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -396,7 +406,7 @@
             <field name="name">M05</field>
             <field name="code">M5</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -404,7 +414,7 @@
             <field name="name">M06</field>
             <field name="code">M6</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -412,7 +422,7 @@
             <field name="name">M07</field>
             <field name="code">M7</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -420,7 +430,7 @@
             <field name="name">M08</field>
             <field name="code">M8</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -428,7 +438,7 @@
             <field name="name">M09</field>
             <field name="code">M9</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -436,7 +446,7 @@
             <field name="name">M10</field>
             <field name="code">M10</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -444,7 +454,7 @@
             <field name="name">M11</field>
             <field name="code">M11</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -452,7 +462,7 @@
             <field name="name">M12</field>
             <field name="code">M12</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72])
+                (6,0,[fal_seri_name_VBL, fal_seri_name_VBM, fal_seri_name_V24, fal_seri_name_V72, fal_seri_name_intV24, fal_seri_name_intV72])
                 ]" />
         </record>
         
@@ -677,7 +687,7 @@
 			<field name="fal_stroke">30</field>
 			<field name="fal_full_reference">VCN-040-L1-ET-KV-XXX-B_030-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -686,7 +696,7 @@
 			<field name="fal_stroke">60</field>
 			<field name="fal_full_reference">VCN-040-L1-ET-KV-XXX-B_060-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -695,7 +705,7 @@
 			<field name="fal_stroke">80</field>
 			<field name="fal_full_reference">VCN-040-L1-ET-KV-XXX-B_080-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -704,7 +714,7 @@
 			<field name="fal_stroke">110</field>
 			<field name="fal_full_reference">VCN-040-L1-ET-KV-XXX-B_110-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 
@@ -713,7 +723,7 @@
 			<field name="fal_stroke">60</field>
 			<field name="fal_full_reference">VCN-050-L1-ET-KV-XXX-B_060-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 
@@ -722,7 +732,7 @@
 			<field name="fal_stroke">80</field>
 			<field name="fal_full_reference">VCN-050-L1-ET-KV-XXX-B_080-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -731,7 +741,7 @@
 			<field name="fal_stroke">100</field>
 			<field name="fal_full_reference">VCN-050-L1-ET-KV-XXX-B_100-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -740,7 +750,7 @@
 			<field name="fal_stroke">125</field>
 			<field name="fal_full_reference">VCN-050-L1-ET-KV-XXX-B_125-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -749,7 +759,7 @@
 			<field name="fal_stroke">150</field>
 			<field name="fal_full_reference">VCN-050-L1-ET-KV-XXX-B_150-NP-NL-NT-NC-XX_060-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -758,7 +768,7 @@
 			<field name="fal_stroke">70</field>
 			<field name="fal_full_reference">VCN-063-L1-ET-KV-XXX-B_070-NP-NL-NT-NC-XX_072-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -767,7 +777,7 @@
 			<field name="fal_stroke">100</field>
 			<field name="fal_full_reference">VCN-063-L1-ET-KV-XXX-B_100-NP-NL-NT-NC-XX_072-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -776,7 +786,7 @@
 			<field name="fal_stroke">130</field>
 			<field name="fal_full_reference">VCN-063-L1-ET-KV-XXX-B_130-NP-NL-NT-NC-XX_072-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -785,7 +795,7 @@
 			<field name="fal_stroke">160</field>
 			<field name="fal_full_reference">VCN-063-L1-ET-KV-XXX-B_160-NP-NL-NT-NC-XX_072-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -794,7 +804,7 @@
 			<field name="fal_stroke">180</field>
 			<field name="fal_full_reference">VCN-063-L1-ET-KV-XXX-B_180-NP-NL-NT-NC-XX_072-XX-XX</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V24])
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
 		
@@ -802,266 +812,266 @@
             <field name="name">V72-025-020-KN</field>
 			<field name="fal_stroke">20</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202520KV" model="fal.ordering.code">
             <field name="name">V72-025-020-KV</field>
 			<field name="fal_stroke">20</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202530KN" model="fal.ordering.code">
             <field name="name">V72-025-030-KN</field>
 			<field name="fal_stroke">30</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202530KV" model="fal.ordering.code">
             <field name="name">V72-025-030-KV</field>
 			<field name="fal_stroke">30</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202540KN" model="fal.ordering.code">
             <field name="name">V72-025-040-KN</field>
 			<field name="fal_stroke">40</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202540KV" model="fal.ordering.code">
             <field name="name">V72-025-040-KV</field>
 			<field name="fal_stroke">40</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202550KN" model="fal.ordering.code">
             <field name="name">V72-025-050-KN</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7202550KV" model="fal.ordering.code">
             <field name="name">V72-025-050-KV</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203215KN" model="fal.ordering.code">
             <field name="name">V72-032-015-KN</field>
 			<field name="fal_stroke">15</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203215KV" model="fal.ordering.code">
             <field name="name">V72-032-015-KV</field>
 			<field name="fal_stroke">15</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203230KN" model="fal.ordering.code">
             <field name="name">V72-032-030-KN</field>
 			<field name="fal_stroke">30</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203230KV" model="fal.ordering.code">
             <field name="name">V72-032-030-KV</field>
 			<field name="fal_stroke">30</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203240KN" model="fal.ordering.code">
             <field name="name">V72-032-040-KN</field>
 			<field name="fal_stroke">40</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203240KV" model="fal.ordering.code">
             <field name="name">V72-032-040-KV</field>
 			<field name="fal_stroke">40</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203260KN" model="fal.ordering.code">
             <field name="name">V72-032-060-KN</field>
 			<field name="fal_stroke">60</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7203260KV" model="fal.ordering.code">
             <field name="name">V72-032-060-KV</field>
 			<field name="fal_stroke">60</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204020KN" model="fal.ordering.code">
             <field name="name">V72-040-020-KN</field>
 			<field name="fal_stroke">20</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204020KV" model="fal.ordering.code">
             <field name="name">V72-040-020-KV</field>
 			<field name="fal_stroke">20</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204040KN" model="fal.ordering.code">
             <field name="name">V72-040-040-KN</field>
 			<field name="fal_stroke">40</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204040KV" model="fal.ordering.code">
             <field name="name">V72-040-040-KV</field>
 			<field name="fal_stroke">40</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204050KN" model="fal.ordering.code">
             <field name="name">V72-040-050-KN</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204050KV" model="fal.ordering.code">
             <field name="name">V72-040-050-KV</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204080KN" model="fal.ordering.code">
             <field name="name">V72-040-080-KN</field>
 			<field name="fal_stroke">80</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7204080KV" model="fal.ordering.code">
             <field name="name">V72-040-080-KV</field>
 			<field name="fal_stroke">80</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205050KN" model="fal.ordering.code">
             <field name="name">V72-050-050-KV</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205050KV" model="fal.ordering.code">
             <field name="name">V72-050-050-KN</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205070KN" model="fal.ordering.code">
             <field name="name">V72-005-070-KN</field>
 			<field name="fal_stroke">70</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205070KV" model="fal.ordering.code">
             <field name="name">V72-050-070-KV</field>
 			<field name="fal_stroke">70</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205080KV" model="fal.ordering.code">
             <field name="name">V72-050-080-KV</field>
 			<field name="fal_stroke">80</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205080KN" model="fal.ordering.code">
             <field name="name">V72-050-080-KN</field>
 			<field name="fal_stroke">80</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205090KN" model="fal.ordering.code">
             <field name="name">V72-050-090-KN</field>
 			<field name="fal_stroke">90</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205090KV" model="fal.ordering.code">
             <field name="name">V72-050-090-KV</field>
 			<field name="fal_stroke">90</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7206350KN" model="fal.ordering.code">
             <field name="name">V72-063-050-KN</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7206350KV" model="fal.ordering.code">
             <field name="name">V72-063-050-KV</field>
 			<field name="fal_stroke">50</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7206380KN" model="fal.ordering.code">
             <field name="name">V72-063-080-KN</field>
 			<field name="fal_stroke">80</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7206380KV" model="fal.ordering.code">
             <field name="name">V72-063-080-KV</field>
 			<field name="fal_stroke">80</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>		
 		<record id="fal_ordering_code_v72063120KN" model="fal.ordering.code">
             <field name="name">V72-063-120-KN</field>
 			<field name="fal_stroke">120</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v72063120KV" model="fal.ordering.code">
             <field name="name">V72-063-120-KV</field>
 			<field name="fal_stroke">120</field>
             <field name="fal_serie_list_ids" eval="[
-                (6,0,[fal_seri_name_V72])
+                (6,0,[fal_seri_name_V72, fal_seri_name_intV72])
                 ]" />
 		</record>
     </data>

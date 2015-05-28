@@ -390,6 +390,15 @@ class sale_order_line(orm.Model):
                 res['value']['fal_mounting_id'] = v24mounting_ids and v24mounting_ids[0]
                 res['value']['fal_full_reference'] = ordering_code_id.name
                 res['value']['fal_bom_reference'] = ordering_code_id.name
+                res['value']['fal_cote_x'] = 0
+                if ordering_code_id.fal_full_reference[4:7] in ['040','050']:                    
+                    res['value']['fal_cote_x'] = 60
+                else:
+                    res['value']['fal_cote_x'] = 72
+                
+                if serie_name_id.name == 'INT_V24':
+                    res['value']['fal_full_reference'] = "INT_" + res['value']['fal_full_reference']
+                    res['value']['fal_bom_reference'] = "INT_" + res['value']['fal_bom_reference']
                 #res['value']['fal_ref_priced_option'] = ordering_code_id.fal_full_reference[23:41]
                 #res['value']['fal_ref_free_option'] = ordering_code_id.fal_full_reference[42:]
             
@@ -410,9 +419,21 @@ class sale_order_line(orm.Model):
                 res['value']['fal_seal_kit_id'] = v72seal_kit_ids and v72seal_kit_ids[0]
                 res['value']['fal_full_reference'] = '%s-%s-%s' %(ordering_code_id.name, rod_end, mounting)
                 res['value']['fal_bom_reference'] = '%s-%s-%s' %(ordering_code_id.name, rod_end, mounting)
+                res['value']['fal_cote_x'] = 0
+                if serie_name_id.name == 'INT_V72':
+                    res['value']['fal_full_reference'] = "INT_" + res['value']['fal_full_reference']
+                    res['value']['fal_bom_reference'] = "INT_" + res['value']['fal_bom_reference']
+                    res['value']['fal_ref_for_stroke_option'] = "INT_" + res['value']['fal_ref_for_stroke_option']
+                #if ful_ref[4:7] in ['040','050']:                    
+                #    res['value']['fal_cote_x'] = 60
+                #else:
+                #    res['value']['fal_cote_x'] = 72
+                    
                 #res['value']['fal_ref_priced_option'] = ful_ref[23:41]
                 #res['value']['fal_ref_free_option'] = ful_ref[42:]
             res['value']['fal_sale_reference'] = ordering_code_id.name.replace('-',' ')
+            if serie_name_id.name in ['INT_V72','INT_V24']:
+                res['value']['fal_sale_reference'] = "INT_" + res['value']['fal_sale_reference']
             return res
         
         if serie_name in ['VPC', 'VXP']:

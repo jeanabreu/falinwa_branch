@@ -31,10 +31,9 @@ class product_category(orm.Model):
     
     _columns = {
         'isfal_formula' : fields.boolean('Formula MRP Activated'),
-        'fal_formula_type': fields.selection([('vpart','V-Parts Raw Material'),('old', 'Old Raw Material'),], 'Formula Type'),
+        'fal_formula_type': fields.selection([('vpart','Raw Material for parts'),('old', 'Raw Material for body-rod with variable stroke'),], 'Formula Type'),
         'fal_formula_parameter_categ1' : fields.float('Extra Length'),
         'fal_formula_parameter_categ2' : fields.float('Saw Thickness'),
-        'fal_formula_parameter_categ3' : fields.float('Part Thickness'),
     }
 #end of product_category()
 
@@ -43,6 +42,7 @@ class product_product(orm.Model):
     _inherit = "product.product"
     
     _columns = {
+        'fal_categ_formula_type' : fields.related('categ_id', 'fal_formula_type', string="Categ Formula Type", type='char', readonly=True),
         'fal_formula_parameter0' : fields.float('DimA'),
         'fal_formula_parameter1' : fields.float('Extra Length'),
         'fal_formula_parameter2' : fields.float('Saw Thickness'),

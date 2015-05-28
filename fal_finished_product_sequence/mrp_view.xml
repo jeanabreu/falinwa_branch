@@ -42,8 +42,11 @@
             <field name="inherit_id" ref="mrp.view_mrp_production_filter"/>
             <field name="arch" type="xml">
                 <data>
-                    <field name="product_id" position="after">
+                    <field name="product_id" position="replace">
+                    </field>
+                    <field name="name" position="before">
                         <field name="fal_of_number" />
+                        <field name="product_id"/>
                     </field>
                     <filter string="Late" position="after">
                         <filter name="fal_of_number_filter" string="Finished Product" domain="[('fal_of_number','!=',False)]" />

@@ -12,7 +12,7 @@
                         <button name="%(mrp.act_mrp_product_produce)d" states="ready,in_production" string="Produce" type="action" icon="STOCK_APPLY"/>
                         <button name="button_produce" states="ready" string="Mark as Started" icon="STOCK_EXECUTE"/>
                         <button name="action_assign" states="confirmed,picking_except" string="Check Availability" type="object" icon="STOCK_FIND"/>
-                        <button name="force_production" states="confirmed" string="Force Reservation" icon="STOCK_GOTO_FIRST"/>
+                        <button name="force_production" states="confirmed" string="Force Reservation" type="object" icon="STOCK_GOTO_FIRST"/>
                     </field>
                 </data>
             </field>

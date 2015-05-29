@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+
+        <record id="mrp_production_tree_view_falmrpview" model="ir.ui.view">
+            <field name="name">mrp.production.tree.falmrpview</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="state" position="after">
+                        <button name="%(mrp.act_mrp_product_produce)d" states="ready,in_production" string="Produce" type="action" icon="STOCK_APPLY"/>
+                        <button name="button_produce" states="ready" string="Mark as Started" icon="STOCK_EXECUTE"/>
+                        <button name="action_assign" states="confirmed,picking_except" string="Check Availability" type="object" icon="STOCK_FIND"/>
+                        <button name="force_production" states="confirmed" string="Force Reservation" icon="STOCK_GOTO_FIRST"/>
+                    </field>
+                </data>
+            </field>
+        </record>
         
-       <record id="mrp_bom_tree_view_falmrpviewext" model="ir.ui.view">
+        <record id="mrp_bom_tree_view_falmrpviewext" model="ir.ui.view">
             <field name="name">mrp.bom.tree.falmrpviewext</field>
             <field name="model">mrp.bom.line</field>
             <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
@@ -10,12 +26,12 @@
                 <data>
                     <field name="product_id" position="after">
                         <field name="product_qty"/>
-                    </field>
+                    </field>                    
                 </data>
             </field>
-        </record>
+         </record>
 
-       <record id="mrp_bom_tree_view_falmrpext" model="ir.ui.view">
+        <record id="mrp_bom_tree_view_falmrpext" model="ir.ui.view">
             <field name="name">mrp.bom.tree.falmrp.ext</field>
             <field name="model">mrp.bom</field>
             <field name="arch" type="xml">
@@ -51,5 +67,6 @@
               </p>
             </field>
         </record>
+        
     </data>
 </openerp>

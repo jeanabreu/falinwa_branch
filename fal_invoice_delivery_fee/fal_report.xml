@@ -34,7 +34,7 @@
         <report
            id="fal_report_account_invoice_idf"
            model="account.invoice"
-           string="Falinwa Invoices"
+           string="Invoices"
            report_type="qweb-pdf"
            name="fal_invoice_delivery_fee.fal_report_invoice_idf"
         />     
@@ -42,7 +42,7 @@
         <report
            id="fal_report_purchase_order_idf"
            model="purchase.order"
-           string="Falinwa Purchase Order"
+           string="Purchase Order"
            report_type="qweb-pdf"
            name="fal_invoice_delivery_fee.fal_report_purchaseorder_idf"
         />  
@@ -50,7 +50,7 @@
         <report
            id="fal_report_sale_order_idf"
            model="sale.order"
-           string="Falinwa Sale Order"
+           string="Sale Order"
            report_type="qweb-pdf"
            name="fal_invoice_delivery_fee.fal_report_saleorder_idf"
         />    

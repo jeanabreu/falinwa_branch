@@ -8,8 +8,10 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="active" position="after">
-                            <field name="logic" />
-                            <field name="product_order_label_qty" attrs="{'invisible': [('logic','!=','fix')]}"/>
+                            <field name="logic" />                            
+                    </field>
+                    <field name="product_max_qty" position="after">
+                        <field name="product_order_label_qty" attrs="{'invisible': [('logic','!=','fix')]}"/>
                     </field>
                 </data>
             </field>

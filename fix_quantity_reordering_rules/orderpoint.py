@@ -15,6 +15,6 @@ class stock_warehouse_orderpoint(orm.Model):
 
     _columns = {
         'logic': fields.selection([('max','Order to Max'),('price','Best price (not yet active!)'),('fix','Order Quantity')], 'Reordering Mode', required=True),
-        'product_order_label_qty': fields.function(_compute_product_order_qty, type='float',string='Order Quantity',store=False),
+        'product_order_label_qty': fields.function(_compute_product_order_qty, type='float',string='Re-ordering Quantity',store=False),
     }
 #end of stock_warehouse_orderpoint()

@@ -57,14 +57,14 @@ class mrp_production(orm.Model):
     }
 
     def get_by_stroke_option(self, cr, uid, ref, fal_stroke):                  
-        
+
         return self.pool.get('sale.order.line').get_by_stroke_option(cr, uid, ref, fal_stroke)
         
     def onchange_conditional(self, cr, uid, ids, 
         fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
         fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 
         fal_standard_stroke_id, fal_piston_seal, fal_rod_seal, fal_ports, fal_brace_ring, fal_position_ports_head, fal_position_ports_bottom, fal_value_xv, flag=False):
-        
+
         return self.pool.get('sale.order.line').onchange_conditional(cr, uid, ids, 
         fal_serie_name_id, fal_bore_diameter_id, fal_rod_diameter_id, fal_stroke, fal_main_option_id, fal_rod_end_id, fal_rod_end_option_id, fal_seal_kit_id, fal_mounting_id, 
         fal_purge, fal_counter_bores, fal_for_handling, fal_microrupteur, fal_magnet_sensor, fal_cote_x, fal_magnet_sensor_position_id, fal_seal_location, fal_ordering_code_id, 

@@ -35,6 +35,18 @@ class mrp_bom(orm.Model):
         
 #end of mrp_bom()
 
+class mrp_bom_line(orm.Model):
+    _name = 'mrp.bom.line'
+    _inherit='mrp.bom.line'
+    
+    _columns = {
+        'product_id_loc_rack' : fields.related('product_id', 'loc_rack', type='char', string='Shelf', readonly=True),
+        'product_id_loc_row' : fields.related('product_id', 'loc_row', type='char', string='Layer', readonly=True),
+        'product_id_loc_case' : fields.related('product_id', 'loc_case', type='char', string='Box', readonly=True),
+        'product_id_standard_price' : fields.related('product_id', 'standard_price', type='float', digits_compute=dp.get_precision('Product Price'), string='Cost Price', readonly=True),
+    }
+#end of mrp_bom_line()
+
 class product_product(orm.Model):
     _name = 'product.product'
     _inherit='product.product'

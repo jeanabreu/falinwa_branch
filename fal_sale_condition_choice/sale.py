@@ -399,6 +399,9 @@ class sale_order_line(orm.Model):
                 if serie_name_id.name == 'INT_V24':
                     res['value']['fal_full_reference'] = "INT_" + res['value']['fal_full_reference']
                     res['value']['fal_bom_reference'] = "INT_" + res['value']['fal_bom_reference']
+                
+                #if ordering_code_id.fal_full_reference[4:7] in ['063']:
+                #    res['value']['fal_stroke'] = 200
                 #res['value']['fal_ref_priced_option'] = ordering_code_id.fal_full_reference[23:41]
                 #res['value']['fal_ref_free_option'] = ordering_code_id.fal_full_reference[42:]
             
@@ -509,13 +512,14 @@ class sale_order_line(orm.Model):
     
     def onchange_bomref(self, cr, uid, ids, fal_bom_reference):
         res = {'value': {
-            'product_id': False
+
             }}        
-                
-        if fal_bom_reference:
+        if fal_bom_reference and fal_bom_reference != 'XXX-XXX-XX-XX-XX-XXX-X':
             product = self.pool.get('product.product').search(cr, uid, [('name','=', fal_bom_reference)])
             if product:
                 res['value']['product_id'] = product[0]
+            else:
+                res['value']['product_id'] = False
         return res
 
     def product_id_change(self, cr, uid, ids, pricelist, product, qty=0,

@@ -807,6 +807,15 @@
                 (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
                 ]" />
 		</record>
+        
+		<record id="fal_ordering_code_v2463200" model="fal.ordering.code">
+            <field name="name">V24-063-200</field>
+			<field name="fal_stroke">200</field>
+			<field name="fal_full_reference">VCN-063-L1-ET-KV-XXX-B_200-NP-NL-NT-NC-XX_072-XX-XX</field>
+            <field name="fal_serie_list_ids" eval="[
+                (6,0,[fal_seri_name_V24, fal_seri_name_intV24])
+                ]" />
+		</record>
 		
 		<record id="fal_ordering_code_v7202520KN" model="fal.ordering.code">
             <field name="name">V72-025-020-KN</field>

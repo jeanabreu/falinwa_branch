@@ -46,7 +46,7 @@
         
         <record id="mrp_bom_tree_view_fal_bomreader" model="ir.ui.view">
             <field name="name">mrp.bom.tree.fal.bomreader</field>
-            <field name="model">mrp.bom</field>
+            <field name="model">mrp.bom.line</field>
             <field name="inherit_id" ref="mrp.mrp_bom_tree_view"/>
             <field name="arch" type="xml">
                 <data>

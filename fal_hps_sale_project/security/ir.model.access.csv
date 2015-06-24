@@ -36,3 +36,6 @@ access_res_partner_bank_type_crm_sale_crm_user,res.partner.bank.type.crm sale_cr
 access_crm_lead_partner_sale_crm_user,crm.lead.partner sale_crm_user,crm.model_crm_lead,fal_hps_sale_project.group_sale_crm_user_hps,1,1,1,1
 access_crm_phonecall_partner_sale_crm_user,crm.phonecall.partner sale_crm_user,crm.model_crm_phonecall,fal_hps_sale_project.group_sale_crm_user_hps,1,1,1,1
 access_crm_payment_mode_sale_crm_user,crm.payment.mode sale_crm_user,crm.model_crm_payment_mode,fal_hps_sale_project.group_sale_crm_user_hps,1,1,1,1
+
+access_sale_order_sale_crm_user,sale.order sale_crm_user,sale.model_sale_order,fal_hps_sale_project.group_sale_crm_user_hps,1,1,1,1
+access_sale_order_line_sale_crm_user,sale.order sale_crm_user,sale.model_sale_order_line,fal_hps_sale_project.group_sale_crm_user_hps,1,1,1,1

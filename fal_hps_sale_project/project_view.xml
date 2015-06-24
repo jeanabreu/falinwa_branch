@@ -50,6 +50,10 @@
         <menuitem id="menu_my_customer_form_hpsproject" parent="menu_crm_hpsproject" action="action_mypartner_form_hpsprojectcrm" sequence="4" groups="group_sale_crm_user_hps"/>
         <menuitem name="Project Follower" id="menu_project_crm_hpspext" parent="menu_crm_hpsproject" action="fal_project_ext.fal_pext_open_view_project_all" sequence="5" groups="group_sale_crm_user_hps" />
         <menuitem action="fal_project_ext.open_gtd_task_fal_pext" name="My Tools" id="menu_action_view_projectcrmtoollist" parent="menu_crm_hpsproject" sequence="6" groups="group_sale_crm_user_hps" />
-        
+        <menuitem name="Leads" id="crm.menu_crm_leads" parent="menu_crm_hpsproject" sequence="7"
+                action="crm.crm_case_category_act_leads_all" groups="group_sale_crm_manager_hps"/>
+        <menuitem name="Opportunities" id="crm.menu_crm_opportunities" parent="menu_crm_hpsproject" sequence="8"
+                action="crm.crm_case_category_act_oppor11"
+                groups="group_sale_crm_manager_hps"/>        
    </data>
 </openerp>

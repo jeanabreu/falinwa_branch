@@ -54,7 +54,11 @@ class sale_order_line(orm.Model):
         'fal_comment_for_vh' : fields.text('Comment'),
         'fal_stroke' : fields.integer('Stroke (mm)'),
     }
-
+    
+    _defaults = {
+        'fal_cote_x' : 0,
+    }
+    
     def get_by_stroke_option(self, cr, uid, ref, fal_stroke):
         stroke_max_obj = self.pool.get('fal.stroke.max')
         by_stroke_option = 'X'

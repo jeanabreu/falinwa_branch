@@ -152,10 +152,11 @@
                             <field name="fal_product_id" />
                             <label for="fal_qty"/>
                             <div>
-                                <field name="fal_qty" readonly="1" class="oe_inline"/>
+                                <field name="fal_qty" class="oe_inline"/>
                                 <field name="fal_uom_id" groups="product.group_uom" class="oe_inline"/>
                             </div>
                             <field name="fal_type" />
+                            <field name="fal_partner_id" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}' domain="[('customer','=',True)]" attrs="{'required':[('fal_type','=','sale.order')], 'invisible':[('fal_type','not in',['sale.order','mrp.repair'])]}" />
                             <field name="fal_existed_quotation" attrs="{'invisible':[('fal_type','!=','sale.order')]}"/>
                         </group>        
                     </group>
@@ -176,6 +177,48 @@
             <field name="view_id" ref="view_bom_create_record_wizard"/>
             <field name="view_mode">form</field>
             <field name="target">new</field>
+            <field name="context">{
+                'fal_serie_name_id': context.get('fal_serie_name_id', False),
+                'fal_ordering_code_id': context.get('fal_ordering_code_id', False),
+                'fal_bore_diameter_id': context.get('fal_bore_diameter_id', False),
+                'fal_rod_diameter_id': context.get('fal_rod_diameter_id', False),
+                'fal_main_option_id': context.get('fal_main_option_id', False),
+                'fal_rod_end_id': context.get('fal_rod_end_id', False),
+                'fal_rod_end_option_id': context.get('fal_rod_end_option_id', False),
+                'fal_seal_kit_id': context.get('fal_seal_kit_id', False),
+                'fal_mounting_id': context.get('fal_mounting_id', False),
+                'fal_purge': context.get('fal_purge', False),
+                'fal_brace_ring': context.get('fal_brace_ring', False),
+                'fal_counter_bores': context.get('fal_counter_bores', False),
+                'fal_for_handling': context.get('fal_for_handling', False),
+                'fal_microrupteur': context.get('fal_microrupteur', False),
+                'fal_magnet_sensor': context.get('fal_magnet_sensor', False),
+                'fal_xcma': context.get('fal_xcma', False),
+                'fal_cote_x': context.get('fal_cote_x', False),
+                'fal_magnet_sensor_position_id': context.get('fal_magnet_sensor_position_id', False),
+                'fal_seal_location': context.get('fal_seal_location', False),
+                'fal_full_reference': context.get('fal_full_reference', False),
+                'fal_sale_reference': context.get('fal_sale_reference', False),
+                'fal_ref_for_stroke_option': context.get('fal_ref_for_stroke_option', False),
+                'fal_by_stroke_option': context.get('fal_by_stroke_option', False),
+                'fal_bom_reference': context.get('fal_bom_reference', False),
+                'fal_ref_priced_option': context.get('fal_ref_priced_option', False),
+                'fal_ref_free_option': context.get('fal_ref_free_option', False),
+                'fal_by_stroke_option': context.get('fal_by_stroke_option', False),
+                'fal_stroke': context.get('fal_stroke', False),
+                'fal_standard_stroke_id': context.get('fal_standard_stroke_id', False),
+                'fal_piston_seal': context.get('fal_piston_seal', False),
+                'fal_rod_seal': context.get('fal_rod_seal', False),
+                'fal_ports': context.get('fal_ports', False),
+                'fal_position_ports_head': context.get('fal_position_ports_head', False),
+                'fal_position_ports_bottom': context.get('fal_position_ports_bottom', False),
+                'fal_value_xv': context.get('fal_value_xv', False),
+                'fal_special': context.get('fal_special', False),
+                'fal_y': context.get('fal_y', False),
+                'fal_w': context.get('fal_w', False),
+                'fal_comment_for_vh': context.get('fal_comment_for_vh', False),
+                }
+            </field>
         </record>
         
         <record id="mrp_bom_tree_view_falbomconwiz" model="ir.ui.view">
@@ -185,12 +228,19 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="product_id" position="after">
-                        <button name="test" />
+                        <!-- button name="test" / -->
                         <!-- <button name="%(action_bom_create_record_wizard)d" string="Make Order" /> -->
                     </field>
                 </data>
             </field>
         </record>
-         
+
+        <record id="ir_act_bom_condition_choice_wizard" model="ir.values">
+            <field name="key2">tree_but_open</field>
+            <field name="model">mrp.bom.line</field>
+            <field name="name">Open BoM conditional choice wizard</field>
+            <field eval="'ir.actions.act_window,'+str(action_bom_create_record_wizard)" name="value"/>
+            <field eval="True" name="object"/>
+        </record>
     </data>
 </openerp>

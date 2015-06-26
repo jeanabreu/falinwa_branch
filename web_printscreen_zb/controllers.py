@@ -39,10 +39,13 @@ try:
 except ImportError:
     xlwt = None
 
-class ZbExcelExport(ExcelExport):
-    _cp_path = '/web/export/zb_excel_export'
+import openerp.http as http
+from openerp.http import request
 
-    def from_data(self, fields, rows):
+class ZbExcelExport(ExcelExport):
+    #_cp_path = '/web/export/zb_excel_export'
+
+    def zb_from_data(self, fields, rows):
         workbook = xlwt.Workbook()
         worksheet = workbook.add_sheet('Sheet 1')
         style = xlwt.easyxf('align: wrap yes')
@@ -87,11 +90,11 @@ class ZbExcelExport(ExcelExport):
         fp.close()
         return data
     
-    @openerpweb.httprequest
-    def index(self, req, data, token):
+    @http.route('/web/export/zb_excel_export', type='http', auth='user')
+    def export_xls_view(self, req, data, token):
         data = json.loads(data)
         return req.make_response(
-            self.from_data(data.get('headers', []), data.get('rows', [])),
+            self.zb_from_data(data.get('headers', []), data.get('rows', [])),
                            headers=[
                                     ('Content-Disposition', 'attachment; filename="%s.xls"'
                                         % data.get('model', 'Export')),
@@ -100,85 +103,5 @@ class ZbExcelExport(ExcelExport):
                                  cookies={'fileToken': token}
                                  )
 
-class ExportPdf(Export):
-    _cp_path = '/web/export/zb_pdf'
-    fmt = {
-        'tag': 'pdf',
-        'label': 'PDF',
-        'error': None
-    }
-    
-    def content_type(self):
-        return 'application/pdf'
-    
-    def filename(self, base):
-        return base + '.pdf'
-    
-    def from_data(self, uid, fields, rows, company_name):
-        pageSize=[210.0,297.0]
-        new_doc = etree.Element("report")
-        config = etree.SubElement(new_doc, 'config')
-        def _append_node(name, text):
-            n = etree.SubElement(config, name)
-            n.text = text
-        _append_node('date', time.strftime(str(locale.nl_langinfo(locale.D_FMT).replace('%y', '%Y'))))
-        _append_node('PageSize', '%.2fmm,%.2fmm' % tuple(pageSize))
-        _append_node('PageWidth', '%.2f' % (pageSize[0] * 2.8346,))
-        _append_node('PageHeight', '%.2f' %(pageSize[1] * 2.8346,))
-        _append_node('PageFormat', 'a4')
-        _append_node('header-date', time.strftime(str(locale.nl_langinfo(locale.D_FMT).replace('%y', '%Y'))))
-        _append_node('company', company_name)
-        l = []
-        t = 0
-        temp = []
-        tsum = []
-        skip_index = []
-        header = etree.SubElement(new_doc, 'header')
-        i = 0
-        for f in fields:
-            if f.get('header_data_id', False):
-                value = f.get('header_name', "")
-                field = etree.SubElement(header, 'field')
-                field.text = tools.ustr(value)
-            else:
-                skip_index.append(i)
-            i += 1
-        lines = etree.SubElement(new_doc, 'lines')
-        for row_lines in rows:
-            node_line = etree.SubElement(lines, 'row')
-            j = 0
-            for row in row_lines:
-                if not j in skip_index:
-                    para = "yes"
-                    tree = "no"
-                    value = row.get('data', '')
-                    if row.get('bold', False):
-                        para = "group"
-                    if row.get('number', False):
-                        tree = "float"
-                    col = etree.SubElement(node_line, 'col', para=para, tree=tree)
-                    col.text = tools.ustr(value)
-                j += 1
-        transform = etree.XSLT(
-            etree.parse(os.path.join(tools.config['root_path'],
-                                     'addons/base/report/custom_new.xsl')))
-        rml = etree.tostring(transform(new_doc))
-        self.obj = trml2pdf.parseNode(rml, title='Printscreen')
-        return self.obj
-
-class ZbPdfExport(ExportPdf):
-    _cp_path = '/web/export/zb_pdf_export'
-    
-    @openerpweb.httprequest
-    def index(self, req, data, token):
-        data = json.loads(data)
-        uid = data.get('uid', False)
-        return req.make_response(self.from_data(uid, data.get('headers', []), data.get('rows', []),
-                                                data.get('company_name','')),
-                                 headers=[('Content-Disposition',
-                                           'attachment; filename="%s.pdf"'
-                                        % data.get('model', 'Export')),
-                                          ('Content-Type', self.content_type)],
-                                 cookies={'fileToken': int(token)})
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

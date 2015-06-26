@@ -6,9 +6,9 @@ import time
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT, DEFAULT_SERVER_DATETIME_FORMAT, DATETIME_FORMATS_MAP, float_compare
 from openerp import SUPERUSER_ID
 
-class mrp_production(orm.Model):
-    _name = 'mrp.production'    
-    _inherit = 'mrp.production'      
+class mrp_repair(orm.Model):
+    _name = 'mrp.repair'    
+    _inherit = 'mrp.repair'      
         
     _columns = {
         'fal_serie_name_id' : fields.many2one('fal.serie.name','Serie Name'),
@@ -56,10 +56,6 @@ class mrp_production(orm.Model):
         'fal_comment_for_vh' : fields.text('Comment'),
     }
 
-    _defaults = {
-        'fal_cote_x' : 0,
-    }
-    
     def get_by_stroke_option(self, cr, uid, ref, fal_stroke):                  
 
         return self.pool.get('sale.order.line').get_by_stroke_option(cr, uid, ref, fal_stroke)
@@ -78,4 +74,4 @@ class mrp_production(orm.Model):
 
         return self.pool.get('sale.order.line').onchange_bomref(cr, uid, ids, fal_bom_reference)
         
-#end of mrp_production()
+#end of mrp_repair()

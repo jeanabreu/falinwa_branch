@@ -33,6 +33,7 @@ class mrp_production(orm.Model):
         prod_line_obj = self.pool.get('mrp.production.product.line')
         workcenter_line_obj = self.pool.get('mrp.production.workcenter.line')
         product_obj = self.pool.get('product.product')
+        operation_obj = self.pool.get('mrp.routing.workcenter')
         for production in self.browse(cr, uid, ids, context=context):
             #unlink product_lines
             prod_line_obj.unlink(cr, SUPERUSER_ID, [line.id for line in production.product_lines], context=context)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    
+    <!-- mrp.production -->        
+    <act_window name="Check Availablity"
+        res_model="multi.check.stock.mrp.wizard"
+        src_model="mrp.production"
+        view_mode="form"
+        target="new"
+        multi="True"
+        key2="client_action_multi"
+        id="action_fal_mrp_checking_stock"/>
+        
+</data>
+</openerp>

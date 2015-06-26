@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record id="group_can_export" model="res.groups">
+        <field name="name">Can Export</field>
+        <field name="comment">the user will have access to export.</field>
+    </record>
+
+</data>
+</openerp>

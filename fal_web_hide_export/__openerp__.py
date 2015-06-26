@@ -11,12 +11,14 @@
     'data': [
     ],
     'update_xml': [
-        'views/snippets.xml',
+        'security/web_security.xml',
     ],
     'css': [],
     'js' : [
     ],
-    'qweb': [],
+    'qweb' : [
+        "static/src/xml/*.xml",
+    ],
     'installable': True,
     'active': False,
     'application' : False,

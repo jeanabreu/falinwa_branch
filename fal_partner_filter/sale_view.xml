@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="fal_sale_order_line_form_palfil">
+            <field name="name">sale.order.line.tree.view.form.palfil</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='partner_id']" position="attributes">
+                        <attribute name="domain">[('customer','=',True), ('is_company','=',True)]</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>    
+        
+    </data>
+</openerp>

@@ -10,9 +10,19 @@ class account_invoice(models.Model):
     _name = "account.invoice"
     _inherit = "account.invoice"
 
+    @api.depends('invoice_line.discount')
+    def _fal_discount_exists(self):
+        for rec in self:
+            self.fal_discount_exists = False
+            for line in rec.invoice_line:
+                if line.discount:                    
+                    self.fal_discount_exists = True
+                    
     #fields start here
     fal_incoterm = fields.Many2one('stock.incoterms', 'Incoterm', help="International Commercial Terms are a series of predefined commercial terms used in international transactions.", required=True)
     payment_term = fields.Many2one(required=True)
+    fal_discount_exists = fields.Boolean(string='Discount Exists', compute='_fal_discount_exists',
+            help='It indicates that invoice has at least one discount.')
     #end here
         
 #end of account_invoice()

@@ -24,7 +24,7 @@
             
         <!-- modify sale pdf -->                
         <template id="report_saleorder_document_apsourcing_ext" inherit_id="sale.report_saleorder_document">
-            <xpath expr="//div[@class='page']/div[@class='row'][1]" position="replace">
+            <xpath expr="//div[@class='page']/div[@class='row'][1]" position="replace">               
                 <div class="row">
                     <div class="col-xs-6">
                         <strong>Invoice Address:</strong>
@@ -57,8 +57,8 @@
                 <tr>
                     <th>Description</th>
                     <th class="text-right">Quantity</th>
-                    <th class="text-right">Unit Price</th>
-                    <th groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                    <th class="text-right">Unit Price</th>                    
+                    <th t-if="o.fal_discount_exists">Disc.(%)</th>
                     <th class="text-right">Price</th>
                 </tr>
             </xpath>
@@ -74,7 +74,7 @@
                     <td class="text-right">
                         <span t-field="l.price_unit"/>
                     </td>
-                    <td groups="sale.group_discount_per_so_line">
+                    <td t-if="o.fal_discount_exists">
                         <span t-field="l.discount"/>
                     </td>
                     <td class="text-right">
@@ -138,7 +138,7 @@
                     <th>Description</th>
                     <th>Quantity</th>
                     <th class="text-right">Unit Price</th>
-                    <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
+                    <th class="text-right" t-if="o.fal_discount_exists">Discount (%)</th>
                     <th class="text-right">Amount</th>
                 </tr>
             </xpath>
@@ -152,7 +152,7 @@
                     <td class="text-right">
                         <span t-field="l.price_unit"/>
                     </td>
-                    <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
+                    <td class="text-right" t-if="o.fal_discount_exists"><span t-field="l.discount"/></td>
                     <td class="text-right">
                         <span t-field="l.price_subtotal" 
                             t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>

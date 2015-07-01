@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-    
+
+        <record id="stock_move_tree_eec_ext" model="ir.ui.view">
+            <field name="name">Stock Moves EECEXT</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date" position="attributes">
+                        <attribute name="groups"></attribute>
+                        <attribute name="widget">date</attribute>
+                    </field>
+                    <field name="date_expected" position="attributes">
+                        <attribute name="widget">date</attribute>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
         <record id="view_move_tree_reception_picking_eec_ext" model="ir.ui.view">
             <field name="name">stock.move.tree2</field>
             <field name="model">stock.move</field>
@@ -11,16 +28,16 @@
                     <tree position="attributes">
                         <attribute name="editable">bottom</attribute>
                     </tree>
-                    <field name="date" position="attributes">
-                        <attribute name="invisible">1</attribute>
-                    </field>
                     <field name="date_expected" invisible="1" position="replace">
                     </field>
                     <field name="date" position="after">
                         <field name="date_expected" required="1" widget="date" on_change="onchange_date(date,date_expected)" />
                     </field>
+                    <field name="date" position="replace">
+                    </field>
                     <field name="date_expected" position="after">
                         <button name="open_move" type="object" string="View in Form View" icon="gtk-justify-fill"/>
+                        <field name="date" widget="date"/>
                     </field>
                     <field name="partner_id" position="before">
                         <field name="fal_partner_id" />

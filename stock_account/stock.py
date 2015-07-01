@@ -200,7 +200,7 @@ class stock_picking(osv.osv):
     def __get_picking_move(self, cr, uid, ids, context={}):
         res = []
         for move in self.pool.get('stock.move').browse(cr, uid, ids, context=context):
-            if move.picking_id:
+            if move.picking_id and move.invoice_state != move.picking_id.invoice_state:
                 res.append(move.picking_id.id)
         return res
 
@@ -304,7 +304,6 @@ class stock_picking(osv.osv):
             _user_id = uid
             key = (partner, currency_id, company.id, _user_id)
             #key = (partner, currency_id, company.id, user_id)
-            
             invoice_vals = self._get_invoice_vals(cr, uid, key, inv_type, journal_id, move, context=context)
 
             if key not in invoices:
@@ -321,12 +320,12 @@ class stock_picking(osv.osv):
             invoice_line_vals['invoice_id'] = invoices[key]
             invoice_line_vals['origin'] = origin
             if not is_extra_move[move.id]:
-                product_price_unit[invoice_line_vals['product_id']] = invoice_line_vals['price_unit']
-            if is_extra_move[move.id] and invoice_line_vals['product_id'] in product_price_unit:
-                invoice_line_vals['price_unit'] = product_price_unit[invoice_line_vals['product_id']]
+                product_price_unit[invoice_line_vals['product_id'], invoice_line_vals['uos_id']] = invoice_line_vals['price_unit']
+            if is_extra_move[move.id] and (invoice_line_vals['product_id'], invoice_line_vals['uos_id']) in product_price_unit:
+                invoice_line_vals['price_unit'] = product_price_unit[invoice_line_vals['product_id'], invoice_line_vals['uos_id']]
             if is_extra_move[move.id]:
-                desc = (inv_type == 'out_invoice' and move.product_id.product_tmpl_id.description_sale) or \
-                    (inv_type == 'in_invoice' and move.product_id.product_tmpl_id.description_purchase)
+                desc = (inv_type in ('out_invoice', 'out_refund') and move.product_id.product_tmpl_id.description_sale) or \
+                    (inv_type in ('in_invoice','in_refund') and move.product_id.product_tmpl_id.description_purchase)
                 invoice_line_vals['name'] += ' ' + desc if desc else ''
                 if extra_move_tax[move.picking_id, move.product_id]:
                     invoice_line_vals['invoice_line_tax_id'] = extra_move_tax[move.picking_id, move.product_id]

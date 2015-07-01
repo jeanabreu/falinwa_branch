@@ -1,22 +1,23 @@
-# Turkish translation for openobject-addons
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
-# This file is distributed under the same license as the openobject-addons package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
-#
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * website
+# 
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014
+# Saban Yildiz <sabany@projetgrup.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: openobject-addons\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: Odoo 8.0\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-21 14:08+0000\n"
-"PO-Revision-Date: 2015-05-11 01:04+0000\n"
-"Last-Translator: Ediz Duman <neps1192@gmail.com>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"PO-Revision-Date: 2015-06-26 12:52+0000\n"
+"Last-Translator: Saban Yildiz <sabany@projetgrup.com>\n"
+"Language-Team: Turkish (http://www.transifex.com/projects/p/odoo-8/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-05-12 05:37+0000\n"
-"X-Generator: Launchpad (build 17487)\n"
+"Content-Transfer-Encoding: \n"
 "Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: website
 #: view:website:website.snippets
@@ -33,8 +34,7 @@ msgid "&nbsp;"
 msgstr "&nbsp;"
 
 #. module: website
-#: view:website:website.info
-#: view:website:website.themes
+#: view:website:website.info view:website:website.themes
 msgid "&times;"
 msgstr "& zaman;"
 
@@ -55,18 +55,14 @@ msgstr "(Youtube, Vimeo, Dailymotion)"
 msgid ""
 ",\n"
 "                            updated:"
-msgstr ""
-",\n"
-"                            güncelle:"
+msgstr ",\n                            güncelle:"
 
 #. module: website
 #: view:website:website.layout
 msgid ""
 ",\n"
 "                the #1"
-msgstr ""
-",\n"
-"                  #1"
+msgstr ",\n                  #1"
 
 #. module: website
 #: view:website:website.info
@@ -117,7 +113,7 @@ msgstr "404: Sayfa bulunamadı!"
 #. module: website
 #: view:website:website.snippets
 msgid "50,000+ companies run Odoo to grow their businesses."
-msgstr ""
+msgstr "50.000'den fazla firma, işini büyütmek için Odoo'yu kullanıyor."
 
 #. module: website
 #: model:ir.actions.act_window,help:website.action_module_website
@@ -125,10 +121,7 @@ msgid ""
 "<p><b>No website module found!</b></p>\n"
 "              <p>You should try others search criteria.</p>\n"
 "            "
-msgstr ""
-"<p><b>Websitesi modül bulunamadı!</b></p>\n"
-"              <p>Başka kriterlerle aramayı deneyiniz.</p>\n"
-"            "
+msgstr "<p><b>Websitesi modül bulunamadı!</b></p>\n              <p>Başka kriterlerle aramayı deneyiniz.</p>\n            "
 
 #. module: website
 #: view:website:website.snippets
@@ -159,8 +152,8 @@ msgstr "Sakin mavi gökyüzü"
 #: help:ir.actions.server,website_published:0
 msgid ""
 "A code server action can be executed from the website, using a "
-"dedicatedcontroller. The address is <base>/website/action/<website_path>.Set "
-"this field as True to allow users to run this action. If itset to is False "
+"dedicatedcontroller. The address is <base>/website/action/<website_path>.Set"
+" this field as True to allow users to run this action. If itset to is False "
 "the action cannot be run through the website."
 msgstr ""
 
@@ -178,8 +171,7 @@ msgstr "İyi bir altyazı"
 #: view:website:website.snippets
 msgid ""
 "A great way to catch your reader's attention is to tell a story.\n"
-"                            Everything you consider writing can be told as a "
-"story."
+"                            Everything you consider writing can be told as a story."
 msgstr ""
 
 #. module: website
@@ -195,8 +187,7 @@ msgid "A small explanation of this great"
 msgstr "Bu büyük olay için küçük bir açıklama"
 
 #. module: website
-#: view:website:website.aboutus
-#: view:website:website.layout
+#: view:website:website.aboutus view:website:website.layout
 msgid "About us"
 msgstr "Hakkımızda"
 
@@ -204,10 +195,8 @@ msgstr "Hakkımızda"
 #: view:website:website.snippets
 msgid ""
 "Adapt these three columns to fit you design need.\n"
-"                            To duplicate, delete or move columns, select "
-"the\n"
-"                            column and use the top icons to perform your "
-"action."
+"                            To duplicate, delete or move columns, select the\n"
+"                            column and use the top icons to perform your action."
 msgstr ""
 
 #. module: website
@@ -279,7 +268,8 @@ msgstr "Menüde sayfayı ekle"
 #. module: website
 #: view:website:website.snippets
 msgid ""
-"All these icons are licensed under creative commons so that you can use them."
+"All these icons are licensed under creative commons so that you can use "
+"them."
 msgstr ""
 
 #. module: website
@@ -310,8 +300,7 @@ msgid "And a great subtitle too"
 msgstr "Ve iyi bir alt başlık"
 
 #. module: website
-#: view:website:website.themes
-#: view:website:website.view_website_form
+#: view:website:website.themes view:website:website.view_website_form
 #: view:website.config.settings:website.view_website_config_settings
 msgid "Apply"
 msgstr "Uygula"
@@ -459,15 +448,13 @@ msgstr "Buton"
 #. module: website
 #: view:website:website.snippets
 msgid "Can I use it to manage projects based on agile methodologies?"
-msgstr ""
-"Ben çevik yöntemlere dayalı projeleri yönetmek için kullanabilir miyim?"
+msgstr "Ben çevik yöntemlere dayalı projeleri yönetmek için kullanabilir miyim?"
 
 #. module: website
 #. openerp-web
 #: code:addons/website/static/src/xml/website.editor.xml:310
 #: code:addons/website/static/src/xml/website.translator.xml:46
-#: code:addons/website/static/src/xml/website.xml:74
-#: view:website:website.500
+#: code:addons/website/static/src/xml/website.xml:74 view:website:website.500
 #: view:website:website.view_website_form
 #: view:website.config.settings:website.view_website_config_settings
 #, python-format
@@ -539,8 +526,7 @@ msgstr "Alt Menüleri"
 #: view:website:website.snippets
 msgid ""
 "Choose a vibrant image and write an inspiring paragraph\n"
-"                            about it. It does not have to be long, but it "
-"should\n"
+"                            about it. It does not have to be long, but it should\n"
 "                            reinforce your image."
 msgstr ""
 
@@ -656,20 +642,15 @@ msgstr "Bizimle iletişime geçin"
 #: view:website:website.snippets
 msgid ""
 "Consider telling\n"
-"                            a great story that provides personality. Writing "
-"a story\n"
-"                            with personality for potential clients will "
-"asist with\n"
-"                            making a relationship connection. This shows up "
-"in small\n"
-"                            quirks like word choices or phrases. Write from "
-"your point\n"
+"                            a great story that provides personality. Writing a story\n"
+"                            with personality for potential clients will asist with\n"
+"                            making a relationship connection. This shows up in small\n"
+"                            quirks like word choices or phrases. Write from your point\n"
 "                            of view, not from someone else's experience."
 msgstr ""
 
 #. module: website
-#: view:website:website.403
-#: view:website:website.404
+#: view:website:website.403 view:website:website.404
 msgid "Contact Us"
 msgstr "İletişim"
 
@@ -679,8 +660,7 @@ msgid "Contact Us Now"
 msgstr "Şimdi Bize Ulaşın"
 
 #. module: website
-#: view:website:website.contactus
-#: view:website:website.layout
+#: view:website:website.contactus view:website:website.layout
 #: view:website:website.snippets
 #: model:website.menu,name:website.menu_contactus
 msgid "Contact us"
@@ -689,9 +669,7 @@ msgstr "İletişim"
 #. module: website
 #: view:website:website.contactus
 msgid "Contact us about anything related to our company or services."
-msgstr ""
-"Bizim şirket veya hizmetleri ile ilgili herhangi bir şey hakkında bize "
-"ulaşın."
+msgstr "Bizim şirket veya hizmetleri ile ilgili herhangi bir şey hakkında bize ulaşın."
 
 #. module: website
 #: view:website:website.snippets
@@ -699,8 +677,7 @@ msgid "Contact us »"
 msgstr "Bize Ulaşın »"
 
 #. module: website
-#: view:website:website.layout
-#: view:website:website.snippets
+#: view:website:website.layout view:website:website.snippets
 msgid "Content"
 msgstr "İçerik"
 
@@ -744,20 +721,16 @@ msgid "Create page '%s'"
 msgstr "Sayfa oluştur '%s'"
 
 #. module: website
-#: field:website,create_uid:0
-#: field:website.config.settings,create_uid:0
+#: field:website,create_uid:0 field:website.config.settings,create_uid:0
 #: field:website.converter.test.sub,create_uid:0
-#: field:website.menu,create_uid:0
-#: field:website.seo.metadata,create_uid:0
+#: field:website.menu,create_uid:0 field:website.seo.metadata,create_uid:0
 msgid "Created by"
 msgstr "Oluşturan"
 
 #. module: website
-#: field:website,create_date:0
-#: field:website.config.settings,create_date:0
+#: field:website,create_date:0 field:website.config.settings,create_date:0
 #: field:website.converter.test.sub,create_date:0
-#: field:website.menu,create_date:0
-#: field:website.seo.metadata,create_date:0
+#: field:website.menu,create_date:0 field:website.seo.metadata,create_date:0
 msgid "Created on"
 msgstr "Oluşturuldu"
 
@@ -782,9 +755,7 @@ msgstr "Özelleştirme"
 msgid ""
 "Customize any block through this menu. Try to change the background of the "
 "banner."
-msgstr ""
-"Bu menü aracılığıyla herhangi bir engelle Özelleştir. Banner arka plan "
-"değiştirmek için deneyin."
+msgstr "Bu menü aracılığıyla herhangi bir engelle Özelleştir. Banner arka plan değiştirmek için deneyin."
 
 #. module: website
 #. openerp-web
@@ -861,8 +832,7 @@ msgstr "Blokları Sil"
 #: view:website:website.snippets
 msgid ""
 "Delete the above image or replace it with a picture\n"
-"                            that illustrates your message. Click on the "
-"picture to\n"
+"                            that illustrates your message. Click on the picture to\n"
 "                            change it's"
 msgstr ""
 
@@ -870,8 +840,7 @@ msgstr ""
 #: view:website:website.snippets
 msgid ""
 "Deploy new stores with just an internet connection: no\n"
-"                    installation, no specific hardware required. It works "
-"with any\n"
+"                    installation, no specific hardware required. It works with any\n"
 "                    iPad, Tablet PC, laptop or industrial POS machine."
 msgstr ""
 
@@ -899,7 +868,7 @@ msgstr "Açıklama..."
 #: code:addons/website/static/src/xml/website.seo.xml:71
 #, python-format
 msgid "Discard"
-msgstr "Vazgeç"
+msgstr "Vazgeçme"
 
 #. module: website
 #. openerp-web
@@ -931,8 +900,7 @@ msgid "Does it works offline?"
 msgstr "Çevrimdışı çalışıyor mu?"
 
 #. module: website
-#: view:website:website.view_website_form
-#: field:website,name:0
+#: view:website:website.view_website_form field:website,name:0
 #: view:website.config.settings:website.view_website_config_settings
 msgid "Domain"
 msgstr "Domain"
@@ -997,8 +965,7 @@ msgid "Duplicate blocks to add more features."
 msgstr "Daha fazla özellik eklemek için yinelenen bir blok."
 
 #. module: website
-#: view:website:website.layout
-#: view:website:website.publish_management
+#: view:website:website.layout view:website:website.publish_management
 msgid "Edit"
 msgstr "Düzenle"
 
@@ -1032,8 +999,7 @@ msgstr "Arkaplanı Düzenle"
 msgid ""
 "Edit the content below this line to adapt the default \"page not found\" "
 "page."
-msgstr ""
-"Aşağıda varsayılan sayfa \"sayfa bulunamadı\" uyum için bu satırı düzenleyin."
+msgstr "Aşağıda varsayılan sayfa \"sayfa bulunamadı\" uyum için bu satırı düzenleyin."
 
 #. module: website
 #. openerp-web
@@ -1197,9 +1163,9 @@ msgstr "Ücretsiz nakliye, memnun ya da karşılanır."
 #. module: website
 #: view:website:website.snippets
 msgid ""
-"From the main container, you can change the background to highlight features."
-msgstr ""
-"Ana kapsayıcıdan özellikleri vurgulamak için arka plan değiştirebilirsiniz."
+"From the main container, you can change the background to highlight "
+"features."
+msgstr "Ana kapsayıcıdan özellikleri vurgulamak için arka plan değiştirebilirsiniz."
 
 #. module: website
 #. openerp-web
@@ -1214,12 +1180,10 @@ msgstr "Banner özelliklerini alın"
 #, python-format
 msgid ""
 "Get this page efficiently referenced in Google to attract more visitors."
-msgstr ""
-"Daha fazla ziyaretçi çekmek için etkin  Google başvurulan bu sayfayı alın."
+msgstr "Daha fazla ziyaretçi çekmek için etkin  Google başvurulan bu sayfayı alın."
 
 #. module: website
-#: field:website,social_github:0
-#: field:website.config.settings,social_github:0
+#: field:website,social_github:0 field:website.config.settings,social_github:0
 msgid "GitHub Account"
 msgstr "GitHub Hesap"
 
@@ -1312,15 +1276,13 @@ msgid "Hide link"
 msgstr "Bağlantıyı gizle"
 
 #. module: website
-#: view:website:website.500
-#: view:website:website.layout
+#: view:website:website.500 view:website:website.layout
 #: model:website.menu,name:website.menu_homepage
 msgid "Home"
 msgstr "Ana Sayfa"
 
 #. module: website
-#: view:website:website.403
-#: view:website:website.404
+#: view:website:website.403 view:website:website.404
 #: view:website:website.layout
 msgid "Homepage"
 msgstr "Ana Sayfa"
@@ -1333,26 +1295,18 @@ msgid "Horizontal flip"
 msgstr "Yatay Çevir"
 
 #. module: website
-#: field:website,id:0
-#: field:website.config.settings,id:0
-#: field:website.converter.test.sub,id:0
-#: field:website.menu,id:0
-#: field:website.qweb,id:0
-#: field:website.qweb.field,id:0
-#: field:website.qweb.field.contact,id:0
-#: field:website.qweb.field.date,id:0
+#: field:website,id:0 field:website.config.settings,id:0
+#: field:website.converter.test.sub,id:0 field:website.menu,id:0
+#: field:website.qweb,id:0 field:website.qweb.field,id:0
+#: field:website.qweb.field.contact,id:0 field:website.qweb.field.date,id:0
 #: field:website.qweb.field.datetime,id:0
-#: field:website.qweb.field.duration,id:0
-#: field:website.qweb.field.float,id:0
-#: field:website.qweb.field.html,id:0
-#: field:website.qweb.field.image,id:0
+#: field:website.qweb.field.duration,id:0 field:website.qweb.field.float,id:0
+#: field:website.qweb.field.html,id:0 field:website.qweb.field.image,id:0
 #: field:website.qweb.field.integer,id:0
 #: field:website.qweb.field.many2one,id:0
-#: field:website.qweb.field.monetary,id:0
-#: field:website.qweb.field.qweb,id:0
+#: field:website.qweb.field.monetary,id:0 field:website.qweb.field.qweb,id:0
 #: field:website.qweb.field.relative,id:0
-#: field:website.qweb.field.selection,id:0
-#: field:website.qweb.field.text,id:0
+#: field:website.qweb.field.selection,id:0 field:website.qweb.field.text,id:0
 #: field:website.seo.metadata,id:0
 msgid "ID"
 msgstr "ID"
@@ -1367,9 +1321,7 @@ msgstr "XML dosyasında tanımlanan tablo görünümünün ID si"
 msgid ""
 "If this error is caused by a change of yours in the templates, you have the "
 "possibility to reset one or more templates to their"
-msgstr ""
-"Senin değişiklik şablonları ile bu hataya neden olur, bir veya daha çok "
-"şablonu sıfırlamak için olasılığı vardır onların"
+msgstr "Senin değişiklik şablonları ile bu hataya neden olur, bir veya daha çok şablonu sıfırlamak için olasılığı vardır onların"
 
 #. module: website
 #. openerp-web
@@ -1382,10 +1334,8 @@ msgstr "Mevcut baskı almayı iptal ederseniz,"
 #: view:website:website.snippets
 msgid ""
 "If you try to write with a wide general\n"
-"                            audience in mind, your story will ring false and "
-"be bland.\n"
-"                            No one will be interested. Write for one person. "
-"If it’s genuine for the one, it’s genuine for the rest."
+"                            audience in mind, your story will ring false and be bland.\n"
+"                            No one will be interested. Write for one person. If it’s genuine for the one, it’s genuine for the rest."
 msgstr ""
 
 #. module: website
@@ -1421,10 +1371,8 @@ msgstr "Metin-Resim"
 #, python-format
 msgid ""
 "In this mode, you can only translate texts.  To\n"
-"                            change the structure of the page, you must edit "
-"the\n"
-"                            master page. Each modification on the master "
-"page\n"
+"                            change the structure of the page, you must edit the\n"
+"                            master page. Each modification on the master page\n"
 "                            is automatically applied to all translated\n"
 "                            versions."
 msgstr ""
@@ -1520,8 +1468,7 @@ msgid "Language"
 msgstr "Dil"
 
 #. module: website
-#: field:website,language_ids:0
-#: field:website.config.settings,language_ids:0
+#: field:website,language_ids:0 field:website.config.settings,language_ids:0
 msgid "Languages"
 msgstr "Diller"
 
@@ -1534,20 +1481,16 @@ msgid "Large"
 msgstr "Geniş"
 
 #. module: website
-#: field:website,write_uid:0
-#: field:website.config.settings,write_uid:0
-#: field:website.converter.test.sub,write_uid:0
-#: field:website.menu,write_uid:0
+#: field:website,write_uid:0 field:website.config.settings,write_uid:0
+#: field:website.converter.test.sub,write_uid:0 field:website.menu,write_uid:0
 #: field:website.seo.metadata,write_uid:0
 msgid "Last Updated by"
 msgstr "Son Güncelleyen"
 
 #. module: website
-#: field:website,write_date:0
-#: field:website.config.settings,write_date:0
+#: field:website,write_date:0 field:website.config.settings,write_date:0
 #: field:website.converter.test.sub,write_date:0
-#: field:website.menu,write_date:0
-#: field:website.seo.metadata,write_date:0
+#: field:website.menu,write_date:0 field:website.seo.metadata,write_date:0
 msgid "Last Updated on"
 msgstr "Son Güncellenen"
 
@@ -1635,8 +1578,7 @@ msgid "Margin resize"
 msgstr "Kenar boşluğu boyutlandırma"
 
 #. module: website
-#: view:website:website.403
-#: view:website:website.404
+#: view:website:website.403 view:website:website.404
 msgid "Maybe you were looking for one of these popular pages ?"
 msgstr "Marj boyutlandırma"
 
@@ -1696,8 +1638,7 @@ msgstr "500'den fazla başarılı projeler"
 #: code:addons/website/static/src/xml/website.seo.xml:36
 #, python-format
 msgid "Most searched topics related to your keywords, ordered by importance:"
-msgstr ""
-"En çok önemine göre sıralı anahtar kelimeleriniz, ilgili konuları arandı:"
+msgstr "En çok önemine göre sıralı anahtar kelimeleriniz, ilgili konuları arandı:"
 
 #. module: website
 #: view:website:website.snippet_options
@@ -1735,8 +1676,7 @@ msgid "New or existing page"
 msgstr "Yeni veya mevcut sayfa"
 
 #. module: website
-#: view:website:website.kanban_contain
-#: view:website:website.pager
+#: view:website:website.kanban_contain view:website:website.pager
 msgid "Next"
 msgstr "Sonraki"
 
@@ -1760,8 +1700,7 @@ msgstr "Hiç biri"
 #. module: website
 #. openerp-web
 #: code:addons/website/static/src/xml/website.backend.xml:10
-#: view:website:website.publish_management
-#: view:website:website.publish_short
+#: view:website:website.publish_management view:website:website.publish_short
 #, python-format
 msgid "Not Published"
 msgstr "Yayımlanmadı"
@@ -1772,8 +1711,7 @@ msgid "Note: To hide this page, uncheck it from the top Customize menu."
 msgstr ""
 
 #. module: website
-#: view:website:website.layout
-#: view:website:website.snippets
+#: view:website:website.layout view:website:website.snippets
 msgid "Odoo"
 msgstr "Odoo"
 
@@ -1786,24 +1724,21 @@ msgstr "Odoo sürüm"
 #: view:website:website.snippets
 msgid ""
 "Odoo provides essential platform for our project management.\n"
-"                                                    Things are better "
-"organized and more visible with it."
+"                                                    Things are better organized and more visible with it."
 msgstr ""
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Odoo provides essential platform for our project management.\n"
-"                                            Things are better organized and "
-"more visible with it."
+"                                            Things are better organized and more visible with it."
 msgstr ""
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Odoo provides essential platform for our project management.\n"
-"                                Things are better organized and more visible "
-"with it."
+"                                Things are better organized and more visible with it."
 msgstr ""
 
 #. module: website
@@ -1890,22 +1825,16 @@ msgstr "Ürünler ve Hizmetler"
 #. module: website
 #: view:website:website.aboutus
 msgid ""
-"Our products are designed for small to medium size companies willing to "
-"optimize\n"
+"Our products are designed for small to medium size companies willing to optimize\n"
 "                                      their performance."
-msgstr ""
-"Ürünlerimiz, küçük ve orta boy şirketlerin performanslarını optimize\n"
-" etmek için tasarlanmıştır."
+msgstr "Ürünlerimiz, küçük ve orta boy şirketlerin performanslarını optimize\n etmek için tasarlanmıştır."
 
 #. module: website
 #: view:website:website.layout
 msgid ""
-"Our products are designed for small to medium size companies willing to "
-"optimize\n"
+"Our products are designed for small to medium size companies willing to optimize\n"
 "                            their performance."
-msgstr ""
-"Ürünlerimiz, küçük ve orta boy şirketlerin performanslarını optimize\n"
-" etmek için tasarlanmıştır."
+msgstr "Ürünlerimiz, küçük ve orta boy şirketlerin performanslarını optimize\n etmek için tasarlanmıştır."
 
 #. module: website
 #. openerp-web
@@ -1931,10 +1860,7 @@ msgstr "Panel"
 msgid ""
 "Panels are a great tool to compare offers or to emphasize on\n"
 "                key features. To compare products, use the inside columns."
-msgstr ""
-"Panelleri teklifleri karşılaştırmak veya on\n"
-" temel özellikleri vurgulamak için harika bir araç vardır. İçine ürünleri "
-"karşılaştırmak için kullanın sütunlar."
+msgstr "Panelleri teklifleri karşılaştırmak veya on\n temel özellikleri vurgulamak için harika bir araç vardır. İçine ürünleri karşılaştırmak için kullanın sütunlar."
 
 #. module: website
 #: view:website:website.snippets
@@ -1999,8 +1925,7 @@ msgid "Powered by"
 msgstr "Powered by"
 
 #. module: website
-#: view:website:website.kanban_contain
-#: view:website:website.pager
+#: view:website:website.kanban_contain view:website:website.pager
 msgid "Prev"
 msgstr "Önceki"
 
@@ -2036,14 +1961,14 @@ msgstr "Proje Yönetimi soruları"
 #: view:website:website.layout
 #, python-format
 msgid "Promote"
-msgstr ""
+msgstr "Promote"
 
 #. module: website
 #. openerp-web
 #: code:addons/website/static/src/xml/website.seo.xml:14
 #, python-format
 msgid "Promote This Page"
-msgstr ""
+msgstr "Promote"
 
 #. module: website
 #. openerp-web
@@ -2051,7 +1976,7 @@ msgstr ""
 #: view:website:website.layout
 #, python-format
 msgid "Promote page on the web"
-msgstr ""
+msgstr "Promote"
 
 #. module: website
 #: field:website,partner_id:0
@@ -2073,13 +1998,12 @@ msgstr "Yayınla"
 #: code:addons/website/static/src/js/website.tour.banner.js:83
 #, python-format
 msgid "Publish your page by clicking on the <em>'Save'</em> button."
-msgstr ""
+msgstr " <em>'Kaydet'</em> tuşuna basarak sayfanızı yayınlayın."
 
 #. module: website
 #. openerp-web
 #: code:addons/website/static/src/xml/website.backend.xml:11
-#: view:website:website.publish_management
-#: view:website:website.publish_short
+#: view:website:website.publish_management view:website:website.publish_short
 #, python-format
 msgid "Published"
 msgstr "Yayınlanan"
@@ -2087,7 +2011,7 @@ msgstr "Yayınlanan"
 #. module: website
 #: view:website:website.themes
 msgid "Pure Bootstrap"
-msgstr ""
+msgstr "Pure Bootstrap"
 
 #. module: website
 #: view:website:website.snippet_options
@@ -2100,8 +2024,7 @@ msgid "QWeb"
 msgstr "QWeb"
 
 #. module: website
-#: view:website:website.snippet_options
-#: view:website:website.snippets
+#: view:website:website.snippet_options view:website:website.snippets
 msgid "Quote"
 msgstr "Alıntı"
 
@@ -2421,7 +2344,7 @@ msgstr "Öğretici başlatın"
 msgid ""
 "Start with the customer – find out what they want\n"
 "                            and give it to them."
-msgstr ""
+msgstr "Müşteriyle başlayın - ne istediğini bulun\nve ona istediğini verin."
 
 #. module: website
 #: view:website:website.snippets
@@ -2488,7 +2411,7 @@ msgstr "Teknik adı:"
 #: view:website:website.snippets
 msgid ""
 "Tell features the visitor would like to know, not what you'd like to say."
-msgstr ""
+msgstr "Müşterilerinizin duymak istediği özellikleri söyleyin, sizin söylemek istediklerinizi değil."
 
 #. module: website
 #: view:website:website.snippets
@@ -2540,10 +2463,9 @@ msgstr "Sayfa ekleme veya üst menü eklemek 'İçerik' menü."
 #: view:website:website.snippets
 msgid ""
 "The Point of Sale works perfectly on any kind of touch enabled\n"
-"                    device, whether it's multi-touch tablets like an iPad "
-"or\n"
+"                    device, whether it's multi-touch tablets like an iPad or\n"
 "                    keyboardless resistive touchscreen terminals."
-msgstr ""
+msgstr "Satış noktası uygulaması, iPad gibi multi-touch özellikli olsun\nya da olmasın, herhangi bir dokunmatik ekranda mükemmel\nbir şekilde çalışır"
 
 #. module: website
 #: view:website:website.http_error_debug
@@ -2567,26 +2489,25 @@ msgstr "Sunucu eylemi Web sitesi üzerinden erişim tam URL."
 msgid ""
 "The image could not be deleted because it is used in the\n"
 "               following pages or views:"
-msgstr ""
+msgstr "Resim silinemedi, çünkü resim aşağıdaki sayfa\nya da görünümlerde kullanılıyor:"
 
 #. module: website
 #: view:website:website.403
 msgid "The page you were looking for could not be authorized."
-msgstr ""
+msgstr "Aradığınız sayfa yetkilendirilemedi."
 
 #. module: website
 #: view:website:website.404
 msgid ""
 "The page you were looking for could not be found; it is possible you have\n"
-"                        typed the address incorrectly, but it has most "
-"probably been removed due\n"
+"                        typed the address incorrectly, but it has most probably been removed due\n"
 "                        to the recent website reorganisation."
-msgstr ""
+msgstr "Aradığınız sayfa bulunamadı; adresi yanlış yazmış olmanız mümkün,\nfakat sayfa büyük olasılıkla web sitenin yeniden düzenlenmesi nedeniyle\nkaldırıldı."
 
 #. module: website
 #: view:website:website.500
 msgid "The selected templates will be reset to their factory settings."
-msgstr ""
+msgstr "Seçilen şablonlar fabrika ayarlarına sıfırlanacaktır."
 
 #. module: website
 #: view:website:website.snippets
@@ -2613,11 +2534,9 @@ msgstr "Üçüncü Özellik"
 #. module: website
 #: view:website:website.page_404
 msgid ""
-"This page does not exists, but you can create it as you are administrator of "
-"this site."
-msgstr ""
-"Bu sayfa mevcut değil, ama eğer bu sitenin Yöneticisi olduğundan bunu "
-"oluşturabilirsiniz."
+"This page does not exists, but you can create it as you are administrator of"
+" this site."
+msgstr "Bu sayfa mevcut değil, ama eğer bu sitenin Yöneticisi olduğundan bunu oluşturabilirsiniz."
 
 #. module: website
 #. openerp-web
@@ -2626,9 +2545,7 @@ msgstr ""
 msgid ""
 "This tutorial will guide you to build your home page. We will start by "
 "adding a banner."
-msgstr ""
-"Bu yazının ana sayfanızı oluşturmak için size gösterecektir. Bir afiş "
-"ekleyerek başlayacağız."
+msgstr "Bu yazının ana sayfanızı oluşturmak için size gösterecektir. Bir afiş ekleyerek başlayacağız."
 
 #. module: website
 #: view:website:website.snippets
@@ -2647,16 +2564,10 @@ msgstr "Başlık"
 #: view:website:website.snippets
 msgid ""
 "To add a fourth column, reduce the size of these\n"
-"                            three columns using the right icon of each "
-"block.\n"
-"                            Then, duplicate one of the column to create a "
-"new\n"
+"                            three columns using the right icon of each block.\n"
+"                            Then, duplicate one of the column to create a new\n"
 "                            one as a copy."
-msgstr ""
-"Dördüncü bir sütun eklemek için her blok. \n"
-" doğru simgesini kullanarak these\n"
-" üç sütun boyutunu küçültme sonra bir new\n"
-" tek bir kopyasını oluşturmak için sütun birini diğerinin aynısı."
+msgstr "Dördüncü bir sütun eklemek için her blok. \n doğru simgesini kullanarak these\n üç sütun boyutunu küçültme sonra bir new\n tek bir kopyasını oluşturmak için sütun birini diğerinin aynısı."
 
 #. module: website
 #: view:website:website.layout
@@ -2829,19 +2740,17 @@ msgstr "Uyarı"
 #: view:website:website.aboutus
 msgid ""
 "We are a team of passionate people whose goal is to improve everyone's\n"
-"                                      life through disruptive products. We "
-"build great products to solve your\n"
+"                                      life through disruptive products. We build great products to solve your\n"
 "                                      business problems."
-msgstr ""
+msgstr "Bizler yenilikçi ürünlerle herkesin hayatını iyileştirmeye çalışan\nbir grup tutkulu insanız. İş sorunlarınızı çözmek için müthiş\nürünler üretiyoruz."
 
 #. module: website
 #: view:website:website.layout
 msgid ""
 "We are a team of passionate people whose goal is to improve everyone's\n"
-"                            life through disruptive products. We build great "
-"products to solve your\n"
+"                            life through disruptive products. We build great products to solve your\n"
 "                            business problems."
-msgstr ""
+msgstr "Bizler yenilikçi ürünlerle herkesin hayatını iyileştirmeye çalışan\nbir grup tutkulu insanız. İş sorunlarınızı çözmek için müthiş\nürünler üretiyoruz."
 
 #. module: website
 #: view:website:website.contactus
@@ -2854,8 +2763,7 @@ msgstr "En kısa sürede sizinle irtibata geçeceğiz."
 #: model:ir.actions.act_url,name:website.action_website
 #: view:ir.actions.server:website.view_server_action_search_website
 #: model:ir.model,name:website.model_website
-#: model:ir.ui.menu,name:website.menu_website
-#: view:website:website.layout
+#: model:ir.ui.menu,name:website.menu_website view:website:website.layout
 #: field:website.menu,website_id:0
 #, python-format
 msgid "Website"
@@ -2995,21 +2903,17 @@ msgstr "Odoo POS destekleyen donanımlar nelerdir?"
 #: view:website:website.snippets
 msgid ""
 "While an internet connection is required to start the Point of\n"
-"                    Sale, it will stay operational even after a complete "
-"disconnection."
-msgstr ""
+"                    Sale, it will stay operational even after a complete disconnection."
+msgstr "Satış Noktasını başlatmak için internet bağlantısı gerekli olsa da,\nbağlantı tamamen koptuğunda da çalışıyor olacaktır."
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "With Odoo's fully integrated software, you can easily manage your\n"
-"                            meetings, schedule business calls, create "
-"recurring meetings,\n"
-"                            synchronize your agenda and easily keep in touch "
-"with your colleagues,\n"
-"                            partners and other people involved in projects "
-"or business discussions."
-msgstr ""
+"                            meetings, schedule business calls, create recurring meetings,\n"
+"                            synchronize your agenda and easily keep in touch with your colleagues,\n"
+"                            partners and other people involved in projects or business discussions."
+msgstr "Odoo'nun tamamen entegre olmuş yazılımı ile, toplantılarınızı, iş aramalarınızı\ndüzenleyebilir, tekrar eden toplantılar oluşturabilirsiniz, ajandanızı senkronize \nederek iş arkadaşlarınızla, iş ortaklarınızla  ve projelerinize katılmış ya da\n iş tartışmalarınıza katılmış kişilerle iletişim halinde olursunuz,"
 
 #. module: website
 #: view:website:website.snippet_options
@@ -3020,60 +2924,55 @@ msgstr "Ahşap"
 #: view:website:website.snippets
 msgid ""
 "Write a quote here from one of your customers. Quotes are a\n"
-"                                                    great way to build "
-"confidence in your products or services."
-msgstr ""
+"                                                    great way to build confidence in your products or services."
+msgstr "Buraya müşterilerinizden birinden bir alıntı yazın. Alıntılar\nürün ve hizmetlerinize güven oluşturmanın müthiş bir yoludur."
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Write a quote here from one of your customers. Quotes are a\n"
-"                                            great way to build confidence in "
-"your products or services."
-msgstr ""
+"                                            great way to build confidence in your products or services."
+msgstr "Buraya müşterilerinizden birinden bir alıntı yazın. Alıntılar\nürün ve hizmetlerinize güven oluşturmanın müthiş bir yoludur."
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Write a quote here from one of your customers. Quotes are a\n"
-"                                great way to build confidence in your "
-"products or services."
-msgstr ""
+"                                great way to build confidence in your products or services."
+msgstr "Buraya müşterilerinizden birinden bir alıntı yazın. Alıntılar\nürün ve hizmetlerinize güven oluşturmanın müthiş bir yoludur."
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Write a quote here from one of your customers. Quotes are a\n"
 "                great way to build confidence in your products or services."
-msgstr ""
+msgstr "Buraya müşterilerinizden birinden bir alıntı yazın. Alıntılar\nürün ve hizmetlerinize güven oluşturmanın müthiş bir yoludur."
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Write one or two paragraphs describing your product or\n"
-"                            services. To be successful your content needs to "
-"be\n"
+"                            services. To be successful your content needs to be\n"
 "                            useful to your readers."
-msgstr ""
+msgstr "Ürününüzü, hizmetinizi ya da tipik bir özelliğinizi \ntanımlayan bir ya da iki paragraf yazın. Başarılı olmak için\niçeriğiniz okuyucularınıza faydalı olmalıdır."
 
 #. module: website
 #: view:website:website.snippets
 msgid ""
 "Write one or two paragraphs describing your product,\n"
-"                            services or a specific feature. To be "
-"successful\n"
+"                            services or a specific feature. To be successful\n"
 "                            your content needs to be useful to your readers."
-msgstr ""
+msgstr "Ürününüzü, hizmetinizi ya da tipik bir özelliğinizi \ntanımlayan bir ya da iki paragraf yazın. Başarılı olmak için\niçeriğiniz okuyucularınıza faydalı olmalıdır."
 
 #. module: website
 #: view:website:website.snippets
 msgid "Write one sentence to convince visitor about your message."
-msgstr ""
+msgstr "Ziyaretçiyi mesajınız hakkında ikna edecek bir cümle yaz."
 
 #. module: website
 #: view:website:website.snippets
 msgid "Write what the customer would like to know,"
-msgstr ""
+msgstr "Müşterinin ne bilmek isteyeceğini yaz,"
 
 #. module: website
 #: view:website:website.snippet_options
@@ -3280,7 +3179,7 @@ msgstr "ve ya"
 #: code:addons/website/static/src/xml/website.translator.xml:4
 #, python-format
 msgid "or Edit Master"
-msgstr ""
+msgstr "ya da Esasını Düzenle"
 
 #. module: website
 #: view:website:website.themes

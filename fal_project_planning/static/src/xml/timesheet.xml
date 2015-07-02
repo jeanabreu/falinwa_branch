@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+    <t t-name="fal_project_planning.BudgetTimesheet">
+        <div class="oe_timesheet_budget">
+            <table>
+                <tr>
+                    <th class="oe_timesheet_budget_first_col"> </th>
+                    <t t-foreach="widget.dates" t-as="date">
+                        <th t-att-class="'oe_timesheet_weekly_date_head' + (Date.compare(date, Date.today()) === 0 ? ' oe_timesheet_weekly_today' : '')">
+                            <t t-esc="date.toString('ddd')"/><br />
+                            <t t-esc="date.toString('MMM d')"/>
+                        </th>
+                    </t>
+                    <th class="oe_timesheet_weekly_date_head">Total</th>
+                </tr>
+                <tr t-foreach="widget.tasks" t-as="task">
+                    <td class="oe_timesheet_budget_task"><a href="javascript:void(0)" t-att-data-id="JSON.stringify(task.task)"><t t-esc="widget.task_names[task.task]"/></a><a href="javascript:void(0)" t-att-data-id="JSON.stringify(task.user_id)"><t t-esc="widget.task_names[task.user_id]"/></a></td>
+                    <t t-set="day_count" t-value="0"/>
+                    <t t-foreach="task.days" t-as="day">
+                        <td t-att-class="(Date.compare(day.day, Date.today()) === 0 ? 'oe_timesheet_budget_today' : '')">
+                            <input t-if="!widget.get('effective_readonly')" class="oe_timesheet_budget_input" t-att-data-task="task.task"
+                                t-att-data-day-count="day_count" type="text"/>
+                            <span t-if="widget.get('effective_readonly')" t-att-data-task="task.task"
+                                t-att-data-day-count="day_count" class="oe_timesheet_budget_box"/>
+                            <t t-set="day_count" t-value="day_count + 1"/>
+                        </td>
+                    </t>
+                    <td t-att-data-task-total="task.task" class="oe_timesheet_total"> </td>
+                </tr>
+                <tr class="oe_timesheet_budget_add_row" style="display: none">
+                    <td t-att-colspan="widget.dates.length + 2">
+                        <button class="oe_highlight">Add</button>
+                    </td>
+                </tr>
+                <tr class="oe_timesheet_total">
+                    <td>
+                        <div class="oe_timesheet_budget_adding_tot">
+                            <div t-if="!widget.get('effective_readonly')" class="oe_timesheet_budget_adding"><button class="oe_timesheet_button_add">Add a Line</button></div>
+                            <div class="oe_timesheet_budget_tottot"><span>Total</span></div>
+                        </div>
+                    </td>
+                    <t t-set="day_count" t-value="0"/>
+                    <t t-foreach="widget.dates" t-as="date">
+                        <td class="oe_timesheet_total">
+                            <span class="oe_timesheet_budget_box" t-att-data-day-total="day_count">
+                            </span>
+                            <t t-set="day_count" t-value="day_count + 1"/>
+                        </td>
+                    </t>
+                    <td class="oe_timesheet_budget_supertotal oe_timesheet_total"> </td>
+                </tr>
+            </table>
+            <div t-if="widget.tasks.length == 0">
+                <div class="oe_view_nocontent">
+                    <p class="oe_view_nocontent_create">
+                        Click to add task.
+                    </p><p>
+                        You will be able to register your budget planning
+                    </p>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

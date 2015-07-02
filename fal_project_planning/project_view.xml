@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="edit_project_falpropla" model="ir.ui.view">
+            <field name="name">project.project.form.falpropla</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <data>
+                    <field name="date_start" position="replace">
+                    </field>
+                    <field name="date" position="replace">
+                    </field>
+                    <page name="team" position="before">
+                        <page string="Summary">
+                            <field name="id" invisible="1"/>
+                            <group>
+                                <label for="date_start" string="Project Period"/>
+                                <div><field name="date_start" class="oe_inline"/> to <field name="date" class="oe_inline"/></div>
+                            </group>
+                            <widget type="budget_timesheet">
+                            </widget>
+                        </page>
+                        <page string="Detail">
+                            <field context="{'user_id':user_id, 'timesheet_date_from': date_start, 'timesheet_date_to': date, 'default_project_id': id}" name="fal_project_timesheet_budget_line_ids" nolabel="1">
+                                <tree editable="bottom" string="Budget Timesheet Planning">
+                                    <field name="date"/>
+                                    <field name="project_id" invisible="1"/>
+                                    <field name="task_id" />
+                                    <field name="name"/>
+                                    <field name="unit_amount" widget="float_time" string="Hours" sum="Hours"/>
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </page>
+                </data>                
+            </field>
+        </record>
+
+        <record id="view_task_form2_falpropla" model="ir.ui.view">
+            <field name="name">project.task.form.falpropla</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <data>
+                    <page string="Description" position="after">
+                        <page string="Planning Detail">
+                            <field name="fal_project_timesheet_budget_line_ids" nolabel="1" readonly="1">
+                                <tree editable="bottom" string="Budget Timesheet Planning">
+                                    <field name="date"/>
+                                    <field name="project_id" invisible="1"/>
+                                    <field name="task_id" invisible="1"/>
+                                    <field name="name"/>
+                                    <field name="unit_amount" widget="float_time" string="Hours" sum="Hours"/>
+                                    <field name="user_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </page>
+                </data>                
+            </field>
+        </record>
+        
+   </data>
+</openerp>

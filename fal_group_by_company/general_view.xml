@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <record id="view_sales_order_filter_falgbc" model="ir.ui.view">
+            <field name="name">sale.order.list.select.falgbc</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Order Month" position="after">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_purchase_order_filter_falgbc" model="ir.ui.view">
+            <field name="name">purchase.order.list.select.fal.gbc</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Expected Month" position="after">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_account_invoice_filter_falgbc" model="ir.ui.view">
+            <field name="name">account.invoice.select.falgbc</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Due Month" position="after">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_voucher_filter_falgbc" model="ir.ui.view">
+            <field name="name">account.voucher.select.falgbc</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Status" position="after">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_voucher_filter_vendor_pay_falgbc" model="ir.ui.view">
+            <field name="name">account.voucher.purchase.pay.falgbc</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_vendor_pay"/>
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Status" position="after">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_voucher_filter_customer_pay_falgbc" model="ir.ui.view">
+            <field name="name">account.voucher.customer.pay.falgbc</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay"/>
+            <field name="arch" type="xml">
+                <data>
+                    <filter string="Status" position="after">
+                        <filter string="Company" domain="[]" context="{'group_by':'company_id'}" />
+                    </filter>
+                </data>
+            </field>
+        </record>
+        
+
+    </data>
+</openerp>

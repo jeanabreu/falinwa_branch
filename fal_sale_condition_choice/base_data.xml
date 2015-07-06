@@ -1000,7 +1000,7 @@
                 ]" />
 		</record>
 		<record id="fal_ordering_code_v7205070KN" model="fal.ordering.code">
-            <field name="name">V72-005-070-KN</field>
+            <field name="name">V72-050-070-KN</field>
 			<field name="fal_stroke">70</field>
             <field name="fal_serie_list_ids" eval="[
                 (6,0,[fal_seri_name_V72, fal_seri_name_intV72])

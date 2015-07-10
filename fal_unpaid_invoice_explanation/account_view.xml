@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="invoice_form_faluniex" model="ir.ui.view">
+            <field name="name">account.invoice.form.faluniex</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form" />
+            <field name="arch" type="xml">
+                <field name="date_due" position="after">
+                    <field name="fal_unpaid_invoice_explanation_date" />
+                    <field name="fal_unpaid_invoice_explanation" placeholder="Explain why this invoice is still unpaid" />                    
+                </field>
+                <field name="move_id" position="after">
+                    <field name="fal_unpaid_invoice_next_action_date" />
+                    <field name="fal_unpaid_invoice_next_action" placeholder="Explain the next action" />                       
+                </field>
+            </field>
+        </record>            
+
+        <record id="invoice_supplier_form_faluniex" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form.faluniex</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@string='Other Info']/group/group/field[@name='payment_term']" position="after">
+                    <field name="fal_unpaid_invoice_explanation_date" />
+                    <field name="fal_unpaid_invoice_explanation" placeholder="Explain why this invoice is still unpaid" />                    
+                </xpath>
+                <xpath expr="//notebook/page[@string='Other Info']/group/group/field[@name='company_id']" position="after">
+                    <field name="fal_unpaid_invoice_next_action_date" />
+                    <field name="fal_unpaid_invoice_next_action" placeholder="Explain the next action" />                       
+                </xpath>
+            </field>
+        </record>  
+
+    </data>
+</openerp>

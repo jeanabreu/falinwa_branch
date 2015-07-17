@@ -17,7 +17,7 @@
             <attribute name="t-field-options">{"widget": "date"}</attribute>
         </xpath>
  
-        <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']/div[@t-if='o.date_order'] position="after">
+        <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']/div[@t-if='o.date_order']" position="after">
             <div t-if="o.payment_term_id" class="col-xs-3">
                 <strong>Payment Term:</strong>
                 <p t-field="o.payment_term_id.name"/>

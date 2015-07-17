@@ -42,6 +42,10 @@
                         <strong>Order Date:</strong>
                         <p t-field="o.date_order"/>
                     </div>
+                    <div t-if="o.payment_term_id" class="col-xs-3">
+                        <strong>Payment Term:</strong>
+                        <p t-field="o.payment_term_id.name"/>
+                    </div>
                     <div t-if="o.validator" class="col-xs-3">
                         <strong>Validated By:</strong>
                         <p t-field="o.validator"/>

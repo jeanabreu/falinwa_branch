@@ -46,3 +46,13 @@ class product_template(orm.Model):
         'fal_in_stock' : fields.boolean('In Stock'),
     }
 #end of product_product()
+
+class pricelist_partnerinfo(orm.Model):
+    _name = 'pricelist.partnerinfo'
+    _inherit = 'pricelist.partnerinfo'
+    
+    _columns = {
+        'fal_suppinfo_currency_id' : fields.related('suppinfo_id', 'name', 'property_product_pricelist_purchase', 'currency_id', type='many2one', relation='res.currency', string='Currency', readonly=True),
+    }
+    
+#end of pricelist_partnerinfo()

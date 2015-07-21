@@ -118,5 +118,16 @@
             </field>
         </record>
         
+        <record id="product_supplierinfo_form_view_hpsext" model="ir.ui.view">
+            <field name="name">product.supplierinfo.form.view.hpsext</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pricelist_ids']/tree/field[@name='price']" position="after">
+                    <field name="fal_suppinfo_currency_id"/>
+                </xpath>
+            </field>
+        </record>
+        
     </data>
 </openerp>

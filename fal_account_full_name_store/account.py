@@ -15,7 +15,7 @@ class account_account(models.Model):
         return parent_path + elmt.code + ' ' + elmt.name
         
     @api.one
-    @api.depends('name', 'code', 'parent_id', 'type', 'active')
+    @api.depends('name', 'code', 'parent_id', 'parent_id.code', 'parent_id.name', 'parent_id.type', 'parent_id.active')
     def _get_full_name(self):
         self.fal_complete_name = self._get_one_full_name(self)
         
@@ -29,7 +29,7 @@ class account_analytic_account(models.Model):
     _inherit = "account.analytic.account"
 
     @api.one
-    @api.depends('name', 'parent_id', 'state')
+    @api.depends('name', 'parent_id', 'state', 'parent_id.name', 'parent_id.state')
     def _get_full_name(self):
         self.fal_complete_name = self._get_one_full_name(self)
         

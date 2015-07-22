@@ -162,3 +162,44 @@ class account_invoice(orm.Model):
     }
 
 #end of account_invoice()
+
+class account_move_line(orm.Model):
+    _name = 'account.move.line'
+    _inherit = 'account.move.line'
+    
+    def _amount_all_to_hk(self, cr, uid, ids, field_name, arg, context=None):
+        currency_pool = self.pool.get('res.currency')
+        rs_data = {}
+        for line in self.browse(cr, uid, ids, context=context):
+            ctx = context.copy()
+            ctx.update({'date': line.date})
+            company_id = line.company_id.id
+            res = {}
+            res['fal_debit_hk'] = 0.0
+            res['fal_credit_hk'] = 0.0            
+            rate_ids = currency_pool.search(cr, uid,[('name', '=', 'HKD'),('company_id','=',company_id)] , context=ctx, limit=1)
+            for rate_id in currency_pool.browse(cr, uid, rate_ids, ctx):
+                rate_hk = rate_id
+                origin_currency = line.journal_id.company_id.currency_id
+                if origin_currency == rate_id:
+                    res['fal_debit_hk'] = abs(line.debit)
+                    res['fal_credit_hk'] = abs(line.credit)
+                else:
+                    #always use the amount booked in the company currency as the basis of the conversion into the voucher currency
+                    res['fal_debit_hk'] = currency_pool.compute(cr, uid, origin_currency.id, rate_hk.id, abs(line.debit), context=ctx)
+                    res['fal_credit_hk'] = currency_pool.compute(cr, uid, origin_currency.id, rate_hk.id, abs(line.credit), context=ctx)
+
+                rs_data[line.id] = res
+        return rs_data
+        
+    _columns = {
+        'fal_debit_hk': fields.function(_amount_all_to_hk, type='float',digits_compute=dp.get_precision('Account'), string='Debit (HKD)',
+            store={'account.move.line': (lambda self, cr, uid, ids, c={}: ids, ['debit', 'credit', 'date'], 20)},
+            multi='hk',
+            help="Debit in HKD."),
+        'fal_credit_hk': fields.function(_amount_all_to_hk, type='float',digits_compute=dp.get_precision('Account'), string='Credit (HKD)',
+            store={'account.move.line': (lambda self, cr, uid, ids, c={}: ids, ['debit', 'credit', 'date'], 20)},
+            multi='hk',
+            help="Credit in HKD."),
+    }
+#end of account_move_line()

@@ -49,5 +49,19 @@
             </field>
         </record>
 
+        <record id="view_move_line_tree_fal_hkd" model="ir.ui.view">
+            <field name="name">account.move.line.tree.fal.hkd</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="move_id" position="after">
+                        <field name="fal_debit_hk" readonly="1" sum="Total Debit(HKD)" />
+                        <field name="fal_credit_hk" readonly="1" sum="Total Credit(HKD)" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
     </data>
 </openerp>

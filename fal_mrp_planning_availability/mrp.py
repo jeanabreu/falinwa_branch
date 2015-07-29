@@ -16,8 +16,9 @@ class mrp_production(models.Model):
     def _fal_moves_check_stock(self):
         is_ready = True
         for move_line in self.move_lines:
-            if  move_line.product_qty > move_line.availability:
-                is_ready = False
+            if move_line.state != 'assigned':
+                if  move_line.product_qty > move_line.availability:
+                    is_ready = False
         self.fal_component_ready = is_ready
     
     #field start here    

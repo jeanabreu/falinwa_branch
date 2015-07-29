@@ -9,7 +9,12 @@
             <field name="arch" type="xml">
                 <field name="date_planned" position="after">
                     <field name="fal_floating_production_date" />
+                    <field name="fal_fixed_production_date" />
+                    <field name="fal_component_ready" />
                 </field>
+                <xpath expr="//notebook/page[@string='Consumed Products']/group/group[@string='Products to Consume']/field[@name='move_lines']/tree/field[@name='product_uom']" position="after">
+                    <field name="availability" />
+                </xpath>
             </field>
         </record>
         

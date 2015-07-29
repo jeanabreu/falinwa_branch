@@ -64,7 +64,7 @@ class stock_move(models.Model):
                 'state': 'confirmed'
             })
         print floating_notready_self
-        new_self = self.filtered(lambda r: r.raw_material_production_id == False) | self.filtered('raw_material_production_id.fal_fixed_production_date').filtered(lambda r: r.raw_material_production_id.state in ['confirmed', 'Component Ready']).sorted(key=lambda r: r.raw_material_production_id.fal_fixed_production_date, reverse=True)
+        new_self = self.filtered(lambda r: r.procure_method == 'make_to_order') | self.filtered(lambda r: r.raw_material_production_id == False) | self.filtered('raw_material_production_id.fal_fixed_production_date').filtered(lambda r: r.raw_material_production_id.state in ['confirmed', 'Component Ready']).sorted(key=lambda r: r.raw_material_production_id.fal_fixed_production_date, reverse=True)
         for rec in new_self:        
             print str(rec.raw_material_production_id) + ':' + rec.raw_material_production_id.name
         super(stock_move, new_self).action_assign()

@@ -16,7 +16,7 @@ class mrp_production(models.Model):
     def _fal_moves_check_stock(self):
         is_ready = True
         for move_line in self.move_lines:
-            if self.env['product.uom']._compute_qty_obj(move_line.product_uom, move_line.product_uom_qty, move_line.product_id.uom_id) > move_line.availability:
+            if  move_line.product_qty > move_line.availability:
                 is_ready = False
         self.fal_component_ready = is_ready
     

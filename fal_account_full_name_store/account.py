@@ -14,10 +14,11 @@ class account_account(models.Model):
             parent_path = ''
         return parent_path + elmt.code + ' ' + elmt.name
         
-    @api.one
-    @api.depends('name', 'code', 'parent_id', 'parent_id.code', 'parent_id.name', 'parent_id.type', 'parent_id.active')
+    @api.multi
+    @api.depends('name', 'code', 'parent_id', 'parent_id.code', 'parent_id.name', 'parent_id.type', 'parent_id.active', 'parent_id.fal_complete_name')
     def _get_full_name(self):
-        self.fal_complete_name = self._get_one_full_name(self)
+        for rec in self:
+            rec.fal_complete_name = self._get_one_full_name(rec)
         
     fal_complete_name = fields.Char(compute=_get_full_name,
                            string='Full Name', readonly=True, store=True)

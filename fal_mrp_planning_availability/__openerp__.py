@@ -11,6 +11,7 @@
     'data': [
     ],
     'update_xml': [
+        'views/calendar.xml',
         'mrp_view.xml',
     ],
     'css': [],

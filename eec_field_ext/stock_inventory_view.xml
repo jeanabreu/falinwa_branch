@@ -68,6 +68,9 @@
                     <field name="min_date" position="attributes">
                         <attribute name="invisible">0</attribute>
                     </field>
+                    <field name="date" position="after">
+                        <field name="fal_order_date" />
+                    </field>                    
                 </data>
             </field>
         </record>

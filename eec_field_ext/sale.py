@@ -23,9 +23,9 @@ class sale_order(orm.Model):
 class res_partner(orm.Model):
     _name = "res.partner"
     _inherit = "res.partner"
-    
+  
     _columns = {
-        'bank_account_number' : fields.char('Bank Account Number', size=128),
+       'bank_account_number' : fields.char('Bank Account Number', size=128),
     }
     
 #end of res_partner()

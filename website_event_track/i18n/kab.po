@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-21 14:08+0000\n"
-"PO-Revision-Date: 2015-06-28 23:51+0000\n"
+"PO-Revision-Date: 2015-07-18 15:33+0000\n"
 "Last-Translator: Belkacem Mohammed <belkacem77@gmail.com>\n"
 "Language-Team: Kabyle (http://www.transifex.com/projects/p/odoo-8/language/kab/)\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,7 @@ msgstr ""
 #. module: website_event_track
 #: view:website:website_event_track.track_view
 msgid "Documents"
-msgstr "Isemliyen"
+msgstr "Arraten"
 
 #. module: website_event_track
 #: field:event.track,duration:0 view:website:website_event_track.track_view
@@ -210,7 +210,7 @@ msgstr "Tadyant"
 #. module: website_event_track
 #: field:event.event,blog_id:0
 msgid "Event Blog"
-msgstr "Ablog n tedyant"
+msgstr "Ablug n tedyant"
 
 #. module: website_event_track
 #: view:event.track.location:website_event_track.view_event_location_form
@@ -351,7 +351,7 @@ msgstr "Igber agzul n lehduṛ (amḍan n iznan,…). Agzul agi illa  deg umasal
 msgid ""
 "How to build your marketing strategy for the purpose of generating leads "
 "with Odoo."
-msgstr ""
+msgstr "Amek a t-ebnuḍ tastratijit n telzuzit i wesirew n tfiɣalin s useqdec n Odoo."
 
 #. module: website_event_track
 #: model:event.track,name:website_event_track.event_track1
@@ -442,12 +442,12 @@ msgstr ""
 #. module: website_event_track
 #: field:event.track,location_id:0 view:website:website_event_track.track_view
 msgid "Location"
-msgstr "Asun"
+msgstr "Adeg"
 
 #. module: website_event_track
 #: field:event.sponsor,image_medium:0
 msgid "Logo"
-msgstr "Alogo"
+msgstr "Alugu"
 
 #. module: website_event_track
 #: selection:event.track,priority:0
@@ -519,7 +519,7 @@ msgstr ""
 #: field:event.event,show_blog:0
 #, python-format
 msgid "News"
-msgstr "Isallen"
+msgstr "Isalen"
 
 #. module: website_event_track
 #: view:website:website_event_track.tracks
@@ -529,7 +529,7 @@ msgstr ""
 #. module: website_event_track
 #: model:event.track,name:website_event_track.event_track15
 msgid "Odoo Mobile for Notes, Meetings and Messages."
-msgstr ""
+msgstr "Odoo Mobile i yiwenniten, Timliliyin ed yeznan."
 
 #. module: website_event_track
 #: model:event.track,name:website_event_track.event_track28
@@ -539,7 +539,7 @@ msgstr ""
 #. module: website_event_track
 #: model:event.track,name:website_event_track.event_track16
 msgid "Odoo as your Enterprise Social Network."
-msgstr ""
+msgstr "Odoo d aẓeṭṭa ametti n tkebbanit-ik"
 
 #. module: website_event_track
 #: model:event.track,name:website_event_track.event_track27
@@ -639,7 +639,7 @@ msgstr ""
 #. module: website_event_track
 #: field:event.track,speaker_ids:0
 msgid "Speakers"
-msgstr ""
+msgstr "Inerdalen"
 
 #. module: website_event_track
 #: field:event.sponsor.type,name:0
@@ -898,7 +898,7 @@ msgstr "URL n usmel WEB"
 #. module: website_event_track
 #: view:website:website_event_track.event_track_proposal
 msgid "Your Email"
-msgstr "Email-ik"
+msgstr "Imayl-ik"
 
 #. module: website_event_track
 #: view:website:website_event_track.event_track_proposal

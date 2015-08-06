@@ -17,7 +17,9 @@
     'css': [],
     'js' : [
     ],
-    'qweb': [],
+    'qweb': [
+        'static/src/xml/*.xml',
+    ],
     'installable': True,
     'active': False,
     'application' : False,

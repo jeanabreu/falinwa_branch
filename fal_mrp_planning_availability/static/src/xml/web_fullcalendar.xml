@@ -1,0 +1,16 @@
+<template>
+
+  <div t-name="CalendarView.fal_mrp_quick_add" class="oe_fal_mrp_calendar_quick_add openerp">
+    
+    <div class="form-group">
+        <label for='name' class='control-label'>Manufacture Order that need to be added:</label>        
+    </div>     
+    
+    <t t-if="widget._buttons">
+      <div class="oe_calendar_fal_mrp_quick_create_buttons">
+        <button class="openerp oe_button oe_highlight oe_calendar_fal_mrp_quick_create_add ">Add</button>
+      </div>
+    </t>
+  </div>
+
+</template>

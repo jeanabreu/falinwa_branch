@@ -25,7 +25,7 @@ class mrp_production(models.Model):
     state = fields.Selection(selection_add=[
                 ('Component Ready','Component Ready'),
                 ])
-    #fal_floating_production_date = fields.Date("Floating Production Date", readonly=True, states=dict.fromkeys(['draft', 'confirmed'], [('readonly', False)]), copy=False)
+    fal_floating_production_date = fields.Date("Floating Production Date", readonly=True, states=dict.fromkeys(['draft', 'confirmed'], [('readonly', False)]), copy=False)
     fal_fixed_production_date = fields.Date("Fixed Production Date", readonly=True, states=dict.fromkeys(['draft', 'confirmed', 'Component Ready'], [('readonly', False)]), copy=False)
     fal_component_ready = fields.Boolean(compute='_fal_moves_check_stock', string='Component Ready')
     #end here
@@ -33,11 +33,11 @@ class mrp_production(models.Model):
     @api.multi
     def action_assign(self):
         for production in self:
-            if production.fal_component_ready:
+            if production.fal_component_ready and production.fal_floating_production_date:
                 production.write({
                     'state': 'Component Ready',
                     })
-            elif not production.fal_component_ready:
+            elif not production.fal_component_ready and production.fal_floating_production_date:
                 production.write({
                     'state': 'confirmed'
                     })
@@ -52,7 +52,7 @@ class stock_move(models.Model):
     @api.multi
     def action_assign(self):
         #check the stock for floating
-        floating_ready_self = self.filtered(lambda r: r.raw_material_production_id.fal_fixed_production_date == False).filtered(lambda r: r.raw_material_production_id.state == 'confirmed').filtered('raw_material_production_id.fal_component_ready')
+        floating_ready_self = floating_ready_self = self.filtered('raw_material_production_id.fal_floating_production_date').filtered(lambda r: r.raw_material_production_id.fal_fixed_production_date == False).filtered(lambda r: r.raw_material_production_id.state == 'confirmed').filtered('raw_material_production_id.fal_component_ready')
         print floating_ready_self
         for move_ready in floating_ready_self:
             move_ready.raw_material_production_id.write({

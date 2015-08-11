@@ -7,12 +7,9 @@
             <field name="model">mrp.production</field>
             <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
             <field name="arch" type="xml">
-                <field name="date_planned" position="attributes">
-                    <attribute name="attrs">{'invisible': [('fal_fixed_production_date', '!=', False)]}</attribute>
-                </field>
                 <field name="date_planned" position="after">
-                    <!-- field name="fal_floating_production_date" / -->
-                    <field name="fal_fixed_production_date" attrs="{'invisible': [('fal_fixed_production_date', '=', False)]}"/>
+                    <field name="fal_floating_production_date"/> <!-- attrs="{'invisible': [('fal_fixed_production_date', '!=', False)]}"/ -->
+                    <field name="fal_fixed_production_date" /> <!-- attrs="{'invisible': [('fal_fixed_production_date', '=', False)]}"/ -->
                     <field name="fal_component_ready" />
                 </field>
                 <xpath expr="//notebook/page[@string='Consumed Products']/group/group[@string='Products to Consume']/field[@name='move_lines']/tree/field[@name='product_uom']" position="after">
@@ -27,8 +24,11 @@
             <field name="inherit_id" ref="mrp.view_production_calendar"/>
             <field name="arch" type="xml">
                 <calendar position="attributes">
-                    <attribute name="date_alternative">fal_fixed_production_date</attribute>
+                    <attribute name="date_start">fal_floating_production_date</attribute>
                 </calendar>
+                <!-- field name="name" position="after">
+                    <button name="test" />
+                </field -->
             </field>
         </record>
 
@@ -94,9 +94,9 @@
             <field name="act_window_id" ref="mrp_production_action_planning_fal_fixedproduction"/>
         </record>        
         
-        <menuitem action="mrp_production_action_planning_fal_fixedproduction"
+        <!-- menuitem action="mrp_production_action_planning_fal_fixedproduction"
                 id="menu_mrp_production_order_action" name="Fixed Production Planning"
-                parent="mrp.menu_mrp_planning" sequence="2"/>
+                parent="mrp.menu_mrp_planning" sequence="2"/ -->
                 
     </data>
 </openerp>

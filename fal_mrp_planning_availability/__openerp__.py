@@ -11,6 +11,7 @@
     'data': [
     ],
     'update_xml': [
+        'wizard/mrp_production_fixed_view.xml',
         'views/calendar.xml',
         'mrp_view.xml',
     ],

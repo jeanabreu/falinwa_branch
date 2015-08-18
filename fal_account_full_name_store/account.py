@@ -15,14 +15,26 @@ class account_account(models.Model):
         return parent_path + elmt.code + ' ' + elmt.name
         
     @api.one
-    @api.depends('name', 'code', 'parent_id', 'parent_id.code', 'parent_id.name', 'parent_id.type', 'parent_id.active')
+    @api.depends('name', 'code', 'parent_id', 'parent_id.code', 'parent_id.name', 'parent_id.type', 'parent_id.active', 'parent_id.fal_complete_name')
     def _get_fal_full_name(self):
-        children_ids = self.search([('id', 'child_of', self.id)])
-        for children_id in children_ids:
-            print children_id
-            #children_id.write({'fal_complete_name' : self._get_fal_one_full_name(children_id)})
-            children_id.fal_complete_name = self._get_fal_one_full_name(children_id)
+        self.fal_complete_name = self._get_fal_one_full_name(self)
+        cc_ac = []
         
+        def get_ac(ac, cc_ac):
+            c_ac = self.search([('parent_id','=',ac.id)])
+            cc_ac.extend(c_ac)
+            if c_ac:
+                for acc in c_ac:
+                    get_ac(acc, cc_ac)
+            else:
+                return False
+                
+        get_ac(self, cc_ac)
+        for ac in cc_ac:
+            name = ac._get_fal_one_full_name(ac)
+            self.env.cr.execute("update account_account set fal_complete_name= %s where id= %s", (name, ac.id))
+        
+
     fal_complete_name = fields.Char(compute=_get_fal_full_name,
                            string='Full Name', readonly=True, store=True)
     
@@ -42,10 +54,26 @@ class account_analytic_account(models.Model):
         return parent_path + elmt.name
 
     @api.one
-    @api.depends('name', 'parent_id', 'state', 'parent_id.name', 'parent_id.state')
+    @api.depends('name', 'parent_id', 'state', 'parent_id.name', 'parent_id.state', 'parent_id.fal_complete_name')
     def _get_fal_full_name(self):
         self.fal_complete_name = self._get_fal_one_full_name(self)
+        cc_ac = []
         
+        def get_ac(ac, cc_ac):
+            c_ac = self.search([('parent_id','=',ac.id)])
+            cc_ac.extend(c_ac)
+            if c_ac:
+                for acc in c_ac:
+                    get_ac(acc, cc_ac)
+            else:
+                return False
+                
+        get_ac(self, cc_ac)
+        for ac in cc_ac:
+            name = ac._get_fal_one_full_name(ac)
+            self.env.cr.execute("update account_analytic_account set fal_complete_name= %s where id= %s", (name, ac.id))
+            
+            
     fal_complete_name = fields.Char(compute=_get_fal_full_name,
                            string='Full Name', readonly=True, store=True)
     

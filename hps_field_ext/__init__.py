@@ -4,3 +4,4 @@ import purchase
 import invoice
 import stock
 import hr
+import mrp

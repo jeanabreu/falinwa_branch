@@ -86,6 +86,15 @@
               </p>
             </field>
         </record>
+
+        <act_window name="Production Fixed"
+            res_model="mrp.production.fixed.wizard"
+            src_model="mrp.production"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_view_mo_fixed"/>
         
         <record id="fal_fixedproduction_action_view" model="ir.actions.act_window.view">
             <field eval="1" name="sequence"/>

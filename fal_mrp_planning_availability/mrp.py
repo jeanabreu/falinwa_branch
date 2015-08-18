@@ -42,6 +42,28 @@ class mrp_production(models.Model):
                     'state': 'confirmed'
                     })
         super(mrp_production, self).action_assign()
+
+    @api.multi
+    def _production_fixed(self):
+        for mrp_id in self:
+            if mrp_id.fal_floating_production_date:
+                mrp_id.write({'fal_fixed_production_date': mrp_id.fal_floating_production_date})
+        return True
+
+    def fields_view_get(self, cr, uid, view_id=None, view_type='form', context=None, toolbar=False, submenu=False):
+        result = super(mrp_production, self).fields_view_get(cr, uid, view_id, view_type, context, toolbar, submenu)
+        if toolbar:
+            toclean = ('report_sxw_content', 'report_rml_content', 'report_sxw', 'report_rml', 'report_sxw_content_data', 'report_rml_content_data')
+            def clean(x):
+                x = x[2]
+                for key in toclean:
+                    x.pop(key, None)
+                return x
+            ir_values_obj = self.pool.get('ir.values')
+            resaction = ir_values_obj.get(cr, uid, 'action', 'client_action_multi', [(self._name, False)], False, context)
+            resaction = [clean(action) for action in resaction if view_type in ['tree','calendar'] or not action[2].get('multi')]
+            result['toolbar']['action'] = resaction
+        return result
         
 #end of mrp_production()
 
@@ -52,19 +74,19 @@ class stock_move(models.Model):
     @api.multi
     def action_assign(self):
         #check the stock for floating
-        floating_ready_self = floating_ready_self = self.filtered('raw_material_production_id.fal_floating_production_date').filtered(lambda r: r.raw_material_production_id.fal_fixed_production_date == False).filtered(lambda r: r.raw_material_production_id.state == 'confirmed').filtered('raw_material_production_id.fal_component_ready')
+        floating_ready_self = floating_ready_self = self.filtered('raw_material_production_id.fal_floating_production_date' and r.raw_material_production_id.fal_fixed_production_date == False and r.raw_material_production_id.state == 'confirmed' and r.raw_material_production_id.fal_component_ready)
         print floating_ready_self
         for move_ready in floating_ready_self:
             move_ready.raw_material_production_id.write({
                 'state': 'Component Ready'
             })
-        floating_notready_self = self.filtered(lambda r: r.raw_material_production_id.state == 'Component Ready').filtered(lambda r: r.raw_material_production_id.fal_component_ready == False)
+        floating_notready_self = self.filtered(lambda r: r.raw_material_production_id.state == 'Component Ready' and r.raw_material_production_id.fal_component_ready == False)
         for move_not_ready in floating_notready_self:
             move_not_ready.raw_material_production_id.write({
                 'state': 'confirmed'
             })
         print floating_notready_self
-        new_self = self.filtered(lambda r: r.procure_method == 'make_to_order') | self.filtered(lambda r: r.raw_material_production_id == False) | self.filtered('raw_material_production_id.fal_fixed_production_date').filtered(lambda r: r.raw_material_production_id.state in ['confirmed', 'Component Ready']).sorted(key=lambda r: r.raw_material_production_id.fal_fixed_production_date, reverse=True)
+        new_self = self.filtered(lambda r: r.procure_method == 'make_to_order' or r.raw_material_production_id == False or r.raw_material_production_id.fal_fixed_production_date and r.raw_material_production_id.state in ['confirmed', 'Component Ready']).sorted(key=lambda r: r.raw_material_production_id.fal_fixed_production_date)
         for rec in new_self:        
             if rec.raw_material_production_id:
                 print str(rec.raw_material_production_id) + ':' + rec.raw_material_production_id.name

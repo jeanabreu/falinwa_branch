@@ -12,6 +12,26 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="view_production_calendar_hpsext" model="ir.ui.view">
+            <field name="name">mrp.production.calendar.hpsext</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.view_production_calendar"/>
+            <field name="arch" type="xml">
+                <calendar position="attributes">
+                    <attribute name="color">fal_production_root_serie_name_id</attribute>
+                </calendar>
+                <field name="name" position="after">
+                    <field name="fal_of_number" />
+                </field>
+                <field name="product_id" position="replace">
+                </field>
+                <field name="product_qty" position="after">
+                    <field name="product_id"/>
+                    <field name="date_planned" widget="date"/>
+                </field>
+            </field>
+        </record>
         
         <record id="mrp_production_action_finished_product" model="ir.actions.act_window">
             <field name="name">MO Finished Product</field>

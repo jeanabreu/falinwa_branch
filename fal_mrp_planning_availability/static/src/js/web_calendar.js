@@ -274,7 +274,6 @@ openerp.fal_mrp_planning_availability = function(instance) {
                     this.topSidebar.add_items('other', _.compact([
                         { label: _t("Export"), callback: this.on_sidebar_export },
                     ]));
-                    console.log(this.fields_view.toolbar);
                     this.topSidebar.add_toolbar(this.fields_view.toolbar);
                     this.topSidebar.$el.hide();
                     
@@ -339,21 +338,7 @@ openerp.fal_mrp_planning_availability = function(instance) {
         },
         get_active_domain: function () {
             var self = this;
-            if ($('.oe_calendar_record_selector').prop('checked')) {
-                var search_view = this.getParent().searchview;
-                var search_data = search_view.build_search_data();
-                return instance.web.pyeval.eval_domains_and_contexts({
-                    domains: search_data.domains,
-                    contexts: search_data.contexts,
-                    group_by_seq: search_data.groupbys || []
-                }).then(function (results) {
-                    var domain = self.dataset.domain.concat(results.domain || []);
-                    return domain
-                });
-            }
-            else {
-                return $.Deferred().resolve();
-            }
+            return $.Deferred().resolve();
         },
         get_selection: function () {
             var result = {ids: [], records: []};
@@ -361,13 +346,14 @@ openerp.fal_mrp_planning_availability = function(instance) {
             console.log($('.oe_calendar_record_selector:checked'));
             $('.oe_calendar_record_selector:checked').each(function(child){
                 console.log($(this)[0].id);
-                result.ids.push($(this)[0].id);
+                result.ids.push(parseInt($(this)[0].id));
                 //records.push.apply(records, selection.records);
             });
             return result
         },
         get_selected_ids: function() {
             var ids = this.get_selection().ids;
+            console.log('calendar', ids);
             return ids;
         },
         do_select: function (ids, records, deselected) {
@@ -395,6 +381,12 @@ openerp.fal_mrp_planning_availability = function(instance) {
                 return {count: 1, values: record};
             }));
             */
+        },
+        do_hide: function () {
+            if (this.topSidebar) {
+                this.topSidebar.$el.hide();
+            }
+            this._super();
         },
         get_fc_init_options: function () {
             if(this.name != 'mrp.production.calendar'){
@@ -455,10 +447,9 @@ openerp.fal_mrp_planning_availability = function(instance) {
                         var MrpProduction = new openerp.Model('mrp.production');
                         /*MrpProduction.query(['fal_fixed_production_date']).filter([['id','=',event._id]]).first().then(function(production_id) {
                             if(production_id.fal_fixed_production_date){
-                                element.find('.fc-event-title').html('<input type="checkbox" class="oe_calendar_record_selector" checked/> ' + event.title);
-                            }
-                            else{
-                                element.find('.fc-event-title').html('<input type="checkbox" class="oe_calendar_record_selector"/> ' + event.title);
+                                element.find('.fc-event-title').html('<input type="checkbox" class="oe_calendar_record_selector" id="'+ event._id +'"/> ' + event.title + ' <input type="radio" class="oe_calendar_radio_is_fixed" checked/>');
+                            }else{
+                                element.find('.fc-event-title').html('<input type="checkbox" class="oe_calendar_record_selector" id="'+ event._id +'"/> ' + event.title);
                             }
                         });*/
                         element.find('.fc-event-title').html('<input type="checkbox" class="oe_calendar_record_selector" id="'+ event._id +'"/> ' + event.title);
@@ -473,13 +464,20 @@ openerp.fal_mrp_planning_availability = function(instance) {
                         }
                         //console.log($('.oe_calendar_record_selector'));
                         $('.oe_calendar_record_selector').click(
-                            function() {
+                            function(e) {
+                                e.stopPropagation();
                                 selection = self.get_selection();
                                 self.do_select(selection.ids, selection.records, false);
                             }
                         );
                     },
-                    //eventClick: function (event) { self.open_event(event._id,event.title); },
+                    eventClick: function (event) { 
+                        if($('.oe_calendar_record_selector:checked').length > 0){
+                            return true;
+                        }else{
+                            self.open_event(event._id,event.title);
+                        }
+                    },
                     select: function (start_date, end_date, all_day, _js_event, _view) {
                         var data_template = self.get_event_data({
                             start: start_date,

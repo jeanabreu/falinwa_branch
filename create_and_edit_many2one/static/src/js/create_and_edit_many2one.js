@@ -20,7 +20,7 @@ openerp.create_and_edit_many2one = function(instance) {
     instance.web.form.SelectCreatePopup.include({
         setup_search_view: function(search_defaults) {
             var self = this;
-            this._super.apply(this, arguments);
+            super_res = this._super.apply(this, arguments);
             if (!this.session.no_create_edit) {
                 return super_res;
             }else{

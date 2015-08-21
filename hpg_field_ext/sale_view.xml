@@ -49,8 +49,8 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="category_id" position="after">
-                        <field name="fal_tag_activity_ids" string="Activity" filter_domain="[('fal_category_id','ilike', self)]"/>
-                        <field name="fal_tag_product_range_ids" string="Product Range" filter_domain="[('fal_category_id','ilike', self)]"/>
+                        <field name="fal_tag_activity_ids" string="Activity"/>
+                        <field name="fal_tag_product_range_ids" string="Product Range"/>
                     </field>
                 </data>
             </field>

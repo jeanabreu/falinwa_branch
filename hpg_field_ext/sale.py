@@ -15,7 +15,7 @@ class crm_lead(orm.Model):
     
 #end of crm_lead()
 
-class res_partner(orm.Model)
+class res_partner(orm.Model):
     _name = "res.partner"
     _inherit = "res.partner"
     

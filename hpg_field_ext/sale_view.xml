@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="crm_case_form_view_leads_hpgext">
+            <field name="name">CRM - Leads Form HPGEXT</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="type" position="after">
+                        <field name="fal_project_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_case_form_view_oppor_hpgext">
+            <field name="name">Opportunities HPGEXT</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="phone" position="after">
+                        <field name="fal_project_id" />
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+        <record id="view_partner_form_hpg_ext_form" model="ir.ui.view">
+            <field name="name">res.partner.form.hpg.ext.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="category_id" position="after">
+                        <field name="fal_tag_activity_ids" widget="many2many_tags" placeholder="Activity"/>
+                        <field name="fal_tag_product_range_ids" widget="many2many_tags" placeholder="Product Range"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+       <record id="view_res_partner_filter_hpg_ext_form" model="ir.ui.view">
+            <field name="name">res.partner.select.hpgext</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <data>
+                    <field name="category_id" position="after">
+                        <field name="fal_tag_activity_ids" string="Activity" filter_domain="[('fal_category_id','ilike', self)]"/>
+                        <field name="fal_tag_product_range_ids" string="Product Range" filter_domain="[('fal_category_id','ilike', self)]"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

@@ -47,7 +47,11 @@ class task(orm.Model):
         'partner_id': fields.many2one('res.partner', 'Customer'),
         'project_id_partner_id' : fields.related('project_id','partner_id',type='many2one', relation='res.partner', string="Final Customer", readonly=True, store=True)
     }
-    
+
+    def onchange_project(self, cr, uid, id, project_id, context=None):
+        res = super(task, self).onchange_project(cr, uid, id, project_id, context=context)
+        return {}
+        
     _defaults = {
         'partner_id': False
     }

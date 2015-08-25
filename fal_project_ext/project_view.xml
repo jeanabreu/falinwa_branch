@@ -83,7 +83,7 @@
         <record id="act_project_project_2_project_task_all_fal_pext" model="ir.actions.act_window">
             <field name="name">Tools</field>
             <field name="res_model">project.task</field>
-            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
             <field name="context">{'search_default_project_id': [active_id], 'default_project_id': active_id, 'active_test': False}</field>
             <field name="search_view_id" ref="view_task_search_form_falpext"/>
             <field name="help" type="html">
@@ -203,7 +203,7 @@
                     </div>
                     <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
                          <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible':[('use_tasks','=', 0)]}"
-                            name="%(project.act_project_project_2_project_task_all)d" icon="fa-tasks">
+                            name="%(act_project_project_2_project_task_all_fal_pext)d" icon="fa-tasks">
                             <field string="Tools" name="task_count" widget="statinfo"/>
                         </button>
                         <button  class="oe_inline oe_stat_button" name="attachment_tree_view"  type="object" icon="fa-files-o">
@@ -224,6 +224,7 @@
                                 To invoice or setup invoicing and renewal options, go to the related contract: <field name="analytic_account_id" readonly="1" required="0" class="oe_inline"/>.
                             </p>
                         </group>
+                        <field name="description" placeholder="Put description in here.." />
                     </group>
                     <notebook>
                         <page string="Team" name="team">
@@ -332,6 +333,7 @@
                             <field name="categ_ids" widget="many2many_tags"/>
                             <field name="progress" widget="progressbar"
                                 groups="project.group_time_work_estimation_tasks" />
+                            <field name="priority" groups="base.group_user"/>
                         </group>
                     </group>
                     <notebook>
@@ -395,7 +397,6 @@
                         </page>
                         <page string="Extra Info">
                             <group col="4">
-                                <field name="priority" groups="base.group_user"/>
                                 <field name="sequence"/>
                                 <field name="company_id" groups="base.group_multi_company" widget="selection"/>
                             </group>
@@ -625,7 +626,7 @@
         <record id="fal_pext_action_view_task" model="ir.actions.act_window">
             <field name="name">Tools</field>
             <field name="res_model">project.task</field>
-            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph</field>
             <field name="domain">[('project_id.project_opportunities','=',1)]</field>
             <field name="search_view_id" ref="view_task_search_form_falpext"/>
             <field name="help" type="html">

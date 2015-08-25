@@ -13,7 +13,7 @@
                     </field>
                 </data>
             </field>
-        </record>
+        </record>   
 
         <record model="ir.ui.view" id="crm_case_form_view_oppor_hpgext">
             <field name="name">Opportunities HPGEXT</field>
@@ -23,6 +23,13 @@
                 <data>
                     <field name="phone" position="after">
                         <field name="fal_project_id" />
+                        <field name="fal_tool_number" />
+                        <field name="fal_t1_date" />
+                        <field name="fal_hps_serie" />
+                        <field name="fal_qty" />
+                        <field name="fal_customer_code" />
+                        <field name="fal_old_budget_number" />
+                        <field name="fal_tag_product_range_ids" />
                     </field>
                 </data>
             </field>

@@ -7,9 +7,9 @@ from openerp import tools
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
-class project(orm.Model):
-    _name = "project.project"
-    _inherit = "project.project"
+class account_analytic_account(osv.osv):
+    _name = "account.analytic.account"
+    _inherit = "account.analytic.account"
 
     def _check_name_unique_insesitive(self, cr ,uid, ids, context=None):
         for project_id in self.browse(cr, uid, ids, context=context):
@@ -23,4 +23,4 @@ class project(orm.Model):
         (_check_name_unique_insesitive, 'Error! Project must have unique name', ['name'])
     ]
     
-#end of project()
+#end of account_analytic_account()

@@ -55,6 +55,30 @@
                 </data>
             </field>
         </record>
+
+        <record id="view_fal_tag_activity_action" model="ir.actions.act_window">
+            <field name="name">Tag Activity</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.tag.activity</field>
+            <field name="view_mode">tree,form</field>
+        </record>
         
+        <record id="view_fal_tag_product_range_action" model="ir.actions.act_window">
+            <field name="name">Tag Product Range</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fal.tag.product.range</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="fal_submenu_tag_activity"
+            action="view_fal_tag_activity_action"
+            parent="base.menu_base_config"
+            sequence="7" />
+            
+        <menuitem id="fal_submenu_tag_product_range"
+            action="view_fal_tag_product_range_action"
+            parent="base.menu_base_config"
+            sequence="7" />  
+            
     </data>
 </openerp>

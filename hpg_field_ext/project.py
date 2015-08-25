@@ -7,7 +7,7 @@ from openerp import tools
 from openerp.osv import fields, orm
 from openerp.tools.translate import _
 
-class account_analytic_account(osv.osv):
+class account_analytic_account(orm.Model):
     _name = "account.analytic.account"
     _inherit = "account.analytic.account"
 

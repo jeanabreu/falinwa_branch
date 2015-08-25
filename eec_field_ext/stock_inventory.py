@@ -39,6 +39,8 @@ class stock_picking(orm.Model):
         for picking in self.browse(cr, uid, ids):
             if picking.move_lines:
                 res[picking.id] = picking.move_lines[0].purchase_line_id.order_id.date_order
+            else:
+                res[picking.id] = False
         return res
 
     _columns = {   

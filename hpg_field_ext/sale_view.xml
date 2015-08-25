@@ -30,6 +30,7 @@
                         <field name="fal_customer_code" />
                         <field name="fal_old_budget_number" />
                         <field name="fal_tag_product_range_ids" />
+                        <field name="fal_delivery_week" />
                     </field>
                 </data>
             </field>

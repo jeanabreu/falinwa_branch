@@ -10,15 +10,17 @@ class crm_lead(orm.Model):
     _inherit = "crm.lead"
     
     _columns = {
+        'create_date': fields.datetime('Creation Date', readonly=False),
+        'date_closed': fields.datetime('Closed', readonly=False, copy=False),
         'fal_project_id' : fields.many2one('project.project', 'Project'),
         'fal_tool_number': fields.char('Tool Number', size=128),
         'fal_t1_date': fields.date('T1 Date'),
-        'fal_hps_serie': fields.char('HPS Serie'),
-        'fal_qty': fields.char('HPS Serie'),
-        'fal_customer_code': fields.char('Customer Code'),
-        'fal_old_budget_number': fields.char('Budget Number'),
+        'fal_hps_serie': fields.char('HPS Serie', size=128),
+        'fal_qty': fields.char('HPS Serie', size=128),
+        'fal_customer_code': fields.char('Customer Code', size=128),
+        'fal_old_budget_number': fields.char('Budget Number', size=128),
         'fal_tag_product_range_ids' : fields.many2many('fal.tag.product.range', 'lead_tag_product_range_rel', 'crm_id', 'tag_product_range_id', 'Tag Product Range'),
-
+        'fal_delivery_week': fields.char('Tool Number', size=128),
     }
     
 #end of crm_lead()
